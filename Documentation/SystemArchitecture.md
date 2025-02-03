@@ -3,7 +3,7 @@
 
 Below is a diagram of the initial system architecture designed:
 
-![Simple Solution](media\Simplified_Diagram.png)
+![Simple Solution](media/Simplified_Diagram.png)
 
 
 ## Hardware Components
