@@ -8,20 +8,20 @@
 namespace smart_stick
 {
 class Sensor {
-    protected:
-        const char* chipname;
-        int pin;
-        struct gpiod_line* line;
-        struct gpiod_chip* chip;
+   
     public:
-        Sensor(const char* chipname, unsigned int line);
+        Sensor(const char* chipname, int pin);
         ~Sensor();
         
         void initialise();
         void getData();
         void send();
         void startListening();
-
+    protected:
+        const char* chipname;
+        int pin;
+        struct gpiod_line* line;
+        struct gpiod_chip* chip;
 };
 }
 #endif // SENSOR_HPP
