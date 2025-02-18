@@ -11,9 +11,9 @@ class Sensor {
    
     public:
         Sensor(const char* chipname, int pin);
-        ~Sensor();
+        virtual ~Sensor();
         
-        void initialise();
+        virtual void initialise();
         virtual void getData();
         virtual void send();
         void startListening();
