@@ -14,8 +14,8 @@ class Sensor {
         ~Sensor();
         
         void initialise();
-        void getData();
-        void send();
+        virtual void getData();
+        virtual void send();
         void startListening();
     protected:
         const char* chipname;
