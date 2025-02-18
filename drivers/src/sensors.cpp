@@ -10,10 +10,6 @@ namespace smart_stick{
             std::cerr << "Failed to open GPIO chip!" << std::endl;
             exit(1);
         }
-    }
-    
-    void Sensor::initialise()
-    {   
         // Get the GPIO line
         line = gpiod_chip_get_line(chip, pin);
         if (!line) {
@@ -27,6 +23,11 @@ namespace smart_stick{
             gpiod_chip_close(chip);
             exit(1);
         }
+    }
+    
+    void Sensor::initialise()
+    {   
+        std::cout << "Initalise Sensor..." << std::endl;
     }
 
     Sensor::~Sensor() {
