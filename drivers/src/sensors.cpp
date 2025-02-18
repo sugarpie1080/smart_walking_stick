@@ -13,12 +13,63 @@ namespace smart_stick{
     }
     
     void Sensor::initialise()
-    {
+    {   
+        // Get the GPIO line
         line = gpiod_chip_get_line(chip, pin);
         if (!line) {
             std::cerr << "Failed to get GPIO line!" << std::endl;
             gpiod_chip_close(chip);
             exit(1);
+        }
+        // Request the line as input with pull-up
+        if (gpiod_line_request_input(line, "temp") < 0) {
+            std::cerr << "Failed to request GPIO line as input!" << std::endl;
+            gpiod_chip_close(chip);
+            exit(1);
+        }
+    }
+
+    Sensor::~Sensor() {
+        if (chip) {
+            gpiod_chip_close(chip);
+        }
+    }
+
+    // To be overwritten in child classes
+    void Sensor::getData()
+    {
+        std::cout << "Getting sensor data..." << std::endl;
+        // Send the data
+        send();
+
+    } 
+    // To be overwritten in child classes
+    void Sensor::send()
+    {
+        std::cout << "Sending sensor data..." << std::endl;
+
+    }
+
+    // Based on the button interrupt code
+    void Sensor::startListening()
+    {
+        bool pressed = false;
+        while (true) 
+        {
+            int value = gpiod_line_get_value(line);
+            if (value < 0) {
+                std::cerr << "Error reading GPIO value!" << std::endl;
+                break;
+            }
+            if (value == 0) { // Button pressed (active low)
+                if (!pressed) {
+                    std::cout << "Interrupt triggered, reading data..." <<std::endl;
+                    getData();
+                    pressed = true;
+                }
+            } else { // Button released
+                pressed = false;
+            }
         }
     }
     
