@@ -18,7 +18,7 @@ namespace smart_stick{
             exit(1);
         }
         // Request the line as input with pull-up
-        if (gpiod_line_request_input(line, "temp") < 0) {
+        if (gpiod_line_request_falling_edge_events(line, "temp") < 0) {
             std::cerr << "Failed to request GPIO line as input!" << std::endl;
             gpiod_chip_close(chip);
             exit(1);
@@ -54,22 +54,25 @@ namespace smart_stick{
     // Based on the button interrupt code
     void Sensor::startListening()
     {
-        bool pressed = false;
+        // bool pressed = false;
         while (true) 
         {
             int value = gpiod_line_get_value(line);
+            std::cout << value << std::endl;
             if (value < 0) {
                 std::cerr << "Error reading GPIO value!" << std::endl;
                 break;
             }
-            if (value == 0) { // Button pressed (active low)
-                if (!pressed) {
+            if (value == 1) { // Button pressed (active low)
+                // if (!pressed) {
                     std::cout << "Interrupt triggered, reading data..." <<std::endl;
                     getData();
-                    pressed = true;
-                }
+                    value = 0;
+                    // pressed = true;
+                // }
             } else { // Button released
-                pressed = false;
+                std::cout << "Error :(" << std::endl;
+                // pressed = false;
             }
         }
     }
