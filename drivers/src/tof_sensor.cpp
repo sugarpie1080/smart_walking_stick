@@ -11,6 +11,10 @@ namespace smart_stick
     void ToFSensor::initialise()
     {
         sensor.initialize();
+        // Set to continous mode
+        sensor.startContinuous();
+        sensor.setMeasurementTimingBudget(200000);
+
     }
     
     void ToFSensor::getData()
@@ -18,7 +22,7 @@ namespace smart_stick
         
         std::cout << "Reading Distance data..." << std::endl;
         // For now, simulate getting data
-        uint16_t distance = sensor.readRangeSingleMillimeters();
+        uint16_t distance = sensor.readRangeContinuousMillimeters();
 
         std::cout << "Distance: " << distance << "mm" << std::endl;
     }
