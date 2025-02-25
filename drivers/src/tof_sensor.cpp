@@ -1,4 +1,13 @@
-
+/**
+ * @file tof_sensor.cpp
+ * @author Felicity Lipscomb
+ * @brief Functions for ToF Sensor Class
+ * @version 0.1
+ * @date 2025-02-25
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include <tof_sensor.hpp>
 // Driver Includes
 #include <VL53L0X.hpp>

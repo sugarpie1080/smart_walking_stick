@@ -1,3 +1,13 @@
+/**
+ * @file sensors.cpp
+ * @author Felicity Lipscomb
+ * @brief Functions fr the Sensor class
+ * @version 0.1
+ * @date 2025-02-25
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include <sensors.hpp>
 
 namespace smart_stick{
@@ -17,7 +27,7 @@ namespace smart_stick{
             gpiod_chip_close(chip);
             exit(1);
         }
-        // Request the line as input with pull-up
+        // Request the line as falling edge events
         if (gpiod_line_request_falling_edge_events(line, "temp") < 0) {
             std::cerr << "Failed to request GPIO line as input!" << std::endl;
             gpiod_chip_close(chip);
@@ -51,28 +61,22 @@ namespace smart_stick{
 
     }
 
-    // Based on the button interrupt code
     void Sensor::startListening()
     {
-        // bool pressed = false;
         while (true) 
         {
+            // Gets value of the interrupt
             int value = gpiod_line_get_value(line);
-            std::cout << value << std::endl;
             if (value < 0) {
+                // Triggered if value is -1, therefore an error
                 std::cerr << "Error reading GPIO value!" << std::endl;
                 break;
             }
-            if (value == 1) { // Button pressed (active low)
-                // if (!pressed) {
+            if (value == 1) { 
                     std::cout << "Interrupt triggered, reading data..." <<std::endl;
                     getData();
                     value = 0;
-                    // pressed = true;
-                // }
-            } else { // Button released
-                std::cout << "Error :(" << std::endl;
-                // pressed = false;
+                    
             }
         }
     }
