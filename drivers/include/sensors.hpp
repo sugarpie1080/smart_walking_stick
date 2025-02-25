@@ -27,7 +27,7 @@ class Sensor {
         /**
          * @brief Construct a new Sensor object
          * 
-         * @param chipname name of the GPIO chip used for the intterupt
+         * @param chipname name of the GPIO chip used for the interrupt
          * @param pin pin number of interrupt pin
          */
         Sensor(const char* chipname, int pin);
