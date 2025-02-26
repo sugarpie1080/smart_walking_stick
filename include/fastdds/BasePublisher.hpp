@@ -27,9 +27,7 @@
 
 using namespace eprosima::fastdds::dds;
 
-namespace smart_stick 
-{
-    /**
+   /**
      * @brief Parent class for Publisher classes.
      * 
      * @tparam TTopicName Template parameter for the message used.
@@ -51,11 +49,58 @@ namespace smart_stick
              * 
              * @param topic_name name of the topic
              */
-            BasePublisher(const std::string& topic_name):type_(new TPubSubType());
-            virtual ~BasePublisher();
-            bool publish(TTopicName& message);
+            BasePublisher(const std::string& topic_name):type_(new TPubSubType())
+            {
+                DomainParticipantQos participantQos;
+                participantQos.name("Participant_publisher");
+                participant_ = DomainParticipantFactory::get_instance()->create_participant(0, participantQos);
+                if (participant_ == nullptr)
+                    std::cerr << "Failed to create DomainParticipant" << std::endl; 
+        
+                type_.register_type(participant_);
+                topic_ = participant_->create_topic(topic_name,type_.get_type_name() , TOPIC_QOS_DEFAULT);
+                if (topic_ == nullptr)
+                    std::cerr << "Failed to create Topic" << std::endl;
+                publisher_ = participant_->create_publisher(PUBLISHER_QOS_DEFAULT, nullptr);
+                if (publisher_ == nullptr)
+                    std::cerr << "Failed to create Publisher" << std::endl;
+                writer_ = publisher_->create_datawriter(topic_, DATAWRITER_QOS_DEFAULT, &listener_);
+                if (writer_ == nullptr)
+                    std::cerr << "Failed to create DataWriter" << std::endl;
+            }
+            /**
+             * @brief Destroy the BasePublisher object
+             * 
+             */
+            virtual ~BasePublisher()
+            {
+                if (writer_ != nullptr)
+                    publisher_->delete_datawriter(writer_);
+                if (publisher_ != nullptr)
+                    participant_->delete_publisher(publisher_);
+                if (topic_ != nullptr)
+                    participant_->delete_topic(topic_);
+                DomainParticipantFactory::get_instance()->delete_participant(participant_);
+            }
+            
+            /**
+             * @brief Publishes the message generated.
+             * 
+             * @param message message to be published.
+             * @return true 
+             * @return false 
+             */
+            bool publish(TTopicName& message)
+            {
+                if (listener_.matched_ > 0)
+                {
+                    writer_->write(&message);
+                    return true;
+                }
+                return false;
+            };
 
     };
-}
+
 
 #endif //BASE_PUBLISHER_HPP
