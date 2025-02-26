@@ -60,18 +60,21 @@ using namespace eprosima::fastdds::dds;
                 participantQos.name("Participant_publisher");
                 participant_ = DomainParticipantFactory::get_instance()->create_participant(0, participantQos);
                 if (participant_ == nullptr)
-                    std::cerr << "Failed to create DomainParticipant" << std::endl; 
+                    throw std::runtime_error("Failed to create DomainParticipant");
         
                 type_.register_type(participant_);
                 topic_ = participant_->create_topic(topic_name,type_.get_type_name() , TOPIC_QOS_DEFAULT);
                 if (topic_ == nullptr)
-                    std::cerr << "Failed to create Topic" << std::endl;
+                    throw std::runtime_error("Failed to create Topic");
+                
                 publisher_ = participant_->create_publisher(PUBLISHER_QOS_DEFAULT, nullptr);
                 if (publisher_ == nullptr)
-                    std::cerr << "Failed to create Publisher" << std::endl;
+                    throw std::runtime_error("Failed to create Publisher");
+                
                 writer_ = publisher_->create_datawriter(topic_, DATAWRITER_QOS_DEFAULT, &listener_);
                 if (writer_ == nullptr)
-                    std::cerr << "Failed to create DataWriter" << std::endl;
+                    throw std::runtime_error("Failed to create Reader");
+            }
             }
             /**
              * @brief Destroy the BasePublisher object
