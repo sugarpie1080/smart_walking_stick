@@ -5,6 +5,11 @@
  * @version 0.1
  * @date 2025-02-26
  * 
+ * This file contains the parent class for Publisher classes. 
+ * This uses templating to allow for different topics to be used,
+ * and to allow for different types of messages to be sent. This hides 
+ * the boilerplate code from the application layer. 
+ * 
  * @copyright Copyright 2016 Proyectos y Sistemas de Mantenimiento SL (eProsima).
  * Referenced from FastDDS application tutorial.
  * 
@@ -47,7 +52,7 @@ using namespace eprosima::fastdds::dds;
             /**
              * @brief Construct a new BasePublisher object
              * 
-             * @param topic_name name of the topic
+             * @param topic_name name of the topic.
              */
             BasePublisher(const std::string& topic_name):type_(new TPubSubType())
             {
@@ -87,8 +92,8 @@ using namespace eprosima::fastdds::dds;
              * @brief Publishes the message generated.
              * 
              * @param message message to be published.
-             * @return true 
-             * @return false 
+             * @return true message sent successfully.
+             * @return false message failed to send.
              */
             bool publish(TTopicName& message)
             {
