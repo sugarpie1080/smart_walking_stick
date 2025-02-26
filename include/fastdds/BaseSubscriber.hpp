@@ -13,7 +13,7 @@
 #include <SubListener.hpp>
 
 using namespace eprosima::fastdds::dds;
-template <typename T, typename TPubSubType>
+template <typename TTopicName, typename TPubSubType>
 class BaseSubscriber
 {
 protected:
@@ -24,7 +24,7 @@ protected:
     std::string topic_name;
 public:
     DataReader* reader_ = nullptr;
-    SubListener<T> listener_;
+    SubListener<TTopicName> listener_;
 
     BaseSubscriber(const std::string& topic_name) : type_(new TPubSubType()), topic_name(topic_name) 
     {}

@@ -6,7 +6,7 @@
 using namespace eprosima::fastdds::dds;
 
 
-template <typename T>
+template <typename TTopicName>
 class SubListener : public DataReaderListener
     {
     public:
@@ -34,12 +34,11 @@ class SubListener : public DataReaderListener
 
 	// callback
         
-        // virtual void on_data_available(DataReader* reader)
-        // {
-        //     SampleInfo info;
-        //     T hello;
-        //     std::cout << "HHHHHHHHHHHHHHHHH" << std::endl;
-        // }
+        virtual void on_data_available(DataReader* reader)
+        {
+            SampleInfo info;
+            TTopicName hello;
+        }
 
     };
 
