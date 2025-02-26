@@ -21,7 +21,7 @@ include("functions.cmake")
 
 include_directories(${TOPICS_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/fastdds)
-create_msg_library(ToFData)
+create_msg_library(HelloWorldMsg)
 
 # Add include directories for gpiod and include folder
 include_directories(${LIBGPIO_INCLUDE_DIRS})
@@ -31,22 +31,27 @@ include_directories(${DRIVER_DIR}/vl53l0x-linux/)
 
 # Add executable for publisher
 set (PUB_SOURCES
-     ${FASTDDS_DIR}/ToFDataPublisher.cpp
-     src/main.cpp
+     src/main_pub.cpp
     )
 
+set (SUB_SOURCES
+     src/main_sub.cpp
+    )
 add_executable(DDSPublisher ${PUB_SOURCES})
-target_link_libraries(DDSPublisher fastcdr fastrtps ToFData)
+target_link_libraries(DDSPublisher fastcdr fastrtps HelloWorldMsg)
 
-set(SOURCES
-    main.cpp
-    ${DRIVER_DIR}/sensors/sensors.cpp
-    ${DRIVER_DIR}/sensors/tof_sensor.cpp)    
+add_executable(DDSSubscriber ${SUB_SOURCES})
+target_link_libraries(DDSSubscriber fastcdr fastrtps HelloWorldMsg)
 
-set(TOF_SOURCES
-    ${DRIVER_DIR}/vl53l0x-linux/VL53L0X.cpp
-    ${DRIVER_DIR}/vl53l0x-linux/I2Cdev.cpp
-    )
+# set(SOURCES
+#     main.cpp
+#     ${DRIVER_DIR}/sensors/sensors.cpp
+#     ${DRIVER_DIR}/sensors/tof_sensor.cpp)    
 
-add_executable(SensorApp ${SOURCES} ${TOF_SOURCES})
-target_link_libraries(SensorApp ${LIBGPIO_LIBRARIES})
+# set(TOF_SOURCES
+#     ${DRIVER_DIR}/vl53l0x-linux/VL53L0X.cpp
+#     ${DRIVER_DIR}/vl53l0x-linux/I2Cdev.cpp
+#     )
+
+# add_executable(SensorApp ${SOURCES} ${TOF_SOURCES})
+# target_link_libraries(SensorApp ${LIBGPIO_LIBRARIES})
