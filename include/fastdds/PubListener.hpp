@@ -10,8 +10,8 @@
  * Referenced from FastDDS application tutorial.
  * 
  */
-#ifndef PUBLISTENER_H
-#define PUBLISTENER_H
+#ifndef PUBLISTENER_HPP
+#define PUBLISTENER_HPP
 
 #include <fastdds/dds/publisher/DataWriterListener.hpp>
 #include <fastdds/dds/publisher/DataWriter.hpp>
@@ -51,4 +51,4 @@ public:
     }
 };
 
-#endif // PUBLISTENER_H
+#endif // PUBLISTENER_HPP
