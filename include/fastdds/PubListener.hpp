@@ -21,16 +21,24 @@
 using namespace eprosima::fastdds::dds;
 
 /**
- * @class PubListener
+ * @brief Class for determining if a publisher has a matching subscriber.
  * 
  */
 class PubListener : public DataWriterListener
 {
 public:
     std::atomic_int matched_;
-
+    /**
+     * @brief Construct a new PubListener object
+     * 
+     */
     PubListener() : matched_(0) {}
 
+    /**
+     * @brief Determines if the publisher has a matching subscriber. 
+     * 
+     * @param info A structure for storing the matching status of the publisher.
+     */
     void on_publication_matched(DataWriter*, const PublicationMatchedStatus& info) override
     {
         if (info.current_count_change == 1)
