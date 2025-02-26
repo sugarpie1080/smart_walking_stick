@@ -1,3 +1,12 @@
+/**
+ * @file ToFDataPublisher.hpp
+ * @author Felicity Lipscomb
+ * @brief Example Publisher Class
+ * @version 0.1
+ * @date 2025-02-26
+ * 
+ * 
+ */
 #ifndef TOF_DATA_PUBLISHER_HPP
 #define TOF_DATA_PUBLISHER_HPP
 
@@ -16,7 +25,10 @@ namespace smart_stick
      */
     class ToFDataPublisher : public BasePublisher<ToFData, ToFDataPubSubType> {
     public:
-        // Constructor
+        /**
+         * @brief Construct a new ToFDataPublisher object
+         * 
+         */
         ToFDataPublisher();
     };
 

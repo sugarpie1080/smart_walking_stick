@@ -1,5 +1,16 @@
+/**
+ * @file ToFDataSubscriber.cpp
+ * @author Felicity Lipscomb
+ * @brief Example Subscriber class.
+ * @version 0.1
+ * @date 2025-02-26
+ * 
+ * 
+ */
 #include "ToFDataSubscriber.hpp"
 #include <iostream>
+namespace smart_stick {
+
 
 ToFDataSubscriber::ToFDataSubscriber() : BaseSubscriber("ToFDataTopic") {}
 
@@ -7,7 +18,7 @@ void ToFDataSubscriber::set_listener(DataReader* reader) {
     reader->set_listener(&listener_);
 }
 
-// Listener implementation
+// Callback implementation
 void ToFDataSubscriber::ToFDataListener::on_data_available(DataReader* reader) {
     SampleInfo info;
     ToFData message;
@@ -18,4 +29,5 @@ void ToFDataSubscriber::ToFDataListener::on_data_available(DataReader* reader) {
                       << " RECEIVED." << std::endl;
         }
     }
+}
 }
