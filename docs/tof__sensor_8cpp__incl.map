@@ -1,0 +1,9 @@
+<map id="src/drivers/sensors/tof_sensor.cpp" name="src/drivers/sensors/tof_sensor.cpp">
+<area shape="rect" id="node1" title="Functions for ToF Sensor Class." alt="" coords="153,5,297,47"/>
+<area shape="rect" id="node2" href="$tof__sensor_8hpp.html" title="Time of Flight sensor class." alt="" coords="119,95,236,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="220,169,327,196"/>
+<area shape="rect" id="node3" href="$sensors_8hpp.html" title="A sensor class to initalise and retrieve sensor data." alt="" coords="95,169,195,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,244,85,271"/>
+<area shape="rect" id="node5" title=" " alt="" coords="110,244,181,271"/>
+<area shape="rect" id="node6" title=" " alt="" coords="205,244,280,271"/>
+</map>

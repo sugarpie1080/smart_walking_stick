@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['i2cdev_143',['I2Cdev',['../classI2Cdev.html',1,'']]]
+  ['sensor_26',['Sensor',['../classsmart__stick_1_1Sensor.html',1,'smart_stick']]]
 ];

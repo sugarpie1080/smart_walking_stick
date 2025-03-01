@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['user_20stories_4',['User Stories',['../md_user_stories.html',1,'']]],
-  ['user_5fstories_2emd_5',['user_stories.md',['../user__stories_8md.html',1,'']]]
+  ['line_4',['line',['../classsmart__stick_1_1Sensor.html#a7d36bcb9ce572ef9db30a645f870bd33',1,'smart_stick::Sensor']]]
 ];
