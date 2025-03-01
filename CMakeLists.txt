@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
-set(DRIVER_DIR ${CMAKE_CURRENT_SOURCE_DIR}src/drivers/)
+set(DRIVER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/drivers/)
 
 # Find the libgpiod package
 find_package(PkgConfig REQUIRED)
@@ -20,7 +20,7 @@ include_directories(${DRIVER_DIR}/vl53l0x-linux/)
 
 
 set(SOURCES
-    main.cpp
+    src/main.cpp
     ${DRIVER_DIR}/sensors/sensors.cpp
     ${DRIVER_DIR}/sensors/tof_sensor.cpp)    
 
