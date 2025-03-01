@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['i2c_5fdev_5fpath_41',['I2C_DEV_PATH',['../I2Cdev_8hpp.html#a358d4581ba89021997b267dad11465de',1,'I2Cdev.hpp']]],
-  ['i2c_5fslave_5fdevice_5faddress_42',['I2C_SLAVE_DEVICE_ADDRESS',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa2752d772f9e25ebd9d30237b32ab7311',1,'VL53L0X_defines.hpp']]],
-  ['i2cdev_43',['I2Cdev',['../classI2Cdev.html',1,'I2Cdev'],['../classI2Cdev.html#a0a466e2323d9f719a1ecc9fa11ac5c84',1,'I2Cdev::I2Cdev()']]],
-  ['i2cdev_2ecpp_44',['I2Cdev.cpp',['../I2Cdev_8cpp.html',1,'']]],
-  ['i2cdev_2ehpp_45',['I2Cdev.hpp',['../I2Cdev_8hpp.html',1,'']]],
-  ['identification_5fmodel_5fid_46',['IDENTIFICATION_MODEL_ID',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aad1cc283f9cdc5b1ebcc10c45eb59aec0',1,'VL53L0X_defines.hpp']]],
-  ['identification_5frevision_5fid_47',['IDENTIFICATION_REVISION_ID',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa56485105e1cf5d9974a9841530e1f68f',1,'VL53L0X_defines.hpp']]],
-  ['initialize_48',['initialize',['../classVL53L0X.html#a918db74f7ab8520b8b1564eb0a7b773d',1,'VL53L0X']]]
+  ['send_10',['send',['../classsmart__stick_1_1Sensor.html#ad890b7759b801e2babbbc7ed8b1f238c',1,'smart_stick::Sensor::send()'],['../classsmart__stick_1_1ToFSensor.html#a1379e8a44f43e55b2992aced3ddcab44',1,'smart_stick::ToFSensor::send()']]],
+  ['sensor_11',['Sensor',['../classsmart__stick_1_1Sensor.html#a7bfd45cc90ff731af670ea749d0006d0',1,'smart_stick::Sensor::Sensor()'],['../classsmart__stick_1_1Sensor.html',1,'smart_stick::Sensor']]],
+  ['sensors_2ecpp_12',['sensors.cpp',['../sensors_8cpp.html',1,'']]],
+  ['sensors_2ehpp_13',['sensors.hpp',['../sensors_8hpp.html',1,'']]],
+  ['smart_5fstick_14',['smart_stick',['../namespacesmart__stick.html',1,'']]],
+  ['startlistening_15',['startListening',['../classsmart__stick_1_1Sensor.html#a77891704d61d62f7901583af2f53858d',1,'smart_stick::Sensor']]],
+  ['system_20archiecture_16',['System Archiecture',['../md_system_architecture.html',1,'']]],
+  ['system_5farchitecture_2emd_17',['system_architecture.md',['../system__architecture_8md.html',1,'']]]
 ];

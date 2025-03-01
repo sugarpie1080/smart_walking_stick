@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['system_20archiecture_2',['System Archiecture',['../md_system_architecture.html',1,'']]],
-  ['system_5farchitecture_2emd_3',['system_architecture.md',['../system__architecture_8md.html',1,'']]]
+  ['initialise_3',['initialise',['../classsmart__stick_1_1Sensor.html#af40455abe0cb2e144aac0a3bdd37cfdb',1,'smart_stick::Sensor::initialise()'],['../classsmart__stick_1_1ToFSensor.html#afc22f6d4199161a52155c4e813cd7c1a',1,'smart_stick::ToFSensor::initialise()']]]
 ];

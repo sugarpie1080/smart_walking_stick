@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exitflag_199',['exitFlag',['../continuousMultipleSensors_8cpp.html#aab4e6c7460134413df5f4947e495d998',1,'exitFlag():&#160;continuousMultipleSensors.cpp'],['../single_8cpp.html#aab4e6c7460134413df5f4947e495d998',1,'exitFlag():&#160;single.cpp']]]
+  ['line_48',['line',['../classsmart__stick_1_1Sensor.html#a7d36bcb9ce572ef9db30a645f870bd33',1,'smart_stick::Sensor']]]
 ];
