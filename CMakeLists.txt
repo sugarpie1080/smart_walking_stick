@@ -23,7 +23,7 @@ include("functions.cmake")
 include_directories(${TOPICS_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/fastdds)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/application)
-create_msg_library(TofData)
+create_msg_library(ToFData)
 
 # Add include directories for gpiod and include folder
 include_directories(${LIBGPIO_INCLUDE_DIRS})
@@ -42,10 +42,10 @@ set (SUB_SOURCES
         ${APPLICATION_DIR}/ToFDataSubscriber.cpp
     )
 add_executable(DDSPublisher ${PUB_SOURCES})
-target_link_libraries(DDSPublisher fastcdr fastrtps TofData)
+target_link_libraries(DDSPublisher fastcdr fastrtps ToFData)
 
 add_executable(DDSSubscriber ${SUB_SOURCES})
-target_link_libraries(DDSSubscriber fastcdr fastrtps TofData)
+target_link_libraries(DDSSubscriber fastcdr fastrtps ToFData)
 
 # set(SOURCES
 #     main.cpp
