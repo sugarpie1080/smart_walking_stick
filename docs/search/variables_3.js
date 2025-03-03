@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['msrc_204',['msrc',['../structVL53L0XSequenceStepEnables.html#af5e3779c2e55c005a0f136e641961f5f',1,'VL53L0XSequenceStepEnables']]],
-  ['msrcdsstccmclks_205',['msrcDssTccMCLKs',['../structVL53L0XSequenceStepTimeouts.html#a71622c78b39ba638f060d4fa77a9d5b5',1,'VL53L0XSequenceStepTimeouts']]],
-  ['msrcdsstccmicroseconds_206',['msrcDssTccMicroseconds',['../structVL53L0XSequenceStepTimeouts.html#ad3add89881bd4ffeb1f0349e5d59917f',1,'VL53L0XSequenceStepTimeouts']]]
+  ['prerange_195',['preRange',['../structVL53L0XSequenceStepEnables.html#aaa119f8ed2e955a4fa16f0ebed0b8d53',1,'VL53L0XSequenceStepEnables']]],
+  ['prerangemclks_196',['preRangeMCLKs',['../structVL53L0XSequenceStepTimeouts.html#a113542c2ed8c23d69c876ef728e5ad31',1,'VL53L0XSequenceStepTimeouts']]],
+  ['prerangemicroseconds_197',['preRangeMicroseconds',['../structVL53L0XSequenceStepTimeouts.html#a07e17bbef3fa8b0898dbd23b3809e609',1,'VL53L0XSequenceStepTimeouts']]],
+  ['prerangevcselperiodpclks_198',['preRangeVCSELPeriodPCLKs',['../structVL53L0XSequenceStepTimeouts.html#a16b5ef9d1afe4ff90b3f553b86d0f07c',1,'VL53L0XSequenceStepTimeouts']]]
 ];

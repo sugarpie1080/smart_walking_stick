@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['getdata_2',['getData',['../classsmart__stick_1_1Sensor.html#a80b969b707490162c86a342faa2211a9',1,'smart_stick::Sensor::getData()'],['../classsmart__stick_1_1ToFSensor.html#a2857e13053e105a553320ee2de81b7f9',1,'smart_stick::ToFSensor::getData()']]]
+  ['calcmacroperiod_3',['calcMacroPeriod',['../VL53L0X_8cpp.html#aefec5de3912a862cfcb3da36045c4992',1,'VL53L0X.cpp']]],
+  ['checktimeoutexpired_4',['checkTimeoutExpired',['../VL53L0X_8cpp.html#abab7c5b1cbb48c1f149d63407116b4a7',1,'VL53L0X.cpp']]],
+  ['crosstalk_5fcompensation_5fpeak_5frate_5fmcps_5',['CROSSTALK_COMPENSATION_PEAK_RATE_MCPS',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa54ad358e286bab31b6c60454e0f5ae37',1,'VL53L0X_defines.hpp']]]
 ];

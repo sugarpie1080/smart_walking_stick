@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['line_4',['line',['../classsmart__stick_1_1Sensor.html#a7d36bcb9ce572ef9db30a645f870bd33',1,'smart_stick::Sensor']]]
+  ['encodevcselperiod_10',['encodeVcselPeriod',['../VL53L0X_8cpp.html#ad7c0f631cd3f834a8d9ac5fdbeaffdfc',1,'VL53L0X.cpp']]]
 ];

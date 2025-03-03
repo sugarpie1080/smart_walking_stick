@@ -1,8 +1,7 @@
 var annotated_dup =
 [
-    [ "smart_stick", "namespacesmart__stick.html", [
-      [ "Sensor", "classsmart__stick_1_1Sensor.html", "classsmart__stick_1_1Sensor" ],
-      [ "ToFSensor", "classsmart__stick_1_1ToFSensor.html", "classsmart__stick_1_1ToFSensor" ]
-    ] ],
-    [ "TofSensor", "classTofSensor.html", null ]
+    [ "I2Cdev", "classI2Cdev.html", "classI2Cdev" ],
+    [ "VL53L0X", "classVL53L0X.html", "classVL53L0X" ],
+    [ "VL53L0XSequenceStepEnables", "structVL53L0XSequenceStepEnables.html", "structVL53L0XSequenceStepEnables" ],
+    [ "VL53L0XSequenceStepTimeouts", "structVL53L0XSequenceStepTimeouts.html", "structVL53L0XSequenceStepTimeouts" ]
 ];

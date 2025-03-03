@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['tofsensor_27',['ToFSensor',['../classsmart__stick_1_1ToFSensor.html',1,'smart_stick']]],
-  ['tofsensor_28',['TofSensor',['../classTofSensor.html',1,'']]]
+  ['vl53l0x_138',['VL53L0X',['../classVL53L0X.html',1,'']]],
+  ['vl53l0xsequencestepenables_139',['VL53L0XSequenceStepEnables',['../structVL53L0XSequenceStepEnables.html',1,'']]],
+  ['vl53l0xsequencesteptimeouts_140',['VL53L0XSequenceStepTimeouts',['../structVL53L0XSequenceStepTimeouts.html',1,'']]]
 ];

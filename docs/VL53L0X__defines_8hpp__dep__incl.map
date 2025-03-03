@@ -1,8 +1,5 @@
-<map id="drivers/vl53l0x/VL53L0X_defines.hpp" name="drivers/vl53l0x/VL53L0X_defines.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="358,5,537,47"/>
-<area shape="rect" id="node2" href="$VL53L0X_8hpp.html" title=" " alt="" coords="344,95,551,121"/>
-<area shape="rect" id="node3" href="$VL53L0X_8cpp.html" title=" " alt="" coords="5,177,212,203"/>
-<area shape="rect" id="node4" href="$continuousMultipleSensors_8cpp.html" title=" " alt="" coords="236,169,451,211"/>
-<area shape="rect" id="node5" href="$single_8cpp.html" title=" " alt="" coords="475,177,631,203"/>
-<area shape="rect" id="node6" href="$singleMinimal_8cpp.html" title=" " alt="" coords="655,177,864,203"/>
+<map id="src/drivers/vl53l0x&#45;linux/VL53L0X_defines.hpp" name="src/drivers/vl53l0x&#45;linux/VL53L0X_defines.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,207,47"/>
+<area shape="rect" id="node2" href="$VL53L0X_8hpp.html" title=" " alt="" coords="33,95,179,136"/>
+<area shape="rect" id="node3" href="$VL53L0X_8cpp.html" title=" " alt="" coords="33,184,179,225"/>
 </map>

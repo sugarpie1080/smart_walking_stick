@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['pin_49',['pin',['../classsmart__stick_1_1Sensor.html#a84843d7deaeaf8622385b8d2cd6c4fa6',1,'smart_stick::Sensor']]]
+  ['msrc_192',['msrc',['../structVL53L0XSequenceStepEnables.html#af5e3779c2e55c005a0f136e641961f5f',1,'VL53L0XSequenceStepEnables']]],
+  ['msrcdsstccmclks_193',['msrcDssTccMCLKs',['../structVL53L0XSequenceStepTimeouts.html#a71622c78b39ba638f060d4fa77a9d5b5',1,'VL53L0XSequenceStepTimeouts']]],
+  ['msrcdsstccmicroseconds_194',['msrcDssTccMicroseconds',['../structVL53L0XSequenceStepTimeouts.html#ad3add89881bd4ffeb1f0349e5d59917f',1,'VL53L0XSequenceStepTimeouts']]]
 ];
