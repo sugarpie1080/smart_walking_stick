@@ -23,9 +23,7 @@ namespace smart_stick {
         class ObstacleDetectionSub: BaseSubscriber<ToFData, ToFDataPubSubType>;
         // Publisher class for MotorCommand messages.
         class ObstacleDetectionPub: BasePublisher<MotorCommand, MotorCommandPubSubType>;
-        ObstacleDetection();
-        ~ObstacleDetection();
-        void run();
+        int convert_distance_to_duty_cycle(float distance);   
     };
 
     class ObstacleDetection::ObstacleDetectionSub
@@ -40,7 +38,13 @@ namespace smart_stick {
         public:
             ObstacleDetectionSub();
             void set_listener(DataReader* reader);
-};
+    };
+
+    class ObstacleDetection::ObstacleDetectionPub
+    {
+        public:
+            ObstacleDetectionPub();
+            void publish_message(MotorCommand message);
+    };
 
     }
-}
