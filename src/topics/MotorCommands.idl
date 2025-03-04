@@ -1,0 +1,5 @@
+
+struct MotorCommands {
+    unsigned long index; // Time recieved data in nanoseconds
+    int duty_cycle; // Duty Cycle percentage
+};
