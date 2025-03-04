@@ -8,6 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 find_package(fastcdr REQUIRED)
 find_package(fastrtps REQUIRED)
 
+set(DRIVER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/drivers/)
+
 # Find the libgpiod package
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBGPIO REQUIRED libgpiod)
