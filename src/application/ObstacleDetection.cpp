@@ -22,4 +22,6 @@ void ObstacleDetectionSub::OSSubListener::on_data_available(DataReader* reader) 
         }
     }
 }
+
+ObstacleDetectionPub::ObstacleDetectionPub() : BasePublisher("MotorCommandsTopic") {}
 }
