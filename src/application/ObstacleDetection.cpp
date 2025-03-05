@@ -20,11 +20,15 @@ void ObstacleDetectionSub::OSSubListener::on_data_available(DataReader* reader) 
             float distance = message.distance();
             int duty_cycle = convert_distance_to_duty_cycle(distance);
             MotorCommands motor_msg;
-            motor_msg.index(0);
+            auto now = std::chrono::system_clock::now();
+            auto seconds = std::chrono::duration_cast<std::chrono::seconds>(now.time_since_epoch()).count();
+            auto nanoseconds = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
+            motor_msg.sec(static_cast<int32_t>(seconds));
+            motor_msg.nanosec(static_cast<int32_t>(nanoseconds));
             motor_msg.duty_cycle(duty_cycle);
-            std::cout << "Message to be sent: " << motor_msg.duty_cycle() << std::endl;
-            ObstacleDetectionPub mypub;
-            mypub.publish(motor_msg);
+            std::cout << "Message to be sent: " << motor_msg.duty_cycle() << " at timestamp "  << motor_msg.sec() <<":"<<motor_msg.nanosec() << std::endl;
+            // ObstacleDetectionPub mypub;
+            // mypub.publish(motor_msg);
         }
     }
 }
