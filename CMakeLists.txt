@@ -35,21 +35,28 @@ include_directories(${DRIVER_DIR}/vl53l0x-linux/)
 
 # Add executable for publisher
 set(PUB_SOURCES
-     src/main_mot_pub.cpp
+     src/main_combined.cpp
+     ${APPLICATION_DIR}/ToFDataPublisher.cpp
      ${APPLICATION_DIR}/ObstacleDetection.cpp
     )
 
 set (SUB_SOURCES
-     src/main_tof_sub.cpp
+    #  src/main_tof_sub.cpp
     ${APPLICATION_DIR}/ObstacleDetection.cpp
+    ${APPLICATION_DIR}/MockMotor.cpp
+
     )
 
-message(STATUS "SUB_SOURCES: ${SUB_SOURCES}")
-add_executable(DDSPublisher ${PUB_SOURCES})
-target_link_libraries(DDSPublisher fastcdr fastrtps ToFData MotorCommands)
+# message(STATUS "SUB_SOURCES: ${SUB_SOURCES}")
+# add_executable(DDSPublisher ${PUB_SOURCES})
+# target_link_libraries(DDSPublisher fastcdr fastrtps ToFData MotorCommands)
 
-add_executable(DDSSubscriber ${SUB_SOURCES})
-target_link_libraries(DDSSubscriber fastcdr fastrtps ToFData MotorCommands)
+# add_executable(DDSSubscriber ${SUB_SOURCES})
+# target_link_libraries(DDSSubscriber fastcdr fastrtps ToFData MotorCommands)
+#
+
+add_executable(CombinedSystem ${PUB_SOURCES} ${SUB_SOURCES})
+target_link_libraries(CombinedSystem fastcdr fastrtps ToFData MotorCommands)
 
 # set(SOURCES
 #     main.cpp
