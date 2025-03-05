@@ -22,6 +22,7 @@ protected:
     class OSSubListener : public SubListener<ToFData> {
     public:
         void on_data_available(DataReader* reader) override;
+        int convert_distance_to_duty_cycle(float distance);
     };
     OSSubListener listener_;
 
