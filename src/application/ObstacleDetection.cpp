@@ -3,9 +3,9 @@
 #include <iostream>
 namespace smart_stick {
 
+ObstacleDetectionPub::ObstacleDetectionPub() : BasePublisher("MotorCommandsTopic") {} 
 
-ObstacleDetectionSub::ObstacleDetectionSub() : BaseSubscriber("ToFDataTopic") {}
-ObstacleDetectionPub::ObstacleDetectionPub() : BasePublisher("MotorCommandsTopic") {}
+ObstacleDetectionSub::ObstacleDetectionSub() : BaseSubscriber("ToFDataTopic"),publisher_(), listener_(publisher_) {}
 
 void ObstacleDetectionSub::set_listener(DataReader* reader) {
     reader->set_listener(&listener_);
@@ -26,9 +26,8 @@ void ObstacleDetectionSub::OSSubListener::on_data_available(DataReader* reader) 
             motor_msg.sec(static_cast<int32_t>(seconds));
             motor_msg.nanosec(static_cast<int32_t>(nanoseconds));
             motor_msg.duty_cycle(duty_cycle);
-            std::cout << "Message to be sent: " << motor_msg.duty_cycle() << " at timestamp "  << motor_msg.sec() <<":"<<motor_msg.nanosec() << std::endl;
-            // ObstacleDetectionPub mypub;
-            // mypub.publish(motor_msg);
+            std::cout << "Message to be sent: " << motor_msg.duty_cycle() << " at timestamp "  << motor_msg.sec() <<":"<<motor_msg.nanosec() << std::endl;           
+            publisher_.publish(motor_msg);
         }
     }
 }
