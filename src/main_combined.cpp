@@ -1,4 +1,13 @@
-
+/**
+ * @file main_combined.cpp
+ * @author Felicity Lipscomb
+ * @brief Entrypoint for the all of the publishers and subscribers.
+ * @version 0.1
+ * @date 2025-03-05
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
  #include <ToFDataPublisher.hpp>
  #include <ObstacleDetection.hpp>
  #include <MockMotor.hpp>
@@ -6,6 +15,12 @@
  #include <thread>
  #include <chrono>
  
+ /**
+  * @brief Runs the ToFDataPublisher. Currently using mock data
+  * 
+  * @param mypub TofDataPublisher object
+  * @param samples number of samples to send
+  */
  void run_tof_publisher(smart_stick::ToFDataPublisher &mypub, uint32_t samples)
  {
      std::cout << "Starting publisher." << std::endl;
@@ -41,7 +56,7 @@
      smart_stick::ObstacleDetectionSub mysub;
      smart_stick::MockMotor motorsub;
  
-     // Initialize the subscriber
+     // Initialise the subscriber
      mysub.init();
      mysub.set_listener(mysub.reader_);
 
