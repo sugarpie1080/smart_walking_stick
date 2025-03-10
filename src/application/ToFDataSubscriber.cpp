@@ -25,7 +25,7 @@ void ToFDataSubscriber::ToFDataListener::on_data_available(DataReader* reader) {
     if (reader->take_next_sample(&message, &info) == ReturnCode_t::RETCODE_OK) {
         if (info.valid_data) {
             std::cout << "Distance: " << message.distance()
-                      << " with time: " << message.index()
+                      << " with time: " << message.sec() << " seconds and " << message.nanosec() << " nanoseconds"
                       << " RECEIVED." << std::endl;
         }
     }
