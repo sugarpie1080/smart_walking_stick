@@ -6,17 +6,17 @@
  
  namespace smart_stick
  {
-     ToFPublisher::ToFPublisher(const char* chipname, int line)
+     ToFDataPublisher::ToFDataPublisher(const char* chipname, int line)
          : BasePublisher("ToFDataTopic"), sensor_(chipname, line)
      {
      }
  
-     void ToFPublisher::initialise()
+     void ToFDataPublisher::initialise()
      {
          sensor_.initialise();
      }
  
-     void ToFPublisher::publishData()
+     void ToFDataPublisher::publishData()
      {
          while (true)
          {
