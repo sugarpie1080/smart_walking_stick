@@ -1,79 +1,35 @@
-/**
- * @file main_combined.cpp
- * @author Felicity Lipscomb
- * @brief Entrypoint for the all of the publishers and subscribers.
- * @version 0.1
- * @date 2025-03-05
- * 
- * @copyright Copyright (c) 2025
- * 
- */
- #include <ToFDataPublisher.hpp>
- #include <ObstacleDetection.hpp>
- #include <MockMotor.hpp>
- #include <iostream>
- #include <thread>
- #include <chrono>
- 
- /**
-  * @brief Runs the ToFDataPublisher. Currently using mock data
-  * 
-  * @param mypub TofDataPublisher object
-  * @param samples number of samples to send
-  */
- void run_tof_publisher(smart_stick::ToFDataPublisher &mypub, uint32_t samples)
- {
-     std::cout << "Starting publisher." << std::endl;
- 
-     ToFData msg;
-     msg.distance(10);
-     msg.index(0);
-     uint32_t samples_sent = 0;
- 
-     while (samples_sent < samples)
-     {
-         if (mypub.publish(msg))
-         {
-             samples_sent++;
-             msg.index(samples_sent);
-             std::cout << "Message: " << msg.distance() << " with index: " << msg.index()
-                       << " SENT" << std::endl;
-         }
-         else
-         {
-             std::cout << "No messages sent as there is no listener." << std::endl;
-         }
-         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-     }
- }
- 
- int main()
- {
-     std::cout << "Starting combined publisher and subscriber." << std::endl;
- 
-     // Create publisher and subscriber objects
-     smart_stick::ToFDataPublisher mypub;
-     smart_stick::ObstacleDetectionSub mysub;
-     smart_stick::MockMotor motorsub;
- 
-     // Initialise the subscriber
-     mysub.init();
-     mysub.set_listener(mysub.reader_);
 
-     motorsub.init();
-     motorsub.set_listener(motorsub.reader_);
- 
-     // Start publisher in a separate thread
-     uint32_t samples = 10;
-     std::thread pub_thread(run_tof_publisher, std::ref(mypub), samples);
- 
-     // Wait for user to stop
-     std::cout << "Press Enter to stop." << std::endl;
-     getchar();
- 
-     // Ensure publisher thread finishes
-     pub_thread.join();
- 
-     return 0;
- }
- 
+#include <ToFDataPublisher.hpp>
+#include <ObstacleDetection.hpp>
+#include <MockMotor.hpp>
+#include <iostream>
+#include <thread>
+#include <chrono>
+
+
+int main() {
+    const char* chipname = "/dev/gpiochip0";  
+    int line = 17; 
+
+    smart_stick::ToFDataPublisher tof_publisher(chipname, line);
+    smart_stick::ObstacleDetectionSub obstacle_sub;
+    smart_stick::MockMotor motor_sub;
+
+    // Initialise the subscribers
+    obstacle_sub.init();
+    obstacle_sub.set_listener(obstacle_sub.reader_);
+
+    motor_sub.init();
+    motor_sub.set_listener(motor_sub.reader_);
+
+    // Initialise the publisher
+    tof_publisher.initialise();
+    std::cout << "ToF Publisher running..." << std::endl;
+    tof_publisher.publishData();
+
+   
+
+    getchar();
+
+    return 0;
+}
