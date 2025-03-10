@@ -53,7 +53,8 @@ set(SOURCES
     src/main.cpp
     ${DRIVER_DIR}/sensors/sensors.cpp
     ${DRIVER_DIR}/sensors/tof_sensor.cpp
-    ${APPLICATION_DIR}/ToFDataPublisher.cpp)    
+    ${APPLICATION_DIR}/ToFDataPublisher.cpp
+    ${APPLICATION_DIR}/ToFDataSubscriber.cpp)    
 
 set(TOF_SOURCES
     ${DRIVER_DIR}/vl53l0x-linux/VL53L0X.cpp

@@ -28,8 +28,8 @@
              }
              if (value == 1)
              {
-                 float distance = sensor_.getDistance();
-                 ToFData message;
+                float distance = sensor_.getDistance();
+                ToFData message;
                 auto now = std::chrono::system_clock::now();
                 auto duration = now.time_since_epoch();
                 int32_t sec = std::chrono::duration_cast<std::chrono::seconds>(duration).count();
