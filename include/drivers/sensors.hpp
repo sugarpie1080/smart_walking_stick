@@ -39,7 +39,11 @@ class Sensor {
          */
         virtual void initialise();
        
-
+        /**
+         * @brief Get the Line object
+         * 
+         * @return struct gpiod_line* 
+         */
         struct gpiod_line *getLine() { return line; } 
     protected:
         const char* chipname;

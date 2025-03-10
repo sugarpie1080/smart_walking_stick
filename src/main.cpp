@@ -1,4 +1,13 @@
 
+/**
+ * @file main.cpp
+ * @author Felicity Lipscomb
+ * @brief Entrypoint for the ToF Sensor Publisher and Subscriber
+ * @version 0.1
+ * @date 2025-03-10
+ * 
+ * 
+ */
 #include <ToFDataPublisher.hpp>
 #include <ToFDataSubscriber.hpp>
 #include <iostream>

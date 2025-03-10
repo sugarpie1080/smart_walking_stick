@@ -5,6 +5,8 @@
  * @version 0.1
  * @date 2025-02-26
  * 
+ * This class is responsible for collecting data from the ToF sensor and publishing it to the FastDDS network.
+ * 
  */
 #ifndef TOF_DATA_PUBLISHER_HPP
 #define TOF_DATA_PUBLISHER_HPP
@@ -14,7 +16,7 @@
 // Message Type Include
 #include <ToFDataPubSubTypes.h>
 // Sensor Include
-#include "tof_sensor.hpp"
+#include <tof_sensor.hpp>
 
 namespace smart_stick
 {
@@ -31,9 +33,13 @@ namespace smart_stick
          */
         ToFDataPublisher(const char* chipname, int line);
         
+        /**
+         * @brief Initalises the ToF Sensor
+         * 
+         */
         void initialise();
         /**
-         * @brief Runs the publisher loop, reading sensor data and publishing it
+         * @brief Publishes the ToF Data
          * 
          */
         void publishData();

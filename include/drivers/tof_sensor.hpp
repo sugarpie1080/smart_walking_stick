@@ -41,10 +41,6 @@ namespace smart_stick
              * 
              */
             float getDistance();
-            /**
-             * @brief Sends distance data
-             * 
-             */
         private:
             VL53L0X sensor;
     };
