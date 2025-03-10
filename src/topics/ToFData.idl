@@ -1,5 +1,6 @@
 
 struct ToFData {
-    unsigned long index; // Time recieved data in nanoseconds
+    long sec; // Time recieved data in nanoseconds
+    long nanosec;
     float distance; // distance reading in mm
 };

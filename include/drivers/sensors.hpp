@@ -38,21 +38,13 @@ class Sensor {
          * 
          */
         virtual void initialise();
+       
         /**
-         * @brief Retrieves data from the sensor
+         * @brief Get the Line object
          * 
+         * @return struct gpiod_line* 
          */
-        virtual void getData();
-        /**
-         * @brief Sending data using a publisher
-         * 
-         */
-        virtual void send();
-        /**
-         * @brief Starts the interrupt listening process
-         * 
-         */
-        void startListening();
+        struct gpiod_line *getLine() { return line; } 
     protected:
         const char* chipname;
         int pin;
