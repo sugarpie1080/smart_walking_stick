@@ -1,11 +1,14 @@
 
-#include <tof_sensor.hpp>
+#include <ToFDataPublisher.hpp>
+#include <iostream>
 
 int main() {
-    smart_stick::ToFSensor tempSensor("/dev/gpiochip0",17);
-    // Initialize and start listening for interrupts
-    tempSensor.initialise();
-    tempSensor.startListening();
+    const char* chipname = "/dev/gpiochip0";  // Adjust based on hardware
+    int line = 17; // Adjust GPIO pin number accordingly
 
-    return 0;
+    smart_stick::ToFPublisher tof_publisher(chipname, line);
+    tof_publisher.initialise();
+
+    std::cout << "ToF Publisher running..." << std::endl;
+    tof_publisher.publishData();
 }
