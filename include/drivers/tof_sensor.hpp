@@ -40,12 +40,11 @@ namespace smart_stick
              * @brief Retrieves distance data from ToF sensor
              * 
              */
-            void getData() override;
+            float getDistance() override;
             /**
              * @brief Sends distance data
              * 
              */
-            void send() override;
         private:
             VL53L0X sensor;
     };
