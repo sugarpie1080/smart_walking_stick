@@ -40,7 +40,7 @@ namespace smart_stick
              * @brief Retrieves distance data from ToF sensor
              * 
              */
-            float getDistance() override;
+            float getDistance();
             /**
              * @brief Sends distance data
              * 
