@@ -36,13 +36,13 @@ namespace smart_stick
          * @brief Runs the publisher loop, reading sensor data and publishing it
          * 
          */
-        void run();
+        void publishData();
     private:
         /**
          * @brief ToF Sensor object
          * 
          */
-        ToFSensor sensor;
+        ToFSensor sensor_;
     };
 
 } // namespace smart_stick
