@@ -44,41 +44,5 @@ namespace smart_stick{
         if (chip) {
             gpiod_chip_close(chip);
         }
-    }
-
-    // To be overwritten in child classes
-    void Sensor::getData()
-    {
-        std::cout << "Getting sensor data..." << std::endl;
-        // Send the data
-        send();
-
-    } 
-    // To be overwritten in child classes
-    void Sensor::send()
-    {
-        std::cout << "Sending sensor data..." << std::endl;
-
-    }
-
-    void Sensor::startListening()
-    {
-        while (true) 
-        {
-            // Gets value of the interrupt
-            int value = gpiod_line_get_value(line);
-            if (value < 0) {
-                // Triggered if value is -1, therefore an error
-                std::cerr << "Error reading GPIO value!" << std::endl;
-                break;
-            }
-            if (value == 1) { 
-                    std::cout << "Interrupt triggered, reading data..." <<std::endl;
-                    getData();
-                    value = 0;
-                    
-            }
-        }
-    }
-    
+    }    
 }

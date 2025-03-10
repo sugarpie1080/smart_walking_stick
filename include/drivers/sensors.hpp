@@ -38,21 +38,7 @@ class Sensor {
          * 
          */
         virtual void initialise();
-        /**
-         * @brief Retrieves data from the sensor
-         * 
-         */
-        // virtual void getData();
-        // /**
-        //  * @brief Sending data using a publisher
-        //  * 
-        //  */
-        // virtual void send();
-        // /**
-        //  * @brief Starts the interrupt listening process
-        //  * 
-        //  */
-        void startListening();
+       
 
         struct gpiod_line *getLine() { return line; } 
     protected:
