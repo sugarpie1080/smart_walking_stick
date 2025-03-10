@@ -32,20 +32,22 @@ include_directories(${LIBGPIO_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/drivers/)
 include_directories(${DRIVER_DIR}/vl53l0x-linux/)
 
+set(TOF_SOURCES
+    ${DRIVER_DIR}/vl53l0x-linux/VL53L0X.cpp
+    ${DRIVER_DIR}/vl53l0x-linux/I2Cdev.cpp
+    ${DRIVER_DIR}/sensors/tof_sensor.cpp
+    ${DRIVER_DIR}/sensors/sensors.cpp
+    )
 
 # Add executable for publisher
-set(PUB_SOURCES
-     src/main_combined.cpp
-     ${APPLICATION_DIR}/ToFDataPublisher.cpp
-     ${APPLICATION_DIR}/ObstacleDetection.cpp
-    )
-
-set (SUB_SOURCES
-    #  src/main_tof_sub.cpp
+set(SOURCES
+    src/main_combined.cpp
+    ${TOF_SOURCES}
+    ${APPLICATION_DIR}/ToFDataPublisher.cpp
     ${APPLICATION_DIR}/ObstacleDetection.cpp
     ${APPLICATION_DIR}/MockMotor.cpp
-
     )
+
 
 # message(STATUS "SUB_SOURCES: ${SUB_SOURCES}")
 # add_executable(DDSPublisher ${PUB_SOURCES})
@@ -55,8 +57,8 @@ set (SUB_SOURCES
 # target_link_libraries(DDSSubscriber fastcdr fastrtps ToFData MotorCommands)
 #
 
-add_executable(CombinedSystem ${PUB_SOURCES} ${SUB_SOURCES})
-target_link_libraries(CombinedSystem fastcdr fastrtps ToFData MotorCommands)
+add_executable(CombinedSystem ${SOURCES})
+target_link_libraries(CombinedSystem fastcdr fastrtps ToFData MotorCommands ${LIBGPIO_LIBRARIES})
 
 # set(SOURCES
 #     main.cpp
