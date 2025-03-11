@@ -11,6 +11,12 @@
 #include <tof_sensor.hpp>
 // Driver Includes
 #include <VL53L0X.hpp>
+#include <iostream>
+#include <ctime>
+#include <chrono>
+#include <functional>
+#include <memory>
+#include <string>
 
 
 namespace smart_stick 
@@ -26,17 +32,19 @@ namespace smart_stick
 
     }
     
-    void ToFSensor::getData()
+    float ToFSensor::getDistance()
     {
         
         std::cout << "Reading Distance data..." << std::endl;
         // For now, simulate getting data
         uint16_t distance = sensor.readRangeContinuousMillimeters();
+        return static_cast<float>(distance);
 
-        std::cout << "Distance: " << distance << "mm" << std::endl;
+        // std::cout << "Distance: " << distance << "mm" << std::endl;
     }
     
-    void ToFSensor::send() {
-        std::cout << "Sending Distance data..." << std::endl;
-    }
+    // void ToFSensor::send() {
+    //     std::cout << "Sending Distance data..." << std::endl;
+    // }
+
 }

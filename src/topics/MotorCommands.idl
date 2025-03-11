@@ -1,0 +1,6 @@
+
+struct MotorCommands {
+    long sec; 
+    long nanosec; // Time recieved data in nanoseconds
+    float duty_cycle; // Duty Cycle percentage
+};
