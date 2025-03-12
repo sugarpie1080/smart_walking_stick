@@ -1,7 +1,7 @@
 
 #include <ToFDataPublisher.hpp>
 #include <ObstacleDetection.hpp>
-#include <MockMotor.hpp>
+#include <MotorMove.hpp>
 #include <iostream>
 #include <thread>
 #include <chrono>
@@ -13,7 +13,7 @@ int main() {
 
     smart_stick::ToFDataPublisher tof_publisher(chipname, line);
     smart_stick::ObstacleDetectionSub obstacle_sub;
-    smart_stick::MockMotor motor_sub;
+    smart_stick::MotorMove motor_sub;
 
     // Initialise the subscribers
     obstacle_sub.init();

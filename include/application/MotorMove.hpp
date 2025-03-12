@@ -1,11 +1,9 @@
 /**
- * @file ToFDataSubscriber.hpp
+ * @file MotorMove.hpp
  * @author Felicity Lipscomb
  * @brief Example Subscriber class.
  * @version 0.1
  * @date 2025-02-26
- * 
- * 
  * 
  */
 #ifndef MOCK_MOTOR_HPP
@@ -23,21 +21,21 @@ using namespace eprosima::fastdds::dds;
 
 namespace smart_stick {
 /**
- * @brief Example Subscriber class for ToFData messages. Derived from the BasePublisher Class.
+ * @brief Subscriber class for ToFData messages. Derived from the BasePublisher Class.
  * 
  * To use the base example, you must declare the class 
  * with the message type and the PubSubType.
  */
-class MockMotor : public BaseSubscriber<MotorCommands, MotorCommandsPubSubType> {
+class MotorMove : public BaseSubscriber<MotorCommands, MotorCommandsPubSubType> {
 protected:
     /**
-     * @brief Example Listener class for ToFData messages. Derived from the SubListener Class.
+     * @brief Listener class for ToFData messages. Derived from the SubListener Class.
      * 
      * A listener class is required for every subscriber. This class contains the callback
      * function for the subscriber, which determines what actions are taken with the message.
      * 
      */
-    class MockMotorListener : public SubListener<MotorCommands> {
+    class MotorMoveListener : public SubListener<MotorCommands> {
     public:
         /**
          * @brief Callback function for the subscriber.
@@ -47,14 +45,14 @@ protected:
         void on_data_available(DataReader* reader) override;
     };
 
-    MockMotorListener listener_;
+    MotorMoveListener listener_;
 
 public:
     /**
-     * @brief Construct a new ToFDataSubscriber object
+     * @brief Construct a new MotorMove object
      * 
      */
-    MockMotor();
+    MotorMove();
     /**
      * @brief Sets the listener object for the subscriber.
      * 
