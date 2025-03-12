@@ -51,11 +51,11 @@ int ObstacleDetectionSub::OSSubListener::convert_distance_to_duty_cycle(float di
     // TESTING CODE NOT ACTUAL BOUNDS
     if( distance < 100)
     {
-        return 25;
+        return 100;
     }
     else
     {
-        return 75;
+        return 0;
     }
 }
 }
