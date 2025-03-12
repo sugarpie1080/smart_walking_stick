@@ -42,7 +42,7 @@ protected:
      */
     class MotorMoveListener : public SubListener<MotorCommands> {
     public:
-        void setupMotor();
+        explicit MotorMoveListener(MotorMove* parent) : parent_(parent) {}
         
         /**
          * @brief Callback function for the subscriber.
@@ -51,12 +51,9 @@ protected:
          */
         void on_data_available(DataReader* reader) override;
         
-        struct gpiod_line *getLine() { return line; }
+        
     private:
-        const char* chipname = "/dev/gpiochip0";
-        int pin = 18;
-        struct gpiod_line* line;
-        struct gpiod_chip* chip;
+        MotorMove* parent_;  
     };
 
     MotorMoveListener listener_;
@@ -73,10 +70,13 @@ public:
      * @param reader FastDDS DataReader object.
      */
     void set_listener(DataReader* reader);
-
+    struct gpiod_line *getLine() { return line; }
      
 private:
-   
+    const char* chipname = "/dev/gpiochip0";
+    int pin = 18;
+    struct gpiod_line* line;
+    struct gpiod_chip* chip;
 };
 }
 

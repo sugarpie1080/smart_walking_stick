@@ -4,8 +4,7 @@
 namespace smart_stick {
 
 
-MotorMove::MotorMove() : BaseSubscriber("MotorCommandsTopic") 
-{
+MotorMove::MotorMove() : BaseSubscriber("MotorCommandsTopic"), listener_(this) {
     chip = gpiod_chip_open(chipname);
     // Check if can be opened
     if (!chip) {
@@ -33,15 +32,17 @@ void MotorMove::MotorMoveListener::on_data_available(DataReader* reader) {
     struct gpiod_line* line = parent_->getLine();
     SampleInfo info;
     MotorCommands message;
+    int ret;
     if (reader->take_next_sample(&message, &info) == ReturnCode_t::RETCODE_OK) {
         if (info.valid_data) {
            if (message.duty_cycle() == 100) {
                 // To be Changed with the actual motor command
                std::cout << "Full Power!" << std::endl;
-            //    gpiod_line_set_value(1); 
+               ret = gpiod_line_set_value(line,1); 
            } else {
                 // To be Changed with the actual motor command
                std::cout << "Motor Off" << std::endl;
+               ret = gpiod_line_set_value(line,0); 
            }
         }
     }
