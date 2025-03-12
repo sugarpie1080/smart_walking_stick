@@ -39,7 +39,7 @@ void ObstacleDetectionSub::OSSubListener::on_data_available(DataReader* reader) 
             motor_msg.sec(static_cast<int32_t>(seconds));
             motor_msg.nanosec(static_cast<int32_t>(nanoseconds));
             motor_msg.duty_cycle(duty_cycle);
-            std::cout << "Message to be sent: " << motor_msg.duty_cycle() << " at timestamp "  << motor_msg.sec() <<":"<<motor_msg.nanosec() << std::endl;           
+            // std::cout << "Message to be sent: " << motor_msg.duty_cycle() << " at timestamp "  << motor_msg.sec() <<":"<<motor_msg.nanosec() << std::endl;           
             publisher_.publish(motor_msg);
         }
     }
