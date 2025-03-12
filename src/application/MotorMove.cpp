@@ -27,6 +27,7 @@ void MotorMove::set_listener(DataReader* reader) {
     reader->set_listener(&listener_);
 }
 
+
 // Callback implementation
 void MotorMove::MotorMoveListener::on_data_available(DataReader* reader) {
     struct gpiod_line* line = parent_->getLine();
