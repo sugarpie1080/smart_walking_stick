@@ -45,7 +45,7 @@ set(SOURCES
     ${TOF_SOURCES}
     ${APPLICATION_DIR}/ToFDataPublisher.cpp
     ${APPLICATION_DIR}/ObstacleDetection.cpp
-    ${APPLICATION_DIR}/MockMotor.cpp
+    ${APPLICATION_DIR}/MotorMove.cpp
     )
 
 
