@@ -1,6 +1,12 @@
 
 #include "MotorMove.hpp"
 #include <iostream>
+#include <fstream>
+
+
+#define PWM_SYSFS "/sys/class/pwm/pwmchip0/"
+#define PWM_PATH0 "/sys/class/pwm/pwmchip0/pwm0/"
+
 namespace smart_stick {
 
 
@@ -20,13 +26,21 @@ MotorMove::MotorMove() : BaseSubscriber("MotorCommandsTopic"), listener_(this) {
     }
 
     int ret = gpiod_line_request_output(line,"Consumer",0);
+
+    // Export PWM Channel
+    writeSys(PWM_SYSFS "export", "0");
 }
 
 void MotorMove::set_listener(DataReader* reader) {
     reader->set_listener(&listener_);
 }
 
-
+void MotorMove::writeSys(std::string filename, std::string value) {
+    std::ofstream file;
+    file.open(filename);
+    file << value;
+    file.close();
+}
 // Callback implementation
 void MotorMove::MotorMoveListener::on_data_available(DataReader* reader) {
     struct gpiod_line* line = parent_->getLine();
@@ -35,15 +49,21 @@ void MotorMove::MotorMoveListener::on_data_available(DataReader* reader) {
     int ret;
     if (reader->take_next_sample(&message, &info) == ReturnCode_t::RETCODE_OK) {
         if (info.valid_data) {
-           if (message.duty_cycle() == 100) {
-                // To be Changed with the actual motor command
-               std::cout << "Full Power!" << std::endl;
-               ret = gpiod_line_set_value(line,1); 
-           } else {
-                // To be Changed with the actual motor command
-               std::cout << "Motor Off" << std::endl;
-               ret = gpiod_line_set_value(line,0); 
-           }
+            // Write the motor command to the PWM file
+            parent_->writeSys(PWM_PATH0 "period", "1000000");
+            parent_->writeSys(PWM_PATH0 "duty_cycle", std::to_string(message.duty_cycle()));
+            parent_->writeSys(PWM_PATH0 "enable", "1");
+            std::cout << "Sent Motor Command: " << message.duty_cycle() << std::endl;
+        //    if (message.duty_cycle() == 100) {
+        //         // To be Changed with the actual motor command
+        //        std::cout << "Full Power!" << std::endl;
+        //        ret = gpiod_line_set_value(line,1); 
+        //    } else {
+        //         // To be Changed with the actual motor command
+        //        std::cout << "Motor Off" << std::endl;
+        //        ret = gpiod_line_set_value(line,0); 
+        //    }
+
         }
     }
 }
