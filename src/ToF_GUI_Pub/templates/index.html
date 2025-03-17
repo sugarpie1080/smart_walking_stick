@@ -215,18 +215,37 @@
             batteryPercentage.innerText = `${data.battery}%`;
         });
 
-        // Update the percentage labels when sliders are moved
+        // Capture and send user controls to the backend
         const thresholdSlider = document.getElementById('threshold-slider');
         const thresholdValue = document.getElementById('threshold-value');
         const intensitySlider = document.getElementById('intensity-slider');
         const intensityValue = document.getElementById('intensity-value');
+        const enableCheckbox = document.getElementById('detection-enable');
 
+        // Function to send updated user controls to the backend
+        function sendUserControls() {
+            const data = {
+                threshold: thresholdSlider.value,
+                intensity: intensitySlider.value,
+                enable: enableCheckbox.checked
+            };
+            console.log('Sending user controls:', data); // Debugging log
+            socket.emit('update_controls', data);
+        }
+
+        // Add event listeners to controls
         thresholdSlider.addEventListener('input', () => {
             thresholdValue.innerText = `${thresholdSlider.value}%`;
+            sendUserControls(); // Emit updated controls
         });
 
         intensitySlider.addEventListener('input', () => {
             intensityValue.innerText = `${intensitySlider.value}%`;
+            sendUserControls(); // Emit updated controls
+        });
+
+        enableCheckbox.addEventListener('change', () => {
+            sendUserControls(); // Emit updated controls
         });
     </script>
 </body>

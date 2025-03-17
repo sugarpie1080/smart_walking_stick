@@ -26,16 +26,16 @@ class ReaderListener(fastdds.DataReaderListener):
         data = ToFData.ToFData()
         reader.take_next_sample(data, info)
         distance = data.distance()
-        nanosec=data.nanosec()
+        battery=data.battery()
         sec=data.sec()
 
         print("values:")
-        print(distance,nanosec,sec)
+        print(distance,battery,sec)
 
         if reader.take_next_sample(data, info):
-            print(f"Received data: Seconds={data.sec()}, Nanoseconds={data.nanosec()}, Distance={data.distance()}")  # Debug output
+            print(f"Received data: Seconds={data.sec()}, Battery={data.battery()}, Distance={data.distance()}")  # Debug output
             # Emit data to connected WebSocket clients
-            socketio.emit('update_data', {'sec': data.sec(), 'nanosec': data.nanosec(), 'distance': data.distance()})
+            socketio.emit('update_data', {'sec': data.sec(), 'battery': data.battery(), 'distance': data.distance()})
         else:
             print("No data received or data invalid.")
 
