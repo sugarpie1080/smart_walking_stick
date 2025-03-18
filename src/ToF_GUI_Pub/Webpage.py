@@ -30,14 +30,24 @@ class Writer:
         self.participant.get_default_topic_qos(topic_qos)
         self.topic = self.participant.create_topic("UserInputTopic", topic_data_type.get_name(), topic_qos)
 
-        # Create a publisher and data writer
+        # Create a publisher
         publisher_qos = fastdds.PublisherQos()
         self.participant.get_default_publisher_qos(publisher_qos)
         self.publisher = self.participant.create_publisher(publisher_qos)
 
-        writer_qos = fastdds.DataWriterQos()
-        self.publisher.get_default_datawriter_qos(writer_qos)
-        self.writer = self.publisher.create_datawriter(self.topic, writer_qos)
+        # Initialize the data writer
+        self.writer_qos = fastdds.DataWriterQos()
+        self.publisher.get_default_datawriter_qos(self.writer_qos)
+
+        # QoS Settings (optional, adjust as needed)
+        self.writer_qos.reliability().kind = fastdds.RELIABLE_RELIABILITY_QOS
+        self.writer_qos.durability().kind = fastdds.VOLATILE_DURABILITY_QOS
+
+        # Create the writer
+        self.writer = self.publisher.create_datawriter(self.topic, self.writer_qos)
+
+        if self.writer is None:
+            raise RuntimeError("Failed to create DataWriter for UserInputTopic")
 
     def publish_user_inputs(self, threshold, intensity, enable):
         # Create and populate the data
@@ -45,8 +55,11 @@ class Writer:
         data.threshold(threshold)
         data.intensity(intensity)
         data.enable(enable)
+
+        # Write data using the DataWriter
         self.writer.write(data)
         print(f"Published user inputs: Threshold={threshold}, Intensity={intensity}, Enable={enable}")
+
 
 # Initialize Fast DDS Writer
 dds_writer = Writer()
