@@ -1,0 +1,4 @@
+<map id="smart_stick::MotorMove" name="smart_stick::MotorMove">
+<area shape="rect" id="node1" title="Subscriber class for ToFData messages. Derived from the BasePublisher Class." alt="" coords="42,95,222,121"/>
+<area shape="rect" id="node2" href="$classBaseSubscriber.html" title=" " alt="" coords="5,5,259,47"/>
+</map>

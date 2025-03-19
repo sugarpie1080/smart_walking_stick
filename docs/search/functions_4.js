@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['readbit_160',['readBit',['../classI2Cdev.html#abe6d8ea07027d362419de86188981559',1,'I2Cdev']]],
-  ['readbits_161',['readBits',['../classI2Cdev.html#a8e5e9742072bb80db06ccd46f52e2b6d',1,'I2Cdev']]],
-  ['readbitsw_162',['readBitsW',['../classI2Cdev.html#a1f417ba3e5ce99832e07c31522c97f87',1,'I2Cdev']]],
-  ['readbitw_163',['readBitW',['../classI2Cdev.html#aaaa3b9ef9500a7d69ccc3d0ccaae33c4',1,'I2Cdev']]],
-  ['readbyte_164',['readByte',['../classI2Cdev.html#ad3fb41ce124a29f93749d99611c75c33',1,'I2Cdev']]],
-  ['readbytes_165',['readBytes',['../classI2Cdev.html#aca9c503da5cffd6ac6f8eff9b195c5f4',1,'I2Cdev']]],
-  ['readrangecontinuousmillimeters_166',['readRangeContinuousMillimeters',['../classVL53L0X.html#adc60c0fb1b9aa8b5642513f37cefa3e9',1,'VL53L0X']]],
-  ['readrangesinglemillimeters_167',['readRangeSingleMillimeters',['../classVL53L0X.html#ab4a4ab20cde669bee54a7e6efcc93cc1',1,'VL53L0X']]],
-  ['readword_168',['readWord',['../classI2Cdev.html#a545cd48b1e806e7e467b542c9e38e8c8',1,'I2Cdev']]],
-  ['readwords_169',['readWords',['../classI2Cdev.html#a1b3d895dc6a00cbb5fb3b0441b2e35de',1,'I2Cdev']]]
+  ['i2cdev_337',['I2Cdev',['../classI2Cdev.html#a0a466e2323d9f719a1ecc9fa11ac5c84',1,'I2Cdev']]],
+  ['init_338',['init',['../classBaseSubscriber.html#af34f7d5e262e8953d3b4489873056d48',1,'BaseSubscriber']]],
+  ['initialise_339',['initialise',['../classsmart__stick_1_1ToFDataPublisher.html#a69c8e08710a5be11ec72e4f9f3fe689e',1,'smart_stick::ToFDataPublisher::initialise()'],['../classsmart__stick_1_1Sensor.html#af40455abe0cb2e144aac0a3bdd37cfdb',1,'smart_stick::Sensor::initialise()'],['../classsmart__stick_1_1ToFSensor.html#afc22f6d4199161a52155c4e813cd7c1a',1,'smart_stick::ToFSensor::initialise()']]],
+  ['initialize_340',['initialize',['../classVL53L0X.html#a918db74f7ab8520b8b1564eb0a7b773d',1,'VL53L0X']]],
+  ['iskeydefined_341',['isKeyDefined',['../classMotorCommands.html#ada0d3ae1cc10b363b7ffbe52cd5decfe',1,'MotorCommands::isKeyDefined()'],['../classToFData.html#a92fd7aa598b0e7cd17e296ebcb4e6f10',1,'ToFData::isKeyDefined()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tcc_200',['tcc',['../structVL53L0XSequenceStepEnables.html#a4c0cf55916265b510c10d426e5ad38a4',1,'VL53L0XSequenceStepEnables']]]
+  ['nanosec_425',['nanosec',['../classMotorCommands.html#a2b02601826b2c7df203225ec17ccc9cb',1,'MotorCommands::nanosec()'],['../classToFData.html#a5c0d720b438c9210bce0d5d689327336',1,'ToFData::nanosec()']]]
 ];

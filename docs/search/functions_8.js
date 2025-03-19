@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['writebit_179',['writeBit',['../classI2Cdev.html#aa68890af87de5471d32e583ebbd91acb',1,'I2Cdev']]],
-  ['writebits_180',['writeBits',['../classI2Cdev.html#a913371251b6a41520c080115650e1b59',1,'I2Cdev']]],
-  ['writebitsw_181',['writeBitsW',['../classI2Cdev.html#a8f8652a1328224cce867eed665a45c4d',1,'I2Cdev']]],
-  ['writebitw_182',['writeBitW',['../classI2Cdev.html#a1b5fbedfadec5d429c81ee84d27e658d',1,'I2Cdev']]],
-  ['writebyte_183',['writeByte',['../classI2Cdev.html#aeb297637ef985cd562da465ba61b7042',1,'I2Cdev']]],
-  ['writebytes_184',['writeBytes',['../classI2Cdev.html#aa4e39cac6c0eac5112f9132084bcc93e',1,'I2Cdev']]],
-  ['writeword_185',['writeWord',['../classI2Cdev.html#acbe68a802d6a177301736e60bedd1def',1,'I2Cdev']]],
-  ['writewords_186',['writeWords',['../classI2Cdev.html#aae37c0526e4b4730a5b2ffd752fd8b21',1,'I2Cdev']]]
+  ['poweroff_357',['powerOff',['../classVL53L0X.html#ae0e33ed11c21bcd49291615a244b4d1d',1,'VL53L0X']]],
+  ['poweron_358',['powerOn',['../classVL53L0X.html#a4ef1626ffbe218f19a35c467b90dbf8e',1,'VL53L0X']]],
+  ['publish_359',['publish',['../classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046',1,'BasePublisher']]],
+  ['publishdata_360',['publishData',['../classsmart__stick_1_1ToFDataPublisher.html#a885c9b04a1a7c12c9f7c37ac743c8f7a',1,'smart_stick::ToFDataPublisher']]],
+  ['publistener_361',['PubListener',['../classPubListener.html#ae0e51274d32f034c5d979b385d008648',1,'PubListener']]]
 ];

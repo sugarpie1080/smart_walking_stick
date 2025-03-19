@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['calcmacroperiod_3',['calcMacroPeriod',['../VL53L0X_8cpp.html#aefec5de3912a862cfcb3da36045c4992',1,'VL53L0X.cpp']]],
-  ['checktimeoutexpired_4',['checkTimeoutExpired',['../VL53L0X_8cpp.html#abab7c5b1cbb48c1f149d63407116b4a7',1,'VL53L0X.cpp']]],
-  ['crosstalk_5fcompensation_5fpeak_5frate_5fmcps_5',['CROSSTALK_COMPENSATION_PEAK_RATE_MCPS',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa54ad358e286bab31b6c60454e0f5ae37',1,'VL53L0X_defines.hpp']]]
+  ['basepublisher_3',['BasePublisher',['../classBasePublisher.html',1,'BasePublisher&lt; TTopicName, TPubSubType &gt;'],['../classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d',1,'BasePublisher::BasePublisher()']]],
+  ['basepublisher_2ehpp_4',['BasePublisher.hpp',['../BasePublisher_8hpp.html',1,'']]],
+  ['basepublisher_3c_20motorcommands_2c_20motorcommandspubsubtype_20_3e_5',['BasePublisher&lt; MotorCommands, MotorCommandsPubSubType &gt;',['../classBasePublisher.html',1,'']]],
+  ['basepublisher_3c_20tofdata_2c_20tofdatapubsubtype_20_3e_6',['BasePublisher&lt; ToFData, ToFDataPubSubType &gt;',['../classBasePublisher.html',1,'']]],
+  ['basesubscriber_7',['BaseSubscriber',['../classBaseSubscriber.html',1,'BaseSubscriber&lt; TTopicName, TPubSubType &gt;'],['../classBaseSubscriber.html#a9f9208eb763c57470ad7b010b40e3e5e',1,'BaseSubscriber::BaseSubscriber()']]],
+  ['basesubscriber_2ehpp_8',['BaseSubscriber.hpp',['../BaseSubscriber_8hpp.html',1,'']]],
+  ['basesubscriber_3c_20motorcommands_2c_20motorcommandspubsubtype_20_3e_9',['BaseSubscriber&lt; MotorCommands, MotorCommandsPubSubType &gt;',['../classBaseSubscriber.html',1,'']]],
+  ['basesubscriber_3c_20tofdata_2c_20tofdatapubsubtype_20_3e_10',['BaseSubscriber&lt; ToFData, ToFDataPubSubType &gt;',['../classBaseSubscriber.html',1,'']]]
 ];

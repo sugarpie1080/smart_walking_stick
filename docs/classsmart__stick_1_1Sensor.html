@@ -115,15 +115,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af40455abe0cb2e144aac0a3bdd37cfdb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsmart__stick_1_1Sensor.html#af40455abe0cb2e144aac0a3bdd37cfdb">initialise</a> ()</td></tr>
 <tr class="memdesc:af40455abe0cb2e144aac0a3bdd37cfdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises the sensor.  <a href="classsmart__stick_1_1Sensor.html#af40455abe0cb2e144aac0a3bdd37cfdb">More...</a><br /></td></tr>
 <tr class="separator:af40455abe0cb2e144aac0a3bdd37cfdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80b969b707490162c86a342faa2211a9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsmart__stick_1_1Sensor.html#a80b969b707490162c86a342faa2211a9">getData</a> ()</td></tr>
-<tr class="memdesc:a80b969b707490162c86a342faa2211a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves data from the sensor.  <a href="classsmart__stick_1_1Sensor.html#a80b969b707490162c86a342faa2211a9">More...</a><br /></td></tr>
-<tr class="separator:a80b969b707490162c86a342faa2211a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad890b7759b801e2babbbc7ed8b1f238c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsmart__stick_1_1Sensor.html#ad890b7759b801e2babbbc7ed8b1f238c">send</a> ()</td></tr>
-<tr class="memdesc:ad890b7759b801e2babbbc7ed8b1f238c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sending data using a publisher.  <a href="classsmart__stick_1_1Sensor.html#ad890b7759b801e2babbbc7ed8b1f238c">More...</a><br /></td></tr>
-<tr class="separator:ad890b7759b801e2babbbc7ed8b1f238c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77891704d61d62f7901583af2f53858d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsmart__stick_1_1Sensor.html#a77891704d61d62f7901583af2f53858d">startListening</a> ()</td></tr>
-<tr class="memdesc:a77891704d61d62f7901583af2f53858d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the interrupt listening process.  <a href="classsmart__stick_1_1Sensor.html#a77891704d61d62f7901583af2f53858d">More...</a><br /></td></tr>
-<tr class="separator:a77891704d61d62f7901583af2f53858d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af710fe9cbbc2da393ddb0711a3a266f3"><td class="memItemLeft" align="right" valign="top">struct gpiod_line *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsmart__stick_1_1Sensor.html#af710fe9cbbc2da393ddb0711a3a266f3">getLine</a> ()</td></tr>
+<tr class="memdesc:af710fe9cbbc2da393ddb0711a3a266f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Line object.  <a href="classsmart__stick_1_1Sensor.html#af710fe9cbbc2da393ddb0711a3a266f3">More...</a><br /></td></tr>
+<tr class="separator:af710fe9cbbc2da393ddb0711a3a266f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -202,8 +196,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a80b969b707490162c86a342faa2211a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80b969b707490162c86a342faa2211a9">&#9670;&nbsp;</a></span>getData()</h2>
+<a id="af710fe9cbbc2da393ddb0711a3a266f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af710fe9cbbc2da393ddb0711a3a266f3">&#9670;&nbsp;</a></span>getLine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -212,7 +206,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void smart_stick::Sensor::getData </td>
+          <td class="memname">struct gpiod_line* smart_stick::Sensor::getLine </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -220,14 +214,13 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retrieves data from the sensor. </p>
-
-<p>Reimplemented in <a class="el" href="classsmart__stick_1_1ToFSensor.html#a2857e13053e105a553320ee2de81b7f9">smart_stick::ToFSensor</a>.</p>
+<p>Get the Line object. </p>
+<dl class="section return"><dt>Returns</dt><dd>struct gpiod_line* </dd></dl>
 
 </div>
 </div>
@@ -257,54 +250,6 @@ Protected Attributes</h2></td></tr>
 <p>Initialises the sensor. </p>
 
 <p>Reimplemented in <a class="el" href="classsmart__stick_1_1ToFSensor.html#afc22f6d4199161a52155c4e813cd7c1a">smart_stick::ToFSensor</a>.</p>
-
-</div>
-</div>
-<a id="ad890b7759b801e2babbbc7ed8b1f238c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad890b7759b801e2babbbc7ed8b1f238c">&#9670;&nbsp;</a></span>send()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void smart_stick::Sensor::send </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sending data using a publisher. </p>
-
-<p>Reimplemented in <a class="el" href="classsmart__stick_1_1ToFSensor.html#a1379e8a44f43e55b2992aced3ddcab44">smart_stick::ToFSensor</a>.</p>
-
-</div>
-</div>
-<a id="a77891704d61d62f7901583af2f53858d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77891704d61d62f7901583af2f53858d">&#9670;&nbsp;</a></span>startListening()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void smart_stick::Sensor::startListening </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Starts the interrupt listening process. </p>
 
 </div>
 </div>

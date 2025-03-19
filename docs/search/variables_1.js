@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['finalrange_188',['finalRange',['../structVL53L0XSequenceStepEnables.html#a9d3cc9f96d65da4add3314876677dbd2',1,'VL53L0XSequenceStepEnables']]],
-  ['finalrangemclks_189',['finalRangeMCLKs',['../structVL53L0XSequenceStepTimeouts.html#a5f3390866de5982728a33b718b05c57c',1,'VL53L0XSequenceStepTimeouts']]],
-  ['finalrangemicroseconds_190',['finalRangeMicroseconds',['../structVL53L0XSequenceStepTimeouts.html#a2ed083ea4fcb190581486dcffddbbb7f',1,'VL53L0XSequenceStepTimeouts']]],
-  ['finalrangevcselperiodpclks_191',['finalRangeVCSELPeriodPCLKs',['../structVL53L0XSequenceStepTimeouts.html#ab2d9833a3297c1b7a4249a3f23c6e0f4',1,'VL53L0XSequenceStepTimeouts']]]
+  ['distance_410',['distance',['../classToFData.html#ab6bf81a5adeb379e01c3c78567b3cd60',1,'ToFData']]],
+  ['dss_411',['dss',['../structVL53L0XSequenceStepEnables.html#aec219d8ebfbce5e53407eaa315109b60',1,'VL53L0XSequenceStepEnables']]],
+  ['duty_5fcycle_412',['duty_cycle',['../classMotorCommands.html#aba1ec25edf08c9089e734a43ea321248',1,'MotorCommands']]]
 ];

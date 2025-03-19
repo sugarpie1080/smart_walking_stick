@@ -1,0 +1,12 @@
+<map id="include/fastdds/BasePublisher.hpp" name="include/fastdds/BasePublisher.hpp">
+<area shape="rect" id="node1" title="Parent Class for Publisher classes." alt="" coords="377,5,621,32"/>
+<area shape="rect" id="node2" href="$PubListener_8hpp.html" title="Class for determining if a publisher has a matching subscriber." alt="" coords="285,87,411,114"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,169,181,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="206,169,367,211"/>
+<area shape="rect" id="node5" title=" " alt="" coords="392,177,459,203"/>
+<area shape="rect" id="node6" title=" " alt="" coords="483,177,563,203"/>
+<area shape="rect" id="node7" title=" " alt="" coords="537,80,711,121"/>
+<area shape="rect" id="node8" title=" " alt="" coords="736,80,955,121"/>
+<area shape="rect" id="node9" title=" " alt="" coords="979,80,1141,121"/>
+<area shape="rect" id="node10" title=" " alt="" coords="1165,87,1411,114"/>
+</map>

@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classsmart__stick_1_1Sensor.html" title="A parent class to initalise and retrieve data from a given sensor." alt="" coords="5,5,156,32"/>
-<area shape="rect" id="node2" href="$classsmart__stick_1_1ToFSensor.html" title=" " alt="" coords="204,5,375,32"/>
+<area shape="rect" id="node1" href="$classBasePublisher.html" title=" " alt="" coords="5,5,251,47"/>
+<area shape="rect" id="node2" href="$classsmart__stick_1_1ObstacleDetectionPub.html" title="Obstacle Detection Publisher Class. Derived from the BasePublisher Class." alt="" coords="299,13,549,39"/>
 </map>

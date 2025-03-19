@@ -1,5 +1,24 @@
 var searchData=
 [
-  ['user_20stories_114',['User Stories',['../md_user_stories.html',1,'']]],
-  ['user_5fstories_2emd_115',['user_stories.md',['../user__stories_8md.html',1,'']]]
+  ['readbit_142',['readBit',['../classI2Cdev.html#abe6d8ea07027d362419de86188981559',1,'I2Cdev']]],
+  ['readbits_143',['readBits',['../classI2Cdev.html#a8e5e9742072bb80db06ccd46f52e2b6d',1,'I2Cdev']]],
+  ['readbitsw_144',['readBitsW',['../classI2Cdev.html#a1f417ba3e5ce99832e07c31522c97f87',1,'I2Cdev']]],
+  ['readbitw_145',['readBitW',['../classI2Cdev.html#aaaa3b9ef9500a7d69ccc3d0ccaae33c4',1,'I2Cdev']]],
+  ['readbyte_146',['readByte',['../classI2Cdev.html#ad3fb41ce124a29f93749d99611c75c33',1,'I2Cdev']]],
+  ['readbytes_147',['readBytes',['../classI2Cdev.html#aca9c503da5cffd6ac6f8eff9b195c5f4',1,'I2Cdev']]],
+  ['reader_5f_148',['reader_',['../classBaseSubscriber.html#ac2668be0756cf7585d44f4a73700d307',1,'BaseSubscriber']]],
+  ['readme_2emd_149',['README.md',['../README_8md.html',1,'']]],
+  ['readrangecontinuousmillimeters_150',['readRangeContinuousMillimeters',['../classVL53L0X.html#adc60c0fb1b9aa8b5642513f37cefa3e9',1,'VL53L0X']]],
+  ['readrangesinglemillimeters_151',['readRangeSingleMillimeters',['../classVL53L0X.html#ab4a4ab20cde669bee54a7e6efcc93cc1',1,'VL53L0X']]],
+  ['readtimeout_152',['readTimeout',['../classI2Cdev.html#ae2125796e0948127fc15031650111e82',1,'I2Cdev']]],
+  ['readword_153',['readWord',['../classI2Cdev.html#a545cd48b1e806e7e467b542c9e38e8c8',1,'I2Cdev']]],
+  ['readwords_154',['readWords',['../classI2Cdev.html#a1b3d895dc6a00cbb5fb3b0441b2e35de',1,'I2Cdev']]],
+  ['result_5fcore_5fambient_5fwindow_5fevents_5fref_155',['RESULT_CORE_AMBIENT_WINDOW_EVENTS_REF',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aaf227a415d3b83a9fbeb5e3937b44e8ba',1,'VL53L0X_defines.hpp']]],
+  ['result_5fcore_5fambient_5fwindow_5fevents_5frtn_156',['RESULT_CORE_AMBIENT_WINDOW_EVENTS_RTN',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa57df6af7139947160c0994d1bc1fccf5',1,'VL53L0X_defines.hpp']]],
+  ['result_5fcore_5franging_5ftotal_5fevents_5fref_157',['RESULT_CORE_RANGING_TOTAL_EVENTS_REF',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa7bac950ef6a0c581508354739acd3203',1,'VL53L0X_defines.hpp']]],
+  ['result_5fcore_5franging_5ftotal_5fevents_5frtn_158',['RESULT_CORE_RANGING_TOTAL_EVENTS_RTN',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aaf72e4403a6605044e6f557507d6c481c',1,'VL53L0X_defines.hpp']]],
+  ['result_5finterrupt_5fstatus_159',['RESULT_INTERRUPT_STATUS',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aaf0c7e8155a2e1df0ad804719cf34deb7',1,'VL53L0X_defines.hpp']]],
+  ['result_5fpeak_5fsignal_5frate_5fref_160',['RESULT_PEAK_SIGNAL_RATE_REF',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa087aeada52bd56d30115238ec3c81d78',1,'VL53L0X_defines.hpp']]],
+  ['result_5frange_5fstatus_161',['RESULT_RANGE_STATUS',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aac4d952d37d2014b30f624560112ce7c3',1,'VL53L0X_defines.hpp']]],
+  ['run_5ftof_5fpublisher_162',['run_tof_publisher',['../main__combined__mock_8cpp.html#ac516cc5ed5889e5f114f2a0fd5931a3e',1,'main_combined_mock.cpp']]]
 ];

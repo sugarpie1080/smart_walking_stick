@@ -1,0 +1,26 @@
+var classToFData =
+[
+    [ "ToFData", "classToFData.html#a23e4590b7501a1ade07401c206aa25b0", null ],
+    [ "~ToFData", "classToFData.html#a68b504b8ad1b2a40e344163bb31b0a1b", null ],
+    [ "ToFData", "classToFData.html#accfb577f098358f93ac02e7a0749e5b4", null ],
+    [ "ToFData", "classToFData.html#a13b7b81feace73f44dea62ce268a799c", null ],
+    [ "deserialize", "classToFData.html#afe3d5004e76737339840ccad38334692", null ],
+    [ "distance", "classToFData.html#a335d9ef61594852391a3004b253fcdf9", null ],
+    [ "distance", "classToFData.html#a5871961322b45a9444d61b835feaa3f4", null ],
+    [ "distance", "classToFData.html#a47acd6e820e0bef9be0ffe842ecef760", null ],
+    [ "nanosec", "classToFData.html#a2e83aff1cd3634bd973b61e146b9ffae", null ],
+    [ "nanosec", "classToFData.html#a1243d7c678fa2400b80a233b81a34d0f", null ],
+    [ "nanosec", "classToFData.html#a46ab8957383dc929b1a6ea0bcdbee18d", null ],
+    [ "operator!=", "classToFData.html#adf389cd0e96dcd19dfa190c01a049d23", null ],
+    [ "operator=", "classToFData.html#a55c9632fa642ecdbbad4fb30ef2f9e3a", null ],
+    [ "operator=", "classToFData.html#a4f0c82d97e5d97a7189ff796c5b8dd98", null ],
+    [ "operator==", "classToFData.html#abbadf9df364e8e5cf207d9160dacf78d", null ],
+    [ "sec", "classToFData.html#a59955e3d41cc1fee41a288c81745f27c", null ],
+    [ "sec", "classToFData.html#a64881c984c8ce9484b284c62d85768c7", null ],
+    [ "sec", "classToFData.html#a0d5c638cf42e7fa9289c96b793fcf590", null ],
+    [ "serialize", "classToFData.html#a4964e5b894aceeb3bc962fc3ab461a2f", null ],
+    [ "serializeKey", "classToFData.html#a41f571cf236d5a5d02b553500f0be6d9", null ],
+    [ "distance", "classToFData.html#ab6bf81a5adeb379e01c3c78567b3cd60", null ],
+    [ "nanosec", "classToFData.html#a5c0d720b438c9210bce0d5d689327336", null ],
+    [ "sec", "classToFData.html#a2132189993962ff409b876f644168625", null ]
+];
