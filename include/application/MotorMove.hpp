@@ -22,7 +22,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <unistd.h>
-
+#include "rpi_pwm.h"
 
 using namespace eprosima::fastdds::dds;
 
@@ -74,16 +74,14 @@ public:
      * 
      * @return struct gpiod_line* 
      */
-    struct gpiod_line *getLine() { return line; }
+    // struct gpiod_line *getLine() { return line; }
 
     void writeSys(std::string filename, std::string value);
 
+    // RPI_PWM get_pwm(){return pwm;}
      
 private:
-    const char* chipname = "/dev/gpiochip0";
-    int pin = 18;
-    struct gpiod_line* line;
-    struct gpiod_chip* chip;
+    RPI_PWM pwm;
 };
 }
 

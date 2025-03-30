@@ -5,6 +5,10 @@ project(SmartStick)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+endif()
+
 find_package(fastcdr REQUIRED)
 find_package(fastrtps REQUIRED)
 
@@ -20,6 +24,9 @@ set(APPLICATION_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/application")
 
 # Include custom functions
 include("functions.cmake")
+include(GNUInstallDirs)
+
+add_compile_options(-Wall -Wconversion -Wextra -pedantic)
 
 include_directories(${TOPICS_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/fastdds)
