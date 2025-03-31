@@ -20,6 +20,7 @@ namespace smart_stick{
             std::cerr << "Failed to open GPIO chip!" << std::endl;
             exit(1);
         }
+       
         // Get the GPIO line
         line = gpiod_chip_get_line(chip, pin);
         if (!line) {
