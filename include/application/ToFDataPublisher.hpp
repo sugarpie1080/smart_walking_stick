@@ -17,6 +17,7 @@
 #include <ToFDataPubSubTypes.h>
 // Sensor Include
 #include <tof_sensor.hpp>
+#include <thread>
 
 namespace smart_stick
 {
@@ -43,12 +44,15 @@ namespace smart_stick
          * 
          */
         void publishData();
+
+        void stop();
     private:
         /**
          * @brief ToF Sensor object
          * 
          */
         ToFSensor sensor_;
+        std::thread pub_thread_;
     };
 
 } // namespace smart_stick

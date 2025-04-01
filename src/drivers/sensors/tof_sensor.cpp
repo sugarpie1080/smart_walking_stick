@@ -28,9 +28,24 @@ namespace smart_stick
         sensor.initialize();
         // Set to continous mode
         sensor.startContinuous();
-        sensor.setMeasurementTimingBudget(200000);
+        sensor.setMeasurementTimingBudget(20000);
 
     }
+
+    void ToFSensor::hasEvent(gpiod_line_event& e) {
+	    switch (e.event_type) {
+	    case GPIOD_LINE_EVENT_RISING_EDGE:
+		printf("Rising!\n");
+		break;
+	    case GPIOD_LINE_EVENT_FALLING_EDGE:
+		printf("Falling\n");
+		break;
+	    default:
+		printf("Unkown event\n");
+	    }
+        float help = getDistance();
+	}
+
     
     float ToFSensor::getDistance()
     {
@@ -38,9 +53,10 @@ namespace smart_stick
         std::cout << "Reading Distance data..." << std::endl;
         // For now, simulate getting data
         uint16_t distance = sensor.readRangeContinuousMillimeters();
+        std::cout << "Distance: " << distance << "mm" << std::endl;
+
         return static_cast<float>(distance);
 
-        // std::cout << "Distance: " << distance << "mm" << std::endl;
     }
     
     // void ToFSensor::send() {

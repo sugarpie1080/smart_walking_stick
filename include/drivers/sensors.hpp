@@ -13,7 +13,8 @@
 #include <iostream>
 #include <gpiod.h>
 #include <unistd.h>
-
+#include <vector>
+#include <thread>
 namespace smart_stick
 {
 /**
@@ -21,6 +22,9 @@ namespace smart_stick
  * @brief A parent class to initalise and retrieve data from a given sensor
  * 
  */
+
+ #define ISR_TIMEOUT 1 // sec
+
 class Sensor {
    
     public:
@@ -32,8 +36,7 @@ class Sensor {
          */
         Sensor(const char* chipname, int pin);
         virtual ~Sensor();
-        
-        /**
+         /**
          * @brief Initialises the sensor
          * 
          */
@@ -45,6 +48,33 @@ class Sensor {
          * @return struct gpiod_line* 
          */
         struct gpiod_line *getLine() { return line; } 
+
+        struct SensorCallbackInterface {
+        /**
+         * Called when a new sample is available.
+         * This needs to be implemented in a derived
+         * class by the client. Defined as abstract.
+         * \param e If falling or rising.
+         **/
+            virtual void hasEvent(gpiod_line_event& e) = 0;
+        };
+
+        void registerCallback(SensorCallbackInterface* ci) {
+            adsCallbackInterfaces.push_back(ci);
+            }
+        
+        void start();
+        void stop();
+
+        void gpioEvent(gpiod_line_event& event);
+
+    private:
+
+        virtual void worker();
+        bool running = false;
+        std::vector<SensorCallbackInterface*> adsCallbackInterfaces;
+        std::thread thr;
+
     protected:
         const char* chipname;
         int pin;

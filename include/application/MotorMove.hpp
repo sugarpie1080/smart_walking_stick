@@ -22,6 +22,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <unistd.h>
+#include <thread>
 #include "rpi_pwm.h"
 
 using namespace eprosima::fastdds::dds;
@@ -78,10 +79,13 @@ public:
 
     void writeSys(std::string filename, std::string value);
 
-    // RPI_PWM get_pwm(){return pwm;}
+    void start(DataReader* reader);
+    void stop();
      
 private:
     RPI_PWM pwm;
+    std::atomic<bool> stop_flag_;
+    std::thread motor_thread_;
 };
 }
 

@@ -46,14 +46,23 @@ set(TOF_SOURCES
     ${DRIVER_DIR}/sensors/sensors.cpp
     )
 
-# Add executable for publisher
-set(SOURCES
-    src/main_combined.cpp
+# # Add executable for publisher
+# set(SOURCES
+#     src/main_combined.cpp
+#     ${TOF_SOURCES}
+#     ${APPLICATION_DIR}/ToFDataPublisher.cpp
+#     ${APPLICATION_DIR}/ObstacleDetection.cpp
+#     ${APPLICATION_DIR}/MotorMove.cpp
+#     )
+
+set(TEST_SOURCES
+    src/tester_main.cpp
     ${TOF_SOURCES}
-    ${APPLICATION_DIR}/ToFDataPublisher.cpp
-    ${APPLICATION_DIR}/ObstacleDetection.cpp
-    ${APPLICATION_DIR}/MotorMove.cpp
-    )
+)
+
+add_executable(TofTest ${TEST_SOURCES})
+
+target_link_libraries(TofTest ${LIBGPIO_LIBRARIES} gpiod)
 
 
 # message(STATUS "SUB_SOURCES: ${SUB_SOURCES}")
@@ -64,8 +73,8 @@ set(SOURCES
 # target_link_libraries(DDSSubscriber fastcdr fastrtps ToFData MotorCommands)
 #
 
-add_executable(CombinedSystem ${SOURCES})
-target_link_libraries(CombinedSystem fastcdr fastrtps ToFData MotorCommands ${LIBGPIO_LIBRARIES})
+# add_executable(CombinedSystem ${SOURCES})
+# target_link_libraries(CombinedSystem fastcdr fastrtps ToFData MotorCommands ${LIBGPIO_LIBRARIES})
 
 # set(SOURCES
 #     main.cpp

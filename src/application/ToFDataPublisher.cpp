@@ -18,7 +18,8 @@
  
      void ToFDataPublisher::publishData()
      {
-         while (true)
+        pub_thread_ = std::thread([this]() {
+         while (!stop_flag_)
          {
              int value = gpiod_line_get_value(sensor_.getLine());
              if (value < 0)
@@ -48,6 +49,15 @@
                  }
              }
          }
+        });
+     }
+
+     void ToFDataPublisher::stop()
+     {
+        stop_flag_ = true;
+        if (pub_thread_.joinable()) {
+            pub_thread_.join();
+        }
      }
  }
  

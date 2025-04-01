@@ -45,6 +45,24 @@ void ObstacleDetectionSub::OSSubListener::on_data_available(DataReader* reader) 
     }
 }
 
+void ObstacleDetectionSub::start()
+{
+    subscriber_thread_ = std::thread([this]() {
+        while (!stop_flag_) {
+            // You can use a condition variable or check for data availability here
+            // This loop is where the subscriber works in the background.
+            std::this_thread::sleep_for(std::chrono::milliseconds(100)); // To avoid high CPU usage in the loop
+        }
+    });
+}
+
+void ObstacleDetectionSub::stop()
+{
+     stop_flag_ = true;
+    if (subscriber_thread_.joinable()) {
+        subscriber_thread_.join(); // Wait for the thread to finish
+    }
+}
 
 int ObstacleDetectionSub::OSSubListener::convert_distance_to_duty_cycle(float distance)
 {

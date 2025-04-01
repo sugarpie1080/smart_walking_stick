@@ -24,6 +24,8 @@
 #include <ToFDataPubSubTypes.h>
 #include <MotorCommandsPubSubTypes.h>
 
+#include <thread> 
+#include <atomic>
 using namespace eprosima::fastdds::dds;
 
 namespace smart_stick {
@@ -73,11 +75,16 @@ protected:
          * @return int duty cycle value for the motor.
          */
         int convert_distance_to_duty_cycle(float distance);
+
+        
     private:
         ObstacleDetectionPub &publisher_;  
     };
     OSSubListener listener_;
     ObstacleDetectionPub publisher_;
+
+    std::atomic<bool> stop_flag_;
+    std::thread subscriber_thread_;
 
 public:
     /**
@@ -91,6 +98,9 @@ public:
      * @param reader FastDDS DataReader object.
      */
     void set_listener(DataReader* reader);
+    void start();
+    void stop();
+
 };
 
 

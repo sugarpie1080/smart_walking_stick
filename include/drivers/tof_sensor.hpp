@@ -21,7 +21,7 @@ namespace smart_stick
      * @brief Time of Flight Sensor Class
      * 
      */
-    class ToFSensor : public Sensor
+    class ToFSensor : public Sensor, public Sensor::SensorCallbackInterface
     {
         public:
             /**
@@ -41,6 +41,8 @@ namespace smart_stick
              * 
              */
             float getDistance();
+
+            void hasEvent(gpiod_line_event& e) override;
         private:
             VL53L0X sensor;
     };
