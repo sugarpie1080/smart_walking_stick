@@ -1,13 +1,12 @@
 /**
  * @file MotorMove.hpp
  * @author Felicity Lipscomb
- * @brief Example Subscriber class.
+ * @brief Subscriber class for moving the motor based on the commands.
  * @version 0.1
- * @date 2025-02-26
- * 
+ * @date 2025-03-12
  */
-#ifndef MOCK_MOTOR_HPP
-#define MOCK_MOTOR_HPP
+#ifndef MOTOR_MOVE_HPP
+#define MOTOR_MOVE_HPP
 
 // Subscriber includes
 #include <BaseSubscriber.hpp>
@@ -17,32 +16,43 @@
 // Topic includes
 #include <MotorCommandsPubSubTypes.h>
 
+// GPIO includes
+#include <iostream>
+#include <gpiod.h>
+#include <unistd.h>
+#include <string.h>
+#include <unistd.h>
+#include "rpi_pwm.h"
+
 using namespace eprosima::fastdds::dds;
 
 namespace smart_stick {
 /**
- * @brief Subscriber class for ToFData messages. Derived from the BasePublisher Class.
+ * @brief Subscriber class for moving the motor based on the commands.
  * 
- * To use the base example, you must declare the class 
- * with the message type and the PubSubType.
+ * Derived from the BaseSubscriber class
+ * 
  */
 class MotorMove : public BaseSubscriber<MotorCommands, MotorCommandsPubSubType> {
 protected:
     /**
-     * @brief Listener class for ToFData messages. Derived from the SubListener Class.
-     * 
-     * A listener class is required for every subscriber. This class contains the callback
-     * function for the subscriber, which determines what actions are taken with the message.
+     * @brief Listener Class for the MotorMove Subscriber.
      * 
      */
     class MotorMoveListener : public SubListener<MotorCommands> {
     public:
+        explicit MotorMoveListener(MotorMove* parent) : parent_(parent) {}
+        
         /**
          * @brief Callback function for the subscriber.
          * 
          * @param reader FastDDS DataReader object.
          */
         void on_data_available(DataReader* reader) override;
+        
+        
+    private:
+        MotorMove* parent_;  
     };
 
     MotorMoveListener listener_;
@@ -59,6 +69,19 @@ public:
      * @param reader FastDDS DataReader object.
      */
     void set_listener(DataReader* reader);
+    /**
+     * @brief Get the Line object
+     * 
+     * @return struct gpiod_line* 
+     */
+    // struct gpiod_line *getLine() { return line; }
+
+    void writeSys(std::string filename, std::string value);
+
+    // RPI_PWM get_pwm(){return pwm;}
+     
+private:
+    RPI_PWM pwm;
 };
 }
 
