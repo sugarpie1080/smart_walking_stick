@@ -53,7 +53,6 @@ namespace smart_stick{
 
     void Sensor::worker() {
         while (running) {
-        printf("ho");
         const timespec ts = { ISR_TIMEOUT, 0 };
         // this blocks till an interrupt has happened!
         int r = gpiod_line_event_wait(line, &ts);
@@ -61,17 +60,18 @@ namespace smart_stick{
         if (1 == r) {
             gpiod_line_event event;
             gpiod_line_event_read(line, &event);
-            gpioEvent(event);
+            gpio_event(event);
         } else if (r < 0) {
-            std::cout << "GPIO error while waiting for event.\n" << std::endl;
+            std::cout<<  "GPIO error while waiting for event.\n" <<
+            " Errno: " << errno << std::endl;
 
         }
         }
     }
 
-    void Sensor::gpioEvent(gpiod_line_event& event) {
-        for(auto &cb: adsCallbackInterfaces) {
-            cb->hasEvent(event);
+    void Sensor::gpio_event(gpiod_line_event& event) {
+        for(auto &cb: callbackInterfaces) {
+            cb->has_distance(event);
         }
     }
 

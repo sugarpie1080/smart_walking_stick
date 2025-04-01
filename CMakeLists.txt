@@ -43,7 +43,6 @@ set(TOF_SOURCES
     ${DRIVER_DIR}/vl53l0x-linux/VL53L0X.cpp
     ${DRIVER_DIR}/vl53l0x-linux/I2Cdev.cpp
     ${DRIVER_DIR}/sensors/tof_sensor.cpp
-    ${DRIVER_DIR}/sensors/sensors.cpp
     )
 
 # # Add executable for publisher
@@ -51,12 +50,12 @@ set(TOF_SOURCES
 #     src/main_combined.cpp
 #     ${TOF_SOURCES}
 #     ${APPLICATION_DIR}/ToFDataPublisher.cpp
-#     ${APPLICATION_DIR}/ObstacleDetection.cpp
 #     ${APPLICATION_DIR}/MotorMove.cpp
 #     )
 
 set(TEST_SOURCES
     src/tester_main.cpp
+    ${APPLICATION_DIR}/MotorMove.cpp
     ${TOF_SOURCES}
 )
 

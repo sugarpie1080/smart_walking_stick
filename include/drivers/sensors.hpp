@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <vector>
 #include <thread>
+#include <callback_interface.hpp>
 namespace smart_stick
 {
 /**
@@ -49,30 +50,22 @@ class Sensor {
          */
         struct gpiod_line *getLine() { return line; } 
 
-        struct SensorCallbackInterface {
-        /**
-         * Called when a new sample is available.
-         * This needs to be implemented in a derived
-         * class by the client. Defined as abstract.
-         * \param e If falling or rising.
-         **/
-            virtual void hasEvent(gpiod_line_event& e) = 0;
-        };
+        
 
-        void registerCallback(SensorCallbackInterface* ci) {
-            adsCallbackInterfaces.push_back(ci);
+        void register_callback(CallbackInterface* ci) {
+            callbackInterfaces.push_back(ci);
             }
         
         void start();
         void stop();
 
-        void gpioEvent(gpiod_line_event& event);
+        void gpio_event(gpiod_line_event& event);
 
     private:
 
         virtual void worker();
         bool running = false;
-        std::vector<SensorCallbackInterface*> adsCallbackInterfaces;
+        std::vector<ToFCallbackInterface*> callbackInterfaces;
         std::thread thr;
 
     protected:

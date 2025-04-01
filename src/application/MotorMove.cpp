@@ -9,42 +9,57 @@
 namespace smart_stick {
 
 
-MotorMove::MotorMove() : BaseSubscriber("MotorCommandsTopic"), listener_(this) {
-
-    pwm.start(2,100);
-
-}
-
-void MotorMove::set_listener(DataReader* reader) {
-    reader->set_listener(&listener_);
-    motor_thread_ = std::thread([this]() {
-        while (!stop_flag_) {
-            // You can use a condition variable or check for data availability here
-            // This loop is where the subscriber works in the background.
-            // std::this_thread::sleep_for(std::chrono::milliseconds(1)); // To avoid high CPU usage in the loop
-        }
-    });
-}
-
-void MotorMove::stop()
+MotorMove::MotorMove(ToFSensor* tof) 
 {
-    stop_flag_ = true;
-    if (motor_thread_.joinable()) {
-        motor_thread_.join(); // Wait for the thread to finish
-    }
-    // Shut down PWM
-    pwm.stop();
+    tof->register_callback(this);    
+    pwm.start(2,100);
+    running = true;
+    motor_thread = std::thread(&MotorMove::worker,this);
+
 }
+
+MotorMove::~MotorMove() 
+{
+    pwm.stop();
+    running = false;
+    cv.notify_all();
+    motor_thread.join();
+}
+
 
 // Callback implementation
-void MotorMove::MotorMoveListener::on_data_available(DataReader* reader) {
-    SampleInfo info;
-    MotorCommands message;
-    if (reader->take_next_sample(&message, &info) == ReturnCode_t::RETCODE_OK) {
-        if (info.valid_data) {
-            std::cout << "Sent Motor Command: " << message.duty_cycle() << std::endl;
-            float duty_cycle = message.duty_cycle();
-            parent_->pwm.setDutyCycle(duty_cycle);
+void MotorMove::has_distance(float distance) {
+    {
+        std::cout << "MOTOR MOVE RECIEVDD: " << distance << std::endl;
+        std::unique_lock<std::mutex> lock(mutex);
+        this->distance = distance;
+    }  
+    cv.notify_all();
+}
+
+int MotorMove::convert_distance_to_duty_cycle(float distance)
+{
+     // TESTING CODE NOT ACTUAL BOUNDS
+     if( distance < 200)
+     {
+         return 75;
+     }
+     else
+     {
+         return 25;
+     }
+ }
+
+void MotorMove::worker()
+{
+    while(running)
+    {
+        std::unique_lock<std::mutex> lock(mutex);
+        cv.wait(lock);
+        if (running)
+        {
+            int duty_cycle = convert_distance_to_duty_cycle(distance);
+            pwm.setDutyCycle(duty_cycle); 
         }
     }
 }
