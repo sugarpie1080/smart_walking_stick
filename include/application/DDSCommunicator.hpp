@@ -1,0 +1,33 @@
+#ifndef DDS_COMMUNICATOR_HPP
+#define DDS_COMMUNICATOR_HPP
+
+#include <tof_sensor.hpp>
+#include <MotorMove.hpp>
+
+#include <BasePublisher.hpp>
+#include <ToFDataPubSubTypes.h>
+#include <MotorCommandsPubSubTypes.h>
+#include <utility>
+#include <chrono>
+
+
+namespace smart_stick{
+    class DDSCommunicator: 
+    public ToFSensor::CallbackInterface, MotorMove::CallbackInterface 
+    {
+        public:
+            DDSCommunicator(ToFSensor* tof,MotorMove* mm);
+            ~DDSCommunicator();
+            void has_distance(float distance) override;
+            void has_duty(int duty_cycle) override;
+            
+
+        
+        private:
+            std::pair<int32_t, int32_t> getCurrentTime();
+            BasePublisher<ToFData, ToFDataPubSubType> tof_pub;
+            BasePublisher<MotorCommands, MotorCommandsPubSubType> motor_pub;
+    };
+}
+
+#endif DDS_COMMUNICATOR_HPP
