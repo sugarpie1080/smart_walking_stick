@@ -7,41 +7,83 @@ namespace smart_stick
     tof_pub("ToFDataTopic"), motor_pub("MotorCommandsTopic")
     {
         tof->register_callback(this); 
-        mm->register_callback(this);       
+        mm->register_callback(this);   
+        running = true;
+        worker_thread = std::thread(&DDSCommunicator::worker, this);
+    }
+
+    DDSCommunicator::~DDSCommunicator()
+    {
+        running = false;
+        cv.notify_all();
+        worker_thread.join();
+        
     }
 
     void DDSCommunicator::has_distance(float distance)
     {
+        {
+            std::lock_guard<std::mutex> lock(mutex);
+            distance_ready = true;
+            last_distance = distance;
+        }
+        cv.notify_all();
+    }
+
+    void DDSCommunicator::publish_distance()
+    {
+        
         ToFData message;
         auto [sec, nanosec] = getCurrentTime();
         message.sec(sec);
         message.nanosec(nanosec);
-        message.distance(distance);
-        if (tof_pub.publish(message))
-        {
-            std::cout << "Published distance: " << distance << " mm" << std::endl;
-        }
-        else
-        {
-            std::cerr << "Failed to publish distance data." << std::endl;
-        }
+        message.distance(last_distance);
+        tof_pub.publish(message);
+        distance_ready = false;
+        
     }
 
-    void DDSCommunicator::has_duty(int duty_cycle)
+    void DDSCommunicator::publish_duty_cycle()
     {
         MotorCommands message;
         auto [sec, nanosec] = getCurrentTime();
         message.sec(sec);
         message.nanosec(nanosec);
-        message.duty_cycle(duty_cycle);
-        if (motor_pub.publish(message))
+        message.duty_cycle(last_duty_cycle);
+        motor_pub.publish(message);
+        duty_cycle_ready = false;
+        
+    }
+
+    void DDSCommunicator::worker()
+    {
+        while (running)
         {
-            std::cout << "Published Duty Cycle: " << duty_cycle << " mm" << std::endl;
+            std::unique_lock<std::mutex> lock(mutex);
+            cv.wait(lock);
+            if(running)
+            {
+                if (distance_ready)
+                {
+                    publish_distance();
+                }
+                if (duty_cycle_ready)
+                {
+                    publish_duty_cycle();
+                }
+            }
+            
         }
-        else
+    }
+
+    void DDSCommunicator::has_duty(int duty_cycle)
+    {
         {
-            std::cerr << "Failed to publish Duty Cycle." << std::endl;
+            std::lock_guard<std::mutex> lock(mutex);
+            duty_cycle_ready = true; 
+            last_duty_cycle = duty_cycle;
         }
+        cv.notify_all();
 
     }
 
