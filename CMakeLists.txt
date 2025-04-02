@@ -56,12 +56,13 @@ set(TOF_SOURCES
 set(TEST_SOURCES
     src/tester_main.cpp
     ${APPLICATION_DIR}/MotorMove.cpp
+    ${APPLICATION_DIR}/DDSCommunicator.cpp
     ${TOF_SOURCES}
 )
 
 add_executable(TofTest ${TEST_SOURCES})
 
-target_link_libraries(TofTest ${LIBGPIO_LIBRARIES} gpiod)
+target_link_libraries(TofTest ${LIBGPIO_LIBRARIES} gpiod  fastcdr fastrtps ToFData MotorCommands)
 
 
 # message(STATUS "SUB_SOURCES: ${SUB_SOURCES}")

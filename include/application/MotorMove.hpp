@@ -18,15 +18,18 @@
 
 // GPIO includes
 #include <iostream>
+#include <mutex>
+#include <atomic>
+#include <thread>
+#include <condition_variable>
+
 #include <gpiod.h>
 #include <unistd.h>
-#include <string.h>
 #include <unistd.h>
-#include <thread>
-#include "rpi_pwm.h"
+
+#include <rpi_pwm.h>
 #include <tof_sensor.hpp>
-#include <condition_variable>
-#include <mutex>
+
 // using namespace eprosima::fastdds::dds;
 
 namespace smart_stick {
@@ -43,12 +46,21 @@ class MotorMove : public ToFSensor::CallbackInterface {
         ~MotorMove();
         void has_distance(float distance) override;
 
+        struct CallbackInterface
+        {
+            virtual void has_duty(int duty_cycle) = 0;
+        };
+
+        void register_callback(CallbackInterface* ci);
+
+
     private:
         int convert_distance_to_duty_cycle(float distance);
         void worker();
         RPI_PWM pwm;
         std::atomic_bool running;
         std::thread motor_thread;
+        std::vector<CallbackInterface*> callbackInterfaces;
         std::mutex mutex;
         std::condition_variable cv;
         float distance = 0;

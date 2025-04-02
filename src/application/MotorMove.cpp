@@ -8,7 +8,6 @@
 
 namespace smart_stick {
 
-
 MotorMove::MotorMove(ToFSensor* tof) 
 {
     tof->register_callback(this);    
@@ -17,15 +16,6 @@ MotorMove::MotorMove(ToFSensor* tof)
     motor_thread = std::thread(&MotorMove::worker,this);
 
 }
-
-MotorMove::~MotorMove() 
-{
-    pwm.stop();
-    running = false;
-    cv.notify_all();
-    motor_thread.join();
-}
-
 
 // Callback implementation
 void MotorMove::has_distance(float distance) {
@@ -50,6 +40,12 @@ int MotorMove::convert_distance_to_duty_cycle(float distance)
      }
  }
 
+ void MotorMove::register_callback(CallbackInterface* ci)
+ {
+    std::lock_guard<std::mutex> lock(mutex);
+    callbackInterfaces.push_back(ci);
+ }
+
 void MotorMove::worker()
 {
     while(running)
@@ -63,4 +59,14 @@ void MotorMove::worker()
         }
     }
 }
+
+
+MotorMove::~MotorMove() 
+{
+    pwm.stop();
+    running = false;
+    cv.notify_all();
+    motor_thread.join();
+}
+
 }
