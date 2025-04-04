@@ -13,7 +13,9 @@
 #include <iostream>
 #include <gpiod.h>
 #include <unistd.h>
-
+#include <vector>
+#include <thread>
+#include <callback_interface.hpp>
 namespace smart_stick
 {
 /**
@@ -21,6 +23,9 @@ namespace smart_stick
  * @brief A parent class to initalise and retrieve data from a given sensor
  * 
  */
+
+ #define ISR_TIMEOUT 1 // sec
+
 class Sensor {
    
     public:
@@ -32,8 +37,7 @@ class Sensor {
          */
         Sensor(const char* chipname, int pin);
         virtual ~Sensor();
-        
-        /**
+         /**
          * @brief Initialises the sensor
          * 
          */
@@ -45,6 +49,25 @@ class Sensor {
          * @return struct gpiod_line* 
          */
         struct gpiod_line *getLine() { return line; } 
+
+        
+
+        void register_callback(CallbackInterface* ci) {
+            callbackInterfaces.push_back(ci);
+            }
+        
+        void start();
+        void stop();
+
+        void gpio_event(gpiod_line_event& event);
+
+    private:
+
+        virtual void worker();
+        bool running = false;
+        std::vector<ToFCallbackInterface*> callbackInterfaces;
+        std::thread thr;
+
     protected:
         const char* chipname;
         int pin;

@@ -16,6 +16,10 @@ project(SmartStick)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+endif()
+
 find_package(fastcdr REQUIRED)
 find_package(fastdds REQUIRED)
 
@@ -49,6 +53,9 @@ set(APPLICATION_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/application")
 
 # Include custom functions
 include("functions.cmake")
+include(GNUInstallDirs)
+
+add_compile_options(-Wall -Wconversion -Wextra -pedantic)
 
 include_directories(${TOPICS_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/fastdds)
@@ -66,17 +73,26 @@ set(TOF_SOURCES
     ${DRIVER_DIR}/vl53l0x-linux/VL53L0X.cpp
     ${DRIVER_DIR}/vl53l0x-linux/I2Cdev.cpp
     ${DRIVER_DIR}/sensors/tof_sensor.cpp
-    ${DRIVER_DIR}/sensors/sensors.cpp
     )
 
-# Add executable for publisher
-set(SOURCES
-    src/main_combined.cpp
-    ${TOF_SOURCES}
-    ${APPLICATION_DIR}/ToFDataPublisher.cpp
-    ${APPLICATION_DIR}/ObstacleDetection.cpp
+# # Add executable for publisher
+# set(SOURCES
+#     src/main_combined.cpp
+#     ${TOF_SOURCES}
+#     ${APPLICATION_DIR}/ToFDataPublisher.cpp
+#     ${APPLICATION_DIR}/MotorMove.cpp
+#     )
+
+set(TEST_SOURCES
+    src/tester_main.cpp
     ${APPLICATION_DIR}/MotorMove.cpp
-    )
+    ${APPLICATION_DIR}/DDSCommunicator.cpp
+    ${TOF_SOURCES}
+)
+
+add_executable(TofTest ${TEST_SOURCES})
+
+target_link_libraries(TofTest ${LIBGPIO_LIBRARIES} gpiod  fastcdr fastrtps ToFData MotorCommands)
 
 
 # message(STATUS "SUB_SOURCES: ${SUB_SOURCES}")

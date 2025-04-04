@@ -39,23 +39,41 @@ void ObstacleDetectionSub::OSSubListener::on_data_available(DataReader* reader) 
             motor_msg.sec(static_cast<int32_t>(seconds));
             motor_msg.nanosec(static_cast<int32_t>(nanoseconds));
             motor_msg.duty_cycle(duty_cycle);
-            // std::cout << "Message to be sent: " << motor_msg.duty_cycle() << " at timestamp "  << motor_msg.sec() <<":"<<motor_msg.nanosec() << std::endl;           
+            std::cout << "Message to be sent: " << motor_msg.duty_cycle() << " at timestamp "  << motor_msg.sec() <<":"<<motor_msg.nanosec() << std::endl;           
             publisher_.publish(motor_msg);
         }
     }
 }
 
+void ObstacleDetectionSub::start()
+{
+    subscriber_thread_ = std::thread([this]() {
+        while (!stop_flag_) {
+            // You can use a condition variable or check for data availability here
+            // This loop is where the subscriber works in the background.
+            std::this_thread::sleep_for(std::chrono::milliseconds(100)); // To avoid high CPU usage in the loop
+        }
+    });
+}
+
+void ObstacleDetectionSub::stop()
+{
+     stop_flag_ = true;
+    if (subscriber_thread_.joinable()) {
+        subscriber_thread_.join(); // Wait for the thread to finish
+    }
+}
 
 int ObstacleDetectionSub::OSSubListener::convert_distance_to_duty_cycle(float distance)
 {
     // TESTING CODE NOT ACTUAL BOUNDS
-    if( distance < 100)
+    if( distance < 200)
     {
-        return 100;
+        return 75;
     }
     else
     {
-        return 0;
+        return 25;
     }
 }
 }
