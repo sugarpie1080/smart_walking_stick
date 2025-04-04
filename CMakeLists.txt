@@ -1,12 +1,41 @@
 cmake_minimum_required(VERSION 3.20)
 
+# SWIG: use standard target name.
+if(POLICY CMP0078)
+  cmake_policy(SET CMP0078 NEW)
+endif()
+
+
+# SWIG: use SWIG_MODULE_NAME property.
+if(POLICY CMP0086)
+  cmake_policy(SET CMP0086 NEW)
+endif()
+
 project(SmartStick)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 find_package(fastcdr REQUIRED)
-find_package(fastrtps REQUIRED)
+find_package(fastdds REQUIRED)
+
+find_package(SWIG)
+if (NOT SWIG_FOUND)
+    # Trick to find swig4.1 in Ubuntu noble.
+    find_program(SWIG_EXECUTABLE NAMES swig4.1 swig)
+    find_package(SWIG REQUIRED)
+endif()
+include(${SWIG_USE_FILE})
+set(CMAKE_SWIG_FLAGS "")
+
+find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+set(PYTHON_INCLUDE_PATH ${Python3_INCLUDE_DIRS})
+set(PYTHON_EXECUTABLE ${Python3_EXECUTABLE})
+set(PYTHON_LIBRARIES ${Python3_LIBRARIES})
+include_directories(${PYTHON_INCLUDE_PATH})
+
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(BUILD_SHARED_LIBS ON)
 
 
 # Find the libgpiod package
@@ -24,6 +53,7 @@ include("functions.cmake")
 include_directories(${TOPICS_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/fastdds)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/application)
+# include_directories(/home/pi/fastdds_python_ws/install/fastdds/include)
 create_msg_library(ToFData)
 create_msg_library(MotorCommands)
 
@@ -57,8 +87,8 @@ set(SOURCES
 # target_link_libraries(DDSSubscriber fastcdr fastrtps ToFData MotorCommands)
 #
 
-add_executable(CombinedSystem ${SOURCES})
-target_link_libraries(CombinedSystem fastcdr fastrtps ToFData MotorCommands ${LIBGPIO_LIBRARIES})
+# add_executable(CombinedSystem ${SOURCES})
+# target_link_libraries(CombinedSystem fastcdr fastrtps ToFData MotorCommands ${LIBGPIO_LIBRARIES})
 
 # set(SOURCES
 #     main.cpp
@@ -72,3 +102,5 @@ target_link_libraries(CombinedSystem fastcdr fastrtps ToFData MotorCommands ${LI
 
 # add_executable(SensorApp ${SOURCES} ${TOF_SOURCES})
 # target_link_libraries(SensorApp ${LIBGPIO_LIBRARIES})
+
+# add_subdirectory(src/ToF_GUI)

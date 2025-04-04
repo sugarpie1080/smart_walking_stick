@@ -3,6 +3,8 @@ import flask
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 import fastdds
+import sys
+sys.path.append("/home/pi/Documents/smart_walking_stick/build/tmp/lib/python3.11/site-packages")
 import ToFData
 
 app = Flask(__name__)

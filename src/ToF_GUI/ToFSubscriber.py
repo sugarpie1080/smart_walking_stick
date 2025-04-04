@@ -1,6 +1,8 @@
 import signal
 
 import fastdds
+import sys
+sys.path.append("/usr/local/lib/python3/dist-packages/")
 import ToFData
 
 DESCRIPTION = """ToF Subscriber for Fast DDS python bindings"""
@@ -75,6 +77,7 @@ class Reader:
 
 if __name__ == '__main__':
     print('Creating subscriber.')
+    input()
     reader = Reader()
     reader.run()
     exit()

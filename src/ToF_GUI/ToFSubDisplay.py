@@ -1,7 +1,8 @@
 import sys
 import signal
 from PyQt5.QtWidgets import QApplication, QLabel, QVBoxLayout, QWidget
-
+import sys
+sys.path.append("/usr/local/lib/python3/dist-packages/")
 import fastdds
 import ToFData
 
