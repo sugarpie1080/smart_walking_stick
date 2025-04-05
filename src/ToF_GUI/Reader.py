@@ -1,10 +1,12 @@
 import fastdds
+from flask_socketio import SocketIO
+ 
 class Reader:
-    def __init__(self,set_name, topic_name, topic_data_type,listener):
+    def __init__(self,set_name, topic_name, topic_data_type,listener,socketio):
         self.set_name = set_name
         self.topic_name = topic_name
         # self.topic_class = topic_class
-        self.listener = listener()
+        self.listener = listener(socketio)
 
         factory = fastdds.DomainParticipantFactory.get_instance()
         participant_qos = fastdds.DomainParticipantQos()
