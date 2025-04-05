@@ -47,6 +47,8 @@ class BasePublisher{
         DataWriter* writer_ = nullptr;
         TypeSupport type_;
         PubListener listener_;
+    protected:
+        std::atomic<bool> stop_flag_{false};
 
     public:
         /**
@@ -82,6 +84,7 @@ class BasePublisher{
          */
         virtual ~BasePublisher()
         {
+            stop_flag_ = true;
             if (writer_ != nullptr)
                 publisher_->delete_datawriter(writer_);
             if (publisher_ != nullptr)
@@ -100,7 +103,7 @@ class BasePublisher{
          */
         bool publish(TTopicName& message)
         {
-            if (listener_.matched_ > 0)
+            if (!stop_flag_ && listener_.matched_ > 0)
             {
                 writer_->write(&message);
                 return true;

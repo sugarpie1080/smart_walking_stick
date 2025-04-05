@@ -1,88 +1,95 @@
 /**
  * @file MotorMove.hpp
  * @author Felicity Lipscomb
- * @brief Subscriber class for moving the motor based on the commands.
- * @version 0.1
- * @date 2025-03-12
+ * @brief Class for moving the motor based on the commands.
+ * @version 0.2
+ * @date 2025-04-05
  */
 #ifndef MOTOR_MOVE_HPP
 #define MOTOR_MOVE_HPP
 
-// Subscriber includes
-#include <BaseSubscriber.hpp>
-#include <SubListener.hpp>
-#include <fastdds/dds/subscriber/SampleInfo.hpp>
 
-// Topic includes
-#include <MotorCommandsPubSubTypes.h>
-
-// GPIO includes
 #include <iostream>
+#include <mutex>
+#include <atomic>
+#include <thread>
+#include <condition_variable>
+// GPIO includes
 #include <gpiod.h>
 #include <unistd.h>
-#include <string.h>
 #include <unistd.h>
-#include "rpi_pwm.h"
+// Sensor includes
+#include <rpi_pwm.h>
 
-using namespace eprosima::fastdds::dds;
+// Application includes
+#include <ToFSensor.hpp>
+
 
 namespace smart_stick {
 /**
- * @brief Subscriber class for moving the motor based on the commands.
+ * @class MotorMove
+ * @brief Class for moving the motor based on the commands.
+ * Derived from CallbackInterface for the ToFSensor class.
  * 
- * Derived from the BaseSubscriber class
- * 
+ * This class is responsible for moving the motor based on
+ * the distance from the ToFSensor.
+ * It uses a separate thread to handle the motor movement
+ * and a callback interface to communicate with the ToFSensor.
  */
-class MotorMove : public BaseSubscriber<MotorCommands, MotorCommandsPubSubType> {
-protected:
-    /**
-     * @brief Listener Class for the MotorMove Subscriber.
-     * 
-     */
-    class MotorMoveListener : public SubListener<MotorCommands> {
+class MotorMove : public ToFSensor::CallbackInterface {
+
     public:
-        explicit MotorMoveListener(MotorMove* parent) : parent_(parent) {}
-        
         /**
-         * @brief Callback function for the subscriber.
+         * @brief Constructor for the MotorMove class
          * 
-         * @param reader FastDDS DataReader object.
+         * @param tof Pointer to the ToFSensor object
          */
-        void on_data_available(DataReader* reader) override;
-        
-        
+        MotorMove(ToFSensor* tof);
+        /**
+         * @brief Destructor for the MotorMove class
+         */
+        ~MotorMove();
+
+        /**
+         * @brief Callback function for distance from ToFSensor
+         */
+        void has_distance(float distance) override;
+
+        struct CallbackInterface
+        {
+            /**
+             * @brief Callback function for duty cycle
+             */
+            virtual void has_duty(int duty_cycle) = 0;
+        };
+        /**
+         * @brief Register a callback interface for the motor
+         */
+        void register_callback(CallbackInterface* ci);
+
+
     private:
-        MotorMove* parent_;  
+        /**
+         * @brief Function to convert distance to duty cycle
+         * 
+         * @param distance Distance from the ToFSensor
+         * @return int Duty cycle for the motor
+         */
+        int convert_distance_to_duty_cycle(float distance);
+        /**
+         * @brief Worker function for moving the motor.
+         * This function runs in a separate thread and waits for distance data to be ready.
+         * It uses a condition variable to wait for data to be ready and then moves the motor.
+         */
+        void worker();
+        RPI_PWM pwm;
+        std::atomic_bool running;
+        std::thread motor_thread;
+        std::vector<CallbackInterface*> callbackInterfaces;
+        std::mutex mutex;
+        std::condition_variable cv;
+        float distance = 0;
     };
-
-    MotorMoveListener listener_;
-
-public:
-    /**
-     * @brief Construct a new MotorMove object
-     * 
-     */
-    MotorMove();
-    /**
-     * @brief Sets the listener object for the subscriber.
-     * 
-     * @param reader FastDDS DataReader object.
-     */
-    void set_listener(DataReader* reader);
-    /**
-     * @brief Get the Line object
-     * 
-     * @return struct gpiod_line* 
-     */
-    // struct gpiod_line *getLine() { return line; }
-
-    void writeSys(std::string filename, std::string value);
-
-    // RPI_PWM get_pwm(){return pwm;}
-     
-private:
-    RPI_PWM pwm;
-};
 }
 
 #endif // TOF_DATA_SUBSCRIBER_HPP
