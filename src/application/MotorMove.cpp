@@ -17,7 +17,6 @@ MotorMove::MotorMove(ToFSensor* tof)
 
 }
 
-// Callback implementation
 void MotorMove::has_distance(float distance) {
     {
         std::cout << "MOTOR MOVE RECIEVDD: " << distance << std::endl;

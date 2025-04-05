@@ -10,7 +10,7 @@
 #include <thread>
 #include <chrono>
 // Application includes
-#include <tof_sensor.hpp>
+#include <ToFSensor.hpp>
 #include <MotorMove.hpp>
 #include <DDSCommunicator.hpp>
 

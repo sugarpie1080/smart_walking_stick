@@ -21,7 +21,7 @@
 #include <iostream>
 
 // Application includes
-#include <tof_sensor.hpp>
+#include <ToFSensor.hpp>
 #include <MotorMove.hpp>
 
 // DDS includes

@@ -22,7 +22,7 @@
 #include <rpi_pwm.h>
 
 // Application includes
-#include <tof_sensor.hpp>
+#include <ToFSensor.hpp>
 
 
 namespace smart_stick {

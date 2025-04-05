@@ -71,7 +71,7 @@ include_directories(${DRIVER_DIR}/vl53l0x-linux/)
 set(TOF_SOURCES
     ${DRIVER_DIR}/vl53l0x-linux/VL53L0X.cpp
     ${DRIVER_DIR}/vl53l0x-linux/I2Cdev.cpp
-    ${DRIVER_DIR}/sensors/tof_sensor.cpp
+    ${APPLICATION_DIR}/ToFSensor.cpp
     )
 
 set(MAIN_SOURCES

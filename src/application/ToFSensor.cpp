@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2025
  * 
  */
-#include <tof_sensor.hpp>
+#include <ToFSensor.hpp>
 // Driver Includes
 #include <VL53L0X.hpp>
 #include <iostream>

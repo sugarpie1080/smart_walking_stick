@@ -1,5 +1,5 @@
 /**
- * @file tof_sensor.hpp
+ * @file ToFSensor.hpp
  * @author Felicity Lipscomb
  * @brief Time of Flight sensor class
  * @version 0.3
