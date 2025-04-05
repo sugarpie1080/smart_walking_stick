@@ -1,8 +1,0 @@
-struct ToFData {
-    long sec; // Time recieved data in nanoseconds
-    float distance; // distance reading in mm
-    long threshold;
-    long intensity;
-    long battery;
-    boolean enable;
-};

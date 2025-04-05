@@ -1,9 +1,0 @@
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/ToFData.dir
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/ToFDataWrapper.dir
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/ToFDataWrapper_swig_compilation.dir
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/edit_cache.dir
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/rebuild_cache.dir
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/list_install_components.dir
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/install.dir
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/install/local.dir
-/home/wattk/smart_walking_stick/src/ToF_GUI_Pub/CMakeFiles/install/strip.dir
