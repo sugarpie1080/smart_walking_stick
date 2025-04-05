@@ -5,8 +5,8 @@
 #include <MotorMove.hpp>
 
 #include <BasePublisher.hpp>
-#include <ToFDataPubSubTypes.h>
-#include <MotorCommandsPubSubTypes.h>
+#include <ToFDataPubSubTypes.hpp>
+#include <MotorCommandsPubSubTypes.hpp>
 #include <utility>
 #include <chrono>
 #include <thread>

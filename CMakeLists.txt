@@ -92,7 +92,7 @@ set(TEST_SOURCES
 
 add_executable(TofTest ${TEST_SOURCES})
 
-target_link_libraries(TofTest ${LIBGPIO_LIBRARIES} gpiod  fastcdr fastrtps ToFData MotorCommands)
+target_link_libraries(TofTest ${LIBGPIO_LIBRARIES} gpiod  fastcdr fastdds ToFData MotorCommands)
 
 
 # message(STATUS "SUB_SOURCES: ${SUB_SOURCES}")

@@ -56,7 +56,12 @@ void MotorMove::worker()
         {
             int duty_cycle = convert_distance_to_duty_cycle(distance);
             pwm.setDutyCycle(duty_cycle); 
+            for (auto cb: callbackInterfaces)
+            {
+                cb->has_duty(duty_cycle);
+            }
         }
+        
     }
 }
 

@@ -69,6 +69,7 @@ namespace smart_stick
                 }
                 if (duty_cycle_ready)
                 {
+                    std::cout << "Publishing duty cycle: " << last_duty_cycle << std::endl;
                     publish_duty_cycle();
                 }
             }
