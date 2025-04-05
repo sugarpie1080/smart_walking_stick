@@ -169,6 +169,10 @@
                     <span id="battery-percentage">0%</span>
                 </div>
             </div>
+            <div class="data-box">
+                <span id="pwm-label">PWM Value:</span>
+                <span id="pwm">0</span>
+            </div>
         </div>
         <!-- User Controls -->
         <div class="controls">
@@ -213,6 +217,10 @@
             batteryLevel.style.width = `${data.battery}%`;
             batteryLevel.style.backgroundColor = data.battery > 20 ? '#4CAF50' : '#f44336';
             batteryPercentage.innerText = `${data.battery}%`;
+        });
+
+        socket.on('update_motor_data', (data) => {
+            document.getElementById('pwm').innerText = `${data.duty_cycle}`;
         });
 
         // Update the percentage labels when sliders are moved
