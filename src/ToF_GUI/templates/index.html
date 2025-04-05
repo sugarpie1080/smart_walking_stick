@@ -220,7 +220,7 @@
         });
 
         socket.on('update_motor_data', (data) => {
-            document.getElementById('pwm').innerText = `${data.pwm}`;
+            document.getElementById('pwm').innerText = `${data.duty_cycle}`;
         });
 
         // Update the percentage labels when sliders are moved
