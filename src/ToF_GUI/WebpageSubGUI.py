@@ -4,7 +4,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 import fastdds
 import sys
-sys.path.append("/home/pi/Documents/smart_walking_stick/build/tmp/lib/python3.11/site-packages")
+sys.path.append("/usr/local/lib/python3/dist-packages/")
 import ToFData
 import MotorCommands
 from Reader import Reader
