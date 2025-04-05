@@ -1,9 +1,19 @@
-#include <tof_sensor.hpp>
-#include <MotorMove.hpp>
-#include <DDSCommunicator.hpp>
+/**
+ * @file main.cpp
+ * @author Felicity Lipscomb
+ * @brief Main function for the smart_stick application
+ * @version 0.1
+ * @date 2025-04-05
+ */
+
 #include <iostream>
 #include <thread>
 #include <chrono>
+// Application includes
+#include <tof_sensor.hpp>
+#include <MotorMove.hpp>
+#include <DDSCommunicator.hpp>
+
 
 
 int main(int argc, char *argv[]) {

@@ -2,65 +2,76 @@
  * @file tof_sensor.hpp
  * @author Felicity Lipscomb
  * @brief Time of Flight sensor class
- * @version 0.1
- * @date 2025-02-25
+ * @version 0.3
+ * @date 2025-04-05
  * 
  *  Driver copyright: Copyright (c) 2016 Pololu Corporation
  */
-#ifndef TEST_SENSOR_H
-#define TEST_SENSOR_H
+#ifndef TOF_SENSOR_HPP
+#define TOF_SENSOR_HPP
 
-// Driver Includes
-#include <VL53L0X.hpp>
-#include <gpiod.h>
-#include <unistd.h>
 #include <atomic>
 #include <mutex>
 #include <vector>
 #include <thread>
 
+// Driver Includes
+#include <VL53L0X.hpp>
+// GPIO includes
+#include <gpiod.h>
+#include <unistd.h>
+
 namespace smart_stick
 {
-    /**
+     #define ISR_TIMEOUT 1 // sec
+     /**
      * @class TofSensor
-     * @brief Time of Flight Sensor Class
+     * @brief Time of Flight Sensor Class.
      * 
      */
-
-     #define ISR_TIMEOUT 1 // sec
-
     class ToFSensor
     {
         public:
             /**
-             * @brief Construct a new ToFSensor object
+             * @brief Constructor for the ToFSensor class.
              * 
              * @param chipname name of the GPIO chip used for the interrupt
              * @param line pin number of interrupt pin
              */
             ToFSensor(const char* chipname, int pin);
             /**
-             * @brief Initalises ToF sensor
+             * @brief Destructor for the ToFSensor class.
              * 
              */
-
             ~ToFSensor();
             struct CallbackInterface {
             /**
-             * Called when a new distance is available
+             * Callback function for when a new distance is available.
              **/
                 virtual void has_distance(float distance) = 0;
             };
-            
+            /**
+             * @brief Initialises the ToF Sensor.
+             * 
+             */
             void initialise(); 
-          
+            /**
+             * @brief Register a callback interface for the ToF Sensor.
+             */
             void register_callback(CallbackInterface* ci);
-            
+            /**
+             * @brief Initialises the GPIO chip and line.
+             */
             void start();
     
     
 
         private:
+            /**
+             * @brief Worker function for the ToF Sensor.
+             * This function runs in a separate thread and handles the interrupt from the GPIO line.
+             * It reads the distance from the ToF sensor and calls the callback interface.
+             */
             void worker();
             std::vector<CallbackInterface*> callbackInterfaces;
             std::thread thr;
@@ -74,6 +85,6 @@ namespace smart_stick
     };
 }
 
-#endif
+#endif //TOF_SENSOR_HPP
 
 
