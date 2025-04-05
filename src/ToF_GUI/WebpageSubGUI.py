@@ -48,7 +48,6 @@ class ReaderListenerMotor(fastdds.DataReaderListener):
             print(f"Subscriber matched publisher {info.last_publication_handle}")
         else:
             print(f"Subscriber unmatched publisher {info.last_publication_handle}")
-
     def on_data_available(self, reader):
         info = fastdds.SampleInfo()
         data = MotorCommands.MotorCommands()
@@ -65,27 +64,31 @@ class ReaderListenerMotor(fastdds.DataReaderListener):
             print("No data received or data invalid.")
 
 
-class ReaderToF:
-    def __init__(self):
+class Reader:
+    def __init__(self,set_name="ToFData", topic_name="ToFDataTopic", topic_class=ToFData,listener=ReaderListenerToF):
+        self.set_name = set_name
+        self.topic_name = topic_name
+        self.topic_class = topic_class
+        self.listener = listener()
+
         factory = fastdds.DomainParticipantFactory.get_instance()
         participant_qos = fastdds.DomainParticipantQos()
         factory.get_default_participant_qos(participant_qos)
         self.participant = factory.create_participant(0, participant_qos)
 
-        topic_data_type = ToFData.ToFDataPubSubType()
-        topic_data_type.set_name("ToFData")
+        topic_data_type = self.topic_class.ToFDataPubSubType()
+        topic_data_type.set_name(self.set_name)
         type_support = fastdds.TypeSupport(topic_data_type)
         self.participant.register_type(type_support)
 
         topic_qos = fastdds.TopicQos()
         self.participant.get_default_topic_qos(topic_qos)
-        self.topic = self.participant.create_topic("ToFDataTopic", topic_data_type.get_name(), topic_qos)
+        self.topic = self.participant.create_topic(self.topic_name, topic_data_type.get_name(), topic_qos)
 
         subscriber_qos = fastdds.SubscriberQos()
         self.participant.get_default_subscriber_qos(subscriber_qos)
         self.subscriber = self.participant.create_subscriber(subscriber_qos)
 
-        self.listener = ReaderListenerToF()
         reader_qos = fastdds.DataReaderQos()
         self.subscriber.get_default_datareader_qos(reader_qos)
         self.reader = self.subscriber.create_datareader(self.topic, reader_qos, self.listener)
@@ -95,40 +98,12 @@ class ReaderToF:
         self.participant.delete_contained_entities()
         factory.delete_participant(self.participant)
 
-class ReaderMotorCommands:
-    def __init__(self):
-        factory = fastdds.DomainParticipantFactory.get_instance()
-        participant_qos = fastdds.DomainParticipantQos()
-        factory.get_default_participant_qos(participant_qos)
-        self.participant = factory.create_participant(0, participant_qos)
 
-        topic_data_type = MotorCommands.MotorCommandsPubSubType()
-        topic_data_type.set_name("MotorCommands")
-        type_support = fastdds.TypeSupport(topic_data_type)
-        self.participant.register_type(type_support)
-
-        topic_qos = fastdds.TopicQos()
-        self.participant.get_default_topic_qos(topic_qos)
-        self.topic = self.participant.create_topic("MotorCommandsTopic", topic_data_type.get_name(), topic_qos)
-
-        subscriber_qos = fastdds.SubscriberQos()
-        self.participant.get_default_subscriber_qos(subscriber_qos)
-        self.subscriber = self.participant.create_subscriber(subscriber_qos)
-
-        self.listener = ReaderListenerMotor()
-        reader_qos = fastdds.DataReaderQos()
-        self.subscriber.get_default_datareader_qos(reader_qos)
-        self.reader = self.subscriber.create_datareader(self.topic, reader_qos, self.listener)
-
-    def delete(self):
-        factory = fastdds.DomainParticipantFactory.get_instance()
-        self.participant.delete_contained_entities()
-        factory.delete_participant(self.participant)
 
 if __name__ == '__main__':
     # Create the DDS reader
-    reader = ReaderToF()
-    reader_motor = ReaderMotorCommands()
+    reader = Reader(set_name="ToFData", topic_name="ToFDataTopic", topic_class=ToFData,listener=ReaderListenerToF)
+    reader_motor = Reader(set_name="MotorCommands", topic_name="MotorCommandsTopic", topic_class=MotorCommands,listener=ReaderListenerMotor)
 
     # Capture Ctrl+C signal to clean up
     signal.signal(signal.SIGINT, lambda sig, frame: reader.delete() or exit(0))
