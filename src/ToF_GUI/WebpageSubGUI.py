@@ -6,6 +6,7 @@ import fastdds
 import sys
 sys.path.append("/home/pi/Documents/smart_walking_stick/build/tmp/lib/python3.11/site-packages")
 import ToFData
+import MotorCommands
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -16,7 +17,7 @@ def index():
     return render_template('index.html')
 
 # Custom ReaderListener to receive DDS data and emit via WebSocket
-class ReaderListener(fastdds.DataReaderListener):
+class ReaderListenerToF(fastdds.DataReaderListener):
     def on_subscription_matched(self, datareader, info):
         if info.current_count_change > 0:
             print(f"Subscriber matched publisher {info.last_publication_handle}")
@@ -28,21 +29,43 @@ class ReaderListener(fastdds.DataReaderListener):
         data = ToFData.ToFData()
         reader.take_next_sample(data, info)
         distance = data.distance()
-        battery=data.battery()
+        # battery=data.battery()
         sec=data.sec()
 
         print("values:")
-        print(distance,battery,sec)
+        print(distance,sec)
 
         if reader.take_next_sample(data, info):
-            print(f"Received data: Seconds={data.sec()}, Battery={data.battery()}, Distance={data.distance()}")  # Debug output
+            print(f"Received data: Seconds={data.sec()}, Battery={0.0}, Distance={data.distance()}")  # Debug output
             # Emit data to connected WebSocket clients
-            socketio.emit('update_data', {'sec': data.sec(), 'battery': data.battery(), 'distance': data.distance()})
+            socketio.emit('update_data', {'sec': data.sec(), 'battery': 0.0, 'distance': data.distance()})
+        else:
+            print("No data received or data invalid.")
+
+class ReaderListenerMotor(fastdds.DataReaderListener):
+    def on_subscription_matched(self, datareader, info):
+        if info.current_count_change > 0:
+            print(f"Subscriber matched publisher {info.last_publication_handle}")
+        else:
+            print(f"Subscriber unmatched publisher {info.last_publication_handle}")
+
+    def on_data_available(self, reader):
+        info = fastdds.SampleInfo()
+        data = MotorCommands.MotorCommands()
+        reader.take_next_sample(data, info)
+        duty_cycle = data.duty_cycle()
+
+        print("values:")
+        print(duty_cycle)
+
+        if reader.take_next_sample(data, info):
+            # Emit data to connected WebSocket clients
+            socketio.emit('update_motor_data', {'duty_cycle': data.duty_cycle()})
         else:
             print("No data received or data invalid.")
 
 
-class Reader:
+class ReaderToF:
     def __init__(self):
         factory = fastdds.DomainParticipantFactory.get_instance()
         participant_qos = fastdds.DomainParticipantQos()
@@ -62,7 +85,37 @@ class Reader:
         self.participant.get_default_subscriber_qos(subscriber_qos)
         self.subscriber = self.participant.create_subscriber(subscriber_qos)
 
-        self.listener = ReaderListener()
+        self.listener = ReaderListenerToF()
+        reader_qos = fastdds.DataReaderQos()
+        self.subscriber.get_default_datareader_qos(reader_qos)
+        self.reader = self.subscriber.create_datareader(self.topic, reader_qos, self.listener)
+
+    def delete(self):
+        factory = fastdds.DomainParticipantFactory.get_instance()
+        self.participant.delete_contained_entities()
+        factory.delete_participant(self.participant)
+
+class ReaderMotorCommands:
+    def __init__(self):
+        factory = fastdds.DomainParticipantFactory.get_instance()
+        participant_qos = fastdds.DomainParticipantQos()
+        factory.get_default_participant_qos(participant_qos)
+        self.participant = factory.create_participant(0, participant_qos)
+
+        topic_data_type = MotorCommands.MotorCommandsPubSubType()
+        topic_data_type.set_name("MotorCommands")
+        type_support = fastdds.TypeSupport(topic_data_type)
+        self.participant.register_type(type_support)
+
+        topic_qos = fastdds.TopicQos()
+        self.participant.get_default_topic_qos(topic_qos)
+        self.topic = self.participant.create_topic("MotorCommandsTopic", topic_data_type.get_name(), topic_qos)
+
+        subscriber_qos = fastdds.SubscriberQos()
+        self.participant.get_default_subscriber_qos(subscriber_qos)
+        self.subscriber = self.participant.create_subscriber(subscriber_qos)
+
+        self.listener = ReaderListenerMotor()
         reader_qos = fastdds.DataReaderQos()
         self.subscriber.get_default_datareader_qos(reader_qos)
         self.reader = self.subscriber.create_datareader(self.topic, reader_qos, self.listener)
@@ -74,7 +127,8 @@ class Reader:
 
 if __name__ == '__main__':
     # Create the DDS reader
-    reader = Reader()
+    reader = ReaderToF()
+    reader_motor = ReaderMotorCommands()
 
     # Capture Ctrl+C signal to clean up
     signal.signal(signal.SIGINT, lambda sig, frame: reader.delete() or exit(0))
