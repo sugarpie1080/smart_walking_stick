@@ -26,6 +26,7 @@
 #include <fastdds/dds/subscriber/qos/DataReaderQos.hpp>
 #include <fastdds/dds/subscriber/Subscriber.hpp>
 #include <fastdds/dds/topic/TypeSupport.hpp>
+#include <atomic>
 
 
 using namespace eprosima::fastdds::dds;
