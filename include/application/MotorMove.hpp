@@ -20,10 +20,8 @@
 #include <unistd.h>
 // Sensor includes
 #include <rpi_pwm.h>
-
 // Application includes
 #include <ToFSensor.hpp>
-
 
 namespace smart_stick {
 /**
@@ -82,6 +80,7 @@ class MotorMove : public ToFSensor::CallbackInterface {
          * It uses a condition variable to wait for data to be ready and then moves the motor.
          */
         void worker();
+
         RPI_PWM pwm;
         std::atomic_bool running;
         std::thread motor_thread;
@@ -89,6 +88,11 @@ class MotorMove : public ToFSensor::CallbackInterface {
         std::mutex mutex;
         std::condition_variable cv;
         float distance = 0;
+        // Constants for Motor Control
+        const int PWM_MAX = 100;
+        const int DISTANCE_MIN = 42;
+        const int DISTANCE_MAX = 200;
+        const float DECAY_FACTOR = 100.0f;
     };
 }
 
