@@ -87,45 +87,73 @@ $(document).ready(function(){initNavTree('MotorMove_8hpp_source.html',''); initR
 </div><!--header-->
 <div class="contents">
 <a href="MotorMove_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef MOCK_MOTOR_HPP</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define MOCK_MOTOR_HPP</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef MOTOR_MOVE_HPP</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define MOTOR_MOVE_HPP</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// Subscriber includes</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="BaseSubscriber_8hpp.html">BaseSubscriber.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SubListener_8hpp.html">SubListener.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;fastdds/dds/subscriber/SampleInfo.hpp&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// Topic includes</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="MotorCommandsPubSubTypes_8h.html">MotorCommandsPubSubTypes.h</a>&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using namespace </span>eprosima::fastdds::dds;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespacesmart__stick.html">   22</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesmart__stick.html">smart_stick</a> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classsmart__stick_1_1MotorMove.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsmart__stick_1_1MotorMove.html">MotorMove</a> : <span class="keyword">public</span> <a class="code" href="classBaseSubscriber.html">BaseSubscriber</a>&lt;MotorCommands, MotorCommandsPubSubType&gt; {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classsmart__stick_1_1MotorMove_1_1MotorMoveListener.html">   38</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classsmart__stick_1_1MotorMove_1_1MotorMoveListener.html">MotorMoveListener</a> : <span class="keyword">public</span> <a class="code" href="classSubListener.html">SubListener</a>&lt;MotorCommands&gt; {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;atomic&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;condition_variable&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// GPIO includes</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;gpiod.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// Sensor includes</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="rpi__pwm_8h.html">rpi_pwm.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Application includes</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ToFSensor_8hpp.html">ToFSensor.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesmart__stick.html">smart_stick</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classsmart__stick_1_1MotorMove.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsmart__stick_1_1MotorMove.html">MotorMove</a> : <span class="keyword">public</span> <a class="code" href="structsmart__stick_1_1ToFSensor_1_1CallbackInterface.html">ToFSensor::CallbackInterface</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">void</span> on_data_available(DataReader* reader) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    };</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classsmart__stick_1_1MotorMove.html#a9264c12dd59781755b4f4ac5ed6d9f33">   48</a></span>&#160;    <a class="code" href="classsmart__stick_1_1MotorMove_1_1MotorMoveListener.html">MotorMoveListener</a> <a class="code" href="classsmart__stick_1_1MotorMove.html#a9264c12dd59781755b4f4ac5ed6d9f33">listener_</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classsmart__stick_1_1MotorMove.html">MotorMove</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> set_listener(DataReader* reader);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// TOF_DATA_SUBSCRIBER_HPP</span></div>
-<div class="ttc" id="aBaseSubscriber_8hpp_html"><div class="ttname"><a href="BaseSubscriber_8hpp.html">BaseSubscriber.hpp</a></div><div class="ttdoc">Parent Class for Subscriber classes.</div></div>
-<div class="ttc" id="aMotorCommandsPubSubTypes_8h_html"><div class="ttname"><a href="MotorCommandsPubSubTypes_8h.html">MotorCommandsPubSubTypes.h</a></div></div>
-<div class="ttc" id="aSubListener_8hpp_html"><div class="ttname"><a href="SubListener_8hpp.html">SubListener.hpp</a></div><div class="ttdoc">This file contains the class for determining if a subscriber has a matching publisher.</div></div>
-<div class="ttc" id="aclassBaseSubscriber_html"><div class="ttname"><a href="classBaseSubscriber.html">BaseSubscriber</a></div><div class="ttdoc">Parent class for Subscriber classes.</div><div class="ttdef"><b>Definition:</b> BaseSubscriber.hpp:40</div></div>
-<div class="ttc" id="aclassSubListener_html"><div class="ttname"><a href="classSubListener.html">SubListener</a></div><div class="ttdoc">Class for determining if a subscriber has a matching publisher.</div><div class="ttdef"><b>Definition:</b> SubListener.hpp:30</div></div>
-<div class="ttc" id="aclasssmart__stick_1_1MotorMove_1_1MotorMoveListener_html"><div class="ttname"><a href="classsmart__stick_1_1MotorMove_1_1MotorMoveListener.html">smart_stick::MotorMove::MotorMoveListener</a></div><div class="ttdoc">Listener class for ToFData messages. Derived from the SubListener Class.</div><div class="ttdef"><b>Definition:</b> MotorMove.hpp:38</div></div>
-<div class="ttc" id="aclasssmart__stick_1_1MotorMove_html"><div class="ttname"><a href="classsmart__stick_1_1MotorMove.html">smart_stick::MotorMove</a></div><div class="ttdoc">Subscriber class for ToFData messages. Derived from the BasePublisher Class.</div><div class="ttdef"><b>Definition:</b> MotorMove.hpp:29</div></div>
-<div class="ttc" id="aclasssmart__stick_1_1MotorMove_html_a9264c12dd59781755b4f4ac5ed6d9f33"><div class="ttname"><a href="classsmart__stick_1_1MotorMove.html#a9264c12dd59781755b4f4ac5ed6d9f33">smart_stick::MotorMove::listener_</a></div><div class="ttdeci">MotorMoveListener listener_</div><div class="ttdef"><b>Definition:</b> MotorMove.hpp:48</div></div>
-<div class="ttc" id="anamespacesmart__stick_html"><div class="ttname"><a href="namespacesmart__stick.html">smart_stick</a></div><div class="ttdef"><b>Definition:</b> MotorMove.hpp:22</div></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classsmart__stick_1_1MotorMove.html#a8a133130e6ee7aeac44928971039845d">MotorMove</a>(<a class="code" href="classsmart__stick_1_1ToFSensor.html">ToFSensor</a>* tof);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classsmart__stick_1_1MotorMove.html#acb83a6097189136f4ce931eb5d29647f">~MotorMove</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classsmart__stick_1_1MotorMove.html#a1c7342569dfdc4045c020451f5b50971">has_distance</a>(<span class="keywordtype">float</span> distance) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structsmart__stick_1_1MotorMove_1_1CallbackInterface.html">   56</a></span>&#160;        <span class="keyword">struct </span><a class="code" href="structsmart__stick_1_1MotorMove_1_1CallbackInterface.html">CallbackInterface</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structsmart__stick_1_1MotorMove_1_1CallbackInterface.html#ad57abbfaf2a0601ec5fa69b4ecfd01cd">   61</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="structsmart__stick_1_1MotorMove_1_1CallbackInterface.html#ad57abbfaf2a0601ec5fa69b4ecfd01cd">has_duty</a>(<span class="keywordtype">int</span> duty_cycle) = 0;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        };</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classsmart__stick_1_1MotorMove.html#a2ae5e56dd0e0f398729a4a5a6d8d0a34">register_callback</a>(<a class="code" href="structsmart__stick_1_1MotorMove_1_1CallbackInterface.html">CallbackInterface</a>* ci);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">int</span> convert_distance_to_duty_cycle(<span class="keywordtype">float</span> distance);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">void</span> worker();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="classRPI__PWM.html">RPI_PWM</a> pwm;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        std::atomic_bool running;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::thread motor_thread;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        std::vector&lt;CallbackInterface*&gt; callbackInterfaces;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        std::mutex mutex;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        std::condition_variable cv;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordtype">float</span> distance = 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// Constants for Motor Control</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> PWM_MAX = 100;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> DISTANCE_MIN = 42;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> DISTANCE_MAX = 200;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> DECAY_FACTOR = 100.0f;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    };</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// TOF_DATA_SUBSCRIBER_HPP</span></div>
+<div class="ttc" id="aToFSensor_8hpp_html"><div class="ttname"><a href="ToFSensor_8hpp.html">ToFSensor.hpp</a></div><div class="ttdoc">Time of Flight sensor class.</div></div>
+<div class="ttc" id="aclassRPI__PWM_html"><div class="ttname"><a href="classRPI__PWM.html">RPI_PWM</a></div><div class="ttdef"><b>Definition:</b> rpi_pwm.h:15</div></div>
+<div class="ttc" id="aclasssmart__stick_1_1MotorMove_html"><div class="ttname"><a href="classsmart__stick_1_1MotorMove.html">smart_stick::MotorMove</a></div><div class="ttdoc">Class for moving the motor based on the commands. Derived from CallbackInterface for the ToFSensor cl...</div><div class="ttdef"><b>Definition:</b> MotorMove.hpp:37</div></div>
+<div class="ttc" id="aclasssmart__stick_1_1MotorMove_html_a1c7342569dfdc4045c020451f5b50971"><div class="ttname"><a href="classsmart__stick_1_1MotorMove.html#a1c7342569dfdc4045c020451f5b50971">smart_stick::MotorMove::has_distance</a></div><div class="ttdeci">void has_distance(float distance) override</div><div class="ttdoc">Callback function for distance from ToFSensor.</div><div class="ttdef"><b>Definition:</b> MotorMove.cpp:21</div></div>
+<div class="ttc" id="aclasssmart__stick_1_1MotorMove_html_a2ae5e56dd0e0f398729a4a5a6d8d0a34"><div class="ttname"><a href="classsmart__stick_1_1MotorMove.html#a2ae5e56dd0e0f398729a4a5a6d8d0a34">smart_stick::MotorMove::register_callback</a></div><div class="ttdeci">void register_callback(CallbackInterface *ci)</div><div class="ttdoc">Register a callback interface for the motor.</div><div class="ttdef"><b>Definition:</b> MotorMove.cpp:63</div></div>
+<div class="ttc" id="aclasssmart__stick_1_1MotorMove_html_a8a133130e6ee7aeac44928971039845d"><div class="ttname"><a href="classsmart__stick_1_1MotorMove.html#a8a133130e6ee7aeac44928971039845d">smart_stick::MotorMove::MotorMove</a></div><div class="ttdeci">MotorMove(ToFSensor *tof)</div><div class="ttdoc">Constructor for the MotorMove class.</div><div class="ttdef"><b>Definition:</b> MotorMove.cpp:11</div></div>
+<div class="ttc" id="aclasssmart__stick_1_1MotorMove_html_acb83a6097189136f4ce931eb5d29647f"><div class="ttname"><a href="classsmart__stick_1_1MotorMove.html#acb83a6097189136f4ce931eb5d29647f">smart_stick::MotorMove::~MotorMove</a></div><div class="ttdeci">~MotorMove()</div><div class="ttdoc">Destructor for the MotorMove class.</div><div class="ttdef"><b>Definition:</b> MotorMove.cpp:90</div></div>
+<div class="ttc" id="aclasssmart__stick_1_1ToFSensor_html"><div class="ttname"><a href="classsmart__stick_1_1ToFSensor.html">smart_stick::ToFSensor</a></div><div class="ttdef"><b>Definition:</b> ToFSensor.hpp:33</div></div>
+<div class="ttc" id="anamespacesmart__stick_html"><div class="ttname"><a href="namespacesmart__stick.html">smart_stick</a></div><div class="ttdef"><b>Definition:</b> DDSCommunicator.hpp:32</div></div>
+<div class="ttc" id="arpi__pwm_8h_html"><div class="ttname"><a href="rpi__pwm_8h.html">rpi_pwm.h</a></div></div>
+<div class="ttc" id="astructsmart__stick_1_1MotorMove_1_1CallbackInterface_html"><div class="ttname"><a href="structsmart__stick_1_1MotorMove_1_1CallbackInterface.html">smart_stick::MotorMove::CallbackInterface</a></div><div class="ttdef"><b>Definition:</b> MotorMove.hpp:57</div></div>
+<div class="ttc" id="astructsmart__stick_1_1MotorMove_1_1CallbackInterface_html_ad57abbfaf2a0601ec5fa69b4ecfd01cd"><div class="ttname"><a href="structsmart__stick_1_1MotorMove_1_1CallbackInterface.html#ad57abbfaf2a0601ec5fa69b4ecfd01cd">smart_stick::MotorMove::CallbackInterface::has_duty</a></div><div class="ttdeci">virtual void has_duty(int duty_cycle)=0</div><div class="ttdoc">Callback function for duty cycle.</div></div>
+<div class="ttc" id="astructsmart__stick_1_1ToFSensor_1_1CallbackInterface_html"><div class="ttname"><a href="structsmart__stick_1_1ToFSensor_1_1CallbackInterface.html">smart_stick::ToFSensor::CallbackInterface</a></div><div class="ttdef"><b>Definition:</b> ToFSensor.hpp:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

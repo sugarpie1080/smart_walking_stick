@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['decodevcselperiod_18',['decodeVcselPeriod',['../VL53L0X_8cpp.html#a9183f167ce743756d82bea4add3ad6de',1,'VL53L0X.cpp']]],
-  ['deletedata_19',['deleteData',['../classToFDataPubSubType.html#a2795c8ced6fbb413c280436dfba1a127',1,'ToFDataPubSubType::deleteData()'],['../classMotorCommandsPubSubType.html#ae196814a800a839609213ab36a19ae98',1,'MotorCommandsPubSubType::deleteData()']]],
-  ['deserialize_20',['deserialize',['../classMotorCommands.html#ae101d22e1f9f4756067b06b288038a25',1,'MotorCommands::deserialize()'],['../classMotorCommandsPubSubType.html#a34d84c5d064b61e242f82db251e54fbc',1,'MotorCommandsPubSubType::deserialize()'],['../classToFData.html#afe3d5004e76737339840ccad38334692',1,'ToFData::deserialize()'],['../classToFDataPubSubType.html#aaa6da93c973b17193cf9cbf1a86eba1f',1,'ToFDataPubSubType::deserialize()']]],
-  ['distance_21',['distance',['../classToFData.html#a335d9ef61594852391a3004b253fcdf9',1,'ToFData::distance()'],['../classToFData.html#a5871961322b45a9444d61b835feaa3f4',1,'ToFData::distance() const'],['../classToFData.html#a47acd6e820e0bef9be0ffe842ecef760',1,'ToFData::distance(float _distance)'],['../classToFData.html#ab6bf81a5adeb379e01c3c78567b3cd60',1,'ToFData::distance()']]],
-  ['dss_22',['dss',['../structVL53L0XSequenceStepEnables.html#aec219d8ebfbce5e53407eaa315109b60',1,'VL53L0XSequenceStepEnables']]],
-  ['duty_5fcycle_23',['duty_cycle',['../classMotorCommands.html#aba1ec25edf08c9089e734a43ea321248',1,'MotorCommands::duty_cycle()'],['../classMotorCommands.html#a4ca8ef94b6b0807faf2f764f4ff69311',1,'MotorCommands::duty_cycle(float _duty_cycle)'],['../classMotorCommands.html#a9c3419366be623fbc43c2a12f0727aaf',1,'MotorCommands::duty_cycle() const'],['../classMotorCommands.html#a9c1cc2c31d4b05e250c64f40ddaf4171',1,'MotorCommands::duty_cycle()']]],
-  ['dynamic_5fspad_5fnum_5frequested_5fref_5fspad_24',['DYNAMIC_SPAD_NUM_REQUESTED_REF_SPAD',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa074e077a78f07f8198e457bb47919166',1,'VL53L0X_defines.hpp']]],
-  ['dynamic_5fspad_5fref_5fen_5fstart_5foffset_25',['DYNAMIC_SPAD_REF_EN_START_OFFSET',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aaa59c9def7b0d4c9988d4587c439f80f7',1,'VL53L0X_defines.hpp']]]
+  ['calcmacroperiod_11',['calcMacroPeriod',['../VL53L0X_8cpp.html#aefec5de3912a862cfcb3da36045c4992',1,'VL53L0X.cpp']]],
+  ['callbackinterface_12',['CallbackInterface',['../structsmart__stick_1_1MotorMove_1_1CallbackInterface.html',1,'smart_stick::MotorMove::CallbackInterface'],['../structsmart__stick_1_1ToFSensor_1_1CallbackInterface.html',1,'smart_stick::ToFSensor::CallbackInterface']]],
+  ['checktimeoutexpired_13',['checkTimeoutExpired',['../VL53L0X_8cpp.html#abab7c5b1cbb48c1f149d63407116b4a7',1,'VL53L0X.cpp']]],
+  ['crosstalk_5fcompensation_5fpeak_5frate_5fmcps_14',['CROSSTALK_COMPENSATION_PEAK_RATE_MCPS',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa54ad358e286bab31b6c60454e0f5ae37',1,'VL53L0X_defines.hpp']]]
 ];

@@ -1,4 +1,4 @@
 <map id="smart_stick::MotorMove" name="smart_stick::MotorMove">
-<area shape="rect" id="node1" title="Subscriber class for ToFData messages. Derived from the BasePublisher Class." alt="" coords="42,95,222,121"/>
-<area shape="rect" id="node2" href="$classBaseSubscriber.html" title=" " alt="" coords="5,5,259,47"/>
+<area shape="rect" id="node1" title="Class for moving the motor based on the commands. Derived from CallbackInterface for the ToFSensor cl..." alt="" coords="5,95,185,121"/>
+<area shape="rect" id="node2" href="$structsmart__stick_1_1ToFSensor_1_1CallbackInterface.html" title=" " alt="" coords="10,5,181,47"/>
 </map>

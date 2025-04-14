@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['basepublisher_3',['BasePublisher',['../classBasePublisher.html',1,'BasePublisher&lt; TTopicName, TPubSubType &gt;'],['../classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d',1,'BasePublisher::BasePublisher()']]],
-  ['basepublisher_2ehpp_4',['BasePublisher.hpp',['../BasePublisher_8hpp.html',1,'']]],
-  ['basepublisher_3c_20motorcommands_2c_20motorcommandspubsubtype_20_3e_5',['BasePublisher&lt; MotorCommands, MotorCommandsPubSubType &gt;',['../classBasePublisher.html',1,'']]],
-  ['basepublisher_3c_20tofdata_2c_20tofdatapubsubtype_20_3e_6',['BasePublisher&lt; ToFData, ToFDataPubSubType &gt;',['../classBasePublisher.html',1,'']]],
-  ['basesubscriber_7',['BaseSubscriber',['../classBaseSubscriber.html',1,'BaseSubscriber&lt; TTopicName, TPubSubType &gt;'],['../classBaseSubscriber.html#a9f9208eb763c57470ad7b010b40e3e5e',1,'BaseSubscriber::BaseSubscriber()']]],
-  ['basesubscriber_2ehpp_8',['BaseSubscriber.hpp',['../BaseSubscriber_8hpp.html',1,'']]],
-  ['basesubscriber_3c_20motorcommands_2c_20motorcommandspubsubtype_20_3e_9',['BaseSubscriber&lt; MotorCommands, MotorCommandsPubSubType &gt;',['../classBaseSubscriber.html',1,'']]],
-  ['basesubscriber_3c_20tofdata_2c_20tofdatapubsubtype_20_3e_10',['BaseSubscriber&lt; ToFData, ToFDataPubSubType &gt;',['../classBaseSubscriber.html',1,'']]]
+  ['algo_5fpart_5fto_5fpart_5frange_5foffset_5fmm_1',['ALGO_PART_TO_PART_RANGE_OFFSET_MM',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa150cbb129a04aae1ddee7c5e430fec35',1,'VL53L0X_defines.hpp']]],
+  ['algo_5fphasecal_5fconfig_5ftimeout_2',['ALGO_PHASECAL_CONFIG_TIMEOUT',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aaa3f4def69e951bf91e26cb27e9180b23',1,'VL53L0X_defines.hpp']]],
+  ['algo_5fphasecal_5flim_3',['ALGO_PHASECAL_LIM',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa21ce06e80db7f971dbe56e5f43a70fcc',1,'VL53L0X_defines.hpp']]],
+  ['app_4',['app',['../namespaceWebpageSubGUI.html#ac43fd19588ca8a25d504c1b5f230947a',1,'WebpageSubGUI']]]
 ];

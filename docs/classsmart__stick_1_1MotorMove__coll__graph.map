@@ -1,7 +1,4 @@
 <map id="smart_stick::MotorMove" name="smart_stick::MotorMove">
-<area shape="rect" id="node1" title="Subscriber class for ToFData messages. Derived from the BasePublisher Class." alt="" coords="857,45,1037,71"/>
-<area shape="rect" id="node2" href="$classBaseSubscriber.html" title=" " alt="" coords="495,5,748,47"/>
-<area shape="rect" id="node3" href="$classsmart__stick_1_1MotorMove_1_1MotorMoveListener.html" title="Listener class for ToFData messages. Derived from the SubListener Class." alt="" coords="531,71,711,112"/>
-<area shape="rect" id="node4" href="$classSubListener.html" title=" " alt="" coords="205,78,445,105"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,78,156,105"/>
+<area shape="rect" id="node1" title="Class for moving the motor based on the commands. Derived from CallbackInterface for the ToFSensor cl..." alt="" coords="5,95,185,121"/>
+<area shape="rect" id="node2" href="$structsmart__stick_1_1ToFSensor_1_1CallbackInterface.html" title=" " alt="" coords="10,5,181,47"/>
 </map>

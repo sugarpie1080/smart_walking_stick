@@ -1,7 +1,8 @@
 var classsmart__stick_1_1MotorMove =
 [
-    [ "MotorMoveListener", "classsmart__stick_1_1MotorMove_1_1MotorMoveListener.html", "classsmart__stick_1_1MotorMove_1_1MotorMoveListener" ],
-    [ "MotorMove", "classsmart__stick_1_1MotorMove.html#a5851d03489109a94d904ef1b8a0ad58c", null ],
-    [ "set_listener", "classsmart__stick_1_1MotorMove.html#a12653d7aa3746a1ba6c7805449fe173f", null ],
-    [ "listener_", "classsmart__stick_1_1MotorMove.html#a9264c12dd59781755b4f4ac5ed6d9f33", null ]
+    [ "CallbackInterface", "structsmart__stick_1_1MotorMove_1_1CallbackInterface.html", "structsmart__stick_1_1MotorMove_1_1CallbackInterface" ],
+    [ "MotorMove", "classsmart__stick_1_1MotorMove.html#a8a133130e6ee7aeac44928971039845d", null ],
+    [ "~MotorMove", "classsmart__stick_1_1MotorMove.html#acb83a6097189136f4ce931eb5d29647f", null ],
+    [ "has_distance", "classsmart__stick_1_1MotorMove.html#a1c7342569dfdc4045c020451f5b50971", null ],
+    [ "register_callback", "classsmart__stick_1_1MotorMove.html#a2ae5e56dd0e0f398729a4a5a6d8d0a34", null ]
 ];

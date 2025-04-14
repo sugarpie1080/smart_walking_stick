@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['algo_5fpart_5fto_5fpart_5frange_5foffset_5fmm_0',['ALGO_PART_TO_PART_RANGE_OFFSET_MM',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa150cbb129a04aae1ddee7c5e430fec35',1,'VL53L0X_defines.hpp']]],
-  ['algo_5fphasecal_5fconfig_5ftimeout_1',['ALGO_PHASECAL_CONFIG_TIMEOUT',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aaa3f4def69e951bf91e26cb27e9180b23',1,'VL53L0X_defines.hpp']]],
-  ['algo_5fphasecal_5flim_2',['ALGO_PHASECAL_LIM',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa21ce06e80db7f971dbe56e5f43a70fcc',1,'VL53L0X_defines.hpp']]]
+  ['_5f_5finit_5f_5f_0',['__init__',['../classReader_1_1Reader.html#af4e1fe00fc4e67a70cba6d307e0afe32',1,'Reader.Reader.__init__()'],['../classReaderListenerMotor_1_1ReaderListenerMotor.html#a956469e28de1c672cef0f09f0dc1545c',1,'ReaderListenerMotor.ReaderListenerMotor.__init__()'],['../classReaderListenerToF_1_1ReaderListenerToF.html#aba54e27ed86d4530533e4fa44283b56d',1,'ReaderListenerToF.ReaderListenerToF.__init__()']]]
 ];

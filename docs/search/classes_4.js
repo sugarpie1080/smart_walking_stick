@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['publistener_265',['PubListener',['../classPubListener.html',1,'']]]
+  ['motorcommands_236',['MotorCommands',['../structMotorCommands.html',1,'']]],
+  ['motormove_237',['MotorMove',['../classsmart__stick_1_1MotorMove.html',1,'smart_stick']]]
 ];

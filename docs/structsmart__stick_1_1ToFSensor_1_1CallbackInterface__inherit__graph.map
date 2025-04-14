@@ -1,0 +1,5 @@
+<map id="smart_stick::ToFSensor::CallbackInterface" name="smart_stick::ToFSensor::CallbackInterface">
+<area shape="rect" id="node1" title=" " alt="" coords="150,5,321,47"/>
+<area shape="rect" id="node2" href="$classsmart__stick_1_1DDSCommunicator.html" title="DDSCommunicator class for publishing data to DDS Derived from the CallbackInterface for both ToFSenso..." alt="" coords="5,95,236,121"/>
+<area shape="rect" id="node3" href="$classsmart__stick_1_1MotorMove.html" title="Class for moving the motor based on the commands. Derived from CallbackInterface for the ToFSensor cl..." alt="" coords="260,95,440,121"/>
+</map>

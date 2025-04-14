@@ -1,0 +1,9 @@
+<map id="include/application/ToFSensor.hpp" name="include/application/ToFSensor.hpp">
+<area shape="rect" id="node1" title="Time of Flight sensor class." alt="" coords="309,5,455,47"/>
+<area shape="rect" id="node2" href="$DDSCommunicator_8hpp.html" title="DDSCommunicator class for publishing data to DDS." alt="" coords="112,184,289,225"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="Main function for the smart_stick application." alt="" coords="300,273,405,300"/>
+<area shape="rect" id="node5" href="$MotorMove_8hpp.html" title="Class for moving the motor based on the commands." alt="" coords="365,95,511,136"/>
+<area shape="rect" id="node7" href="$ToFSensor_8cpp.html" title=" " alt="" coords="535,102,747,129"/>
+<area shape="rect" id="node3" href="$DDSCommunicator_8cpp.html" title=" " alt="" coords="5,273,276,300"/>
+<area shape="rect" id="node6" href="$MotorMove_8cpp.html" title=" " alt="" coords="415,191,637,218"/>
+</map>

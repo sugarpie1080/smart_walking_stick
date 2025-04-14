@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,152,65"/>
-<area shape="rect" id="node2" href="$classMotorCommandsPubSubType.html" title="This class represents the TopicDataType of the type MotorCommands defined by the user in the IDL file..." alt="" coords="200,5,412,32"/>
-<area shape="rect" id="node3" href="$classToFDataPubSubType.html" title="This class represents the TopicDataType of the type ToFData defined by the user in the IDL file." alt="" coords="229,56,383,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,46,208,73"/>
+<area shape="rect" id="node2" href="$classReaderListenerMotor_1_1ReaderListenerMotor.html" title=" " alt="" coords="256,5,463,47"/>
+<area shape="rect" id="node3" href="$classReaderListenerToF_1_1ReaderListenerToF.html" title=" " alt="" coords="264,71,455,112"/>
 </map>

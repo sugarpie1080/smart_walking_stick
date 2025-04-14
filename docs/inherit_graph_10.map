@@ -1,4 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classsmart__stick_1_1Sensor.html" title="A parent class to initalise and retrieve data from a given sensor." alt="" coords="5,5,156,32"/>
-<area shape="rect" id="node2" href="$classsmart__stick_1_1ToFSensor.html" title=" " alt="" coords="204,5,375,32"/>
+<area shape="rect" id="node1" href="$structsmart__stick_1_1MotorMove_1_1CallbackInterface.html" title=" " alt="" coords="5,5,185,47"/>
+<area shape="rect" id="node2" href="$classsmart__stick_1_1DDSCommunicator.html" title="DDSCommunicator class for publishing data to DDS Derived from the CallbackInterface for both ToFSenso..." alt="" coords="233,21,464,47"/>
+<area shape="rect" id="node3" href="$structsmart__stick_1_1ToFSensor_1_1CallbackInterface.html" title=" " alt="" coords="10,71,181,112"/>
+<area shape="rect" id="node4" href="$classsmart__stick_1_1MotorMove.html" title="Class for moving the motor based on the commands. Derived from CallbackInterface for the ToFSensor cl..." alt="" coords="259,78,439,105"/>
 </map>

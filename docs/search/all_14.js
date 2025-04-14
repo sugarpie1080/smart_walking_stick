@@ -1,11 +1,14 @@
 var searchData=
 [
-  ['_7ebasepublisher_243',['~BasePublisher',['../classBasePublisher.html#ad013f423057fdc56160824c7975bc202',1,'BasePublisher']]],
-  ['_7ebasesubscriber_244',['~BaseSubscriber',['../classBaseSubscriber.html#a98f6dde650a8a86fd02a50ef3b1f0bc4',1,'BaseSubscriber']]],
-  ['_7emotorcommands_245',['~MotorCommands',['../classMotorCommands.html#aff762c3336471e3c303d41262351ac80',1,'MotorCommands']]],
-  ['_7emotorcommandspubsubtype_246',['~MotorCommandsPubSubType',['../classMotorCommandsPubSubType.html#ae401edeeec1fcf166368f3b9979a324b',1,'MotorCommandsPubSubType']]],
-  ['_7esensor_247',['~Sensor',['../classsmart__stick_1_1Sensor.html#a785633245c79e3a935d76f92d916575d',1,'smart_stick::Sensor']]],
-  ['_7esublistener_248',['~SubListener',['../classSubListener.html#aecedd255a12f8cf0ca3a02433b9ce01a',1,'SubListener']]],
-  ['_7etofdata_249',['~ToFData',['../classToFData.html#a68b504b8ad1b2a40e344163bb31b0a1b',1,'ToFData']]],
-  ['_7etofdatapubsubtype_250',['~ToFDataPubSubType',['../classToFDataPubSubType.html#a510d8d3cdcdbfaedf15c09d809fb21e1',1,'ToFDataPubSubType']]]
+  ['webpagesubgui_211',['WebpageSubGUI',['../namespaceWebpageSubGUI.html',1,'']]],
+  ['webpagesubgui_2epy_212',['WebpageSubGUI.py',['../WebpageSubGUI_8py.html',1,'']]],
+  ['worker_213',['worker',['../classsmart__stick_1_1DDSCommunicator.html#a25828d8e7b46f43832dce1a7f204744d',1,'smart_stick::DDSCommunicator']]],
+  ['writebit_214',['writeBit',['../classI2Cdev.html#aa68890af87de5471d32e583ebbd91acb',1,'I2Cdev']]],
+  ['writebits_215',['writeBits',['../classI2Cdev.html#a913371251b6a41520c080115650e1b59',1,'I2Cdev']]],
+  ['writebitsw_216',['writeBitsW',['../classI2Cdev.html#a8f8652a1328224cce867eed665a45c4d',1,'I2Cdev']]],
+  ['writebitw_217',['writeBitW',['../classI2Cdev.html#a1b5fbedfadec5d429c81ee84d27e658d',1,'I2Cdev']]],
+  ['writebyte_218',['writeByte',['../classI2Cdev.html#aeb297637ef985cd562da465ba61b7042',1,'I2Cdev']]],
+  ['writebytes_219',['writeBytes',['../classI2Cdev.html#aa4e39cac6c0eac5112f9132084bcc93e',1,'I2Cdev']]],
+  ['writeword_220',['writeWord',['../classI2Cdev.html#acbe68a802d6a177301736e60bedd1def',1,'I2Cdev']]],
+  ['writewords_221',['writeWords',['../classI2Cdev.html#aae37c0526e4b4730a5b2ffd752fd8b21',1,'I2Cdev']]]
 ];

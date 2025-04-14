@@ -1,23 +1,22 @@
 <map id="include/application/MotorMove.hpp" name="include/application/MotorMove.hpp">
-<area shape="rect" id="node1" title="Example Subscriber class." alt="" coords="451,5,597,47"/>
-<area shape="rect" id="node2" href="$BaseSubscriber_8hpp.html" title="Parent Class for Subscriber classes." alt="" coords="561,95,711,121"/>
-<area shape="rect" id="node3" href="$SubListener_8hpp.html" title="This file contains the class for determining if a subscriber has a matching publisher." alt="" coords="127,177,252,203"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,259,173,300"/>
-<area shape="rect" id="node12" href="$MotorCommandsPubSubTypes_8h.html" title=" " alt="" coords="1717,95,1947,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="198,259,381,300"/>
-<area shape="rect" id="node6" title=" " alt="" coords="327,169,502,211"/>
-<area shape="rect" id="node7" title=" " alt="" coords="527,169,745,211"/>
-<area shape="rect" id="node8" title=" " alt="" coords="769,169,937,211"/>
-<area shape="rect" id="node9" title=" " alt="" coords="962,169,1145,211"/>
-<area shape="rect" id="node10" title=" " alt="" coords="1169,169,1337,211"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1361,177,1607,203"/>
-<area shape="rect" id="node13" title=" " alt="" coords="1631,169,1833,211"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1857,177,2007,203"/>
-<area shape="rect" id="node15" href="$MotorCommands_8h.html" title=" " alt="" coords="2031,177,2177,203"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1857,266,1927,293"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1952,266,2008,293"/>
-<area shape="rect" id="node18" title=" " alt="" coords="2032,266,2091,293"/>
-<area shape="rect" id="node19" title=" " alt="" coords="2115,266,2178,293"/>
-<area shape="rect" id="node20" title=" " alt="" coords="2203,266,2253,293"/>
-<area shape="rect" id="node21" title=" " alt="" coords="2277,266,2336,293"/>
+<area shape="rect" id="node1" title="Class for moving the motor based on the commands." alt="" coords="434,5,580,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="666,169,746,196"/>
+<area shape="rect" id="node3" title=" " alt="" coords="95,244,159,271"/>
+<area shape="rect" id="node4" title=" " alt="" coords="23,169,90,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="383,169,447,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="876,95,1018,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="472,169,542,196"/>
+<area shape="rect" id="node8" title=" " alt="" coords="567,169,642,196"/>
+<area shape="rect" id="node9" href="$rpi__pwm_8h.html" title=" " alt="" coords="760,95,851,121"/>
+<area shape="rect" id="node15" href="$ToFSensor_8hpp.html" title="Time of Flight sensor class." alt="" coords="266,95,380,121"/>
+<area shape="rect" id="node10" title=" " alt="" coords="1042,169,1108,196"/>
+<area shape="rect" id="node11" title=" " alt="" coords="1133,169,1204,196"/>
+<area shape="rect" id="node12" title=" " alt="" coords="770,169,841,196"/>
+<area shape="rect" id="node13" title=" " alt="" coords="866,169,924,196"/>
+<area shape="rect" id="node14" title=" " alt="" coords="949,169,1017,196"/>
+<area shape="rect" id="node16" title=" " alt="" coords="165,169,228,196"/>
+<area shape="rect" id="node17" href="$VL53L0X_8hpp.html" title=" " alt="" coords="252,169,359,196"/>
+<area shape="rect" id="node18" title=" " alt="" coords="331,319,398,345"/>
+<area shape="rect" id="node19" title=" " alt="" coords="194,244,268,271"/>
+<area shape="rect" id="node20" href="$VL53L0X__defines_8hpp.html" title=" " alt="" coords="343,244,503,271"/>
 </map>

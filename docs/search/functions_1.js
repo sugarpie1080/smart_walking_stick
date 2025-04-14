@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['convert_5fdistance_5fto_5fduty_5fcycle_319',['convert_distance_to_duty_cycle',['../classsmart__stick_1_1ObstacleDetectionSub_1_1OSSubListener.html#a047d36dbdd33a57e17db8ce85620e504',1,'smart_stick::ObstacleDetectionSub::OSSubListener']]],
-  ['createdata_320',['createData',['../classMotorCommandsPubSubType.html#ac56863b2a76fa2bf287c81018c1eb63f',1,'MotorCommandsPubSubType::createData()'],['../classToFDataPubSubType.html#ae81f1b00e335e4c14d153d6518bf29d3',1,'ToFDataPubSubType::createData()']]]
+  ['basepublisher_284',['BasePublisher',['../classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d',1,'BasePublisher']]],
+  ['basesubscriber_285',['BaseSubscriber',['../classBaseSubscriber.html#a9f9208eb763c57470ad7b010b40e3e5e',1,'BaseSubscriber']]]
 ];

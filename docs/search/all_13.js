@@ -1,11 +1,16 @@
 var searchData=
 [
-  ['writebit_235',['writeBit',['../classI2Cdev.html#aa68890af87de5471d32e583ebbd91acb',1,'I2Cdev']]],
-  ['writebits_236',['writeBits',['../classI2Cdev.html#a913371251b6a41520c080115650e1b59',1,'I2Cdev']]],
-  ['writebitsw_237',['writeBitsW',['../classI2Cdev.html#a8f8652a1328224cce867eed665a45c4d',1,'I2Cdev']]],
-  ['writebitw_238',['writeBitW',['../classI2Cdev.html#a1b5fbedfadec5d429c81ee84d27e658d',1,'I2Cdev']]],
-  ['writebyte_239',['writeByte',['../classI2Cdev.html#aeb297637ef985cd562da465ba61b7042',1,'I2Cdev']]],
-  ['writebytes_240',['writeBytes',['../classI2Cdev.html#aa4e39cac6c0eac5112f9132084bcc93e',1,'I2Cdev']]],
-  ['writeword_241',['writeWord',['../classI2Cdev.html#acbe68a802d6a177301736e60bedd1def',1,'I2Cdev']]],
-  ['writewords_242',['writeWords',['../classI2Cdev.html#aae37c0526e4b4730a5b2ffd752fd8b21',1,'I2Cdev']]]
+  ['vcselperiodfinalrange_198',['VcselPeriodFinalRange',['../VL53L0X__defines_8hpp.html#a610e27e5e0b0b8f6c8a1670026f436ada7a7a58361fb19efc6acb72a0316b3e8b',1,'VL53L0X_defines.hpp']]],
+  ['vcselperiodprerange_199',['VcselPeriodPreRange',['../VL53L0X__defines_8hpp.html#a610e27e5e0b0b8f6c8a1670026f436ada74620bf5eb7a53c38ba2cd9351c5b815',1,'VL53L0X_defines.hpp']]],
+  ['vhv_5fconfig_5fpad_5fscl_5fsda_5f_5fextsup_5fhv_200',['VHV_CONFIG_PAD_SCL_SDA__EXTSUP_HV',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa065ec460e2bb203644a9200be037f38a',1,'VL53L0X_defines.hpp']]],
+  ['vl53l0x_201',['VL53L0X',['../classVL53L0X.html',1,'VL53L0X'],['../classVL53L0X.html#ae1e2f9217672b5b827d60307e594ee3d',1,'VL53L0X::VL53L0X()']]],
+  ['vl53l0x_20library_20for_20linux_202',['VL53L0X library for Linux',['../md_src_drivers_vl53l0x_linux_README.html',1,'']]],
+  ['vl53l0x_2ecpp_203',['VL53L0X.cpp',['../VL53L0X_8cpp.html',1,'']]],
+  ['vl53l0x_2ehpp_204',['VL53L0X.hpp',['../VL53L0X_8hpp.html',1,'']]],
+  ['vl53l0x_5faddress_5fdefault_205',['VL53L0X_ADDRESS_DEFAULT',['../VL53L0X__defines_8hpp.html#a70a6277325a3b6d21f62e0db5013d028',1,'VL53L0X_defines.hpp']]],
+  ['vl53l0x_5fdefines_2ehpp_206',['VL53L0X_defines.hpp',['../VL53L0X__defines_8hpp.html',1,'']]],
+  ['vl53l0x_5fregister_5faddresses_207',['VL53L0X_REGISTER_ADDRESSES',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4a',1,'VL53L0X_defines.hpp']]],
+  ['vl53l0xsequencestepenables_208',['VL53L0XSequenceStepEnables',['../structVL53L0XSequenceStepEnables.html',1,'']]],
+  ['vl53l0xsequencesteptimeouts_209',['VL53L0XSequenceStepTimeouts',['../structVL53L0XSequenceStepTimeouts.html',1,'']]],
+  ['vl53l0xvcselperiodtype_210',['vl53l0xVcselPeriodType',['../VL53L0X__defines_8hpp.html#a610e27e5e0b0b8f6c8a1670026f436ad',1,'VL53L0X_defines.hpp']]]
 ];

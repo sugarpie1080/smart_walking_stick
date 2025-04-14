@@ -89,64 +89,69 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 
-<p>Entrypoint for the ToF Sensor Publisher and Subscriber.  
+<p>Main function for the <a class="el" href="namespacesmart__stick.html">smart_stick</a> application.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="ToFDataPublisher_8hpp_source.html">ToFDataPublisher.hpp</a>&gt;</code><br />
-<code>#include &lt;ToFDataSubscriber.hpp&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;<a class="el" href="ToFSensor_8hpp_source.html">ToFSensor.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="MotorMove_8hpp_source.html">MotorMove.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="DDSCommunicator_8hpp_source.html">DDSCommunicator.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#asrc_2main_8cpp" alt=""/></div>
 <map name="asrc_2main_8cpp" id="asrc_2main_8cpp">
-<area shape="rect" title="Entrypoint for the ToF Sensor Publisher and Subscriber." alt="" coords="1932,5,2037,32"/>
-<area shape="rect" href="ToFDataPublisher_8hpp.html" title="Publisher Class for ToF Data." alt="" coords="1594,80,1757,107"/>
-<area shape="rect" title=" " alt="" coords="1894,326,1974,353"/>
-<area shape="rect" title=" " alt="" coords="2022,80,2193,107"/>
-<area shape="rect" href="BasePublisher_8hpp.html" title="Parent Class for Publisher classes." alt="" coords="1462,155,1603,181"/>
-<area shape="rect" href="ToFDataPubSubTypes_8h.html" title=" " alt="" coords="409,155,581,181"/>
-<area shape="rect" href="tof__sensor_8hpp.html" title="Time of Flight sensor class." alt="" coords="2022,155,2139,181"/>
-<area shape="rect" href="PubListener_8hpp.html" title="Class for determining if a publisher has a matching subscriber." alt="" coords="1521,237,1646,263"/>
-<area shape="rect" title=" " alt="" coords="1282,319,1458,360"/>
-<area shape="rect" title=" " alt="" coords="1483,319,1644,360"/>
-<area shape="rect" title=" " alt="" coords="1669,326,1735,353"/>
-<area shape="rect" title=" " alt="" coords="1721,229,1896,271"/>
-<area shape="rect" title=" " alt="" coords="721,229,939,271"/>
-<area shape="rect" title=" " alt="" coords="964,229,1125,271"/>
-<area shape="rect" title=" " alt="" coords="1150,237,1395,263"/>
-<area shape="rect" title=" " alt="" coords="495,229,696,271"/>
-<area shape="rect" title=" " alt="" coords="321,237,470,263"/>
-<area shape="rect" href="ToFData_8h.html" title=" " alt="" coords="209,237,296,263"/>
-<area shape="rect" title=" " alt="" coords="5,326,76,353"/>
-<area shape="rect" title=" " alt="" coords="101,326,157,353"/>
-<area shape="rect" title=" " alt="" coords="181,326,239,353"/>
-<area shape="rect" title=" " alt="" coords="264,326,327,353"/>
-<area shape="rect" title=" " alt="" coords="351,326,402,353"/>
-<area shape="rect" title=" " alt="" coords="426,326,485,353"/>
-<area shape="rect" href="sensors_8hpp.html" title="A sensor class to initalise and retrieve sensor data." alt="" coords="2027,237,2127,263"/>
-<area shape="rect" href="VL53L0X_8hpp.html" title=" " alt="" coords="2227,237,2334,263"/>
-<area shape="rect" title=" " alt="" coords="1999,326,2069,353"/>
-<area shape="rect" title=" " alt="" coords="2094,326,2169,353"/>
-<area shape="rect" title=" " alt="" coords="2325,408,2391,435"/>
-<area shape="rect" title=" " alt="" coords="2244,326,2317,353"/>
-<area shape="rect" title=" " alt="" coords="2342,326,2406,353"/>
-<area shape="rect" href="VL53L0X__defines_8hpp.html" title=" " alt="" coords="2430,326,2590,353"/>
+<area shape="rect" title="Main function for the smart_stick application." alt="" coords="423,5,528,32"/>
+<area shape="rect" title=" " alt="" coords="1311,326,1391,353"/>
+<area shape="rect" title=" " alt="" coords="42,326,106,353"/>
+<area shape="rect" title=" " alt="" coords="303,155,370,181"/>
+<area shape="rect" href="ToFSensor_8hpp.html" title="Time of Flight sensor class." alt="" coords="378,237,493,263"/>
+<area shape="rect" href="MotorMove_8hpp.html" title="Class for moving the motor based on the commands." alt="" coords="496,155,620,181"/>
+<area shape="rect" href="DDSCommunicator_8hpp.html" title="DDSCommunicator class for publishing data to DDS." alt="" coords="639,80,813,107"/>
+<area shape="rect" title=" " alt="" coords="2349,326,2415,353"/>
+<area shape="rect" title=" " alt="" coords="686,408,750,435"/>
+<area shape="rect" title=" " alt="" coords="261,326,324,353"/>
+<area shape="rect" href="VL53L0X_8hpp.html" title=" " alt="" coords="130,326,237,353"/>
+<area shape="rect" title=" " alt="" coords="400,326,471,353"/>
+<area shape="rect" title=" " alt="" coords="495,326,570,353"/>
+<area shape="rect" title=" " alt="" coords="209,483,275,509"/>
+<area shape="rect" title=" " alt="" coords="5,408,79,435"/>
+<area shape="rect" href="VL53L0X__defines_8hpp.html" title=" " alt="" coords="103,408,263,435"/>
+<area shape="rect" title=" " alt="" coords="1145,237,1288,263"/>
+<area shape="rect" href="rpi__pwm_8h.html" title=" " alt="" coords="718,237,809,263"/>
+<area shape="rect" title=" " alt="" coords="866,326,933,353"/>
+<area shape="rect" title=" " alt="" coords="957,326,1028,353"/>
+<area shape="rect" title=" " alt="" coords="595,326,665,353"/>
+<area shape="rect" title=" " alt="" coords="690,326,749,353"/>
+<area shape="rect" title=" " alt="" coords="773,326,841,353"/>
+<area shape="rect" title=" " alt="" coords="696,155,756,181"/>
+<area shape="rect" href="BasePublisher_8hpp.html" title="Parent Class for Publisher classes." alt="" coords="2082,155,2223,181"/>
+<area shape="rect" title=" " alt="" coords="780,155,968,181"/>
+<area shape="rect" title=" " alt="" coords="992,155,1239,181"/>
+<area shape="rect" href="PubListener_8hpp.html" title="Class for determining if a publisher has a matching subscriber." alt="" coords="2465,237,2590,263"/>
+<area shape="rect" title=" " alt="" coords="2439,319,2615,360"/>
+<area shape="rect" title=" " alt="" coords="2640,319,2801,360"/>
+<area shape="rect" title=" " alt="" coords="1516,229,1691,271"/>
+<area shape="rect" title=" " alt="" coords="1715,229,1934,271"/>
+<area shape="rect" title=" " alt="" coords="1959,229,2120,271"/>
+<area shape="rect" title=" " alt="" coords="2145,237,2390,263"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Entrypoint for the ToF Sensor Publisher and Subscriber. </p>
+<div class="textblock"><p>Main function for the <a class="el" href="namespacesmart__stick.html">smart_stick</a> application. </p>
 <dl class="section author"><dt>Author</dt><dd>Felicity Lipscomb </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025-03-10 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-04-05 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
+<a id="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,8 +159,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int main </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

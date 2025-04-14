@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('classBasePublisher.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classBasePublisher-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BasePublisher&lt; TTopicName, TPubSubType &gt; Class Template Reference</div>  </div>
@@ -106,6 +107,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b330dce10d7f089aee259e146e7c046"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046">publish</a> (TTopicName &amp;message)</td></tr>
 <tr class="memdesc:a8b330dce10d7f089aee259e146e7c046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publishes the message generated.  <a href="classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046">More...</a><br /></td></tr>
 <tr class="separator:a8b330dce10d7f089aee259e146e7c046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a7b52c95ab0ce3be759f20bfca96524e7"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBasePublisher.html#a7b52c95ab0ce3be759f20bfca96524e7">stop_flag_</a> {false}</td></tr>
+<tr class="separator:a7b52c95ab0ce3be759f20bfca96524e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename TTopicName, typename TPubSubType&gt;<br />
@@ -222,6 +228,31 @@ template&lt;typename TTopicName , typename TPubSubType &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>true message sent successfully. </dd>
 <dd>
 false message failed to send. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7b52c95ab0ce3be759f20bfca96524e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b52c95ab0ce3be759f20bfca96524e7">&#9670;&nbsp;</a></span>stop_flag_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename TTopicName , typename TPubSubType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;bool&gt; <a class="el" href="classBasePublisher.html">BasePublisher</a>&lt; TTopicName, TPubSubType &gt;::stop_flag_ {false}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,0 +1,35 @@
+<map id="include/application/DDSCommunicator.hpp" name="include/application/DDSCommunicator.hpp">
+<area shape="rect" id="node1" title="DDSCommunicator class for publishing data to DDS." alt="" coords="572,5,749,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,65,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="90,95,157,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="231,266,295,293"/>
+<area shape="rect" id="node5" title=" " alt="" coords="1291,266,1358,293"/>
+<area shape="rect" id="node6" title=" " alt="" coords="287,177,429,203"/>
+<area shape="rect" id="node7" title=" " alt="" coords="301,348,365,375"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1382,266,1462,293"/>
+<area shape="rect" id="node9" href="$ToFSensor_8hpp.html" title="Time of Flight sensor class." alt="" coords="555,177,670,203"/>
+<area shape="rect" id="node17" href="$MotorMove_8hpp.html" title="Class for moving the motor based on the commands." alt="" coords="649,95,773,121"/>
+<area shape="rect" id="node24" href="$BasePublisher_8hpp.html" title="Parent Class for Publisher classes." alt="" coords="1446,95,1587,121"/>
+<area shape="rect" id="node32" title=" " alt="" coords="1612,95,1800,121"/>
+<area shape="rect" id="node33" title=" " alt="" coords="1824,95,2071,121"/>
+<area shape="rect" id="node10" title=" " alt="" coords="371,266,433,293"/>
+<area shape="rect" id="node11" href="$VL53L0X_8hpp.html" title=" " alt="" coords="509,266,615,293"/>
+<area shape="rect" id="node15" title=" " alt="" coords="640,266,711,293"/>
+<area shape="rect" id="node16" title=" " alt="" coords="735,266,810,293"/>
+<area shape="rect" id="node12" title=" " alt="" coords="494,423,561,449"/>
+<area shape="rect" id="node13" title=" " alt="" coords="624,348,697,375"/>
+<area shape="rect" id="node14" href="$VL53L0X__defines_8hpp.html" title=" " alt="" coords="389,348,549,375"/>
+<area shape="rect" id="node18" href="$rpi__pwm_8h.html" title=" " alt="" coords="817,177,907,203"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1201,266,1267,293"/>
+<area shape="rect" id="node20" title=" " alt="" coords="835,266,905,293"/>
+<area shape="rect" id="node21" title=" " alt="" coords="929,266,1000,293"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1025,266,1083,293"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1108,266,1176,293"/>
+<area shape="rect" id="node25" href="$PubListener_8hpp.html" title="Class for determining if a publisher has a matching subscriber." alt="" coords="1505,177,1630,203"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1673,259,1849,300"/>
+<area shape="rect" id="node27" title=" " alt="" coords="1487,259,1648,300"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1756,169,1931,211"/>
+<area shape="rect" id="node29" title=" " alt="" coords="1955,169,2174,211"/>
+<area shape="rect" id="node30" title=" " alt="" coords="2199,169,2360,211"/>
+<area shape="rect" id="node31" title=" " alt="" coords="1185,177,1430,203"/>
+</map>

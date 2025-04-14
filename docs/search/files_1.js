@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['i2cdev_2ecpp_283',['I2Cdev.cpp',['../I2Cdev_8cpp.html',1,'']]],
-  ['i2cdev_2ehpp_284',['I2Cdev.hpp',['../I2Cdev_8hpp.html',1,'']]]
+  ['ddscommunicator_2ecpp_257',['DDSCommunicator.cpp',['../DDSCommunicator_8cpp.html',1,'']]],
+  ['ddscommunicator_2ehpp_258',['DDSCommunicator.hpp',['../DDSCommunicator_8hpp.html',1,'']]]
 ];

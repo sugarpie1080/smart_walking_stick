@@ -114,60 +114,63 @@ $(document).ready(function(){initNavTree('BasePublisher_8hpp_source.html',''); i
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        DataWriter* writer_ = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        TypeSupport type_;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classPubListener.html">PubListener</a> listener_;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d">   57</a></span>&#160;        <a class="code" href="classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d">BasePublisher</a>(<span class="keyword">const</span> std::string&amp; topic_name):type_(new TPubSubType())</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            DomainParticipantQos participantQos;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            participantQos.name(<span class="stringliteral">&quot;Participant_publisher&quot;</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            participant_ = DomainParticipantFactory::get_instance()-&gt;create_participant(0, participantQos);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">if</span> (participant_ == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create DomainParticipant&quot;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            type_.register_type(participant_);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            topic_ = participant_-&gt;create_topic(topic_name,type_.get_type_name() , TOPIC_QOS_DEFAULT);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (topic_ == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create Topic&quot;</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            publisher_ = participant_-&gt;create_publisher(PUBLISHER_QOS_DEFAULT, <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span> (publisher_ == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create Publisher&quot;</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                writer_ = publisher_-&gt;create_datawriter(topic_, DATAWRITER_QOS_DEFAULT, &amp;listener_);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> (writer_ == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create Reader&quot;</span>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classBasePublisher.html#ad013f423057fdc56160824c7975bc202">   83</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classBasePublisher.html#ad013f423057fdc56160824c7975bc202">~BasePublisher</a>()</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> (writer_ != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                publisher_-&gt;delete_datawriter(writer_);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (publisher_ != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                participant_-&gt;delete_publisher(publisher_);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">if</span> (topic_ != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                participant_-&gt;delete_topic(topic_);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            DomainParticipantFactory::get_instance()-&gt;delete_participant(participant_);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        </div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046">  101</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046">publish</a>(TTopicName&amp; message)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">if</span> (listener_.<a class="code" href="classPubListener.html#abc273266b35af662203c68fb0ed52891">matched_</a> &gt; 0)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                writer_-&gt;write(&amp;message);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;};</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classBasePublisher.html#a7b52c95ab0ce3be759f20bfca96524e7">   51</a></span>&#160;        std::atomic&lt;bool&gt; stop_flag_{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d">   59</a></span>&#160;        <a class="code" href="classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d">BasePublisher</a>(<span class="keyword">const</span> std::string&amp; topic_name):type_(new TPubSubType())</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            DomainParticipantQos participantQos;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            participantQos.name(<span class="stringliteral">&quot;Participant_publisher&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            participant_ = DomainParticipantFactory::get_instance()-&gt;create_participant(0, participantQos);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (participant_ == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create DomainParticipant&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            type_.register_type(participant_);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            topic_ = participant_-&gt;create_topic(topic_name,type_.get_type_name() , TOPIC_QOS_DEFAULT);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">if</span> (topic_ == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create Topic&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            publisher_ = participant_-&gt;create_publisher(PUBLISHER_QOS_DEFAULT, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">if</span> (publisher_ == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create Publisher&quot;</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                writer_ = publisher_-&gt;create_datawriter(topic_, DATAWRITER_QOS_DEFAULT, &amp;listener_);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (writer_ == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create Reader&quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classBasePublisher.html#ad013f423057fdc56160824c7975bc202">   85</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classBasePublisher.html#ad013f423057fdc56160824c7975bc202">~BasePublisher</a>()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            stop_flag_ = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (writer_ != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                publisher_-&gt;delete_datawriter(writer_);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> (publisher_ != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                participant_-&gt;delete_publisher(publisher_);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">if</span> (topic_ != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                participant_-&gt;delete_topic(topic_);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            DomainParticipantFactory::get_instance()-&gt;delete_participant(participant_);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046">  104</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046">publish</a>(TTopicName&amp; message)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (!stop_flag_ &amp;&amp; listener_.<a class="code" href="classPubListener.html#abc273266b35af662203c68fb0ed52891">matched_</a> &gt; 0)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                writer_-&gt;write(&amp;message);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//BASE_PUBLISHER_HPP</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//BASE_PUBLISHER_HPP</span></div>
 <div class="ttc" id="aPubListener_8hpp_html"><div class="ttname"><a href="PubListener_8hpp.html">PubListener.hpp</a></div><div class="ttdoc">Class for determining if a publisher has a matching subscriber.</div></div>
 <div class="ttc" id="aclassBasePublisher_html"><div class="ttname"><a href="classBasePublisher.html">BasePublisher</a></div><div class="ttdoc">Parent class for Publisher classes.</div><div class="ttdef"><b>Definition:</b> BasePublisher.hpp:42</div></div>
-<div class="ttc" id="aclassBasePublisher_html_a8b330dce10d7f089aee259e146e7c046"><div class="ttname"><a href="classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046">BasePublisher::publish</a></div><div class="ttdeci">bool publish(TTopicName &amp;message)</div><div class="ttdoc">Publishes the message generated.</div><div class="ttdef"><b>Definition:</b> BasePublisher.hpp:101</div></div>
-<div class="ttc" id="aclassBasePublisher_html_aa888b482b7d416a98ad49dd845e9068d"><div class="ttname"><a href="classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d">BasePublisher::BasePublisher</a></div><div class="ttdeci">BasePublisher(const std::string &amp;topic_name)</div><div class="ttdoc">Construct a new BasePublisher object.</div><div class="ttdef"><b>Definition:</b> BasePublisher.hpp:57</div></div>
-<div class="ttc" id="aclassBasePublisher_html_ad013f423057fdc56160824c7975bc202"><div class="ttname"><a href="classBasePublisher.html#ad013f423057fdc56160824c7975bc202">BasePublisher::~BasePublisher</a></div><div class="ttdeci">virtual ~BasePublisher()</div><div class="ttdoc">Destroy the BasePublisher object.</div><div class="ttdef"><b>Definition:</b> BasePublisher.hpp:83</div></div>
+<div class="ttc" id="aclassBasePublisher_html_a8b330dce10d7f089aee259e146e7c046"><div class="ttname"><a href="classBasePublisher.html#a8b330dce10d7f089aee259e146e7c046">BasePublisher::publish</a></div><div class="ttdeci">bool publish(TTopicName &amp;message)</div><div class="ttdoc">Publishes the message generated.</div><div class="ttdef"><b>Definition:</b> BasePublisher.hpp:104</div></div>
+<div class="ttc" id="aclassBasePublisher_html_aa888b482b7d416a98ad49dd845e9068d"><div class="ttname"><a href="classBasePublisher.html#aa888b482b7d416a98ad49dd845e9068d">BasePublisher::BasePublisher</a></div><div class="ttdeci">BasePublisher(const std::string &amp;topic_name)</div><div class="ttdoc">Construct a new BasePublisher object.</div><div class="ttdef"><b>Definition:</b> BasePublisher.hpp:59</div></div>
+<div class="ttc" id="aclassBasePublisher_html_ad013f423057fdc56160824c7975bc202"><div class="ttname"><a href="classBasePublisher.html#ad013f423057fdc56160824c7975bc202">BasePublisher::~BasePublisher</a></div><div class="ttdeci">virtual ~BasePublisher()</div><div class="ttdoc">Destroy the BasePublisher object.</div><div class="ttdef"><b>Definition:</b> BasePublisher.hpp:85</div></div>
 <div class="ttc" id="aclassPubListener_html"><div class="ttname"><a href="classPubListener.html">PubListener</a></div><div class="ttdoc">Class for determining if a publisher has a matching subscriber.</div><div class="ttdef"><b>Definition:</b> PubListener.hpp:28</div></div>
 <div class="ttc" id="aclassPubListener_html_abc273266b35af662203c68fb0ed52891"><div class="ttname"><a href="classPubListener.html#abc273266b35af662203c68fb0ed52891">PubListener::matched_</a></div><div class="ttdeci">std::atomic_int matched_</div><div class="ttdef"><b>Definition:</b> PubListener.hpp:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
