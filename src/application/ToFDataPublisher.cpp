@@ -40,7 +40,7 @@
                  
                  if (publish(message))
                  {
-                    //  std::cout << "Published distance: " << distance << " mm" << std::endl;
+                     std::cout << "Published distance: " << distance << " mm" << std::endl;
                  }
                  else
                  {
