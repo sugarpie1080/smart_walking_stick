@@ -169,19 +169,15 @@ Software</h2>
 Setup</h2>
 <p>The following setup is required:</p>
 <ol type="1">
-<li>Install libgpiod to access the pins: <div class="fragment"><div class="line">sudo apt install libgpiod</div>
-<div class="line">sudo apt install colcon</div>
-<div class="line">sudo apt install swig</div>
-<div class="line">sudo apt install vcstool</div>
+<li>Install libgpiod to access the pins: <div class="fragment"><div class="line">sudo apt install libgpiod colcon swig vcstool</div>
 </div><!-- fragment --></li>
 <li>Setup the PWM pin:<ul>
 <li>Add to <code>/boot/firmware/config.txt</code> ```bash dtoverlay=pwm-2chan ```</li>
 <li>Reboot the raspberry pi</li>
-<li>Check that the overlay worked: ```bash pinctrl -p ``<code></code></li>
 </ul>
 </li>
-<li><code>Install</code>fastdds_python<code>, through following these instructions. [fastdds_python link](<a href="https://github.com/eProsima/Fast-DDS-python">https://github.com/eProsima/Fast-DDS-python</a>)</code></li>
-<li><code>Source the</code>fastdds_python<code>install before compliation: </code>``bash source &lt;path_to_fastdds_python_ws&gt;/install/setup.bash ```</li>
+<li>Install <code>fastdds_python</code>, through following these instructions. <a href="https://github.com/eProsima/Fast-DDS-python">fastdds_python link</a></li>
+<li>Source the <code>fastdds_python</code> install before compliation: ```bash source &lt;path_to_fastdds_python_ws&gt;/install/setup.bash ```</li>
 </ol>
 <h2><a class="anchor" id="autotoc_md16"></a>
 Compliation</h2>
