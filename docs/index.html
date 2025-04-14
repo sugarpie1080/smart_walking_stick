@@ -87,7 +87,98 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_main_page"></a> This is the documentation for the ENG5220 Project: Smart Walking Stick.</p>
-<p><b>Objective</b>: Develop a smart walking stick equipped with obstacle detection and GPS navigation to assist visually impaired users in navigating their environment safely and independently. </p>
+<p><b>Objective</b>: Develop a smart walking stick equipped with obstacle detection and GPS navigation to assist visually impaired users in navigating their environment safely and independently.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md2"></a>
+Problem Analysis</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Problem</h2>
+<p>Visually impaired individuals face significant challenges navigating both familiar and unfamiliar environments. Traditional aids like white canes are limited in their ability to detect obstacles beyond a short range and do not offer any directional or location-based guidance. This can result in a loss of independence, safety risks, and difficulty accessing everyday locations with confidence.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Solution</h2>
+<p>The proposed smart walking stick integrates obstacle detection sensors and GPS navigation to provide real-time environmental awareness and directional assistance. The device alerts users to nearby obstacles and helps guide them to their destinations safely and independently. By combining essential mobility support with modern technology, it greatly enhances usability and functionality over conventional tools.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Target Audience</h2>
+<p>The primary audience includes visually impaired individuals seeking greater independence in daily mobility. Secondary audiences may include organizations supporting individuals with disabilities, healthcare providers, and rehabilitation centers looking for assistive technologies that enhance patient outcomes.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Critical Analysis</h2>
+<p>While there are some existing solutions in the assistive tech space, many are either prohibitively expensive, lack comprehensive navigation features, or are not user-friendly. This smart walking stick addresses those gaps by offering an affordable, intuitive, and integrated solution. However, success will depend on factors like battery life, durability, user training, and the reliability of sensors and GPS in various environments. Ensuring seamless functionality across different terrains and minimizing false positives in obstacle detection will be critical to user trust and adoption.</p>
+<hr  />
+ <h1><a class="anchor" id="autotoc_md8"></a>
+Development Status</h1>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Current Progress</h2>
+<ul>
+<li><b>Obstacle Detection</b> <br  />
+<ul>
+<li>Implemented using the <a class="el" href="classVL53L0X.html">VL53L0X</a> Time-of-Flight sensor <br  />
+</li>
+<li>Codebase: <code><a class="el" href="ToFSensor_8cpp.html">src/application/ToFSensor.cpp</a></code></li>
+</ul>
+</li>
+<li><b>Haptic Feedback System</b> <br  />
+<ul>
+<li>Enabled through a haptic motor driver <br  />
+</li>
+<li>Feedback intensity is dynamically adjustable using an exponential response curve <br  />
+</li>
+<li>Codebase: <code><a class="el" href="MotorMove_8cpp.html">src/application/MotorMove.cpp</a></code></li>
+</ul>
+</li>
+<li><b>Status Monitoring</b> <br  />
+<ul>
+<li>Real-time data is transmitted to a Python-based web app via DDS (FastDDS) <br  />
+</li>
+<li>Currently hosted on a Raspberry Pi, with flexibility to run independently <br  />
+</li>
+<li>Codebase: <code><a class="el" href="WebpageSubGUI_8py.html">src/ToF_GUI/WebpageSubGUI.py</a></code></li>
+</ul>
+</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md11"></a>
+In Progress / To-Do</h2>
+<ul>
+<li>Implement <b>Drop-Mode</b> functionality using the IMU sensor <br  />
+</li>
+<li>Add <b>Battery Status Monitoring</b> for real-time power insights <br  />
+ </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md12"></a>
+- Enable &lt;strong&gt;Two-Way Communication&lt;/strong&gt; between the WebApp and the smart walking stick</h2>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Usage</h1>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Hardware</h2>
+<p>The following hardware is required for this repository:</p><ul>
+<li>Raspberry Pi 5</li>
+<li><a class="el" href="classVL53L0X.html">VL53L0X</a> ToF Sensor</li>
+<li>Vibrating Mini Motor Disc / Haptic Feedback Sensor</li>
+<li>Uninterruptible Power Supply UPS HAT </li>
+</ul>
+<h3><a class="anchor" id="autotoc_md15"></a>
+Connections</h3>
+<h2><a class="anchor" id="autotoc_md16"></a>
+Software</h2>
+<h3><a class="anchor" id="autotoc_md17"></a>
+Setup</h3>
+<p>The following setup is required:</p>
+<ol type="1">
+<li>Install libgpiod to access the pins: <div class="fragment"><div class="line">sudo apt install libgpiod</div>
+<div class="line">sudo apt install colcon</div>
+<div class="line">sudo apt install swig</div>
+<div class="line">sudo apt install vcstool</div>
+</div><!-- fragment --></li>
+<li>Setup the PWM pin:<ul>
+<li>Add to <code>/boot/firmware/config.txt</code> <code>bash dtoverlay=pwm-2chan</code> Reboot the raspberry pi</li>
+<li>Check that the overlay worked: <code>bash pinctrl -p</code></li>
+</ul>
+</li>
+<li>Install <code>fastdds_python</code>, through following these instructions. <a href="https://github.com/eProsima/Fast-DDS-python">fastdds_python link</a></li>
+<li>Source the <code>fastdds_python</code> install before compliation: ```bash source &lt;path_to_fastdds_python_ws&gt;/install/setup.bash ```</li>
+</ol>
+<h3><a class="anchor" id="autotoc_md18"></a>
+Compliation</h3>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
