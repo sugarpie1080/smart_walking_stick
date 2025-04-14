@@ -1,11 +1,16 @@
-# Overview
+# Smart Walking Stick
 
 This is the documentation for the ENG5220 Project: Smart Walking Stick.
 
 **Objective**: Develop a smart walking stick equipped with obstacle detection and GPS navigation to assist visually impaired users in navigating their environment safely and independently.
 
+## Table of Contents
+- [Overview](#overview)
+- [Development Status](#development-status)
+- [Usage](#usage)
 
-## Problem Analysis
+
+## Overview
 
 ### Problem
 Visually impaired individuals face significant challenges navigating both familiar and unfamiliar environments. Traditional aids like white canes are limited in their ability to detect obstacles beyond a short range and do not offer any directional or location-based guidance. This can result in a loss of independence, safety risks, and difficulty accessing everyday locations with confidence.
@@ -39,12 +44,11 @@ While there are some existing solutions in the assistive tech space, many are ei
   - Codebase: `src/ToF_GUI/WebpageSubGUI.py`
 
 
-## In Progress / To-Do
+### In Progress / To-Do
 
 - Implement **Drop-Mode** functionality using the IMU sensor  
 - Add **Battery Status Monitoring** for real-time power insights  
 - Enable **Two-Way Communication** between the WebApp and the smart walking stick  
-
 
 ## Usage
 
