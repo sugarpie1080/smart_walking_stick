@@ -89,15 +89,15 @@ $(document).ready(function(){initNavTree('md_src_drivers_vl53l0x_linux_README.ht
 <div class="textblock"><p>Version: 0.2.0<br  />
  Release date: 05.05.2018<br  />
  Changelog: see git log</p>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 Summary</h1>
 <p>This is a library for GNU/Linux that helps to interface with ST's <a href="https://www.pololu.com/product/2490">VL53L0X time-of-flight distance sensor</a>. This library makes it simple to configure the sensor and read range data from it via I&sup2;C.</p>
 <p>Additionally it provides support for managing multiple sensors connected to the same bus by managing their hardware standby state via their XSHUT pins, see <a href="#multiple-sensors">multiple sensors section</a></p>
 <p>It uses <code>i2cdev</code> library for I2C access and <code>/sys/class/gpio/*</code> files for GPIO.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 Feedback, bugs, feature requests...</h2>
 <p>Pull requests and issue reports are welcome!</p>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 Table of Contents</h1>
 <ul>
 <li><a href="#development-status">Development status</a></li>
@@ -132,7 +132,7 @@ Table of Contents</h1>
 <li><a href="#license">License</a></li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
 Development status</h1>
 <ul>
 <li><b>WORKING</b></li>
@@ -151,24 +151,24 @@ Development status</h1>
 <li>Update/modify/merge-in(?) <a class="el" href="classI2Cdev.html">I2Cdev</a> to accept i2c device path as argument</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 Supported platforms</h1>
 <p>The library should work on all platforms supporting Linux <a class="el" href="classI2Cdev.html">I2Cdev</a> access (<code>/dev/i2c-*</code> device files) and GPIO access via <code>/sys/class/gpio/*</code>.</p>
 <p>It was tested on a BeagleBone Green Wireless with 5 sensors working on the same bus.</p>
 <p>As per <a href="../../issues/6">#6</a> it also works on BeagleBone Blue with Seeed Studio's <a href="https://www.seeedstudio.com/Grove-Time-of-Flight-Distance-Sensor%28VL53L0X%29-p-3086.html">Time of Flight Distance Sensor</a> (yet another breakout board with Grove connector) However, using multiple sensors will require soldering additional connectors for the XSHUT pins (one of the two 2.54 pads by the Grove connector) and wiring them to the main BBU board, see <a href="#multiple-sensors">Multiple sensors section</a> for details.</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md31"></a>
+<h1><a class="anchor" id="autotoc_md29"></a>
 Usage</h1>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 Hardware</h2>
 <p>A <a href="https://www.pololu.com/product/2490">VL53L0X carrier</a> can be purchased e.g. from Pololu's website. Before continuing, careful reading of the <a href="https://www.pololu.com/product/2490">product page</a> as well as the <a class="el" href="classVL53L0X.html">VL53L0X</a> datasheet is recommended.</p>
 <p>Important notes on hardware:</p><ul>
 <li>XSHUT is connected via pull-up resistor to VIN, therefore the sensor can be powered from GPIO even if VIN is disconnected</li>
 <li>Even putting the sensor to hardware standby (XSHUT low, VIN connected) will reset its address! (see <a href="#multiple-sensors">Multiple sensors secton</a> on why that's important)</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md33"></a>
+<h3><a class="anchor" id="autotoc_md31"></a>
 Connections</h3>
-<h4><a class="anchor" id="autotoc_md34"></a>
+<h4><a class="anchor" id="autotoc_md32"></a>
 Odroid C2</h4>
 <p>Example connection: </p><div class="fragment"><div class="line">           Odroid C2   VL53L0X board</div>
 <div class="line">--------------------   -------------</div>
@@ -178,7 +178,7 @@ Odroid C2</h4>
 <div class="line">GPIOX.BIT21 (Pin #7) - XSHUT</div>
 <div class="line">     Ground (Pin #9) - GND</div>
 </div><!-- fragment --><p>Of course, you can also use <code>I2CB_SDA/SCL</code> and any other <code>GPIOX</code> and <code>Ground</code> pins, see <a href="http://odroid.com/dokuwiki/doku.php?id=en:c2_hardware#expansion_connectors">Hardkernel's page for pins' description</a>.</p>
-<h4><a class="anchor" id="autotoc_md35"></a>
+<h4><a class="anchor" id="autotoc_md33"></a>
 Raspberry Pi</h4>
 <div class="fragment"><div class="line">      Raspberry Pi 3   VL53L0X board</div>
 <div class="line">--------------------   -------------</div>
@@ -187,7 +187,7 @@ Raspberry Pi</h4>
 <div class="line">       SCL1 (Pin #5) - SCL</div>
 <div class="line">  GPIO_GCLK (Pin #7) - XSHUT</div>
 <div class="line">     Ground (Pin #9) - GND</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md36"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md34"></a>
 BeagleBone Green Wireless</h4>
 <p><em>NOTE: you have to configure BeagleBone to enable I2C and GPIO on the specific pin you want to use via DTBs.</em></p>
 <p><em>NOTE2: GPIOs are organised in blocks of 32 and the resulting GPIO number in <code>/sys/class/gpio/</code> is (block number * 32 + gpio number), e.g. <code>GPIO3_19</code> -&gt; <code>/sys/class/gpio/gpio115</code></em></p>
@@ -198,14 +198,14 @@ BeagleBone Green Wireless</h4>
 <div class="line">       SCL2 (P9_19) - SCL</div>
 <div class="line">   GPIO3_19 (P9_27) - XSHUT</div>
 <div class="line">     Ground (P9_01) - GND</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md37"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md35"></a>
 Software</h2>
-<h3><a class="anchor" id="autotoc_md38"></a>
+<h3><a class="anchor" id="autotoc_md36"></a>
 Installation</h3>
 <p>Simply add all the <code>.cpp</code> and <code>.hpp</code> files to your project and modify your build script to include them.</p>
 <p>See included <code>CMakeLists.txt</code> and <a href="#examples">examples section</a> for an example on how to do it using CMake.</p>
 <p><em>NOTE: If you intend to use other I2C bus than <code>/dev/i2c-1</code>, modify the <code>#define I2C_DEV_PATH</code> in <code><a class="el" href="I2Cdev_8hpp.html">I2Cdev.hpp</a></code> file.</em></p>
-<h3><a class="anchor" id="autotoc_md39"></a>
+<h3><a class="anchor" id="autotoc_md37"></a>
 Using the library</h3>
 <ul>
 <li>Include <code>"VL53L0X.hpp"</code></li>
@@ -226,7 +226,7 @@ Using the library</h3>
 </li>
 </ul>
 <p>See <a href="#examples">examples section</a> for reference and <a href="#multiple-sensors">Multiple sensors section</a> for instructions how to use multiple sensors at once.</p>
-<h2><a class="anchor" id="autotoc_md40"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Multiple sensors</h2>
 <p>Multiple sensors can be used easily by connecting them all to the same I&sup2;C bus and connecting their XSHUT pins to free GPIO pins of your board.</p>
 <p>Note that even putting the sensor to hardware standby (XSHUT low) will reset its address! Thus, the workflow is as such:</p><ul>
@@ -242,7 +242,7 @@ Multiple sensors</h2>
 <li>initialize sensors one-by-one and set different address for each one before initializing the next one</li>
 </ul>
 <p>After that, reading range values from sensors is just like with single one. See <code>examples/continuousMultipleSensors.cpp</code> for reference.</p>
-<h1><a class="anchor" id="autotoc_md41"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 Examples</h1>
 <p>Build examples with: </p><div class="fragment"><div class="line">cd build</div>
 <div class="line">cmake ..</div>
@@ -250,21 +250,21 @@ Examples</h1>
 </div><!-- fragment --><p> and run with </p><div class="fragment"><div class="line">./examples/single</div>
 <div class="line">./examples/singleMinimal</div>
 <div class="line">./examples/continuousMultipleSensors</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md42"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md40"></a>
 Single ranging mode, single sensor</h2>
 <p><code>examples/singleMinimal.cpp</code> shows the minimal working example.</p>
 <p><code>examples/single.cpp</code> shows how to use a single sensor in single ranging mode in more detail and with proper commentary on what's going on.</p>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md41"></a>
 Continuous ranging mode, multiple sensors</h2>
 <p><code>examples/continuousMultipleSensors.cpp</code> shows how to use continuous ranging mode (with back-to-back measurements) while using multiple sensors at once. This is the most complex and thorough example and (after minor modifications) it was used in a real-life application on a mobile robot.</p>
 <p>Note: in my experiments on Odroid C2 board with Linux-RT kernel, I've managed to run 6 sensors at once with stable frequency of more than 50Hz!</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md45"></a>
+<h1><a class="anchor" id="autotoc_md43"></a>
 ST's VL53L0X API and this library</h1>
 <p>Most of the functionality of this library is based on the <a href="http://www.st.com/content/st_com/en/products/embedded-software/proximity-sensors-software/stsw-img005.html">VL53L0X API</a> provided by ST (STSW-IMG005), and some of the explanatory comments in the code are quoted or paraphrased from the API source code, API user manual (UM2039), and the <a class="el" href="classVL53L0X.html">VL53L0X</a> datasheet. For more explanation about the library code and how it was derived from the API, see the block comments in <a class="el" href="VL53L0X_8hpp.html">VL53L0X.hpp</a> and in-code comments in <a class="el" href="VL53L0X_8cpp.html">VL53L0X.cpp</a>.</p>
 <p>This library is intended to provide a quicker and easier way to get started using the <a class="el" href="classVL53L0X.html">VL53L0X</a> with a GNU/Linux-driven single-board computer (like BeagleBone Black or Raspberry Pi), in contrast to customizing and compiling ST's API for that platform. The library has a more streamlined, object-oriented interface. However, it does not implement some of the more advanced functionality available in the API (for example, calibrating the sensor to work well under a cover glass), and it has less robust error checking. For advanced applications consider using the <a class="el" href="classVL53L0X.html">VL53L0X</a> API directly (or opening PR/issue to add that functionality!).</p>
 <hr  />
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1><a class="anchor" id="autotoc_md45"></a>
 Library reference</h1>
 <p><b>This section was not yet updated to match Linux version of the library - see header file for updated descriptions!</b></p>
 <ul>
@@ -326,14 +326,14 @@ Library reference</h1>
  Indicates whether a read timeout has occurred since the last call to <code>timeoutOccurred()</code>.</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md49"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 Special thanks</h1>
 <ul>
 <li>Pololu for both the sensor breakout board and their <a href="https://github.com/pololu/vl53l0x-arduino">Arduino library</a> this project bases upon</li>
 <li>Drogon for his awesome <a href="http://wiringpi.com/">WiringPi library</a>, see notes in <a href="https://github.com/mjbogusz/wiringPi">my fork</a></li>
 <li>ST for making this great sensor!</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md50"></a>
+<h1><a class="anchor" id="autotoc_md48"></a>
 License</h1>
 <p>This library is licensed under MIT license, see <code>LICENSE.txt</code> file for full license text. </p>
 </div></div><!-- contents -->
