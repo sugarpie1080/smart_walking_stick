@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Walking Stick - Control Panel</title>
+    <title>Smart Walking Stick - Data Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,23 +18,19 @@
             color: white;
             padding: 20px;
             text-align: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            margin: 0;
         }
         .container {
             max-width: 800px;
             margin: 20px auto;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .data-display, .controls {
+        .data-display {
             margin-bottom: 20px;
         }
-        .data-box, .input-box {
+        .data-box {
             margin: 10px 0;
             padding: 15px;
             background-color: #e8f5e9;
@@ -41,116 +38,24 @@
             border-radius: 5px;
             font-size: 1.2rem;
             font-weight: bold;
-            text-align: left;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .control-item {
-            margin: 10px 0;
-        }
-        label {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        input[type="text"] {
-            width: 300px;
-            height: 30px;
-            font-size: 1.2rem;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: #4CAF50;
-        }
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 300px;
-            height: 10px;
-            border-radius: 5px;
-            outline: none;
-            margin: 0;
-            background: linear-gradient(to right, red, yellow, green);
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: green;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: green;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        #battery-status {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        #battery-icon {
-            width: 50px;
-            height: 25px;
-            border: 2px solid #333;
-            border-radius: 3px;
-            position: relative;
-        }
-        #battery-icon:before {
-            content: '';
-            width: 8px;
-            height: 12px;
-            background-color: #333;
-            position: absolute;
-            right: -10px;
-            top: 6px;
-            border-radius: 1px;
-        }
-        #battery-level {
-            width: 80%; /* Default width */
-            height: 100%;
-            background-color: #4CAF50;
-            border-radius: 2px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-        .pin-icon {
-            width: 20px;
-            height: 20px;
-            background-image: url('images/locationPin.png'); 
-            background-size: cover;
-            margin-right: 10px;
+        canvas {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Smart Walking Stick - Object Detection</h1>
-        <p>Powered by Radar Technology</p>
+        <h1>Smart Walking Stick - Data Dashboard</h1>
     </header>
     <div class="container">
         <!-- Real-Time Data Display -->
         <div class="data-display">
-            <h2>Real-Time ToF Data</h2>
+            <h2>Real-Time Data</h2>
             <div class="data-box">
                 <span id="seconds-label">Seconds:</span>
                 <span id="seconds">0</span>
@@ -159,7 +64,6 @@
                 <span id="distance-label">Distance:</span>
                 <span id="distance">0.0 mm</span>
             </div>
-            <!-- Battery Status -->
             <div class="data-box">
                 <span>Battery:</span>
                 <div id="battery-status">
@@ -174,32 +78,10 @@
                 <span id="pwm">0</span>
             </div>
         </div>
-        <!-- User Controls -->
-        <div class="controls">
-            <h2>User Controls</h2>
-            <div class="input-box">
-                <label for="threshold-slider">Detection Threshold:</label>
-                <input type="range" id="threshold-slider" min="0" max="100" value="50">
-                <span id="threshold-value">50%</span>
-            </div>
-            <div class="input-box">
-                <label for="intensity-slider">Detection Intensity:</label>
-                <input type="range" id="intensity-slider" min="0" max="100" value="50">
-                <span id="intensity-value">50%</span>
-            </div>
-            <div class="input-box">
-                <label for="detection-enable">Detection Enable:</label>
-                <input type="checkbox" id="detection-enable" checked>
-            </div>
-            <div class="input-box">
-                <label for="destination">Destination:</label>
-                <input type="text" id="destination" placeholder="Enter your destination">
-            </div>
-        </div>
+        <!-- PWM Value Graph -->
+        <h2>PWM Graph Over Time</h2>
+        <canvas id="pwmChart"></canvas>
     </div>
-    <footer>
-        &copy; 2025 Smart Walking Stick Project. All Rights Reserved.
-    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
     <script>
@@ -209,6 +91,7 @@
         socket.on('update_data', (data) => {
             document.getElementById('seconds').innerText = `${data.sec}`;
             document.getElementById('distance').innerText = `${data.distance} mm`;
+            document.getElementById('pwm').innerText = `${data.duty_cycle}`;
 
             // Update Battery Level
             const batteryLevel = document.getElementById('battery-level');
@@ -217,25 +100,60 @@
             batteryLevel.style.width = `${data.battery}%`;
             batteryLevel.style.backgroundColor = data.battery > 20 ? '#4CAF50' : '#f44336';
             batteryPercentage.innerText = `${data.battery}%`;
+
+            // Update the chart with `seconds` and `duty_cycle`
+            updatePWMChart(data.sec, data.duty_cycle);
         });
 
-        socket.on('update_motor_data', (data) => {
-            document.getElementById('pwm').innerText = `${data.duty_cycle}`;
+        // PWM Chart Setup
+        const ctx = document.getElementById('pwmChart').getContext('2d');
+        const pwmData = {
+            labels: [], // Time in seconds
+            datasets: [{
+                label: 'PWM Value',
+                data: [],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                tension: 0.4
+            }]
+        };
+        const pwmChart = new Chart(ctx, {
+            type: 'line',
+            data: pwmData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time (seconds)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'PWM Value'
+                        },
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
         });
 
-        // Update the percentage labels when sliders are moved
-        const thresholdSlider = document.getElementById('threshold-slider');
-        const thresholdValue = document.getElementById('threshold-value');
-        const intensitySlider = document.getElementById('intensity-slider');
-        const intensityValue = document.getElementById('intensity-value');
+        // Update Chart Data Function
+        function updatePWMChart(seconds, pwmValue) {
+            pwmData.labels.push(seconds); // Add `seconds` to the X-axis
+            pwmData.datasets[0].data.push(pwmValue); // Add `duty_cycle` (PWM) to the Y-axis
 
-        thresholdSlider.addEventListener('input', () => {
-            thresholdValue.innerText = `${thresholdSlider.value}%`;
-        });
+            if (pwmData.labels.length > 20) { // Limit the number of points displayed
+                pwmData.labels.shift();
+                pwmData.datasets[0].data.shift();
+            }
 
-        intensitySlider.addEventListener('input', () => {
-            intensityValue.innerText = `${intensitySlider.value}%`;
-        });
+            pwmChart.update(); // Refresh the chart
+        }
     </script>
 </body>
 </html>

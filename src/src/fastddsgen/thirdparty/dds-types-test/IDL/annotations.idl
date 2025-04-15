@@ -1,0 +1,77 @@
+#include "helpers/basic_inner_types.idl"
+
+@annotation AnnotationTest
+{
+    short var_short;
+    unsigned short var_ushort;
+    long var_long;
+    unsigned long var_ulong;
+    long long var_longlong;
+    unsigned long long var_ulonglong;
+    float var_float;
+    double var_double;
+    boolean var_boolean;
+    octet var_octet;
+    char var_char8;
+    wchar var_char16;
+    string var_string;
+    wstring var_wstring;
+    enum InnerEnumHelper
+    {
+        ONE,
+        TWO
+    };
+    InnerEnumHelper enum_value;
+    InnerEnumHelper enum_default_value default TWO;
+    const short inner_const_helper = 10;
+    typedef string<inner_const_helper> Inner_alias_bounded_string_helper;
+    Inner_alias_bounded_string_helper var_string_10;
+    Inner_alias_bounded_string_helper var_default_string_10 default "Hello";
+    Inner_alias_bounded_wstring_helper var_wstring_alias;
+};
+
+@annotation EmptyAnnotationTest
+{
+};
+
+@AnnotationTest(
+    var_short = 1,
+    var_ushort = 1,
+    var_long = 1,
+    var_ulong = 1,
+    var_longlong = 1,
+    var_ulonglong = 1,
+    var_float = 1,
+    var_double = 1,
+    var_boolean = true,
+    var_octet = 0,
+    var_char8 = 'a',
+    var_char16 = L'a',
+    var_string = "a",
+    var_wstring = L"a",
+    enum_value = ONE
+    )
+struct AnnotatedStruct
+{
+};
+
+@EmptyAnnotationTest()
+struct EmptyAnnotatedStruct
+{
+};
+
+@annotation BasicAnnotationsTest
+{
+    short var_basic_short;
+};
+
+@BasicAnnotationsTest(
+    var_basic_short = 1
+    )
+struct BasicAnnotationsStruct
+{
+    @BasicAnnotationsTest(
+        var_basic_short = 1
+        )
+    short basic_annotations_member;
+};

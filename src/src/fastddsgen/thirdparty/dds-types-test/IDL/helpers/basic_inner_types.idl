@@ -1,0 +1,68 @@
+enum InnerEnumHelper
+{
+    ENUM_VALUE_1,
+    ENUM_VALUE_2,
+    ENUM_VALUE_3
+};
+
+bitmask InnerBitMaskHelper
+{
+    @position(0) flag0,
+    @position(1) flag1,
+    @position(4) flag4,
+    @position(6) flag6
+};
+
+@bit_bound(8)
+bitmask InnerBoundedBitMaskHelper
+{
+    @position(0) bflag0,
+    @position(1) bflag1,
+    @position(4) bflag4,
+    @position(6) bflag6
+};
+
+typedef long InnerAliasHelper;
+
+@nested
+struct InnerStructureHelper
+{
+    long field1;
+    float field2;
+};
+
+@nested
+struct InnerEmptyStructureHelper
+{
+};
+
+@nested
+union InnerUnionHelper switch (long)
+{
+    case 0: long longValue;
+    case 1: float floatValue;
+    default: short shortValue;
+};
+
+bitset InnerBitsetHelper
+{
+    bitfield<3> a;
+    bitfield<1> b;
+    bitfield<4>;
+    bitfield<10> c;
+    bitfield<3>;
+    bitfield<12, short> d;
+};
+
+const short inner_const_helper = 1;
+typedef string<10> Inner_alias_bounded_string_helper;
+typedef wstring<10> Inner_alias_bounded_wstring_helper;
+typedef short Inner_alias_array_helper[2];
+typedef sequence<short> Inner_alias_sequence_helper;
+typedef map<long, long> Inner_alias_map_helper;
+typedef InnerStructureHelper inner_structure_helper_alias;
+typedef InnerBitsetHelper inner_bitset_helper_alias;
+
+// String consts are checked here to avoid generating the related TypeObjectTest.
+const string const_string = "AAA";
+const wstring const_wstring = L"BBB";

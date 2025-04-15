@@ -1,0 +1,96 @@
+#include "helpers/basic_inner_types.idl"
+
+const short const_short = 87;
+const unsigned short const_ushort = 43;
+const long const_long = 23;
+const unsigned long const_ulong = 6;
+const long long const_longlong = 8;
+const unsigned long long const_ulonglong = 67;
+const float const_float = 13.1;
+const double const_double = 84.1;
+const long double const_longdouble = 46.1;
+const boolean const_boolean = true;
+const octet const_octet = 7;
+const char const_char8 = 'A';
+const wchar const_char16 = L'B';
+const int8 const_int8 = 53;
+const uint8 const_uint8 = 11;
+const int16 const_int16 = 27;
+const uint16 const_uint16 = 31;
+const int32 const_int32 = 74;
+const uint32 const_uint32 = 64;
+const int64 const_int64 = 17;
+const uint64 const_uint64 = 19;
+// String consts are included in basic_inner_types.idl
+
+typedef short alias_short;
+const alias_short alias_const = 55;
+
+const InnerEnumHelper const_enum = InnerEnumHelper::ENUM_VALUE_1;
+
+module const_module1
+{
+    const short const_moduled = 11;
+    typedef short alias_short_moduled;
+    const alias_short_moduled alias_const_moduled = 10;
+
+    struct ModuleConstsLiteralsStruct
+    {
+        short module1_array_literal_const_moduled[const_moduled];
+        short module1_array_literal_const_alias_const_moduled[alias_const_moduled];
+        alias_short var1;
+        alias_short_moduled var2;
+    };
+};
+
+module const_module2
+{
+    const short const_moduled = 22;
+    const const_module1::alias_short_moduled alias_const_moduled = 2;
+    const short const_moduled_module1 = const_module1::const_moduled;
+
+    struct Module2ConstsLiteralsStruct
+    {
+        short module2_array_literal_const_moduled[const_moduled];
+        short module2_array_literal_const_alias_const_moduled[alias_const_moduled];
+        short module2_array_literal_const_scoped_moduled[const_module2::const_moduled];
+        short module2_array_literal_module1_const_moduled[const_module1::const_moduled];
+        short module2_array_literal_const_moduled_module1[const_moduled_module1];
+    };
+};
+
+struct ConstsLiteralsStruct
+{
+    short array_literal_const_short[const_short];
+    unsigned short array_literal_const_ushort[const_ushort];
+    long array_literal_const_long[const_long];
+    unsigned long array_literal_const_ulong[const_ulong];
+    long long array_literal_const_longlong[const_longlong];
+    unsigned long long array_literal_const_ulonglong[const_ulonglong];
+    int8 array_literal_const_int8[const_int8];
+    uint8 array_literal_const_uint8[const_uint8];
+    int16 array_literal_const_int16[const_int16];
+    uint16 array_literal_const_uint16[const_uint16];
+    int32 array_literal_const_int32[const_int32];
+    uint32 array_literal_const_uint32[const_uint32];
+    int64 array_literal_const_int64[const_int64];
+    uint64 array_literal_const_uint64[const_uint64];
+
+    short array_literals_operations1_const[const_short + const_long];
+    short array_literals_operations2_const[const_short - const_long];
+    short array_literals_operations3_const[const_short + const_module2::const_moduled];
+    short array_literals_operations4_const[const_module2::const_moduled - const_module1::const_moduled];
+    short array_literals_operations5_const[const_short * const_long];
+    short array_literals_operations6_const[const_short / const_long];
+    short array_literals_operations7_const[const_short * const_module2::const_moduled];
+    short array_literals_operations8_const[const_module1::const_moduled % const_module2::const_moduled];
+
+    short array_literal_const_inner_const_helper[inner_const_helper];
+
+    short array_moduled1_literal_const[const_module1::const_moduled];
+    short array_moduled2_literal_const[const_module2::const_moduled];
+
+    short array_literal_const_alias_const[alias_const];
+    short array_moduled1_literal_alias_const_moduled[const_module1::alias_const_moduled];
+    short array_moduled2_literal_alias_const_moduled[const_module2::alias_const_moduled];
+};

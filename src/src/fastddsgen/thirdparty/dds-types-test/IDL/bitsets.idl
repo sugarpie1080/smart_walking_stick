@@ -1,0 +1,36 @@
+#include "helpers/basic_inner_types.idl"
+
+bitset InnerTypedBitsetHelper
+{
+    bitfield<1, boolean> boolean_bitfield;
+    bitfield<8, octet> byte_bitfield;
+    bitfield<8, int8> int8_bitfield;
+    bitfield<8, uint8> uint8_bitfield;
+    bitfield<16, short> short_bitfield;
+    bitfield<16, unsigned short> ushort_bitfield;
+};
+
+bitset InnerTypedBitsetHelper2
+{
+    bitfield<32, long> long_bitfield;
+    bitfield<32, unsigned long> ulong_bitfield;
+};
+
+bitset InnerTypedBitsetHelper3
+{
+    bitfield<64, long long> long_long_bitfield;
+};
+
+bitset InnerTypedBitsetHelper4
+{
+    bitfield<64, unsigned long long> ulong_long_bitfield;
+};
+
+struct BitsetStruct
+{
+    InnerBitsetHelper var_InnerBitsetHelper;
+    InnerTypedBitsetHelper var_InnerTypedBitsetHelper;
+    InnerTypedBitsetHelper2 var_InnerTypedBitsetHelper2;
+    InnerTypedBitsetHelper3 var_InnerTypedBitsetHelper3;
+    InnerTypedBitsetHelper4 var_InnerTypedBitsetHelper4;
+};

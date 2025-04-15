@@ -1,0 +1,112 @@
+#include "helpers/basic_inner_types.idl"
+
+@mutable
+struct MutableShortStruct
+{
+    short var_short;
+};
+
+@mutable
+struct MutableUShortStruct
+{
+    unsigned short var_ushort;
+};
+
+@mutable
+struct MutableLongStruct
+{
+    long var_long;
+};
+
+@mutable
+struct MutableULongStruct
+{
+    unsigned long var_ulong;
+};
+
+@mutable
+struct MutableLongLongStruct
+{
+    long long var_longlong;
+};
+
+@mutable
+struct MutableULongLongStruct
+{
+    unsigned long long var_ulonglong;
+};
+
+@mutable
+struct MutableFloatStruct
+{
+    float var_float;
+};
+
+@mutable
+struct MutableDoubleStruct
+{
+    double var_double;
+};
+
+@mutable
+struct MutableLongDoubleStruct
+{
+    long double var_longdouble;
+};
+
+@mutable
+struct MutableBooleanStruct
+{
+    boolean var_boolean;
+};
+
+@mutable
+struct MutableOctetStruct
+{
+    octet var_octet;
+};
+
+@mutable
+struct MutableCharStruct
+{
+    char var_char8;
+};
+
+@mutable
+struct MutableWCharStruct
+{
+    wchar var_char16;
+};
+
+@mutable
+struct MutableUnionStruct
+{
+    InnerUnionHelper var_union;
+};
+
+@mutable
+struct MutableEmptyStruct
+{
+};
+
+@extensibility(MUTABLE)
+struct MutableEmptyInheritanceStruct : MutableEmptyStruct
+{
+    string var_str;
+};
+
+@extensibility(MUTABLE)
+struct MutableInheritanceStruct : MutableShortStruct
+{
+    string var_str;
+};
+
+@extensibility(MUTABLE)
+struct MutableInheritanceEmptyStruct : MutableShortStruct
+{
+};
+
+struct MutableExtensibilityInheritance : MutableShortStruct
+{
+    long var_long;
+};

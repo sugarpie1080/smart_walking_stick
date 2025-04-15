@@ -1,0 +1,163 @@
+#include "helpers/basic_inner_types.idl"
+
+struct SequenceShort
+{
+    sequence<short> var_sequence_short;
+};
+
+struct SequenceUShort
+{
+    sequence<unsigned short> var_sequence_ushort;
+};
+
+struct SequenceLong
+{
+    sequence<long> var_sequence_long;
+};
+
+struct SequenceULong
+{
+    sequence<unsigned long> var_sequence_ulong;
+};
+
+struct SequenceLongLong
+{
+    sequence<long long> var_sequence_longlong;
+};
+
+struct SequenceULongLong
+{
+    sequence<unsigned long long> var_sequence_ulonglong;
+};
+
+struct SequenceFloat
+{
+    sequence<float> var_sequence_float;
+};
+
+struct SequenceDouble
+{
+    sequence<double> var_sequence_double;
+};
+
+struct SequenceLongDouble
+{
+    sequence<long double> var_sequence_longdouble;
+};
+
+struct SequenceBoolean
+{
+    sequence<boolean> var_sequence_boolean;
+};
+
+struct SequenceOctet
+{
+    sequence<octet> var_sequence_octet;
+};
+
+struct SequenceChar
+{
+    sequence<char> var_sequence_char;
+};
+
+struct SequenceWChar
+{
+    sequence<wchar> var_sequence_wchar;
+};
+
+struct SequenceString
+{
+    sequence<string> var_sequence_string;
+};
+
+struct SequenceWString
+{
+    sequence<wstring> var_sequence_wstring;
+};
+
+struct SequenceStringBounded
+{
+    sequence<Inner_alias_bounded_string_helper> var_sequence_bounded_string;
+};
+
+struct SequenceWStringBounded
+{
+    sequence<Inner_alias_bounded_wstring_helper> var_sequence_bounded_wstring;
+};
+
+struct SequenceEnum
+{
+    sequence<InnerEnumHelper> var_sequence_enum;
+};
+
+struct SequenceBitMask
+{
+    sequence<InnerBitMaskHelper> var_sequence_bitmask;
+};
+
+struct SequenceAlias
+{
+    sequence<InnerAliasHelper> var_sequence_alias;
+};
+
+struct SequenceShortArray
+{
+    sequence<Inner_alias_array_helper> var_sequence_short_array;
+};
+
+struct SequenceSequence
+{
+    sequence<Inner_alias_sequence_helper> var_sequence_sequence;
+};
+
+struct SequenceMap
+{
+    sequence<Inner_alias_map_helper> var_sequence_map;
+};
+
+struct SequenceUnion
+{
+    sequence<InnerUnionHelper> var_sequence_union;
+};
+
+struct SequenceStructure
+{
+    sequence<InnerStructureHelper> var_sequence_structure;
+};
+
+struct SequenceBitset
+{
+    sequence<InnerBitsetHelper> var_sequence_bitset;
+};
+
+struct BoundedSmallSequences
+{
+    sequence<short, 1> var_sequence_small;
+    sequence<string, 5> var_unbounded_string_small_bounded_sequence;
+};
+
+struct BoundedBigSequences
+{
+    sequence<short, 41925> var_sequence_big;
+    sequence<string, 256> var_unbounded_string_large_bounded_sequence;
+};
+
+// Regression test for issue #21978.
+//{{{
+module Common_Module
+{
+   typedef char My_Char;
+   typedef sequence<My_Char, 20> My_String;
+};
+
+module NoCommon_Module
+{
+   typedef Common_Module::My_String My_AliasString;
+   typedef sequence<My_AliasString> My_SequenceString;
+
+   struct My_Structure
+   {
+       My_SequenceString list;
+   };
+};
+//}}}

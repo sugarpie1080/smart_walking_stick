@@ -1,0 +1,103 @@
+struct ShortStruct
+{
+    short var_short;
+};
+
+struct UShortStruct
+{
+    unsigned short var_ushort;
+};
+
+struct LongStruct
+{
+    long var_long;
+};
+
+struct ULongStruct
+{
+    unsigned long var_ulong;
+};
+
+struct LongLongStruct
+{
+    long long var_longlong;
+};
+
+struct ULongLongStruct
+{
+    unsigned long long var_ulonglong;
+};
+
+struct FloatStruct
+{
+    float var_float;
+};
+
+struct DoubleStruct
+{
+    double var_double;
+};
+
+struct LongDoubleStruct
+{
+    long double var_longdouble;
+};
+
+struct BooleanStruct
+{
+    boolean var_boolean;
+};
+
+struct OctetStruct
+{
+    octet var_octet;
+};
+
+struct CharStruct
+{
+    char var_char8;
+};
+
+struct WCharStruct
+{
+    wchar var_char16;
+};
+
+struct Int8Struct
+{
+    int8 var_int8;
+};
+struct Uint8Struct
+{
+    uint8 var_uint8;
+};
+
+struct Int16Struct
+{
+    int16 var_int16;
+};
+
+struct Uint16Struct
+{
+    uint16 var_uint16;
+};
+
+struct Int32Struct
+{
+    int32 var_int32;
+};
+
+struct Uint32Struct
+{
+    uint32 var_uint32;
+};
+
+struct Int64Struct
+{
+    int64 var_int64;
+};
+
+struct Uint64Struct
+{
+    uint64 var_uint64;
+};

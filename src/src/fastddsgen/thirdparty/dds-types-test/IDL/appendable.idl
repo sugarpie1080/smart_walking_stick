@@ -1,0 +1,112 @@
+#include "helpers/basic_inner_types.idl"
+
+@appendable
+struct AppendableShortStruct
+{
+    short var_short;
+};
+
+@appendable
+struct AppendableUShortStruct
+{
+    unsigned short var_ushort;
+};
+
+@appendable
+struct AppendableLongStruct
+{
+    long var_long;
+};
+
+@appendable
+struct AppendableULongStruct
+{
+    unsigned long var_ulong;
+};
+
+@appendable
+struct AppendableLongLongStruct
+{
+    long long var_longlong;
+};
+
+@appendable
+struct AppendableULongLongStruct
+{
+    unsigned long long var_ulonglong;
+};
+
+@appendable
+struct AppendableFloatStruct
+{
+    float var_float;
+};
+
+@appendable
+struct AppendableDoubleStruct
+{
+    double var_double;
+};
+
+@appendable
+struct AppendableLongDoubleStruct
+{
+    long double var_longdouble;
+};
+
+@appendable
+struct AppendableBooleanStruct
+{
+    boolean var_boolean;
+};
+
+@appendable
+struct AppendableOctetStruct
+{
+    octet var_octet;
+};
+
+@appendable
+struct AppendableCharStruct
+{
+    char var_char8;
+};
+
+@appendable
+struct AppendableWCharStruct
+{
+    wchar var_char16;
+};
+
+@appendable
+struct AppendableUnionStruct
+{
+    InnerUnionHelper var_union;
+};
+
+@appendable
+struct AppendableEmptyStruct
+{
+};
+
+@appendable
+struct AppendableEmptyInheritanceStruct : AppendableEmptyStruct
+{
+    string var_str;
+};
+
+@appendable
+struct AppendableInheritanceStruct : AppendableShortStruct
+{
+    string var_str;
+};
+
+@appendable
+struct AppendableInheritanceEmptyStruct : AppendableShortStruct
+{
+};
+
+struct AppendableExtensibilityInheritance : AppendableShortStruct
+{
+    long var_long;
+};

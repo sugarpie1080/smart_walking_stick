@@ -1,0 +1,85 @@
+struct ForwardStruct;
+union ForwardUnion;
+typedef sequence<ForwardStruct> RecursiveUnboundedSeqForwardStruct;
+typedef sequence<ForwardStruct, 10> RecursiveBoundedSeqForwardStruct;
+typedef sequence<ForwardUnion> RecursiveUnboundedSeqForwardUnion;
+typedef sequence<ForwardUnion, 10> RecursiveBoundedSeqForwardUnion;
+
+@annotation ForwardAnnotation
+{
+    short value;
+    string name;
+};
+
+struct ForwardDeclarationsRecursiveStruct
+{
+    RecursiveUnboundedSeqForwardStruct var_RecursiveUnboundedSeqForwardStruct;
+    RecursiveBoundedSeqForwardStruct var_RecursiveBoundedSeqForwardStruct;
+    RecursiveUnboundedSeqForwardUnion var_RecursiveUnboundedSeqForwardUnion;
+    RecursiveBoundedSeqForwardUnion var_RecursiveBoundedSeqForwardUnion;
+};
+
+union ForwardUnion switch (long)
+{
+    case 0:
+        long case_zero;
+    case 1:
+        long case_one;
+};
+
+struct ForwardStruct
+{
+    short var_short;
+    long var_long;
+};
+
+module declarations_module
+{
+    struct ModuledForwardStruct;
+    union ModuledForwardUnion;
+    typedef sequence<ModuledForwardStruct> ModuledRecursiveUnboundedSeqForwardStruct;
+    typedef sequence<ModuledForwardStruct, 10> ModuledRecursiveBoundedSeqForwardStruct;
+    typedef sequence<ModuledForwardUnion> ModuledRecursiveUnboundedSeqForwardUnion;
+    typedef sequence<ModuledForwardUnion, 10> ModuledRecursiveBoundedSeqForwardUnion;
+
+    struct ForwardStruct
+    {
+        unsigned long long var_u_long_long;
+    };
+};
+
+struct ModuledForwardDeclarationsRecursiveStruct
+{
+    declarations_module::ModuledRecursiveUnboundedSeqForwardStruct var_ModuledRecursiveUnboundedSeqForwardStruct;
+    declarations_module::ModuledRecursiveBoundedSeqForwardStruct var_ModuledRecursiveBoundedSeqForwardStruct;
+
+
+    declarations_module::ModuledRecursiveUnboundedSeqForwardUnion var_ModuledRecursiveUnboundedSeqForwardUnion;
+    declarations_module::ModuledRecursiveBoundedSeqForwardUnion var_ModuledRecursiveBoundedSeqForwardUnion;
+};
+
+module declarations_module
+{
+    @ForwardAnnotation(value=1,name="ForwardAnnotation")
+    struct ModuledForwardStruct
+    {
+        short var_short;
+        long var_long;
+    };
+
+    const long long_const = 0;
+
+    union ModuledForwardUnion switch (long)
+    {
+        case long_const:
+            long case_zero;
+        case 1:
+            long case_one;
+    };
+};
+
+struct ModuledCommonNameStructure
+{
+    ForwardStruct global_struct;
+    declarations_module::ForwardStruct namespaced_struct;
+};

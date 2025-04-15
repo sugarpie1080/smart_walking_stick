@@ -1,0 +1,113 @@
+@mutable
+struct FixId
+{
+    @id(100) octet o;
+    @id(300) short s;
+    @id(500) long l;
+    long long ll;
+};
+
+@mutable
+struct FixHexId
+{
+    @id(0x100) octet ho;
+    @id(0x300) short hs;
+    @id(0x500) long hl;
+    long long ll;
+};
+
+@mutable
+struct FixHashidDefault
+{
+    @hashid octet o;
+    @hashid short s;
+    @hashid long l;
+    long long ll;
+};
+
+@mutable
+struct FixHashid
+{
+    @hashid("octet") octet o;
+    @hashid("short") short s;
+    @hashid("long") long l;
+    long long ll;
+};
+
+@mutable
+struct FixMix
+{
+    @id(100) octet o;
+    @id(0x200) octet ho;
+    @hashid short s;
+    @hashid("long") long l;
+    long long ll;
+};
+
+@mutable
+@autoid
+struct AutoidDefault
+{
+    char c;
+    @id(100) octet o;
+    @hashid short s;
+    @hashid("long") long l;
+    long long ll;
+};
+
+@mutable
+@autoid(SEQUENTIAL)
+struct AutoidSequential
+{
+    char c;
+    @id(100) octet o;
+    @hashid short s;
+    @hashid("long") long l;
+    long long ll;
+};
+
+@mutable
+@autoid(HASH)
+struct AutoidHash
+{
+    char c;
+    @id(100) octet o;
+    @hashid short s;
+    @hashid("long") long l;
+    long long ll;
+};
+
+@autoid
+struct DerivedAutoidDefault : AutoidDefault
+{
+    char cd;
+    @id(101) octet od;
+    @hashid short sd;
+    @hashid("long2") long ld;
+    long long lld;
+};
+
+@autoid(SEQUENTIAL)
+struct DerivedEmptyAutoidSequential : AutoidSequential
+{
+};
+
+@autoid(SEQUENTIAL)
+struct DerivedAutoidSequential : DerivedEmptyAutoidSequential
+{
+    char cd;
+    @id(101) octet od;
+    @hashid short sd;
+    @hashid("long2") long ld;
+    long long lld;
+};
+
+@autoid(HASH)
+struct DerivedAutoidHash : AutoidHash
+{
+    char cd;
+    @id(101) octet od;
+    @hashid short sd;
+    @hashid("long2") long ld;
+    long long lld;
+};

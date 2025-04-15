@@ -1,0 +1,418 @@
+// Copyright 2023 Proyectos y Sistemas de Mantenimiento SL (eProsima).
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+group TypesCdrAuxHeader;
+
+import "eprosima.stg"
+import "com/eprosima/fastcdr/idl/templates/FastCdrCommon.stg"
+
+main(ctx, definitions, extensions) ::= <<
+$fileHeader(ctx=ctx, file=[ctx.filename, "CdrAux.ipp"], description=["This source file contains some declarations of CDR related functions."])$
+
+#ifndef FAST_DDS_GENERATED__$ctx.headerGuardName$CDRAUX_IPP
+#define FAST_DDS_GENERATED__$ctx.headerGuardName$CDRAUX_IPP
+
+#include "$ctx.filename$CdrAux.hpp"
+
+$if(ctx.cdr)$
+#include <fastcdr/Cdr.h>
+#include <fastcdr/CdrSizeCalculator.hpp>
+
+$endif$
+
+#include <fastcdr/exceptions/BadParamException.h>
+using namespace eprosima::fastcdr::exception;
+
+namespace eprosima {
+namespace fastcdr {
+
+$definitions; separator="\n"$
+
+} // namespace fastcdr
+} // namespace eprosima
+
+#endif // FAST_DDS_GENERATED__$ctx.headerGuardName$CDRAUX_IPP
+$"\n"$
+>>
+
+struct_type(ctx, parent, struct, extensions, member_list) ::= <<
+$member_list$
+$if(ctx.anyCdr)$
+template<>
+eProsima_user_DllExport size_t calculate_serialized_size(
+        eprosima::fastcdr::CdrSizeCalculator& calculator,
+        const $struct.scopedname$& data,
+        size_t& current_alignment)
+{
+    $if(!struct.scope.empty)$
+    using namespace $struct.scope$;
+    $endif$
+
+    static_cast<void>(data);
+
+    eprosima::fastcdr::EncodingAlgorithmFlag previous_encoding = calculator.get_encoding();
+    size_t calculated_size {calculator.begin_calculate_type_serialized_size(
+                                eprosima::fastcdr::CdrVersion::XCDRv2 == calculator.get_cdr_version() ?
+                                $if(struct.annotationFinal)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR2$elseif(struct.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2$elseif(struct.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR2$endif$ :
+                                $if(struct.annotationFinal || struct.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR$elseif(struct.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR$endif$,
+                                current_alignment)};
+
+
+    $struct.allMembers : { member | $if(!member.annotationNonSerialized)$
+    calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId($if(struct.annotationMutable)$$member.id$$else$$member.index$$endif$),
+            data.$member.name$(), current_alignment);
+    $endif$}; separator="\n"$
+
+    calculated_size += calculator.end_calculate_type_serialized_size(previous_encoding, current_alignment);
+
+    return calculated_size;
+}
+$endif$
+
+$if(ctx.cdr)$
+template<>
+eProsima_user_DllExport void serialize(
+        eprosima::fastcdr::Cdr& scdr,
+        const $struct.scopedname$& data)
+{
+    $if(!struct.scope.empty)$
+    using namespace $struct.scope$;
+    $endif$
+
+    eprosima::fastcdr::Cdr::state current_state(scdr);
+    scdr.begin_serialize_type(current_state,
+            eprosima::fastcdr::CdrVersion::XCDRv2 == scdr.get_cdr_version() ?
+            $if(struct.annotationFinal)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR2$elseif(struct.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2$elseif(struct.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR2$endif$ :
+            $if(struct.annotationFinal || struct.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR$elseif(struct.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR$endif$);
+
+    $if(struct.allMembers)$
+    scdr$struct.allMembers : { member | $if(!member.annotationNonSerialized)$
+        << eprosima::fastcdr::MemberId($if(struct.annotationMutable)$$member.id$$else$$member.index$$endif$) << data.$member.name$()
+    $endif$
+    }; separator=""$;
+    $else$
+    static_cast<void>(data);
+    $endif$
+
+    scdr.end_serialize_type(current_state);
+}
+
+template<>
+eProsima_user_DllExport void deserialize(
+        eprosima::fastcdr::Cdr& cdr,
+        $struct.scopedname$& data)
+{
+    $if(!struct.scope.empty)$
+    using namespace $struct.scope$;
+    $endif$
+
+    cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
+            $if(struct.annotationFinal)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR2$elseif(struct.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2$elseif(struct.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR2$endif$ :
+            $if(struct.annotationFinal || struct.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR$elseif(struct.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR$endif$,
+            [&data](eprosima::fastcdr::Cdr& dcdr, const eprosima::fastcdr::MemberId& mid) -> bool
+            {
+                $if(struct.allMembers)$
+                bool ret_value = true;
+                switch (mid.id)
+                {
+                    $struct.allMembers : { member |
+                    case $if(struct.annotationMutable)$$member.id$$else$$member.index$$endif$:
+                        $if(!member.annotationNonSerialized)$
+                            dcdr \>> data.$member.name$();
+                        $endif$
+                        break;
+                    }; separator="\n"$
+                    default:
+                        ret_value = false;
+                        break;
+                }
+                return ret_value;
+                $else$
+                static_cast<void>(data);
+                static_cast<void>(dcdr);
+                static_cast<void>(mid);
+                return false;
+                $endif$
+            });
+}
+
+void serialize_key(
+        eprosima::fastcdr::Cdr& scdr,
+        const $struct.scopedname$& data)
+{
+    $if(!struct.inheritance)$
+    $if(!struct.scope.empty)$
+    using namespace $struct.scope$;
+    $endif$
+    $struct.membersById : { member |
+        $if(member.typecode.isStructType)$
+        extern void serialize_key(
+                Cdr& scdr,
+                const $member.typecode.scopedname$& data);
+        $endif$
+    }; separator="\n"$
+
+    static_cast<void>(scdr);
+    static_cast<void>(data);
+    $if(struct.hasKey)$
+        $struct.membersById : { member |
+            $if(member.annotationKey)$
+            $if(member.typecode.isStructType)$
+                serialize_key(scdr, data.$member.name$());
+            $else$
+                scdr << data.$member.name$();
+            $endif$
+            $endif$
+        }; separator="\n"$
+    $else$
+        $struct.membersById : { member |
+            $if(member.annotationOptional)$
+                if (data.$member.name$().has_value())
+                {
+            $if(member.typecode.isStructType)$
+                    serialize_key(scdr, $if(member.annotationExternal)$*$endif$data.$member.name$().value());
+            $else$
+                    scdr << data.$member.name$().value();
+            $endif$
+                \}
+            $else$
+            $if(member.typecode.isStructType)$
+                serialize_key(scdr, $if(member.annotationExternal)$*$endif$data.$member.name$());
+            $else$
+                scdr << data.$member.name$();
+            $endif$
+            $endif$
+        }; separator="\n"$
+    $endif$
+    $else$
+    extern void serialize_key(
+            Cdr& scdr,
+            const $struct.inheritance.scopedname$& data);
+    serialize_key(scdr, static_cast<const $struct.inheritance.scopedname$&>(data));
+    $endif$
+}
+
+$endif$
+
+>>
+
+bitset_type(ctx, parent, bitset) ::= <<
+$if(ctx.anyCdr)$
+template<>
+eProsima_user_DllExport size_t calculate_serialized_size(
+        eprosima::fastcdr::CdrSizeCalculator& calculator,
+        const $bitset.scopedname$&,
+        size_t& current_alignment)
+{
+    $if(!bitset.scope.empty)$
+    using namespace $bitset.scope$;
+    $endif$
+
+    return calculator.calculate_serialized_size(std::bitset<$bitset.bitSize$>{}, current_alignment);
+}
+$endif$
+
+$if(ctx.cdr)$
+template<>
+eProsima_user_DllExport void serialize(
+        eprosima::fastcdr::Cdr& scdr,
+        const $bitset.scopedname$& data)
+{
+    $if(!bitset.scope.empty)$
+    using namespace $bitset.scope$;
+    $endif$
+
+    std::bitset<$bitset.bitSize$> bitset;
+
+    $reverse(bitset.bitfields):{ bitfield |
+    bitset <<= $bitfield.spec.bitSize$;
+    $if(bitfield.isDefined)$
+    bitset |= (data.$bitfield.name$ & $bitfield.bitmask$);
+    $endif$
+    }; separator="\n"$
+
+    scdr << bitset;
+}
+
+template<>
+eProsima_user_DllExport void deserialize(
+        eprosima::fastcdr::Cdr& dcdr,
+        $bitset.scopedname$& data)
+{
+    $if(!bitset.scope.empty)$
+    using namespace $bitset.scope$;
+    $endif$
+
+    std::bitset<$bitset.bitSize$> bitset;
+    dcdr \>> bitset;
+
+    $bitset.bitfields:{ bitfield |
+    $if(bitfield.isDefined)$
+    data.$bitfield.name$ = static_cast<$bitfield.spec.cppTypename$>(bitset.to_ullong() & $bitfield.bitmask$);
+    $endif$
+    bitset \>>= $bitfield.spec.bitSize$;
+    }; separator="\n"$
+}
+$endif$
+>>
+
+union_type(ctx, parent, union, switch_type) ::= <<
+$switch_type$
+$if(ctx.anyCdr)$
+template<>
+eProsima_user_DllExport size_t calculate_serialized_size(
+        eprosima::fastcdr::CdrSizeCalculator& calculator,
+        const $union.scopedname$& data,
+        size_t& current_alignment)
+{
+    $if(!union.scope.empty)$
+    using namespace $union.scope$;
+    $endif$
+
+    static_cast<void>(data);
+
+    eprosima::fastcdr::EncodingAlgorithmFlag previous_encoding = calculator.get_encoding();
+    size_t calculated_size {calculator.begin_calculate_type_serialized_size(
+                                eprosima::fastcdr::CdrVersion::XCDRv2 == calculator.get_cdr_version() ?
+                                $if(union.annotationFinal)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR2$elseif(union.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2$elseif(union.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR2 $endif$ :
+                                $if(union.annotationFinal || union.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR$elseif(union.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR $endif$,
+                                current_alignment)};
+
+    calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId(0), data._d(),
+                    current_alignment);
+
+    switch (data._d())
+    {
+        $union.members :{ member |
+        $member.labels:{ label |case $label$:}; separator="\n"$
+        $if(member.default)$default:$endif$
+            calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId($if(union.annotationMutable)$$member.id$$else$$member.index$$endif$),
+                        data.$member.name$(), current_alignment);
+            break;
+        }; separator="\n"$
+        $if(union.needDefaultCase)$
+        default:
+            break;
+        $endif$
+    }
+
+    calculated_size += calculator.end_calculate_type_serialized_size(previous_encoding, current_alignment);
+
+    return calculated_size;
+}
+
+$endif$
+
+$if(ctx.cdr)$
+template<>
+eProsima_user_DllExport void serialize(
+        eprosima::fastcdr::Cdr& scdr,
+        const $union.scopedname$& data)
+{
+    $if(!union.scope.empty)$
+    using namespace $union.scope$;
+    $endif$
+
+    eprosima::fastcdr::Cdr::state current_state(scdr);
+    scdr.begin_serialize_type(current_state,
+            eprosima::fastcdr::CdrVersion::XCDRv2 == scdr.get_cdr_version() ?
+            $if(union.annotationFinal)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR2$elseif(union.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2$elseif(union.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR2$endif$ :
+            $if(union.annotationFinal || union.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR$elseif(union.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR$endif$);
+
+    scdr << eprosima::fastcdr::MemberId(0) << data._d();
+
+    switch (data._d())
+    {
+        $union.members :{ member |
+        $member.labels:{ label |case $label$:}; separator="\n"$
+        $if(member.default)$default:$endif$
+            scdr << eprosima::fastcdr::MemberId($if(union.annotationMutable)$$member.id$$else$$member.index$$endif$) << data.$member.name$();
+            break;
+        }; separator="\n"$
+        $if(union.needDefaultCase)$
+        default:
+            break;
+        $endif$
+    }
+
+    scdr.end_serialize_type(current_state);
+}
+
+template<>
+eProsima_user_DllExport void deserialize(
+        eprosima::fastcdr::Cdr& cdr,
+        $union.scopedname$& data)
+{
+    $if(!union.scope.empty)$
+    using namespace $union.scope$;
+    $endif$
+
+    cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
+            $if(union.annotationFinal)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR2$elseif(union.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2$elseif(union.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR2$endif$ :
+            $if(union.annotationFinal || union.annotationAppendable)$eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR$elseif(union.annotationMutable)$eprosima::fastcdr::EncodingAlgorithmFlag::PL_CDR$endif$,
+            [&data](eprosima::fastcdr::Cdr& dcdr, const eprosima::fastcdr::MemberId& mid) -> bool
+            {
+                bool ret_value = true;
+                if (0 == mid.id)
+                {
+                    $union.discriminator.typecode.cppTypename$ discriminator;
+                    dcdr \>> discriminator;
+
+                    switch (discriminator)
+                    {
+                        $union.members:{ member |
+                        $member.labels:{ label |case $label$:}; separator="\n"$
+                        $if(member.default)$default:$endif$
+                            {
+                                $member_type_declaration(member)$ $member.name$_value$member_default_init(member)$;
+                                data.$member.name$(std::move($member.name$_value));
+                                data._d(discriminator);
+                                break;
+                            \}
+                        }; separator="\n"$
+                        $if(union.needDefaultCase)$
+                        default:
+                            data._default();
+                            break;
+                        $endif$
+                    }
+                }
+                else
+                {
+                    switch (data._d())
+                    {
+                        $union.members :{ member |
+                        $member.labels:{ label |case $label$:}; separator="\n"$
+                        $if(member.default)$default:$endif$
+                            $if(union.annotationMutable || member.annotationOptional)$
+                            if (mid != $member.id$)
+                            {
+                                throw BadParamException("Deserializing union member $member.name$ the MemberId doesn't match");
+                            \}
+                            $endif$
+                            dcdr \>> data.$member.name$();
+                            break;
+                        }; separator="\n"$
+                        $if(union.needDefaultCase)$
+                        default:
+                            break;
+                        $endif$
+                    }
+                    $if(!union.annotationMutable)$ret_value = false;$endif$
+                }
+                return ret_value;
+            });
+}
+$endif$
+>>

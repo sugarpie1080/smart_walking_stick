@@ -1,0 +1,172 @@
+// Copyright 2016 Proyectos y Sistemas de Mantenimiento SL (eProsima).
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+group ProtocolHeader;
+
+import "eprosima.stg"
+
+main(ctx, definitions) ::= <<
+$fileHeader(ctx=ctx,  file=[ctx.filename, "SerializationTest.cpp"], description=["This file contains serialization test code."])$
+
+
+#include <cstdint>
+#include <cinttypes>
+#include <string>
+#include <tuple>
+#include <vector>
+
+#include <gtest/gtest.h>
+
+#include "$ctx.filename$PubSubTypes.hpp"
+#include "$ctx.filename$Serialization.hpp"
+#include <fastcdr/Cdr.h>
+#include <fastdds/rtps/common/SerializedPayload.hpp>
+
+$definitions; separator="\n"$
+
+>>
+
+test(ctx, parent, struct) ::= <<
+$if(struct.hasScope)$namespace $struct.scope$ {$endif$
+TEST_P($struct.formatedCppTypename$Test, encoding)
+{
+    eprosima::fastdds::dds::DataRepresentationId_t cdr_version {std::get<0>(GetParam())};
+    bool test_null_optional {$if(struct.containsOptional)$std::get<1>(GetParam())$else$false$endif$};
+    bool test_empty_external {$if(struct.containsExternal)$std::get<$if(!struct.containsOptional)$1$else$2$endif$>(GetParam())$else$false$endif$};
+    std::cout << std::endl <<"======================================== Testing $struct.name$"
+            << (true == test_null_optional ? " with a null optional" : "")
+            << (true == test_empty_external ? " with an empty external" : "")
+            << " using encoding " << (eprosima::fastdds::dds::DataRepresentationId_t::XCDR_DATA_REPRESENTATION == cdr_version ? "XCDRv1" : "XCDRv2") <<
+            " ========================================" << std::endl;
+    using eprosima::fastdds::rtps::SerializedPayload_t;
+
+    $struct.name$PubSubType $struct.name$_type_support;
+    $struct.name$ $struct.name$_serialization_topic;
+    $struct.name$ $struct.name$_deserialization_topic;
+
+    g_$ctx.filename$_test_null_opt = test_null_optional;
+    g_$ctx.filename$_test_empty_ext = test_empty_external;
+
+    initialize$struct.name$(&$struct.name$_serialization_topic);
+
+    $struct.name$PubSubType pst;
+
+    if (test_null_optional || !test_empty_external)
+    {
+        uint32_t payloadSize = pst.calculate_serialized_size(&$struct.name$_serialization_topic, cdr_version);
+
+        SerializedPayload_t payload(payloadSize);
+
+        ASSERT_TRUE(pst.serialize(&$struct.name$_serialization_topic, payload, cdr_version));
+
+        ASSERT_TRUE(pst.deserialize(payload, &$struct.name$_deserialization_topic));
+
+        uint32_t payloadOutSize = pst.calculate_serialized_size(&$struct.name$_deserialization_topic, cdr_version);
+
+        ASSERT_GT(compare$struct.name$(&$struct.name$_serialization_topic, &$struct.name$_deserialization_topic), 0);
+        ASSERT_EQ(payloadOutSize, payloadSize);
+        ASSERT_GE($struct.name$_type_support.max_serialized_type_size + 4, payloadSize);
+        ASSERT_EQ(payload.length, payloadSize);
+    }
+    else
+    {
+        ASSERT_EQ(0, pst.calculate_serialized_size(&$struct.name$_serialization_topic, cdr_version));
+
+        SerializedPayload_t payload(1000);
+
+        ASSERT_FALSE(pst.serialize(&$struct.name$_serialization_topic, payload, cdr_version));
+    }
+
+    $if((ctx.generateTypesC))$
+    free_string$struct.name$(&$struct.name$_serialization_topic);
+    $endif$
+}
+
+$if(struct.hasScope)$} // namespace $struct.scope$$endif$
+>>
+
+struct_type(ctx, parent, struct, member_list) ::= <<
+$member_list$
+$if(!struct.annotationNested)$
+
+std::ostream& operator<<(std::ostream& stream, $struct.cppTypename$& e)
+{
+    print$struct.name$(&e);
+    return stream;
+}
+
+class $struct.formatedCppTypename$Test : public ::testing::TestWithParam<
+    std::tuple<eprosima::fastdds::dds::DataRepresentationId_t
+$if (struct.containsOptional)$
+    , bool
+$endif$
+$if (struct.containsExternal)$
+    , bool
+$endif$
+    > >
+{
+};
+
+$test(ctx=ctx, parent=parent, struct=struct)$
+
+INSTANTIATE_TEST_SUITE_P(
+    $ctx.filename$Test,
+    $struct.formatedCppTypename$Test,
+    ::testing::Values(
+    $["eprosima::fastdds::dds::DataRepresentationId_t::XCDR_DATA_REPRESENTATION", "eprosima::fastdds::dds::DataRepresentationId_t::XCDR2_DATA_REPRESENTATION"], [",", ""] : { cdr_version, last_element |
+        $tuple_maybe_with_opt(struct, cdr_version, last_element)$
+    }$
+    ));
+
+$endif$
+>>
+
+/// Auxiliary templates
+
+tuple_maybe_with_opt(struct, cdr_version, last_element) ::= <%
+
+$if(struct.containsOptional)$
+$["false", "true"], [",", last_element] : { test_null_optional, last_element |
+    $tuple_maybe_with_ext(struct, cdr_version, test_null_optional, last_element)$
+}$
+$else$
+$tuple_maybe_with_ext(struct=struct, cdr_version=cdr_version, test_null_optional="", last_element=last_element)$
+$endif$
+
+%>
+
+tuple_maybe_with_ext(struct, cdr_version, test_null_optional, last_element) ::= <%
+
+$if(struct.containsExternal)$
+$["false", "true"], [",", last_element] : { test_empty_external, last_element |
+    $tuple_print(struct, cdr_version, test_null_optional, test_empty_external, last_element)$
+}$
+$else$
+$tuple_print(struct=struct, cdr_version=cdr_version, test_null_optional=test_null_optional, test_empty_external="", last_element=last_element)$
+$endif$
+
+%>
+
+tuple_print(struct, cdr_version, test_null_optional, test_empty_external, last_element) ::= <%
+
+std::make_tuple($cdr_version$
+$if(struct.containsOptional)$
+, $test_null_optional$
+$endif$
+$if(struct.containsExternal)$
+, $test_empty_external$
+$endif$
+)$last_element$$\n$
+
+%>

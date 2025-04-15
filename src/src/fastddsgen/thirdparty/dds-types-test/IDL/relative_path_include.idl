@@ -1,0 +1,6 @@
+#include "../IDL/helpers/basic_inner_types.idl"
+
+struct RelativePathIncludeStruct
+{
+    InnerEnumHelper value;
+};

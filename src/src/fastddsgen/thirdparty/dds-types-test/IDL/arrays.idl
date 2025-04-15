@@ -1,0 +1,539 @@
+#include "helpers/basic_inner_types.idl"
+
+struct ArrayShort
+{
+    short var_array_short[10];
+};
+
+struct ArrayUShort
+{
+    unsigned short var_array_ushort[10];
+};
+
+struct ArrayLong
+{
+    long var_array_long[10];
+};
+
+struct ArrayULong
+{
+    unsigned long var_array_ulong[10];
+};
+
+struct ArrayLongLong
+{
+    long long var_array_longlong[10];
+};
+
+struct ArrayULongLong
+{
+    unsigned long long var_array_ulonglong[10];
+};
+
+struct ArrayFloat
+{
+    float var_array_float[10];
+};
+
+struct ArrayDouble
+{
+    double var_array_double[10];
+};
+
+struct ArrayLongDouble
+{
+    long double var_array_longdouble[10];
+};
+
+struct ArrayBoolean
+{
+    boolean var_array_boolean[10];
+};
+
+struct ArrayOctet
+{
+    octet var_array_octet[10];
+};
+
+struct ArrayUInt8
+{
+    uint8 var_array_uint8[10];
+};
+
+struct ArrayChar
+{
+    char var_array_char[10];
+};
+
+struct ArrayWChar
+{
+    wchar var_array_wchar[10];
+};
+
+struct ArrayString
+{
+    string var_array_string[10];
+};
+
+struct ArrayWString
+{
+    wstring var_array_wstring[10];
+};
+
+struct ArrayBoundedString
+{
+    Inner_alias_bounded_string_helper var_array_bounded_string[10];
+};
+
+struct ArrayBoundedWString
+{
+    Inner_alias_bounded_wstring_helper var_array_bounded_wstring[10];
+};
+
+struct ArrayEnum
+{
+    InnerEnumHelper var_array_enum[10];
+};
+
+struct ArrayBitMask
+{
+    InnerBitMaskHelper var_array_bitmask[10];
+};
+
+struct ArrayAlias
+{
+    InnerAliasHelper var_array_alias[10];
+};
+
+struct ArrayShortArray
+{
+    short var_array_short_array[10][10];
+};
+
+struct ArraySequence
+{
+    sequence<long> var_array_sequence[10];
+};
+
+struct ArrayMap
+{
+    map<long, long> var_array_map[10];
+};
+
+struct ArrayUnion
+{
+    InnerUnionHelper var_array_union[10];
+};
+
+struct ArrayStructure
+{
+    InnerStructureHelper var_array_structure[10];
+};
+
+struct ArrayBitset
+{
+    InnerBitsetHelper var_array_bitset[10];
+};
+
+
+
+
+struct ArrayMultiDimensionShort
+{
+    short var_array_short[10][10][10];
+};
+
+struct ArrayMultiDimensionUShort
+{
+    unsigned short var_array_ushort[10][10][10];
+};
+
+struct ArrayMultiDimensionLong
+{
+    long var_array_long[10][10][10];
+};
+
+struct ArrayMultiDimensionULong
+{
+    unsigned long var_array_ulong[10][10][10];
+};
+
+struct ArrayMultiDimensionLongLong
+{
+    long long var_array_longlong[10][10][10];
+};
+
+struct ArrayMultiDimensionULongLong
+{
+    unsigned long long var_array_ulonglong[10][10][10];
+};
+
+struct ArrayMultiDimensionFloat
+{
+    float var_array_float[10][10][10];
+};
+
+struct ArrayMultiDimensionDouble
+{
+    double var_array_double[10][10][10];
+};
+
+struct ArrayMultiDimensionLongDouble
+{
+    long double var_array_longdouble[10][10][10];
+};
+
+struct ArrayMultiDimensionBoolean
+{
+    boolean var_array_boolean[10][10][10];
+};
+
+struct ArrayMultiDimensionOctet
+{
+    octet var_array_octet[10][10][10];
+};
+
+struct ArrayMultiDimensionChar
+{
+    char var_array_char[10][10][10];
+};
+
+struct ArrayMultiDimensionWChar
+{
+    wchar var_array_wchar[10][10][10];
+};
+
+struct ArrayMultiDimensionString
+{
+    string var_array_string[10][10][10];
+};
+
+struct ArrayMultiDimensionWString
+{
+    wstring var_array_wstring[10][10][10];
+};
+
+struct ArrayMultiDimensionBoundedString
+{
+    Inner_alias_bounded_string_helper var_array_bounded_string[10][10][10];
+};
+
+struct ArrayMultiDimensionBoundedWString
+{
+    Inner_alias_bounded_wstring_helper var_array_bounded_wstring[10][10][10];
+};
+
+struct ArrayMultiDimensionEnum
+{
+    InnerEnumHelper var_array_enum[10][10][10];
+};
+
+struct ArrayMultiDimensionBitMask
+{
+    InnerBitMaskHelper var_array_bitmask[10][10][10];
+};
+
+struct ArrayMultiDimensionAlias
+{
+    InnerAliasHelper var_array_alias[10][10][10];
+};
+
+struct ArrayMultiDimensionSequence
+{
+    sequence<long> var_array_sequence[10][10][10];
+};
+
+struct ArrayMultiDimensionMap
+{
+    map<long, long> var_array_map[10][10][10];
+};
+
+struct ArrayMultiDimensionUnion
+{
+    InnerUnionHelper var_array_union[10][10][10];
+};
+
+struct ArrayMultiDimensionStructure
+{
+    InnerStructureHelper var_array_structure[10][10][10];
+};
+
+struct ArrayMultiDimensionBitset
+{
+    InnerBitsetHelper var_array_bitset[10][10][10];
+};
+
+
+
+const long size_1 = 5;
+const long size_2 = 2;
+
+
+struct ArraySingleDimensionLiteralsShort
+{
+    short var_array_short[size_1];
+};
+
+struct ArraySingleDimensionLiteralsUnsignedShort
+{
+    unsigned short var_array_ushort[5 * 2];
+};
+
+struct ArraySingleDimensionLiteralsLong
+{
+    long var_array_long[5 + 5];
+};
+
+struct ArraySingleDimensionLiteralsUnsignedLong
+{
+    unsigned long var_array_ulong[size_1 * 2];
+};
+
+struct ArraySingleDimensionLiteralsLongLong
+{
+    long long var_array_longlong[size_1 + 5];
+};
+
+struct ArraySingleDimensionLiteralsUnsignedLongLong
+{
+    unsigned long long var_array_ulonglong[size_1 * size_2];
+};
+
+struct ArraySingleDimensionLiteralsFloat
+{
+    float var_array_float[size_1];
+};
+
+struct ArraySingleDimensionLiteralsDouble
+{
+    double var_array_double[5 * 2];
+};
+
+struct ArraySingleDimensionLiteralsLongDouble
+{
+    long double var_array_longdouble[5 + 5];
+};
+
+struct ArraySingleDimensionLiteralsBoolean
+{
+    boolean var_array_boolean[size_1];
+};
+
+struct ArraySingleDimensionLiteralsOctet
+{
+    octet var_array_octet[size_1 * 2];
+};
+
+struct ArraySingleDimensionLiteralsChar
+{
+    char var_array_char[size_1];
+};
+
+struct ArraySingleDimensionLiteralsWChar
+{
+    wchar var_array_wchar[size_1 + 5];
+};
+
+struct ArraySingleDimensionLiteralsString
+{
+    string var_array_string[size_1];
+};
+
+struct ArraySingleDimensionLiteralsWString
+{
+    wstring var_array_wstring[size_1 * size_2];
+};
+
+struct ArraySingleDimensionLiteralsBoundedString
+{
+    Inner_alias_bounded_string_helper var_array_bounded_string[size_1];
+};
+
+struct ArraySingleDimensionLiteralsBoundedWString
+{
+    Inner_alias_bounded_wstring_helper var_array_bounded_wstring[size_1 * size_2];
+};
+
+struct ArraySingleDimensionLiteralsEnum
+{
+    InnerEnumHelper var_array_enum[size_1];
+};
+
+struct ArraySingleDimensionLiteralsBitMask
+{
+    InnerBitMaskHelper var_array_bitmask[size_1 + 5];
+};
+
+struct ArraySingleDimensionLiteralsAlias
+{
+    InnerAliasHelper var_array_alias[size_1 * 2];
+};
+
+struct ArraySingleDimensionLiteralsShortArray
+{
+    short var_array_short_array[size_1 * size_2][size_1 + 5];
+};
+
+struct ArraySingleDimensionLiteralsSequence
+{
+    sequence<long> var_array_sequence[size_1];
+};
+
+struct ArraySingleDimensionLiteralsMap
+{
+    map<long, long> var_array_map[size_2];
+};
+
+struct ArraySingleDimensionLiteralsUnion
+{
+    InnerUnionHelper var_array_union[5 * 2];
+};
+
+struct ArraySingleDimensionLiteralsStructure
+{
+    InnerStructureHelper var_array_structure[size_1];
+};
+
+struct ArraySingleDimensionLiteralsBitset
+{
+    InnerBitsetHelper var_array_bitset[size_1 + 5];
+};
+
+
+
+
+struct ArrayMultiDimensionLiteralsShort
+{
+    short var_array_short[size_1][5 + 5][size_2];
+};
+
+struct ArrayMultiDimensionLiteralsUShort
+{
+    unsigned short var_array_ushort[size_1][size_1 * 2][5];
+};
+
+struct ArrayMultiDimensionLiteralsLong
+{
+    long var_array_long[5 * 2][size_1][5];
+};
+
+struct ArrayMultiDimensionLiteralsULong
+{
+    unsigned long var_array_ulong[5 + 5][size_1 * size_2][size_1];
+};
+
+struct ArrayMultiDimensionLiteralsLongLong
+{
+    long long var_array_longlong[size_1][5 * 2][5];
+};
+
+struct ArrayMultiDimensionLiteralsULongLong
+{
+    unsigned long long var_array_ulonglong[size_1 + 5][size_1 * size_2][5 + 5];
+};
+
+struct ArrayMultiDimensionLiteralsFloat
+{
+    float var_array_float[5 * 2][size_1][5 + 5];
+};
+
+struct ArrayMultiDimensionLiteralsDouble
+{
+    double var_array_double[size_1][size_1 + 5][size_1];
+};
+
+struct ArrayMultiDimensionLiteralsLongDouble
+{
+    long double var_array_longdouble[size_1][size_1][size_1 + 5];
+};
+
+struct ArrayMultiDimensionLiteralsBoolean
+{
+    boolean var_array_boolean[size_1 * size_2][size_1][5];
+};
+
+struct ArrayMultiDimensionLiteralsOctet
+{
+    octet var_array_octet[size_1][size_1 * 2][size_1];
+};
+
+struct ArrayMultiDimensionLiteralsChar
+{
+    char var_array_char[5 + 5][size_1][5 + 5];
+};
+
+struct ArrayMultiDimensionLiteralsWChar
+{
+    wchar var_array_wchar[size_1 * size_2][size_1 + 5][size_1];
+};
+
+struct ArrayMultiDimensionLiteralsString
+{
+    string var_array_string[size_1][5 * 2][5];
+};
+
+struct ArrayMultiDimensionLiteralsWString
+{
+    wstring var_array_wstring[size_1 + 5][size_1 * size_2][5 * 2];
+};
+
+struct ArrayMultiDimensionLiteralsBoundedString
+{
+    Inner_alias_bounded_string_helper var_array_bounded_string[size_1][5 * 2][5];
+};
+
+struct ArrayMultiDimensionLiteralsBoundedWString
+{
+    Inner_alias_bounded_wstring_helper var_array_bounded_wstring[size_1 + 5][size_1 * size_2][5 * 2];
+};
+
+struct ArrayMultiDimensionLiteralsEnum
+{
+    InnerEnumHelper var_array_enum[5 * 2][size_1][5 + 5];
+};
+
+struct ArrayMultiDimensionLiteralsBitMask
+{
+    InnerBitMaskHelper var_array_bitmask[size_1][size_1 + 5][size_1];
+};
+
+struct ArrayMultiDimensionLiteralsAlias
+{
+    InnerAliasHelper var_array_alias[size_1 * 2][5 * 2][size_1 * size_2];
+};
+
+struct ArrayMultiDimensionLiteralsSequence
+{
+    sequence<long> var_array_sequence[size_1 + 5][size_1][5 * 2];
+};
+
+struct ArrayMultiDimensionLiteralsMap
+{
+    map<long, long> var_array_map[size_1][size_1 * 2][size_1];
+};
+
+struct ArrayMultiDimensionLiteralsUnion
+{
+    InnerUnionHelper var_array_union[size_1 * size_2][size_1 + 5][size_1 * 2];
+};
+
+struct ArrayMultiDimensionLiteralsStructure
+{
+    InnerStructureHelper var_array_structure[5][size_1][size_1 + 5];
+};
+
+struct ArrayMultiDimensionLiteralsBitSet
+{
+    InnerBitsetHelper var_array_bitset[size_1 + 5][size_1 * 2][size_1 * size_2];
+};
+
+
+struct BoundedSmallArrays
+{
+    short var_array_small[1];
+};
+
+struct BoundedBigArrays
+{
+    short var_array_big[41925];
+};

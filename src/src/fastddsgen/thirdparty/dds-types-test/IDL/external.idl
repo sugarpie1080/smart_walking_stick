@@ -1,0 +1,169 @@
+#include "helpers/basic_inner_types.idl"
+
+struct short_external
+{
+    @external short value;
+};
+
+struct ushort_external
+{
+    @external unsigned short value;
+};
+
+struct long_external
+{
+    @external long value;
+};
+
+struct ulong_external
+{
+    @external unsigned long value;
+};
+
+struct longlong_external
+{
+    @external long long value;
+};
+
+struct ulonglong_external
+{
+    @external unsigned long long value;
+};
+
+struct float_external
+{
+    @external float value;
+};
+
+struct double_external
+{
+    @external double value;
+};
+
+struct longdouble_external
+{
+    @external long double value;
+};
+
+struct boolean_external
+{
+    @external boolean value;
+};
+
+struct octet_external
+{
+    @external octet value;
+};
+
+struct char_external
+{
+    @external char value;
+};
+
+struct wchar_external
+{
+    @external wchar value;
+};
+
+struct sequence_short_external
+{
+    @external sequence<short> value;
+};
+
+struct string_unbounded_external
+{
+    @external string value;
+};
+
+struct string_bounded_external
+{
+    @external string<8> value;
+};
+
+struct map_short_external
+{
+    @external map<long, short> value;
+};
+
+struct array_short_external
+{
+    @external short value[10];
+};
+
+struct struct_external
+{
+    @external InnerStructureHelper value;
+};
+
+struct InnerStructExternal
+{
+    short s;
+    @external long l;
+};
+
+struct ext_struct_external
+{
+    InnerStructExternal value;
+};
+
+struct ext_and_inner_struct_external
+{
+    @external InnerStructExternal value;
+};
+
+struct struct_external_optional
+{
+    @external @optional InnerStructureHelper value;
+};
+
+union recursive_union;
+
+@nested
+struct recursive_union_container
+{
+    long l;
+    @external recursive_union ext;
+};
+
+@nested
+union recursive_union switch (octet)
+{
+    case 1:
+        long l;
+    case 2:
+        recursive_union_container c;
+    case 3:
+        short s;
+};
+
+struct recursive_test_1
+{
+    short s;
+    recursive_union u;
+};
+
+struct recursive_structure;
+
+@nested
+union recursive_structure_container switch (octet)
+{
+    case 1:
+        long l;
+    case 2:
+        @external recursive_structure ext;
+    case 3:
+        short s;
+};
+
+@nested
+struct recursive_structure
+{
+    short s;
+    recursive_structure_container c;
+};
+
+struct recursive_test_2
+{
+    octet o;
+    recursive_structure s;
+};

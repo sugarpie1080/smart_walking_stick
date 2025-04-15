@@ -1,0 +1,543 @@
+#include "helpers/basic_inner_types.idl"
+
+module Fixed_String_Module
+{
+    typedef string<20> fixed_string_in_module;
+};
+
+union Union_Short switch (long)
+{
+    case 0:
+        short a;
+};
+
+union Union_UShort switch (long)
+{
+    case 1:
+        unsigned short b;
+};
+
+union Union_Long switch (long)
+{
+    case 2:
+        long c;
+};
+
+union Union_ULong switch (long)
+{
+    case 3:
+        unsigned long d;
+};
+
+union Union_LongLong switch (long)
+{
+    case 4:
+        long long e;
+};
+
+union Union_ULongLOng switch (long)
+{
+    case 5:
+        unsigned long long f;
+};
+
+union Union_Float switch (long)
+{
+    case 6:
+        float g;
+};
+
+union Union_Double switch (long)
+{
+    case 7:
+        double h;
+};
+
+union Union_LongDouble switch (long)
+{
+    case 8:
+        long double i;
+};
+
+union Union_Boolean switch (long)
+{
+    case 9:
+        boolean j;
+};
+
+union Union_Octet switch (long)
+{
+    case 10:
+        octet k;
+};
+
+union Union_Char switch (long)
+{
+    case 11:
+        char l;
+};
+
+union Union_WChar switch (long)
+{
+    case 12:
+        wchar m;
+};
+
+union Union_String switch (long)
+{
+    case 13:
+        string n;
+};
+
+union Union_WString switch (long)
+{
+    case 14:
+        wstring o;
+};
+
+union Union_BoundedString switch (long)
+{
+    case 13:
+        Inner_alias_bounded_string_helper bn;
+};
+
+union Union_BoundedWString switch (long)
+{
+    case 14:
+        Inner_alias_bounded_wstring_helper bo;
+};
+
+union Union_InnerEnumHelper switch (long)
+{
+    case 15:
+        InnerEnumHelper p;
+};
+
+union Union_InnerBitMaskHelper switch (long)
+{
+    case 16:
+        InnerBitMaskHelper q;
+};
+
+union Union_InnerAliasHelper switch (long)
+{
+    case 17:
+        InnerAliasHelper r;
+};
+
+union Union_Array switch (long)
+{
+    case 18:
+        Inner_alias_array_helper s;
+};
+
+union Union_Sequence switch (long)
+{
+    case 19:
+        sequence<short> t;
+};
+
+union Union_Map switch (long)
+{
+    case 20:
+        map<long, long> u;
+};
+
+union Union_InnerUnionHelper switch (long)
+{
+    case 21:
+        InnerUnionHelper v;
+};
+
+union Union_InnerStructureHelper switch (long)
+{
+    case 22:
+        InnerStructureHelper w;
+};
+
+union Union_InnerBitsetHelper switch (long)
+{
+    case 23:
+        InnerBitsetHelper x;
+};
+
+union Union_Discriminator_short switch (short)
+{
+    case 1:
+        long first;
+    case -2:
+        long long second;
+};
+
+union Union_Discriminator_unsigned_short switch (unsigned short)
+{
+    case 1:
+        long first;
+    case 2:
+        long long second;
+};
+
+union Union_Discriminator_long switch (long)
+{
+    case 1:
+        long first;
+    case -2:
+        long long second;
+};
+
+union Union_Discriminator_unsigned_long switch (unsigned long)
+{
+    case 1:
+        long first;
+    case 2:
+        long long second;
+};
+
+union Union_Discriminator_long_long switch (long long)
+{
+    case 1:
+        long first;
+    case -2:
+        long long second;
+};
+
+union Union_Discriminator_unsigned_long_long switch (unsigned long long)
+{
+    case 2:
+        long first;
+    case 1:
+        long long second;
+};
+
+union Union_Discriminator_boolean switch (boolean)
+{
+    case TRUE:
+        long first;
+    case FALSE:
+        long long second;
+};
+
+union Union_Discriminator_octet switch (octet)
+{
+    case 0:
+        long first;
+    case 1:
+        long long second;
+};
+
+union Union_Discriminator_char switch (char)
+{
+    case 'a':
+        long first;
+    case 'b':
+        long long second;
+};
+
+union Union_Discriminator_wchar switch (wchar)
+{
+    case L'a':
+        long first;
+    case L'b':
+        long long second;
+};
+
+union Union_Discriminator_enum switch (InnerEnumHelper)
+{
+    case ENUM_VALUE_1:
+        long first;
+    case ENUM_VALUE_2:
+        long long second;
+    default:
+        octet third;
+};
+
+union Union_Discriminator_enum_labels switch (InnerEnumHelper)
+{
+    case ENUM_VALUE_3:
+    case ENUM_VALUE_1:
+        short first;
+    case ENUM_VALUE_2:
+        short second;
+};
+
+union Union_Discriminator_alias switch (InnerAliasHelper)
+{
+    case 1:
+        long first;
+    case 2:
+        long long second;
+};
+
+union Union_Several_Fields switch (long)
+{
+    case 0:
+        InnerStructureHelper a;
+    case 1:
+        InnerEmptyStructureHelper b;
+    case 2:
+        Inner_alias_bounded_string_helper c;
+    case 3:
+        Inner_alias_array_helper d;
+    case 4:
+        Inner_alias_sequence_helper e;
+};
+
+union Union_Several_Fields_With_Default switch (long)
+{
+    case 0:
+        InnerStructureHelper a;
+    case 1:
+        InnerEmptyStructureHelper b;
+    case 2:
+        Inner_alias_bounded_string_helper c;
+    case 3:
+        Inner_alias_array_helper d;
+    case 4:
+        Inner_alias_sequence_helper e;
+    default:
+        sequence<short, 30> f;
+};
+
+union Union_Fixed_String_In_Module_Alias switch (long)
+{
+    case 0:
+        Fixed_String_Module::fixed_string_in_module a;
+};
+
+struct UnionShort
+{
+    Union_Short var_union_short;
+};
+
+struct UnionUShort
+{
+    Union_UShort var_union_ushort;
+};
+
+struct UnionLong
+{
+    Union_Long var_union_long;
+};
+
+struct UnionULong
+{
+    Union_ULong var_union_ulong;
+};
+
+struct UnionLongLong
+{
+    Union_LongLong var_union_long_long;
+};
+
+struct UnionULongLong
+{
+    Union_ULongLOng var_union_ulong_long;
+};
+
+struct UnionFloat
+{
+    Union_Float var_union_float;
+};
+
+struct UnionDouble
+{
+    Union_Double var_union_double;
+};
+
+struct UnionLongDouble
+{
+    Union_LongDouble var_union_long_double;
+};
+
+struct UnionBoolean
+{
+    Union_Boolean var_union_boolean;
+};
+
+struct UnionOctet
+{
+    Union_Octet var_union_octet;
+};
+
+struct UnionChar
+{
+    Union_Char var_union_char;
+};
+
+struct UnionWChar
+{
+    Union_WChar var_union_wchar;
+};
+
+struct UnionString
+{
+    Union_String var_union_string;
+};
+
+struct UnionWString
+{
+    Union_WString var_union_wstring;
+};
+
+struct UnionBoundedString
+{
+    Union_BoundedString var_union_bounded_string;
+};
+
+struct UnionBoundedWString
+{
+    Union_BoundedWString var_union_bounded_wstring;
+};
+
+struct UnionInnerEnumHelper
+{
+    Union_InnerEnumHelper var_union_my_enum;
+};
+
+struct UnionInnerBitMaskHelper
+{
+    Union_InnerBitMaskHelper var_union_my_bit_mask;
+};
+
+struct UnionInnerAliasHelper
+{
+    Union_InnerAliasHelper var_union_my_alias;
+};
+
+struct UnionArray
+{
+    Union_Array var_union_array;
+};
+
+struct UnionSequence
+{
+    Union_Sequence var_union_sequence;
+};
+
+struct UnionMap
+{
+    Union_Map var_union_map;
+};
+
+struct UnionInnerUnionHelper
+{
+    Union_InnerUnionHelper var_union_my_union;
+};
+
+struct UnionInnerStructureHelper
+{
+    Union_InnerStructureHelper var_union_my_structure;
+};
+
+struct UnionInnerBitsetHelper
+{
+    Union_InnerBitsetHelper var_union_my_bitset;
+};
+
+struct UnionDiscriminatorShort
+{
+    Union_Discriminator_short var_union_discriminator_short;
+};
+
+struct UnionDiscriminatorUShort
+{
+    Union_Discriminator_unsigned_short var_union_discriminator_ushort;
+};
+
+struct UnionDiscriminatorLong
+{
+    Union_Discriminator_long var_union_discriminator_long;
+};
+
+struct UnionDiscriminatorULong
+{
+    Union_Discriminator_unsigned_long var_union_discriminator_ulong;
+};
+
+struct UnionDiscriminatorLongLong
+{
+    Union_Discriminator_long_long var_union_discriminator_long_long;
+};
+
+struct UnionDiscriminatorULongLong
+{
+    Union_Discriminator_unsigned_long_long var_union_discriminator_ulong_long;
+};
+
+struct UnionDiscriminatorBoolean
+{
+    Union_Discriminator_boolean var_union_discriminator_boolean;
+};
+
+struct UnionDiscriminatorOctet
+{
+    Union_Discriminator_octet var_union_discriminator_octet;
+};
+
+struct UnionDiscriminatorChar
+{
+    Union_Discriminator_char var_union_discriminator_char;
+};
+
+struct UnionDiscriminatorWChar
+{
+    Union_Discriminator_wchar var_union_discriminator_wchar;
+};
+
+struct UnionDiscriminatorEnum
+{
+    Union_Discriminator_enum var_union_discriminator_enum;
+};
+
+struct UnionDiscriminatorEnumLabel
+{
+    Union_Discriminator_enum_labels var_union_discriminator_enum;
+};
+
+struct UnionDiscriminatorAlias
+{
+    Union_Discriminator_alias var_union_discriminator_alias;
+};
+
+struct UnionSeveralFields
+{
+    Union_Several_Fields var_union_several_fields;
+};
+
+struct UnionSeveralFieldsWithDefault
+{
+    Union_Several_Fields_With_Default var_union_several_fields_with_default;
+};
+
+//! Test case for union discriminator's @default annotation.
+union DefaultAnnotation switch (@default(0) long)
+{
+    case 0:
+        octet a;
+    case 1:
+        short b;
+    default:
+        long c;
+};
+
+//! Test case for union discriminator's @default annotation with external value.
+union DefaultAnnotationExternalValue switch (@default(2) long)
+{
+    case 0:
+        octet a;
+    case 1:
+        short b;
+};
+
+//! Regression test for issue #21773. Note: union without default value.
+struct UnionShortExtraMember
+{
+    Union_Short var_union_short;
+    long var_long;
+};
+
+//! Regression test for issue #21823. Note: union using an alias with scope.
+struct UnionFixedStringAlias
+{
+    Union_Fixed_String_In_Module_Alias var_union_fixed_string_in_module_alias;
+};

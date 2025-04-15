@@ -1,0 +1,112 @@
+#include "helpers/basic_inner_types.idl"
+
+@final
+struct FinalShortStruct
+{
+    short var_short;
+};
+
+@final
+struct FinalUShortStruct
+{
+    unsigned short var_ushort;
+};
+
+@final
+struct FinalLongStruct
+{
+    long var_long;
+};
+
+@final
+struct FinalULongStruct
+{
+    unsigned long var_ulong;
+};
+
+@final
+struct FinalLongLongStruct
+{
+    long long var_longlong;
+};
+
+@final
+struct FinalULongLongStruct
+{
+    unsigned long long var_ulonglong;
+};
+
+@final
+struct FinalFloatStruct
+{
+    float var_float;
+};
+
+@final
+struct FinalDoubleStruct
+{
+    double var_double;
+};
+
+@final
+struct FinalLongDoubleStruct
+{
+    long double var_longdouble;
+};
+
+@final
+struct FinalBooleanStruct
+{
+    boolean var_boolean;
+};
+
+@final
+struct FinalOctetStruct
+{
+    octet var_octet;
+};
+
+@final
+struct FinalCharStruct
+{
+    char var_char8;
+};
+
+@final
+struct FinalWCharStruct
+{
+    wchar var_char16;
+};
+
+@final
+struct FinalUnionStruct
+{
+    InnerUnionHelper var_union;
+};
+
+@final
+struct FinalEmptyStruct
+{
+};
+
+@final
+struct FinalEmptyInheritanceStruct : FinalEmptyStruct
+{
+    string var_str;
+};
+
+@final
+struct FinalInheritanceStruct : FinalShortStruct
+{
+    string var_str;
+};
+
+@final
+struct InheritanceEmptyStruct : FinalShortStruct
+{
+};
+
+struct FinalExtensibilityInheritance : FinalShortStruct
+{
+    long var_long;
+};

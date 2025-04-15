@@ -1,0 +1,154 @@
+#include "helpers/basic_inner_types.idl"
+
+typedef short alias_int16;
+typedef unsigned short alias_uint16;
+typedef long alias_int32;
+typedef unsigned long alias_uint32;
+typedef long long alias_int64;
+typedef unsigned long long alias_uint64;
+typedef float alias_float32;
+typedef double alias_float64;
+typedef long double alias_float128;
+typedef boolean alias_bool;
+typedef octet alias_octet;
+typedef char alias_char8;
+typedef wchar alias_char16;
+typedef string alias_string8;
+typedef wstring alias_string16;
+typedef InnerEnumHelper alias_enum;
+typedef InnerBitMaskHelper alias_bitmask;
+typedef InnerAliasHelper alias_alias;
+typedef short alias_array[2];
+typedef short alias_multiarray[2][2];
+typedef sequence<short> alias_sequence;
+typedef map<short, short> alias_map;
+typedef InnerUnionHelper alias_union;
+typedef InnerStructureHelper alias_structure;
+typedef InnerBitsetHelper alias_bitset;
+
+
+
+struct AliasInt16
+{
+    alias_int16 value;
+};
+
+struct AliasUint16
+{
+    alias_uint16 value;
+};
+
+struct AliasInt32
+{
+    alias_int32 value;
+};
+
+struct AliasUInt32
+{
+    alias_uint32 value;
+};
+
+struct AliasInt64
+{
+    alias_int64 value;
+};
+
+struct AliasUInt64
+{
+    alias_uint64 value;
+};
+
+struct AliasFloat32
+{
+    alias_float32 value;
+};
+
+struct AliasFloat64
+{
+    alias_float64 value;
+};
+
+struct AliasFloat128
+{
+    alias_float128 value;
+};
+
+struct AliasBool
+{
+    alias_bool value;
+};
+
+struct AliasOctet
+{
+    alias_octet value;
+};
+
+struct AliasChar8
+{
+    alias_char8 value;
+};
+
+struct AliasChar16
+{
+    alias_char16 value;
+};
+
+struct AliasString8
+{
+    alias_string8 value;
+};
+
+struct AliasString16
+{
+    alias_string16 value;
+};
+
+struct AliasEnum
+{
+    alias_enum value;
+};
+
+struct AliasBitmask
+{
+    alias_bitmask value;
+};
+
+struct AliasAlias
+{
+    alias_alias value;
+};
+
+struct AliasArray
+{
+    alias_array value;
+};
+
+struct AliasMultiArray
+{
+    alias_multiarray value;
+};
+
+struct AliasSequence
+{
+    alias_sequence value;
+};
+
+struct AliasMap
+{
+    alias_map value;
+};
+
+struct AliasUnion
+{
+    alias_union value;
+};
+
+struct AliasStruct
+{
+    alias_structure value;
+};
+
+struct AliasBitset
+{
+    alias_bitset value;
+};

@@ -1,0 +1,122 @@
+struct KeyedShortStruct
+{
+    @Key short key_short;
+    short var_short;
+};
+
+struct KeyedUShortStruct
+{
+    @Key unsigned short key_ushort;
+    unsigned short var_ushort;
+};
+
+struct KeyedLongStruct
+{
+    @Key long key_long;
+    long var_long;
+};
+
+struct KeyedULongStruct
+{
+    @Key unsigned long key_ulong;
+    unsigned long var_ulong;
+};
+
+struct KeyedLongLongStruct
+{
+    @Key long long key_longlong;
+    long long var_longlong;
+};
+
+struct KeyedULongLongStruct
+{
+    @Key unsigned long long key_ulonglong;
+    unsigned long long var_ulonglong;
+};
+
+struct KeyedFloatStruct
+{
+    @Key float key_float;
+    float var_float;
+};
+
+struct KeyedDoubleStruct
+{
+    @Key double key_double;
+    double var_double;
+};
+
+struct KeyedLongDoubleStruct
+{
+    @Key long double key_longdouble;
+    long double var_longdouble;
+};
+
+struct KeyedBooleanStruct
+{
+    @Key boolean key_boolean;
+    boolean var_boolean;
+};
+
+struct KeyedOctetStruct
+{
+    @Key octet key_octet;
+    octet var_octet;
+};
+
+struct KeyedCharStruct
+{
+    @Key char key_char8;
+    char var_char8;
+};
+
+struct KeyedWCharStruct
+{
+    @Key wchar key_char16;
+    wchar var_char16;
+};
+
+struct KeyedEmptyStruct
+{
+    @key short key_short;
+};
+
+struct KeyedEmptyInheritanceStruct : KeyedEmptyStruct
+{
+    string key_str;
+    string var_str;
+};
+
+struct KeyedInheritanceStruct : KeyedShortStruct
+{
+    string key_str;
+    string var_str;
+};
+
+struct InheritanceKeyedEmptyStruct : KeyedShortStruct
+{
+};
+
+@final
+struct KeyedFinal
+{
+    @id(2) @key long key_long;
+    @id(1) @key short key_short;
+    @id(0) @key string key_string;
+};
+
+@appendable
+struct KeyedAppendable
+{
+    @id(2) @key long key_long;
+    @id(1) @key short key_short;
+    @id(0) @key string key_string;
+};
+
+@mutable
+struct KeyedMutable
+{
+    @id(2) @key long key_long;
+    @id(1) @key short key_short;
+    @id(0) @key string key_string;
+};
