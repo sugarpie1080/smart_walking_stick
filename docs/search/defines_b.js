@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tofdata_5fdllapi_579',['ToFData_DllAPI',['../ToFData_8h.html#ace4f7843d678db1e41ce128f35292bcf',1,'ToFData.h']]],
-  ['true_580',['TRUE',['../I2Cdev_8hpp.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'I2Cdev.hpp']]]
+  ['vl53l0x_5faddress_5fdefault_515',['VL53L0X_ADDRESS_DEFAULT',['../VL53L0X__defines_8hpp.html#a70a6277325a3b6d21f62e0db5013d028',1,'VL53L0X_defines.hpp']]]
 ];
