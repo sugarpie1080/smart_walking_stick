@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['architecture_5fid_487',['ARCHITECTURE_ID',['../CMakeCCompilerId_8c.html#aba35d0d200deaeb06aee95ca297acb28',1,'ARCHITECTURE_ID():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#aba35d0d200deaeb06aee95ca297acb28',1,'ARCHITECTURE_ID():&#160;CMakeCXXCompilerId.cpp']]]
+  ['decodevcselperiod_451',['decodeVcselPeriod',['../VL53L0X_8cpp.html#a9183f167ce743756d82bea4add3ad6de',1,'VL53L0X.cpp']]]
 ];

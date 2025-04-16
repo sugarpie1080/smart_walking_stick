@@ -45,54 +45,50 @@ var NAVTREE =
       [ "Setup", "index.html#autotoc_md16", null ],
       [ "Compliation", "index.html#autotoc_md17", null ]
     ] ],
-    [ "Description", "md_pull_request_template.html", null ],
     [ "VL53L0X library for Linux", "md_src_drivers_vl53l0x_linux_README.html", [
-      [ "Summary", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md23", [
-        [ "How to build and run", "md_pull_request_template.html#autotoc_md19", null ],
-        [ "Checklist", "md_pull_request_template.html#autotoc_md20", null ],
-        [ "Evidence", "md_pull_request_template.html#autotoc_md21", null ],
-        [ "Feedback, bugs, feature requests...", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md24", null ]
+      [ "Summary", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md19", [
+        [ "Feedback, bugs, feature requests...", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md20", null ]
       ] ],
-      [ "Table of Contents", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md25", null ],
-      [ "Development status", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md27", null ],
-      [ "Supported platforms", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md29", null ],
-      [ "Usage", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md31", [
-        [ "Hardware", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md32", [
-          [ "Connections", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md33", [
-            [ "Odroid C2", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md34", null ],
-            [ "Raspberry Pi", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md35", null ],
-            [ "BeagleBone Green Wireless", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md36", null ]
+      [ "Table of Contents", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md21", null ],
+      [ "Development status", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md23", null ],
+      [ "Supported platforms", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md25", null ],
+      [ "Usage", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md27", [
+        [ "Hardware", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md28", [
+          [ "Connections", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md29", [
+            [ "Odroid C2", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md30", null ],
+            [ "Raspberry Pi", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md31", null ],
+            [ "BeagleBone Green Wireless", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md32", null ]
           ] ]
         ] ],
-        [ "Software", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md37", [
-          [ "Installation", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md38", null ],
-          [ "Using the library", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md39", null ]
+        [ "Software", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md33", [
+          [ "Installation", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md34", null ],
+          [ "Using the library", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md35", null ]
         ] ],
-        [ "Multiple sensors", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md40", null ]
+        [ "Multiple sensors", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md36", null ]
       ] ],
-      [ "Examples", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md41", [
-        [ "Single ranging mode, single sensor", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md42", null ],
-        [ "Continuous ranging mode, multiple sensors", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md43", null ]
+      [ "Examples", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md37", [
+        [ "Single ranging mode, single sensor", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md38", null ],
+        [ "Continuous ranging mode, multiple sensors", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md39", null ]
       ] ],
-      [ "ST's VL53L0X API and this library", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md45", null ],
-      [ "Library reference", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md47", null ],
-      [ "Special thanks", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md49", null ],
-      [ "License", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md50", null ]
+      [ "ST's VL53L0X API and this library", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md41", null ],
+      [ "Library reference", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md43", null ],
+      [ "Special thanks", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md45", null ],
+      [ "License", "md_src_drivers_vl53l0x_linux_README.html#autotoc_md46", null ]
     ] ],
     [ "System Archiecture", "md_system_architecture.html", [
-      [ "Hardware Components", "md_system_architecture.html#autotoc_md52", null ],
-      [ "Software Layers", "md_system_architecture.html#autotoc_md53", [
-        [ "Drivers", "md_system_architecture.html#autotoc_md54", null ],
-        [ "Application Layer", "md_system_architecture.html#autotoc_md55", null ],
-        [ "Interface Layer", "md_system_architecture.html#autotoc_md56", null ]
+      [ "Hardware Components", "md_system_architecture.html#autotoc_md48", null ],
+      [ "Software Layers", "md_system_architecture.html#autotoc_md49", [
+        [ "Drivers", "md_system_architecture.html#autotoc_md50", null ],
+        [ "Application Layer", "md_system_architecture.html#autotoc_md51", null ],
+        [ "Interface Layer", "md_system_architecture.html#autotoc_md52", null ]
       ] ]
     ] ],
     [ "User Stories", "md_user_stories.html", [
-      [ "Must Haves", "md_user_stories.html#autotoc_md58", [
-        [ "Obstacle Detection", "md_user_stories.html#autotoc_md59", null ],
-        [ "Status Monitor", "md_user_stories.html#autotoc_md60", null ],
-        [ "Haptic Feedback", "md_user_stories.html#autotoc_md61", null ],
-        [ "Drop Mode", "md_user_stories.html#autotoc_md62", null ]
+      [ "Must Haves", "md_user_stories.html#autotoc_md54", [
+        [ "Obstacle Detection", "md_user_stories.html#autotoc_md55", null ],
+        [ "Status Monitor", "md_user_stories.html#autotoc_md56", null ],
+        [ "Haptic Feedback", "md_user_stories.html#autotoc_md57", null ],
+        [ "Drop Mode", "md_user_stories.html#autotoc_md58", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
@@ -118,7 +114,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
@@ -130,7 +125,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BasePublisher_8hpp.html",
-"dir_4fe5cf12322eb0f9892753dc20f1484c.html"
+"md_src_drivers_vl53l0x_linux_README.html#autotoc_md25"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

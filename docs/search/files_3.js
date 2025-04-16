@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['i2cdev_2ecpp_288',['I2Cdev.cpp',['../I2Cdev_8cpp.html',1,'']]],
-  ['i2cdev_2ehpp_289',['I2Cdev.hpp',['../I2Cdev_8hpp.html',1,'']]]
+  ['main_2ecpp_259',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['main_5fpage_2emd_260',['main_page.md',['../main__page_8md.html',1,'']]],
+  ['motorcommands_2eidl_261',['MotorCommands.idl',['../MotorCommands_8idl.html',1,'']]],
+  ['motormove_2ecpp_262',['MotorMove.cpp',['../MotorMove_8cpp.html',1,'']]],
+  ['motormove_2ehpp_263',['MotorMove.hpp',['../MotorMove_8hpp.html',1,'']]]
 ];

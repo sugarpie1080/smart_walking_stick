@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5f_5fhas_5finclude_486',['__has_include',['../CMakeCCompilerId_8c.html#ae5510d82e4946f1656f4969911c54736',1,'__has_include():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#ae5510d82e4946f1656f4969911c54736',1,'__has_include():&#160;CMakeCXXCompilerId.cpp']]]
+  ['calcmacroperiod_449',['calcMacroPeriod',['../VL53L0X_8cpp.html#aefec5de3912a862cfcb3da36045c4992',1,'VL53L0X.cpp']]],
+  ['checktimeoutexpired_450',['checkTimeoutExpired',['../VL53L0X_8cpp.html#abab7c5b1cbb48c1f149d63407116b4a7',1,'VL53L0X.cpp']]]
 ];
