@@ -1,6 +1,0 @@
-@extensibility(FINAL)
-struct DeliveryMechanisms
-{
-	unsigned long index;
-	char message[32];
-};

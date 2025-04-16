@@ -1,7 +1,0 @@
-names:
-    fastdds:
-        cmake-args:
-            - "-DEPROSIMA_BUILD_TESTS=ON"
-    fastdds_python:
-        cmake-args:
-            - "-DBUILD_TESTING=ON"
