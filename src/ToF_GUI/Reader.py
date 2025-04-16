@@ -1,3 +1,8 @@
+"""
+@file Reader.py
+@Author: Kyle Watt
+@Date: 2025-04-16
+"""
 import fastdds
 from flask_socketio import SocketIO
 
