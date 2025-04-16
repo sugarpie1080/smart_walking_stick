@@ -19,12 +19,13 @@ class ReaderListenerMotor(fastdds.DataReaderListener):
         data = MotorCommands.MotorCommands()
         reader.take_next_sample(data, info)
         duty_cycle = data.duty_cycle()
+        sec = data.sec()
 
-        print("values:")
-        print(duty_cycle)
+
+        print(f"Received data: Seconds={data.sec()}, Duty Cycle ={data.duty_cycle()}")
 
         if reader.take_next_sample(data, info):
             # Emit data to connected WebSocket clients
-            self.socketio.emit('update_motor_data', {'duty_cycle': data.duty_cycle()})
+            self.socketio.emit('update_motor_data', {'duty_cycle': data.duty_cycle(), 'sec': data.sec()})
         else:
             print("No data received or data invalid.")

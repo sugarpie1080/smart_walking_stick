@@ -89,9 +89,9 @@ class MotorMove : public ToFSensor::CallbackInterface {
         std::condition_variable cv;
         float distance = 0;
         // Constants for Motor Control
-        const int PWM_MAX = 100;
-        const int DISTANCE_MIN = 42;
-        const int DISTANCE_MAX = 200;
+        const int PWM_MAX = 30;
+        const int DISTANCE_MIN = 20;
+        const int DISTANCE_MAX = 300;
         const float DECAY_FACTOR = 100.0f;
     };
 }

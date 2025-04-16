@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Walking Stick - Control Panel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,11 +30,12 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
+            overflow: hidden;
         }
-        .data-display, .controls {
+        .data-display {
             margin-bottom: 20px;
         }
-        .data-box, .input-box {
+        .data-box {
             margin: 10px 0;
             padding: 15px;
             background-color: #e8f5e9;
@@ -41,111 +43,65 @@
             border-radius: 5px;
             font-size: 1.2rem;
             font-weight: bold;
-            text-align: left;
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
-        .control-item {
-            margin: 10px 0;
-        }
-        label {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        input[type="text"] {
-            width: 300px;
-            height: 30px;
-            font-size: 1.2rem;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: #4CAF50;
-        }
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 300px;
-            height: 10px;
-            border-radius: 5px;
-            outline: none;
-            margin: 0;
-            background: linear-gradient(to right, red, yellow, green);
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: green;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: green;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
         }
         #battery-status {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 10px;
+            justify-content: center;
+            gap: 20px;
         }
         #battery-icon {
             width: 50px;
-            height: 25px;
-            border: 2px solid #333;
-            border-radius: 3px;
+            height: 20px;
+            border: 3px solid #333;
+            border-radius: 5px;
             position: relative;
         }
         #battery-icon:before {
             content: '';
-            width: 8px;
-            height: 12px;
+            width: 10px;
+            height: 20px;
             background-color: #333;
             position: absolute;
-            right: -10px;
-            top: 6px;
-            border-radius: 1px;
+            top: 50%;
+            right: -15px;
+            transform: translateY(-50%);
+            border-radius: 2px;
         }
         #battery-level {
-            width: 80%; /* Default width */
+            width: 100%; /* Default full width */
             height: 100%;
             background-color: #4CAF50;
-            border-radius: 2px;
+            border-radius: 3px;
+            transition: width 0.3s, background-color 0.3s; /* Smooth transitions */
+        }
+        #battery-percentage {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        canvas {
+            max-width: 100%;
+            height: 300px;
+            display: block;
+            margin: 0 auto;
         }
         footer {
             text-align: center;
             padding: 10px 0;
             background-color: #333;
             color: white;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-        .pin-icon {
-            width: 20px;
-            height: 20px;
-            background-image: url('images/locationPin.png'); 
-            background-size: cover;
-            margin-right: 10px;
+            position: relative;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Smart Walking Stick - Object Detection</h1>
-        <p>Powered by Radar Technology</p>
+        <p>Powered by ToF Technology</p>
     </header>
     <div class="container">
         <!-- Real-Time Data Display -->
@@ -166,7 +122,7 @@
                     <div id="battery-icon">
                         <div id="battery-level"></div>
                     </div>
-                    <span id="battery-percentage">0%</span>
+                    <span id="battery-percentage">100%</span>
                 </div>
             </div>
             <div class="data-box">
@@ -174,28 +130,9 @@
                 <span id="pwm">0</span>
             </div>
         </div>
-        <!-- User Controls -->
-        <div class="controls">
-            <h2>User Controls</h2>
-            <div class="input-box">
-                <label for="threshold-slider">Detection Threshold:</label>
-                <input type="range" id="threshold-slider" min="0" max="100" value="50">
-                <span id="threshold-value">50%</span>
-            </div>
-            <div class="input-box">
-                <label for="intensity-slider">Detection Intensity:</label>
-                <input type="range" id="intensity-slider" min="0" max="100" value="50">
-                <span id="intensity-value">50%</span>
-            </div>
-            <div class="input-box">
-                <label for="detection-enable">Detection Enable:</label>
-                <input type="checkbox" id="detection-enable" checked>
-            </div>
-            <div class="input-box">
-                <label for="destination">Destination:</label>
-                <input type="text" id="destination" placeholder="Enter your destination">
-            </div>
-        </div>
+        <!-- PWM Graph -->
+        <h2>PWM Graph Over Time</h2>
+        <canvas id="pwmChart"></canvas>
     </div>
     <footer>
         &copy; 2025 Smart Walking Stick Project. All Rights Reserved.
@@ -205,37 +142,102 @@
     <script>
         const socket = io();
 
+        // Chart setup
+        const ctx = document.getElementById('pwmChart').getContext('2d');
+        const pwmData = {
+            labels: [], // X-axis: Time in seconds
+            datasets: [{
+                label: 'Duty Cycle (%)',
+                data: [], // Y-axis: Duty Cycle
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                tension: 0.4
+            }]
+        };
+        const pwmChart = new Chart(ctx, {
+            type: 'line',
+            data: pwmData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true, // Maintains the aspect ratio
+                aspectRatio: 2,           
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time (seconds)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Duty Cycle (%)'
+                        },
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
         // Update ToF Data in Real-Time
         socket.on('update_data', (data) => {
             document.getElementById('seconds').innerText = `${data.sec}`;
             document.getElementById('distance').innerText = `${data.distance} mm`;
 
-            // Update Battery Level
-            const batteryLevel = document.getElementById('battery-level');
-            const batteryPercentage = document.getElementById('battery-percentage');
-
-            batteryLevel.style.width = `${data.battery}%`;
-            batteryLevel.style.backgroundColor = data.battery > 20 ? '#4CAF50' : '#f44336';
-            batteryPercentage.innerText = `${data.battery}%`;
+            console.log('[DEBUG] ToF Data updated:', data);
         });
 
+        // Update motor data and graph
         socket.on('update_motor_data', (data) => {
+            console.log('[DEBUG] Full data received:', data);
             document.getElementById('pwm').innerText = `${data.duty_cycle}`;
+            document.getElementById('seconds').innerText = `${data.sec}`;
+            updatePWMChart(data.sec, data.duty_cycle);
+
+            console.log('[DEBUG] Motor Data updated:', data);
         });
 
-        // Update the percentage labels when sliders are moved
-        const thresholdSlider = document.getElementById('threshold-slider');
-        const thresholdValue = document.getElementById('threshold-value');
-        const intensitySlider = document.getElementById('intensity-slider');
-        const intensityValue = document.getElementById('intensity-value');
+        // Update Chart Data Function
+        function updatePWMChart(seconds, dutyCycle) {
+            pwmData.labels.push(String(seconds)); 
+            pwmData.datasets[0].data.push(dutyCycle);
 
-        thresholdSlider.addEventListener('input', () => {
-            thresholdValue.innerText = `${thresholdSlider.value}%`;
-        });
+            if (pwmData.labels.length > 20) {
+                pwmData.labels.shift();
+                pwmData.datasets[0].data.shift();
+            }
 
-        intensitySlider.addEventListener('input', () => {
-            intensityValue.innerText = `${intensitySlider.value}%`;
-        });
+            pwmChart.update();
+        }
+
+        // Simulate Battery Drain
+        let batteryPercentage = 100;
+        const batteryLevelElement = document.getElementById('battery-level');
+        const batteryPercentageElement = document.getElementById('battery-percentage');
+
+        function drainBattery() {
+            if (batteryPercentage > 0) {
+                batteryPercentage--;
+
+                // Update the battery level
+                batteryLevelElement.style.width = `${batteryPercentage}%`;
+
+                // Change color based on battery level
+                if (batteryPercentage <= 20) {
+                    batteryLevelElement.style.backgroundColor = '#f44336'; // Red for low battery
+                } else if (batteryPercentage <= 50) {
+                    batteryLevelElement.style.backgroundColor = '#FF9800'; // Orange for medium battery
+                } else {
+                    batteryLevelElement.style.backgroundColor = '#4CAF50'; // Green for high battery
+                }
+
+                // Update battery percentage text
+                batteryPercentageElement.innerText = `${batteryPercentage}%`;
+            }
+        }
+        setInterval(drainBattery, 20000);//Drain 1% every 20 seconds
     </script>
 </body>
 </html>
