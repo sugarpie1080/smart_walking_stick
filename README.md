@@ -76,28 +76,20 @@ The following hardware is required for this repository:
 The following setup is required:
 
 1. Install python3.10
-1. Install the following libraries:
+2. Install the following libraries:
 ```bash
     sudo apt install libgpiod colcon swig python3-vcstool
 ```
-2. Setup the PWM pin:
-    - Add to `/boot/firmware/config.txt`
-
-    ```bash 
-        dtoverlay=pwm-2chan
-    ```
-    - Reboot the raspberry pi
-    - Check that the overlay worked:
-
-    ```bash 
-        pinctrl -p
-    ```
-3. Install `fastdds_python`, through following these instructions. [fastdds_python link](https://github.com/eProsima/Fast-DDS-python)
-4. Source the `fastdds_python` install before compliation:
-
-    ```bash
-    source <path_to_fastdds_python_ws>/install/setup.bash
-    ```
+3. Setup the PWM pin via adding to ```/boot/firmware/config.txt```
+```bash 
+    dtoverlay=pwm-2chan
+    reboot
+```
+4. Install ```fastdds_python```, through following these instructions. [fastdds_python link](https://github.com/eProsima/Fast-DDS-python)
+5. Source the ```fastdds_python``` install before compliation:
+```bash
+source <path_to_fastdds_python_ws>/install/setup.bash
+```
 
 ### Compliation
 
