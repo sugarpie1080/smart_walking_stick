@@ -117,7 +117,22 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a983eb5add518ffca645660f09fb8671d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classReader_1_1Reader.html#a983eb5add518ffca645660f09fb8671d">reader</a></td></tr>
 <tr class="separator:a983eb5add518ffca645660f09fb8671d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Represents a FastDDS subscriber that reads data published by a FastDDS publisher.
+
+The class sets up necessary FastDDS components to subscribe to a specific topic and uses a listener to handle data availability events.
+
+Attributes:
+    set_name (str): The name of the data type associated with the topic.
+    topic_name (str): The name of the topic to subscribe to.
+    topic_data_type: The FastDDS data type associated with the topic.
+    listener: The listener class for processing received data.
+    socketio (SocketIO): The Socket.IO instance used for transmitting updates to web clients.
+    participant: The FastDDS participant entity for communication.
+    topic: The FastDDS topic entity.
+    subscriber: The FastDDS subscriber entity.
+    reader: The FastDDS data reader entity.
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af4e1fe00fc4e67a70cba6d307e0afe32"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af4e1fe00fc4e67a70cba6d307e0afe32">&#9670;&nbsp;</a></span>__init__()</h2>
 
@@ -167,7 +182,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Initializes the Reader class.
 
+Creates and configures FastDDS entities required for subscribing to data topics and reading data samples.
+</pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -186,7 +204,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Cleans up FastDDS entities.
 
+Deletes all contained entities in the participant and releases resources.
+
+This method should be called to safely remove the DDS entities when they are no longer needed.
+
+@return: None
+</pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>

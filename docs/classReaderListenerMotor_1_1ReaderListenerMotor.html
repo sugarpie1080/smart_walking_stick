@@ -123,7 +123,16 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a992789f86fc6d96527357624aee247d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classReaderListenerMotor_1_1ReaderListenerMotor.html#a992789f86fc6d96527357624aee247d2">socketio</a></td></tr>
 <tr class="separator:a992789f86fc6d96527357624aee247d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Creates a new class called ReaderListenerMotor which is a child of the parent class fastdds.DataReaderListener.
+
+The class is responsible for:
+- Listening for FastDDS data updates via the DataReaderListener interface.
+- Transmitting received FastDDS data to a connected Socket.IO server.
+
+Attributes:
+    socketio (SocketIO): The Socket.IO instance used to emit data updates to connected clients.
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a956469e28de1c672cef0f09f0dc1545c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a956469e28de1c672cef0f09f0dc1545c">&#9670;&nbsp;</a></span>__init__()</h2>
 
@@ -149,7 +158,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<pre class="fragment">Initializes the ReaderListenerMotor class.
+</pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -178,7 +188,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Callback function triggered when data is available from the reader.
 
+This method takes the next sample, extracts FastDDS data, and emits it through the Socket.IO connection.
+If no data is available, logs an error message.
+
+Emits:
+    - 'update_motor_data': Transmits duty cycle and seconds to WebSocket clients.
+</pre> 
 </div>
 </div>
 <a id="acb84d7c88504d607c9ecb541696e96b6"></a>
@@ -212,7 +229,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Callback function triggered when the subscription state changes.
 
+Logs whether the subscriber has matched or unmatched with a publisher.
+</pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>

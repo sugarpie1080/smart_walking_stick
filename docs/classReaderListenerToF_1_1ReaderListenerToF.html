@@ -123,7 +123,17 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a6f96d2172576aa1e8454759dd41dfe2b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classReaderListenerToF_1_1ReaderListenerToF.html#a6f96d2172576aa1e8454759dd41dfe2b">socketio</a></td></tr>
 <tr class="separator:a6f96d2172576aa1e8454759dd41dfe2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">Creates a new class called ReaderListenerToF that inherits from fastdds.DataReaderListener.
+
+The class is responsible for:
+- Handling FastDDS subscription events.
+- Receiving and processing ToF data.
+- Transmitting the received data to a connected Socket.IO server.
+
+Attributes:
+    socketio (SocketIO): The Socket.IO instance used to emit data updates to connected clients.
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aba54e27ed86d4530533e4fa44283b56d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba54e27ed86d4530533e4fa44283b56d">&#9670;&nbsp;</a></span>__init__()</h2>
 
@@ -149,7 +159,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<pre class="fragment">Initializes the ReaderListenerToF class.
+</pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -178,7 +189,19 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Callback function triggered when new data is available from the reader.
 
+This method performs the following steps:
+1. Reads the next sample from the DataReader.
+2. Extracts the `distance` and `sec` values from the ToFData object.
+3. Emits the received data (distance, time, and a placeholder battery level) to Socket.IO clients.
+
+Emits:
+    - 'update_data': Sends the received data as a dictionary containing:
+        - 'sec' (int): The timestamp in seconds.
+        - 'battery' (float): Placeholder value for battery status (currently set to 0.0).
+        - 'distance' (float): The measured distance.
+</pre> 
 </div>
 </div>
 <a id="a74887f7512661c2cc406394112ad09b7"></a>
@@ -212,7 +235,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Callback function triggered when a subscription matches or unmatches.
 
+Logs whether the subscriber has matched or unmatched with a publisher.
+</pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>

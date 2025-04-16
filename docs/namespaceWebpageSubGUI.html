@@ -101,16 +101,20 @@ Variables</h2></td></tr>
 <tr class="separator:ac43fd19588ca8a25d504c1b5f230947a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3be9e62c27d81274b7c77b53891cb3e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a> = SocketIO(<a class="el" href="namespaceWebpageSubGUI.html#ac43fd19588ca8a25d504c1b5f230947a">app</a>)</td></tr>
 <tr class="separator:af3be9e62c27d81274b7c77b53891cb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78c2b7465b954c25a655a5b863d9b197"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceWebpageSubGUI.html#a78c2b7465b954c25a655a5b863d9b197">reader</a> = <a class="el" href="classReader_1_1Reader.html">Reader</a>(set_name=&quot;ToFData&quot;, topic_name=&quot;ToFDataTopic&quot;, topic_data_type=ToFData.ToFDataPubSubType,listener=<a class="el" href="classReaderListenerToF_1_1ReaderListenerToF.html">ReaderListenerToF</a>,<a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a>=<a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a>)</td></tr>
+<tr class="memitem:a78c2b7465b954c25a655a5b863d9b197"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceWebpageSubGUI.html#a78c2b7465b954c25a655a5b863d9b197">reader</a></td></tr>
 <tr class="separator:a78c2b7465b954c25a655a5b863d9b197"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae4c255f4d360aea0ae7bb6d87bcc0d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceWebpageSubGUI.html#aae4c255f4d360aea0ae7bb6d87bcc0d3">reader_motor</a> = <a class="el" href="classReader_1_1Reader.html">Reader</a>(set_name=&quot;MotorCommands&quot;, topic_name=&quot;MotorCommandsTopic&quot;, topic_data_type=MotorCommands.MotorCommandsPubSubType,listener=<a class="el" href="classReaderListenerMotor_1_1ReaderListenerMotor.html">ReaderListenerMotor</a>,<a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a>=<a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a>)</td></tr>
+<tr class="memitem:aae4c255f4d360aea0ae7bb6d87bcc0d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceWebpageSubGUI.html#aae4c255f4d360aea0ae7bb6d87bcc0d3">reader_motor</a></td></tr>
 <tr class="separator:aae4c255f4d360aea0ae7bb6d87bcc0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab67e25368efe8d88ab7a7096fa78ba63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceWebpageSubGUI.html#ab67e25368efe8d88ab7a7096fa78ba63">host</a></td></tr>
 <tr class="separator:ab67e25368efe8d88ab7a7096fa78ba63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a058736111d71cb757a89fc662dd9f1a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceWebpageSubGUI.html#a058736111d71cb757a89fc662dd9f1a3">port</a></td></tr>
 <tr class="separator:a058736111d71cb757a89fc662dd9f1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><pre class="fragment">@file WebpageSubGUI.py
+@Author: Kyle Watt
+@Date: 2025-04-16
+</pre> </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a86c53955640cc3d9bc5bc9ea16f565e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a86c53955640cc3d9bc5bc9ea16f565e8">&#9670;&nbsp;</a></span>index()</h2>
 
@@ -125,7 +129,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">Serves the main webpage.
 
+This route renders the `index.html` file, which contains the user interface for the smart walking stick control panel.
+
+@return: Rendered HTML template for the webpage.
+</pre> 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -178,11 +187,19 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">WebpageSubGUI.reader = <a class="el" href="classReader_1_1Reader.html">Reader</a>(set_name=&quot;ToFData&quot;, topic_name=&quot;ToFDataTopic&quot;, topic_data_type=ToFData.ToFDataPubSubType,listener=<a class="el" href="classReaderListenerToF_1_1ReaderListenerToF.html">ReaderListenerToF</a>,<a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a>=<a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a>)</td>
+          <td class="memname">WebpageSubGUI.reader</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  <a class="code" href="namespaceReader.html">Reader</a>(</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;        set_name=<span class="stringliteral">&quot;ToFData&quot;</span>,</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;        topic_name=<span class="stringliteral">&quot;ToFDataTopic&quot;</span>,</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;        topic_data_type=ToFData.ToFDataPubSubType,</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;        listener=ReaderListenerToF,</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        socketio=socketio</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    )</div>
+<div class="ttc" id="anamespaceReader_html"><div class="ttname"><a href="namespaceReader.html">Reader</a></div><div class="ttdef"><b>Definition:</b> Reader.py:1</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aae4c255f4d360aea0ae7bb6d87bcc0d3"></a>
@@ -192,11 +209,18 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">WebpageSubGUI.reader_motor = <a class="el" href="classReader_1_1Reader.html">Reader</a>(set_name=&quot;MotorCommands&quot;, topic_name=&quot;MotorCommandsTopic&quot;, topic_data_type=MotorCommands.MotorCommandsPubSubType,listener=<a class="el" href="classReaderListenerMotor_1_1ReaderListenerMotor.html">ReaderListenerMotor</a>,<a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a>=<a class="el" href="namespaceWebpageSubGUI.html#af3be9e62c27d81274b7c77b53891cb3e">socketio</a>)</td>
+          <td class="memname">WebpageSubGUI.reader_motor</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  <a class="code" href="namespaceReader.html">Reader</a>(</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;        set_name=<span class="stringliteral">&quot;MotorCommands&quot;</span>,</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;        topic_name=<span class="stringliteral">&quot;MotorCommandsTopic&quot;</span>,</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;        topic_data_type=MotorCommands.MotorCommandsPubSubType,</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;        listener=ReaderListenerMotor,</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        socketio=socketio</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    )</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af3be9e62c27d81274b7c77b53891cb3e"></a>

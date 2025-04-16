@@ -87,7 +87,48 @@ $(document).ready(function(){initNavTree('md_current_design.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><img src="image.png" alt="threading" class="inline"/></p>
-<p>Our current design utilises 3 threads: ToF Thread, Motor Thread, and DDS Thread. </p>
+<p>Our current design utilises 3 threads: ToF Thread, Motor Thread, and DDS Thread.</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+ToF Thread</h1>
+<p>Handles edge-triggered GPIO events to initiate distance measurements.</p>
+<ul>
+<li>block until edge on GPIO</li>
+<li>Check if a valid event occurred<ul>
+<li>If no, return to blocking</li>
+<li>If yes, proceed</li>
+</ul>
+</li>
+<li>Get distance reading from the <a class="el" href="classTofSensor.html" title="Time of Flight Sensor Class.">TofSensor</a></li>
+<li>Trigger ToF callbacks (Motor thread, sending message to webapp)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Motor Thread</h1>
+<p>Processes motor control data and outputs corresponding PWM values.</p>
+<ul>
+<li>block until data received</li>
+<li>Compute PWM value based on input command</li>
+<li>Send PWM signal to motor controller</li>
+<li>Trigger motor callbacks (Send message to Webapp)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+DDS Thread</h1>
+<p>Interfaces with FastDDS to send messages to the WebApp.</p>
+<ul>
+<li>block until DDS message received</li>
+<li>Check message type:<ul>
+<li>If ToF data: forward <a class="el" href="structToFData.html">ToFData</a> FastDDS message</li>
+<li>If motor command: forward <a class="el" href="structMotorCommands.html">MotorCommands</a> FastDDS message</li>
+</ul>
+</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md5"></a>
+Notes</h1>
+<ul>
+<li>Each thread runs independently and concurrently.</li>
+<li>Callback mechanisms are used for decoupled data handling and WebApp updates.</li>
+<li>The FastDDS layer enables communication between this system and remote publishers/subscribers if required in a future installment. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
