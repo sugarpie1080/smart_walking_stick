@@ -1,6 +1,6 @@
 # Social Media Accounts
-Instagram: @wisewalkltd
-BlueSky: @wisewalkltd.bsky.social
+Instagram: [@wisewalkltd](https://www.instagram.com/wisewalkltd/?igsh=NWcyZjd4endsZ3E3#)
+BlueSky: [@wisewalkltd.bsky.social](https://bsky.app/profile/did:plc:tpbgblyr65ur2melblc5aokd)
 
 # PR Media
 

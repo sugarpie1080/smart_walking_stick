@@ -4,12 +4,6 @@ This is the documentation for the ENG5220 Project: Smart Walking Stick.
 
 **Objective**: Develop a smart walking stick equipped with obstacle detection and GPS navigation to assist visually impaired users in navigating their environment safely and independently.
 
-## Table of Contents
-- [Overview](#overview)
-- [Development Status](#development-status)
-- [Usage](#usage)
-
-
 ## Overview
 
 ### Problem
@@ -44,7 +38,7 @@ While there are some existing solutions in the assistive tech space, many are ei
   - Codebase: `src/ToF_GUI/WebpageSubGUI.py`
 
 
-### In Progress / To-Do
+### Future Developments
 
 - Implement **Drop-Mode** functionality using the IMU sensor  
 - Add **Battery Status Monitoring** for real-time power insights  
@@ -59,36 +53,61 @@ The following hardware is required for this repository:
 - Vibrating Mini Motor Disc / Haptic Feedback Sensor
 - Uninterruptible Power Supply UPS HAT
 ### Connections
-<!-- Add Connections here -->
-
+#### VL53L0X
+```
+      Raspberry Pi 5   VL53L0X board
+--------------------   -------------
+ 3.3V Power (Pin #1) - VIN
+       SDA1 (Pin #3) - SDA
+       SCL1 (Pin #5) - SCL
+   GPIO_17 (Pin #11) - INT
+     Ground (Pin #9) - GND
+```
+#### Haptic Feedback Controller
+```
+      Raspberry Pi 5   Haptic Feedback
+--------------------   -------------
+   5V Power (Pin #2) - VIN
+     Ground (Pin #6) - GND
+   GPIO_18 (Pin #12) - PWM
+```
 ### Software
 ### Setup
 The following setup is required:
 
-1. Install libgpiod to access the pins:
+1. Install python3.10
+2. Install the following libraries:
 ```bash
-    sudo apt install libgpiod
-    sudo apt install colcon
-    sudo apt install swig
-    sudo apt install vcstool
+    sudo apt install libgpiod colcon swig python3-vcstool
 ```
-2. Setup the PWM pin:
-    - Add to `/boot/firmware/config.txt`
-    ```bash 
-        dtoverlay=pwm-2chan
-    ```
-    - Reboot the raspberry pi
-    - Check that the overlay worked:
-    ```bash 
-        pinctrl -p
-    ```
-3. Install `fastdds_python`, through following these instructions. [fastdds_python link](https://github.com/eProsima/Fast-DDS-python)
-4. Source the `fastdds_python` install before compliation:
-    ```bash
-        source <path_to_fastdds_python_ws>/install/setup.bash
-    ```
+3. Setup the PWM pin, and reboot the Raspberry Pi
+```bash
+dtoverlay=pwm-2chan 
+```
+4. Install ```fastdds_python```, through following these instructions. [fastdds_python link](https://github.com/eProsima/Fast-DDS-python)
+5. Source the ```fastdds_python``` install before compliation:
+```bash 
+source <path_to_fastdds_python_ws>/install/setup.bash
+```
 
 ### Compliation
 
+To run build the project:
 
+```bash
+  mkdir build && cd build
+  cmake ..
+  make
+```
 
+To run the smartWalkingStick executable:
+```bash
+  cd smart_walking_stick/build
+  ./SmartWalkingStick
+```
+To run the webapp:
+
+```bash
+  cd smart_walking_stick/ToF_GUI
+  python WebpageSubGUI.py
+```
