@@ -1,4 +1,0 @@
-<map id="smart_stick::ObstacleDetectionSub" name="smart_stick::ObstacleDetectionSub">
-<area shape="rect" id="node1" title="Obstacle Detection Subscriber Class. Derived from the BaseSubscriber Class." alt="" coords="5,95,256,121"/>
-<area shape="rect" id="node2" href="$classBaseSubscriber.html" title=" " alt="" coords="33,5,228,47"/>
-</map>

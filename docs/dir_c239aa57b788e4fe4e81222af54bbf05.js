@@ -1,5 +1,0 @@
-var dir_c239aa57b788e4fe4e81222af54bbf05 =
-[
-    [ "sensors", "dir_5e7682c3284758926c7355b215ace6c1.html", "dir_5e7682c3284758926c7355b215ace6c1" ],
-    [ "vl53l0x-linux", "dir_8244f2923750241b9fe651f619a37968.html", "dir_8244f2923750241b9fe651f619a37968" ]
-];

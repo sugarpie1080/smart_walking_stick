@@ -1,7 +1,0 @@
-<map id="include/application/ToFDataPublisher.hpp" name="include/application/ToFDataPublisher.hpp">
-<area shape="rect" id="node1" title="Publisher Class for ToF Data." alt="" coords="341,5,508,47"/>
-<area shape="rect" id="node2" href="$ToFDataPublisher_8cpp.html" title=" " alt="" coords="5,95,265,121"/>
-<area shape="rect" id="node3" href="$main_8cpp.html" title="Entrypoint for the ToF Sensor Publisher and Subscriber." alt="" coords="289,95,395,121"/>
-<area shape="rect" id="node4" href="$main__combined_8cpp.html" title="Entrypoint for the all of the publishers and subscribers." alt="" coords="419,95,595,121"/>
-<area shape="rect" id="node5" href="$main__combined__mock_8cpp.html" title=" " alt="" coords="619,95,838,121"/>
-</map>

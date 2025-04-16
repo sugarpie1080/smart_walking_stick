@@ -1,4 +1,0 @@
-<map id="smart_stick::ToFSensor" name="smart_stick::ToFSensor">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,176,107"/>
-<area shape="rect" id="node2" href="$classsmart__stick_1_1Sensor.html" title="A parent class to initalise and retrieve data from a given sensor." alt="" coords="15,5,166,32"/>
-</map>

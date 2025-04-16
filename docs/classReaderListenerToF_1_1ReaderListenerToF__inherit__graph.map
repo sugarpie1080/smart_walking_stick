@@ -1,4 +1,4 @@
 <map id="ReaderListenerToF.ReaderListenerToF" name="ReaderListenerToF.ReaderListenerToF">
-<area shape="rect" id="node1" title=" " alt="" coords="11,80,202,121"/>
+<area shape="rect" id="node1" title="Creates a new class called ReaderListenerToF that inherits from fastdds.DataReaderListener." alt="" coords="11,80,202,121"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,208,32"/>
 </map>

@@ -1,9 +1,0 @@
-<map id="smart_stick::ObstacleDetectionSub" name="smart_stick::ObstacleDetectionSub">
-<area shape="rect" id="node1" title="Obstacle Detection Subscriber Class. Derived from the BaseSubscriber Class." alt="" coords="871,71,1121,98"/>
-<area shape="rect" id="node2" href="$classBaseSubscriber.html" title=" " alt="" coords="528,5,723,47"/>
-<area shape="rect" id="node3" href="$classsmart__stick_1_1ObstacleDetectionPub.html" title="Obstacle Detection Publisher Class. Derived from the BasePublisher Class." alt="" coords="500,71,751,98"/>
-<area shape="rect" id="node4" href="$classBasePublisher.html" title=" " alt="" coords="205,64,451,105"/>
-<area shape="rect" id="node5" href="$classsmart__stick_1_1ObstacleDetectionSub_1_1OSSubListener.html" title="Obstacle Detection Subscriber Listener Class. Derived from the SubListener Class." alt="" coords="512,123,739,164"/>
-<area shape="rect" id="node6" href="$classSubListener.html" title=" " alt="" coords="237,130,419,157"/>
-<area shape="rect" id="node7" title=" " alt="" coords="5,130,156,157"/>
-</map>

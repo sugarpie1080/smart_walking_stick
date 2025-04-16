@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['nanosec_366',['nanosec',['../structMotorCommands.html#a1e248ff65c70f245c2896947ef967d38',1,'MotorCommands::nanosec()'],['../structToFData.html#ab8d48e6ba4d2b0a4631e6f25ef8e9ed9',1,'ToFData::nanosec()']]]
+  ['matched_5f_396',['matched_',['../classPubListener.html#abc273266b35af662203c68fb0ed52891',1,'PubListener']]],
+  ['msrc_397',['msrc',['../structVL53L0XSequenceStepEnables.html#af5e3779c2e55c005a0f136e641961f5f',1,'VL53L0XSequenceStepEnables']]],
+  ['msrcdsstccmclks_398',['msrcDssTccMCLKs',['../structVL53L0XSequenceStepTimeouts.html#a71622c78b39ba638f060d4fa77a9d5b5',1,'VL53L0XSequenceStepTimeouts']]],
+  ['msrcdsstccmicroseconds_399',['msrcDssTccMicroseconds',['../structVL53L0XSequenceStepTimeouts.html#ad3add89881bd4ffeb1f0349e5d59917f',1,'VL53L0XSequenceStepTimeouts']]]
 ];

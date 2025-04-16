@@ -16,7 +16,7 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -24,10 +24,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="image_2.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Smart Walking Stick
    &#160;<span id="projectnumber">1.0</span>
    </div>
+   <div id="projectbrief">Smart Walking Stick is a student project that helps visually impaired people.</div>
   </td>
  </tr>
  </tbody>
@@ -90,12 +92,17 @@ $(document).ready(function(){initNavTree('classReader_1_1Reader.html',''); initR
 <div class="title">Reader.Reader Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents a FastDDS subscriber that reads data published by a FastDDS publisher.  
+ <a href="classReader_1_1Reader.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af4e1fe00fc4e67a70cba6d307e0afe32"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classReader_1_1Reader.html#af4e1fe00fc4e67a70cba6d307e0afe32">__init__</a> (self, <a class="el" href="classReader_1_1Reader.html#a9a20d7f64b4fb2ef1c8df7b31b22485b">set_name</a>, <a class="el" href="classReader_1_1Reader.html#a835eb515036314a0b825f8fc3857156f">topic_name</a>, <a class="el" href="classReader_1_1Reader.html#a542fbab5d388d8333787e6b4f7228c19">topic_data_type</a>, <a class="el" href="classReader_1_1Reader.html#a7b98b20e810d72c65e403153214d6c7c">listener</a>, socketio)</td></tr>
+<tr class="memdesc:af4e1fe00fc4e67a70cba6d307e0afe32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the <a class="el" href="classReader_1_1Reader.html" title="Represents a FastDDS subscriber that reads data published by a FastDDS publisher.">Reader</a> class.  <a href="classReader_1_1Reader.html#af4e1fe00fc4e67a70cba6d307e0afe32">More...</a><br /></td></tr>
 <tr class="separator:af4e1fe00fc4e67a70cba6d307e0afe32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d38658a506c3f4aba51b29747d7aca"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classReader_1_1Reader.html#a15d38658a506c3f4aba51b29747d7aca">delete</a> (self)</td></tr>
+<tr class="memdesc:a15d38658a506c3f4aba51b29747d7aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleans up FastDDS entities.  <a href="classReader_1_1Reader.html#a15d38658a506c3f4aba51b29747d7aca">More...</a><br /></td></tr>
 <tr class="separator:a15d38658a506c3f4aba51b29747d7aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -118,21 +125,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a983eb5add518ffca645660f09fb8671d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">Represents a FastDDS subscriber that reads data published by a FastDDS publisher.
-
-The class sets up necessary FastDDS components to subscribe to a specific topic and uses a listener to handle data availability events.
-
-Attributes:
-    set_name (str): The name of the data type associated with the topic.
-    topic_name (str): The name of the topic to subscribe to.
-    topic_data_type: The FastDDS data type associated with the topic.
-    listener: The listener class for processing received data.
-    socketio (SocketIO): The Socket.IO instance used for transmitting updates to web clients.
-    participant: The FastDDS participant entity for communication.
-    topic: The FastDDS topic entity.
-    subscriber: The FastDDS subscriber entity.
-    reader: The FastDDS data reader entity.
-</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<div class="textblock"><p>Represents a FastDDS subscriber that reads data published by a FastDDS publisher. </p>
+<p>The class sets up necessary FastDDS components to subscribe to a specific topic and uses a listener to handle data availability events.</p>
+<p>Attributes: set_name (str): The name of the data type associated with the topic. topic_name (str): The name of the topic to subscribe to. topic_data_type: The FastDDS data type associated with the topic. listener: The listener class for processing received data. socketio (SocketIO): The Socket.IO instance used for transmitting updates to web clients. participant: The FastDDS participant entity for communication. topic: The FastDDS topic entity. subscriber: The FastDDS subscriber entity. reader: The FastDDS data reader entity. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af4e1fe00fc4e67a70cba6d307e0afe32"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af4e1fe00fc4e67a70cba6d307e0afe32">&#9670;&nbsp;</a></span>__init__()</h2>
 
@@ -182,10 +178,10 @@ Attributes:
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Initializes the Reader class.
 
-Creates and configures FastDDS entities required for subscribing to data topics and reading data samples.
-</pre> 
+<p>Initializes the <a class="el" href="classReader_1_1Reader.html" title="Represents a FastDDS subscriber that reads data published by a FastDDS publisher.">Reader</a> class. </p>
+<p>Creates and configures FastDDS entities required for subscribing to data topics and reading data samples. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -204,14 +200,12 @@ Creates and configures FastDDS entities required for subscribing to data topics 
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Cleans up FastDDS entities.
 
-Deletes all contained entities in the participant and releases resources.
+<p>Cleans up FastDDS entities. </p>
+<p>Deletes all contained entities in the participant and releases resources.</p>
+<p>This method should be called to safely remove the DDS entities when they are no longer needed.</p>
+<dl class="section return"><dt>Returns</dt><dd>: None </dd></dl>
 
-This method should be called to safely remove the DDS entities when they are no longer needed.
-
-@return: None
-</pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
