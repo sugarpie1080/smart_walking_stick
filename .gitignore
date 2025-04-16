@@ -3,3 +3,5 @@
 /venv/
 *.pyc
 __pycache__
+ToFMockData.py
+MotorMockData.py

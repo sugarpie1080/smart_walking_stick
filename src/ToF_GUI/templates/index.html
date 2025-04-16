@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Walking Stick - Data Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Smart Walking Stick - Control Panel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,14 +18,19 @@
             color: white;
             padding: 20px;
             text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            margin: 0;
         }
         .container {
             max-width: 800px;
             margin: 20px auto;
             background: white;
             border-radius: 10px;
-            padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            overflow: hidden;
         }
         .data-display {
             margin-bottom: 20px;
@@ -42,20 +47,66 @@
             align-items: center;
             justify-content: space-between;
         }
+        #battery-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        #battery-icon {
+            width: 50px;
+            height: 20px;
+            border: 3px solid #333;
+            border-radius: 5px;
+            position: relative;
+        }
+        #battery-icon:before {
+            content: '';
+            width: 10px;
+            height: 20px;
+            background-color: #333;
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            transform: translateY(-50%);
+            border-radius: 2px;
+        }
+        #battery-level {
+            width: 100%; /* Default full width */
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 3px;
+            transition: width 0.3s, background-color 0.3s; /* Smooth transitions */
+        }
+        #battery-percentage {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
         canvas {
             max-width: 100%;
-            height: auto;
+            height: 300px;
+            display: block;
+            margin: 0 auto;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            position: relative;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Smart Walking Stick - Data Dashboard</h1>
+        <h1>Smart Walking Stick - Object Detection</h1>
+        <p>Powered by ToF Technology</p>
     </header>
     <div class="container">
         <!-- Real-Time Data Display -->
         <div class="data-display">
-            <h2>Real-Time Data</h2>
+            <h2>Real-Time ToF Data</h2>
             <div class="data-box">
                 <span id="seconds-label">Seconds:</span>
                 <span id="seconds">0</span>
@@ -64,13 +115,14 @@
                 <span id="distance-label">Distance:</span>
                 <span id="distance">0.0 mm</span>
             </div>
+            <!-- Battery Status -->
             <div class="data-box">
                 <span>Battery:</span>
                 <div id="battery-status">
                     <div id="battery-icon">
                         <div id="battery-level"></div>
                     </div>
-                    <span id="battery-percentage">0%</span>
+                    <span id="battery-percentage">100%</span>
                 </div>
             </div>
             <div class="data-box">
@@ -78,40 +130,25 @@
                 <span id="pwm">0</span>
             </div>
         </div>
-        <!-- PWM Value Graph -->
+        <!-- PWM Graph -->
         <h2>PWM Graph Over Time</h2>
         <canvas id="pwmChart"></canvas>
     </div>
+    <footer>
+        &copy; 2025 Smart Walking Stick Project. All Rights Reserved.
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
     <script>
         const socket = io();
 
-        // Update ToF Data in Real-Time
-        socket.on('update_data', (data) => {
-            document.getElementById('seconds').innerText = `${data.sec}`;
-            document.getElementById('distance').innerText = `${data.distance} mm`;
-            document.getElementById('pwm').innerText = `${data.duty_cycle}`;
-
-            // Update Battery Level
-            const batteryLevel = document.getElementById('battery-level');
-            const batteryPercentage = document.getElementById('battery-percentage');
-
-            batteryLevel.style.width = `${data.battery}%`;
-            batteryLevel.style.backgroundColor = data.battery > 20 ? '#4CAF50' : '#f44336';
-            batteryPercentage.innerText = `${data.battery}%`;
-
-            // Update the chart with `seconds` and `duty_cycle`
-            updatePWMChart(data.sec, data.duty_cycle);
-        });
-
-        // PWM Chart Setup
+        // Chart setup
         const ctx = document.getElementById('pwmChart').getContext('2d');
         const pwmData = {
-            labels: [], // Time in seconds
+            labels: [], // X-axis: Time in seconds
             datasets: [{
-                label: 'PWM Value',
-                data: [],
+                label: 'Duty Cycle (%)',
+                data: [], // Y-axis: Duty Cycle
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderWidth: 2,
@@ -123,6 +160,8 @@
             data: pwmData,
             options: {
                 responsive: true,
+                maintainAspectRatio: true, // Maintains the aspect ratio
+                aspectRatio: 2,           
                 scales: {
                     x: {
                         title: {
@@ -133,7 +172,7 @@
                     y: {
                         title: {
                             display: true,
-                            text: 'PWM Value'
+                            text: 'Duty Cycle (%)'
                         },
                         beginAtZero: true,
                         max: 100
@@ -142,18 +181,63 @@
             }
         });
 
-        // Update Chart Data Function
-        function updatePWMChart(seconds, pwmValue) {
-            pwmData.labels.push(seconds); // Add `seconds` to the X-axis
-            pwmData.datasets[0].data.push(pwmValue); // Add `duty_cycle` (PWM) to the Y-axis
+        // Update ToF Data in Real-Time
+        socket.on('update_data', (data) => {
+            document.getElementById('seconds').innerText = `${data.sec}`;
+            document.getElementById('distance').innerText = `${data.distance} mm`;
 
-            if (pwmData.labels.length > 20) { // Limit the number of points displayed
+            console.log('[DEBUG] ToF Data updated:', data);
+        });
+
+        // Update motor data and graph
+        socket.on('update_motor_data', (data) => {
+            console.log('[DEBUG] Full data received:', data);
+            document.getElementById('pwm').innerText = `${data.duty_cycle}`;
+            document.getElementById('seconds').innerText = `${data.sec}`;
+            updatePWMChart(data.sec, data.duty_cycle);
+
+            console.log('[DEBUG] Motor Data updated:', data);
+        });
+
+        // Update Chart Data Function
+        function updatePWMChart(seconds, dutyCycle) {
+            pwmData.labels.push(String(seconds)); 
+            pwmData.datasets[0].data.push(dutyCycle);
+
+            if (pwmData.labels.length > 20) {
                 pwmData.labels.shift();
                 pwmData.datasets[0].data.shift();
             }
 
-            pwmChart.update(); // Refresh the chart
+            pwmChart.update();
         }
+
+        // Simulate Battery Drain
+        let batteryPercentage = 100;
+        const batteryLevelElement = document.getElementById('battery-level');
+        const batteryPercentageElement = document.getElementById('battery-percentage');
+
+        function drainBattery() {
+            if (batteryPercentage > 0) {
+                batteryPercentage--;
+
+                // Update the battery level
+                batteryLevelElement.style.width = `${batteryPercentage}%`;
+
+                // Change color based on battery level
+                if (batteryPercentage <= 20) {
+                    batteryLevelElement.style.backgroundColor = '#f44336'; // Red for low battery
+                } else if (batteryPercentage <= 50) {
+                    batteryLevelElement.style.backgroundColor = '#FF9800'; // Orange for medium battery
+                } else {
+                    batteryLevelElement.style.backgroundColor = '#4CAF50'; // Green for high battery
+                }
+
+                // Update battery percentage text
+                batteryPercentageElement.innerText = `${batteryPercentage}%`;
+            }
+        }
+        setInterval(drainBattery, 20000);//Drain 1% every 20 seconds
     </script>
 </body>
 </html>
