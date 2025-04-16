@@ -2,6 +2,10 @@ var CMakeCCompilerId_8c =
 [
     [ "__has_include", "CMakeCCompilerId_8c.html#ae5510d82e4946f1656f4969911c54736", null ],
     [ "ARCHITECTURE_ID", "CMakeCCompilerId_8c.html#aba35d0d200deaeb06aee95ca297acb28", null ],
+    [ "C_STD_11", "CMakeCCompilerId_8c.html#a7c35af7e67642a2c62eb27dd81be11b2", null ],
+    [ "C_STD_17", "CMakeCCompilerId_8c.html#aa8cd9c2c76dde36abac0bd7698090693", null ],
+    [ "C_STD_23", "CMakeCCompilerId_8c.html#a81af617e8f7b5417689ca478ce9f4d69", null ],
+    [ "C_STD_99", "CMakeCCompilerId_8c.html#af6079dc519dac099ee85a1df6ae5e5e8", null ],
     [ "C_VERSION", "CMakeCCompilerId_8c.html#adaee3ee7c5a7a22451ea25e762e1d7d5", null ],
     [ "COMPILER_ID", "CMakeCCompilerId_8c.html#a81dee0709ded976b2e0319239f72d174", null ],
     [ "DEC", "CMakeCCompilerId_8c.html#ad1280362da42492bbc11aa78cbf776ad", null ],

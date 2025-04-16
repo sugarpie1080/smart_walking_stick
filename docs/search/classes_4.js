@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['motorcommands_236',['MotorCommands',['../structMotorCommands.html',1,'']]],
-  ['motormove_237',['MotorMove',['../classsmart__stick_1_1MotorMove.html',1,'smart_stick']]]
+  ['motorcommands_263',['MotorCommands',['../structMotorCommands.html',1,'']]],
+  ['motormove_264',['MotorMove',['../classsmart__stick_1_1MotorMove.html',1,'smart_stick']]]
 ];
