@@ -3,3 +3,9 @@
 /venv/
 *.pyc
 __pycache__
+ToFMockData.py
+MotorMockData.py
+src/topics/*.i
+src/topics/*.hpp
+src/topics/*.cxx
+src/topics/*.ipp
