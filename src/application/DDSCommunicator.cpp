@@ -3,11 +3,12 @@
 
 namespace smart_stick 
 {
-    DDSCommunicator::DDSCommunicator(ToFSensor* tof,MotorMove* mm):
-    tof_pub("ToFDataTopic"), motor_pub("MotorCommandsTopic")
+    DDSCommunicator::DDSCommunicator(ToFSensor* tof,MotorMove* mm, Battery* bat):
+    tof_pub("ToFDataTopic"), motor_pub("MotorCommandsTopic"), battery_pub("BatteryTopic")
     {
         tof->register_callback(this); 
-        mm->register_callback(this);   
+        mm->register_callback(this);  
+        bat->register_callback(this);
         running = true;
         worker_thread = std::thread(&DDSCommunicator::worker, this);
     }
@@ -43,6 +44,18 @@ namespace smart_stick
         
     }
 
+    void DDSCommunicator::has_duty(int duty_cycle)
+    {
+        {
+            std::lock_guard<std::mutex> lock(mutex);
+            duty_cycle_ready = true; 
+            last_duty_cycle = duty_cycle;
+        }
+        cv.notify_all();
+
+    }
+
+
     void DDSCommunicator::publish_duty_cycle()
     {
         MotorCommands message;
@@ -55,6 +68,25 @@ namespace smart_stick
         
     }
 
+    void DDSCommunicator::has_battery(int battery_percentage) {
+        {
+            std::lock_guard<std::mutex> lock(mutex);
+            battery_ready = true;
+            last_battery = battery_percentage;
+        }
+        cv.notify_all();
+    }
+    
+    void DDSCommunicator::publish_battery() {
+        Battery message;
+        auto [sec, nanosec] = getCurrentTime();
+        message.sec(sec);
+        message.nanosec(nanosec);
+        message.battery_percentage(last_battery);
+        battery_pub.publish(message);
+        battery_ready = false;
+    }
+
     void DDSCommunicator::worker()
     {
         while (running)
@@ -65,6 +97,7 @@ namespace smart_stick
             {
                 if (distance_ready)
                 {
+                    std::cout << "Publishing distance: " << last_distance << std::endl;
                     publish_distance();
                 }
                 if (duty_cycle_ready)
@@ -72,20 +105,13 @@ namespace smart_stick
                     std::cout << "Publishing duty cycle: " << last_duty_cycle << std::endl;
                     publish_duty_cycle();
                 }
+                if (battery_ready) {
+                    std::cout << "Publishing battery: " << last_battery << std::endl;
+                    publish_battery();
+                }
             }
             
         }
-    }
-
-    void DDSCommunicator::has_duty(int duty_cycle)
-    {
-        {
-            std::lock_guard<std::mutex> lock(mutex);
-            duty_cycle_ready = true; 
-            last_duty_cycle = duty_cycle;
-        }
-        cv.notify_all();
-
     }
 
     std::pair<int32_t, int32_t> DDSCommunicator::getCurrentTime()

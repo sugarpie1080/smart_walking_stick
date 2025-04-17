@@ -1,0 +1,5 @@
+struct Battery {
+    long sec; 
+    long nanosec; // Time recieved data in nanoseconds
+    float battery_percentage; // Duty Cycle percentage
+};

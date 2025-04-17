@@ -5,7 +5,6 @@ if(POLICY CMP0078)
   cmake_policy(SET CMP0078 NEW)
 endif()
 
-
 # SWIG: use SWIG_MODULE_NAME property.
 if(POLICY CMP0086)
   cmake_policy(SET CMP0086 NEW)
@@ -17,7 +16,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
-	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+    set(CMAKE_BUILD_TYPE "RelWithDebInfo")
 endif()
 
 find_package(fastcdr REQUIRED)
@@ -41,7 +40,6 @@ include_directories(${PYTHON_INCLUDE_PATH})
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(BUILD_SHARED_LIBS ON)
 
-
 # Find the libgpiod package
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBGPIO REQUIRED libgpiod)
@@ -60,29 +58,40 @@ add_compile_options(-Wall -Wconversion -Wextra -pedantic)
 include_directories(${TOPICS_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/fastdds)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/application)
-create_msg_library(ToFData)
-create_msg_library(MotorCommands)
-
-# Add include directories for gpiod and include folder
-include_directories(${LIBGPIO_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/drivers/)
 include_directories(${DRIVER_DIR}/vl53l0x-linux/)
+include_directories(${DRIVER_DIR}/ina219/src)
+
+create_msg_library(ToFData)
+create_msg_library(MotorCommands)
+create_msg_library(Battery)
+
+# Update the ina219 driver sources and location of profiler.cpp
+set(INA219_SOURCES
+    ${DRIVER_DIR}/ina219/src/ina219.cpp
+)
+
+set(APPLICATION_SOURCES
+    ${APPLICATION_DIR}/profiler.cpp
+    ${APPLICATION_DIR}/MotorMove.cpp
+    ${APPLICATION_DIR}/DDSCommunicator.cpp
+    ${APPLICATION_DIR}/ToFSensor.cpp
+)
 
 set(TOF_SOURCES
     ${DRIVER_DIR}/vl53l0x-linux/VL53L0X.cpp
     ${DRIVER_DIR}/vl53l0x-linux/I2Cdev.cpp
-    ${APPLICATION_DIR}/ToFSensor.cpp
-    )
+)
 
 set(MAIN_SOURCES
     src/main.cpp
-    ${APPLICATION_DIR}/MotorMove.cpp
-    ${APPLICATION_DIR}/DDSCommunicator.cpp
+    ${APPLICATION_SOURCES}
     ${TOF_SOURCES}
+    ${INA219_SOURCES}
 )
+
 
 add_executable(SmartWalkingStick ${MAIN_SOURCES})
 
-target_link_libraries(SmartWalkingStick ${LIBGPIO_LIBRARIES} gpiod fastcdr fastdds ToFData MotorCommands)
-
-
+# Link libraries
+target_link_libraries(SmartWalkingStick ${LIBGPIO_LIBRARIES} gpiod fastcdr fastdds ToFData MotorCommands ina219_shared)

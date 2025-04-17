@@ -12,6 +12,7 @@
 // Application includes
 #include <ToFSensor.hpp>
 #include <MotorMove.hpp>
+#include <Battery.hpp>
 #include <DDSCommunicator.hpp>
 
 
@@ -21,9 +22,14 @@ int main(int argc, char *argv[]) {
     int line = 17; 
     smart_stick::ToFSensor tof(chipname,17);
     smart_stick::MotorMove mm(&tof);
-    smart_stick::DDSCommunicator dds(&tof,&mm);
+    smart_stick::Battery battery;
+    smart_stick::DDSCommunicator dds(&tof,&mm, &battery);
     tof.initialise();
+    battery.initialise();
+    
     tof.start();
+    battery.start();
+    
     getchar();
     return 0;
   

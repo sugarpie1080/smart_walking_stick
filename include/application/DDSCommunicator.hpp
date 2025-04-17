@@ -23,11 +23,13 @@
 // Application includes
 #include <ToFSensor.hpp>
 #include <MotorMove.hpp>
+#include <Battery.hpp>
 
 // DDS includes
 #include <BasePublisher.hpp>
 #include <ToFDataPubSubTypes.hpp>
 #include <MotorCommandsPubSubTypes.hpp>
+#include <BatteryPubSubTypes.hpp>
 
 namespace smart_stick{
     /**
@@ -36,7 +38,7 @@ namespace smart_stick{
      * Derived from the CallbackInterface for both ToFSensor and MotorMove classes
      */
     class DDSCommunicator: 
-    public ToFSensor::CallbackInterface, MotorMove::CallbackInterface 
+    public ToFSensor::CallbackInterface, MotorMove::CallbackInterface, Battery::CallbackInterface
     {
         public:
             /**
@@ -44,7 +46,7 @@ namespace smart_stick{
              * @param tof Pointer to the ToFSensor object
              * @param mm Pointer to the MotorMove object
              */
-            DDSCommunicator(ToFSensor* tof,MotorMove* mm);
+            DDSCommunicator(ToFSensor* tof,MotorMove* mm, Battery* bat);
 
             /**
              * @brief Destructor for DDSCommunicator
@@ -65,6 +67,8 @@ namespace smart_stick{
              * This function runs in a separate thread and waits for data to be ready to publish.
              * It uses a condition variable to wait for data to be ready and then publishes the data.
              */
+            void has_battery(int battery_percentage) override;
+
             void worker();
             
 
@@ -84,17 +88,20 @@ namespace smart_stick{
              * @brief Get the current time in seconds and nanoseconds
              * @return std::pair<int32_t, int32_t> Current time in seconds and nanoseconds
              */
+            void publish_battery();
+
             std::pair<int32_t, int32_t> getCurrentTime();
             
             std::condition_variable cv;
             std::mutex mutex;
-            bool distance_ready, duty_cycle_ready;
+            bool distance_ready, duty_cycle_ready, battery_ready;
             float last_distance;
-            int last_duty_cycle;
+            int last_duty_cycle, last_battery;
             std::thread worker_thread;
             std::atomic_bool running;
             BasePublisher<ToFData, ToFDataPubSubType> tof_pub;
             BasePublisher<MotorCommands, MotorCommandsPubSubType> motor_pub;
+            BasePublisher<Battery, BatteryPubSubType> battery_pub;
     };
 }
 
