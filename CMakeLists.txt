@@ -66,13 +66,8 @@ create_msg_library(ToFData)
 create_msg_library(MotorCommands)
 create_msg_library(Battery)
 
-# Update the ina219 driver sources and location of profiler.cpp
-set(INA219_SOURCES
-    ${DRIVER_DIR}/ina219/src/ina219.cpp
-)
-
 set(APPLICATION_SOURCES
-    ${APPLICATION_DIR}/profiler.cpp
+    ${APPLICATION_DIR}/Battery.cpp
     ${APPLICATION_DIR}/MotorMove.cpp
     ${APPLICATION_DIR}/DDSCommunicator.cpp
     ${APPLICATION_DIR}/ToFSensor.cpp
@@ -83,15 +78,19 @@ set(TOF_SOURCES
     ${DRIVER_DIR}/vl53l0x-linux/I2Cdev.cpp
 )
 
+set(BATTERY_SOURCES
+    ${DRIVER_DIR}/ina219/src/ina219.cpp
+)
+
 set(MAIN_SOURCES
     src/main.cpp
     ${APPLICATION_SOURCES}
     ${TOF_SOURCES}
-    ${INA219_SOURCES}
+    ${BATTERY_SOURCES}
 )
 
 
 add_executable(SmartWalkingStick ${MAIN_SOURCES})
 
 # Link libraries
-target_link_libraries(SmartWalkingStick ${LIBGPIO_LIBRARIES} gpiod fastcdr fastdds ToFData MotorCommands ina219_shared)
+target_link_libraries(SmartWalkingStick ${LIBGPIO_LIBRARIES} gpiod fastcdr fastdds ToFData MotorCommands Battery)
