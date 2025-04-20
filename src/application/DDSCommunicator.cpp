@@ -3,7 +3,7 @@
 
 namespace smart_stick 
 {
-    DDSCommunicator::DDSCommunicator(ToFSensor* tof,MotorMove* mm, Battery* bat):
+    DDSCommunicator::DDSCommunicator(ToFSensor* tof,MotorMove* mm, BatteryMonitor* bat):
     tof_pub("ToFDataTopic"), motor_pub("MotorCommandsTopic"), battery_pub("BatteryTopic")
     {
         tof->register_callback(this); 
@@ -68,7 +68,7 @@ namespace smart_stick
         
     }
 
-    void DDSCommunicator::has_battery(int battery_percentage) {
+    void smart_stick::DDSCommunicator::has_battery(int battery_percentage) {
         {
             std::lock_guard<std::mutex> lock(mutex);
             battery_ready = true;
