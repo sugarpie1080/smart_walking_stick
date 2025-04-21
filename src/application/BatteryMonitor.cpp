@@ -4,7 +4,7 @@
 namespace smart_stick {
 
 BatteryMonitor::BatteryMonitor()
-    : ina219(0.1f, 3.2f, 0x40), running(false) {}
+    : ina219(0.1f, 3.2f, 0x42), running(false) {}
 
 BatteryMonitor::~BatteryMonitor() {
     stop();
