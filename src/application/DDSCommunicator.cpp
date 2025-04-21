@@ -68,7 +68,7 @@ namespace smart_stick
         
     }
 
-    void smart_stick::DDSCommunicator::has_battery(int battery_percentage) {
+    void DDSCommunicator::has_battery(float battery_percentage) {
         {
             std::lock_guard<std::mutex> lock(mutex);
             battery_ready = true;
