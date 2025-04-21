@@ -1,0 +1,9 @@
+# Status 
+
+Still in development and has been shelved for current realease due to FastDDS communications being unrealiable for single packet transmissions 
+
+# Implementaion 
+
+The system uses a INA219 sensor to monitor the batteries output current, voltage and power. With these outputs the battery percentage was calculated and also the given time remaining that the battery could operate was also calculated. 
+The values were taken by reading the I2C address of the RP5. For our implementation this was sent though 0x42.
+Originally the plan was to implement this in the same way that MotorMove and ToFSensor are implemented however our implementation of the battery monotoring did not use any interuprts. This meant that it could not be implemented the samea as ToFSensor or MotorMove and without using polling it would not continuously read the values sent from the INA219 though I2C. The work around to this probelm was to calculate the remaining battery when the code is initalised and publish this. The code could then count down from the calculated battery life remaining as all other fastdds publishers send the current time. This implementaion did work and the battery life remaing was published, however since it was only being published once on initalisation, it was found that fastdds subscribers were too unrealiable to caputre this packet. This could be because it ingore the first packet being sent or the subscriber starts receiving packets before its fully ready to capture them. This meant that even though the correct values were being sent they could not be realiably recived. Due to this it was decided to leave the battery monotoring in development.
