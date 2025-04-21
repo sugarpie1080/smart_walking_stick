@@ -1,4 +1,4 @@
-# Hardware
+# Components
 
 ## Motor Driver
 
@@ -17,10 +17,13 @@ To make the device portable, it should be battery-powered. To achieve this, the 
 Holders for the Raspberry Pi and the ToF sensor were modelled using FreeCAD and printed with PLA filament. The printed pieces are attached to the Walking Stick with a ziptie fed through a slot in the printed part. Additionally, the ToF sensor holder allows adjusting the angle of the sensor. This is necessary because the detection angle of the sensor is around 27 degrees, and depending on how the stick is held, the distance to the ground could be picked up instead of the distance to an object in front of the device.
 
 ![alt text](Pi.png)
+
 Raspberry Pi Holder (2 Pieces)
 
 ![alt text](ToF1.png)
+
 ToF Sensor Holder (Lower) 
 
 ![alt text](ToF2.png)
+
 ToF Sensor Holder (Upper) 
