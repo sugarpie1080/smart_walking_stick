@@ -25,25 +25,25 @@
 var NAVTREE =
 [
   [ "Smart Walking Stick", "index.html", [
-    [ "Overview", "index.html#autotoc_md11", [
-      [ "Problem", "index.html#autotoc_md12", null ],
-      [ "Solution", "index.html#autotoc_md13", null ],
-      [ "Target Audience", "index.html#autotoc_md14", null ],
-      [ "Critical Analysis", "index.html#autotoc_md15", null ]
+    [ "Overview", "index.html#autotoc_md16", [
+      [ "Problem", "index.html#autotoc_md17", null ],
+      [ "Solution", "index.html#autotoc_md18", null ],
+      [ "Target Audience", "index.html#autotoc_md19", null ],
+      [ "Critical Analysis", "index.html#autotoc_md20", null ]
     ] ],
-    [ "Development Status", "index.html#autotoc_md17", [
-      [ "Current Progress", "index.html#autotoc_md18", null ],
-      [ "In Progress / To-Do", "index.html#autotoc_md19", null ]
+    [ "Development Status", "index.html#autotoc_md22", [
+      [ "Current Progress", "index.html#autotoc_md23", null ],
+      [ "In Progress / To-Do", "index.html#autotoc_md24", null ]
     ] ],
-    [ "Usage", "index.html#autotoc_md20", [
-      [ "Hardware", "index.html#autotoc_md21", null ],
-      [ "Connections", "index.html#autotoc_md22", [
-        [ "VL53L0X", "index.html#autotoc_md23", null ],
-        [ "Haptic Feedback Controller", "index.html#autotoc_md24", null ]
+    [ "Usage", "index.html#autotoc_md25", [
+      [ "Hardware", "index.html#autotoc_md26", null ],
+      [ "Connections", "index.html#autotoc_md27", [
+        [ "VL53L0X", "index.html#autotoc_md28", null ],
+        [ "Haptic Feedback Controller", "index.html#autotoc_md29", null ]
       ] ],
-      [ "Software", "index.html#autotoc_md25", null ],
-      [ "Setup", "index.html#autotoc_md26", null ],
-      [ "Compliation", "index.html#autotoc_md27", null ]
+      [ "Software", "index.html#autotoc_md30", null ],
+      [ "Setup", "index.html#autotoc_md31", null ],
+      [ "Compliation", "index.html#autotoc_md32", null ]
     ] ],
     [ "Current Design", "md_current_design.html", [
       [ "ToF Thread", "md_current_design.html#autotoc_md1", null ],
@@ -51,26 +51,32 @@ var NAVTREE =
       [ "DDS Thread", "md_current_design.html#autotoc_md3", null ],
       [ "Notes", "md_current_design.html#autotoc_md5", null ]
     ] ],
+    [ "Components", "md_phyhardware.html", [
+      [ "Motor Driver", "md_phyhardware.html#autotoc_md7", null ],
+      [ "Schematics", "md_phyhardware.html#autotoc_md8", null ],
+      [ "Battery", "md_phyhardware.html#autotoc_md9", null ],
+      [ "Holders", "md_phyhardware.html#autotoc_md10", null ]
+    ] ],
     [ "Social Media Accounts", "md_pr.html", [
-      [ "PR Media", "md_pr.html#autotoc_md7", [
-        [ "Photos", "md_pr.html#autotoc_md8", null ],
-        [ "Video (Clickable)", "md_pr.html#autotoc_md9", null ]
+      [ "PR Media", "md_pr.html#autotoc_md12", [
+        [ "Photos", "md_pr.html#autotoc_md13", null ],
+        [ "Video (Clickable)", "md_pr.html#autotoc_md14", null ]
       ] ]
     ] ],
     [ "System Archiecture", "md_system_architecture.html", [
-      [ "Hardware Components", "md_system_architecture.html#autotoc_md58", null ],
-      [ "Software Layers", "md_system_architecture.html#autotoc_md59", [
-        [ "Drivers", "md_system_architecture.html#autotoc_md60", null ],
-        [ "Application Layer", "md_system_architecture.html#autotoc_md61", null ],
-        [ "Interface Layer", "md_system_architecture.html#autotoc_md62", null ]
+      [ "Hardware Components", "md_system_architecture.html#autotoc_md63", null ],
+      [ "Software Layers", "md_system_architecture.html#autotoc_md64", [
+        [ "Drivers", "md_system_architecture.html#autotoc_md65", null ],
+        [ "Application Layer", "md_system_architecture.html#autotoc_md66", null ],
+        [ "Interface Layer", "md_system_architecture.html#autotoc_md67", null ]
       ] ]
     ] ],
     [ "User Stories", "md_user_stories.html", [
-      [ "Must Haves", "md_user_stories.html#autotoc_md64", [
-        [ "Obstacle Detection", "md_user_stories.html#autotoc_md65", null ],
-        [ "Status Monitor", "md_user_stories.html#autotoc_md66", null ],
-        [ "Haptic Feedback", "md_user_stories.html#autotoc_md67", null ],
-        [ "Drop Mode", "md_user_stories.html#autotoc_md68", null ]
+      [ "Must Haves", "md_user_stories.html#autotoc_md69", [
+        [ "Obstacle Detection", "md_user_stories.html#autotoc_md70", null ],
+        [ "Status Monitor", "md_user_stories.html#autotoc_md71", null ],
+        [ "Haptic Feedback", "md_user_stories.html#autotoc_md72", null ],
+        [ "Drop Mode", "md_user_stories.html#autotoc_md73", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
@@ -96,7 +102,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
@@ -108,7 +113,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BasePublisher_8hpp.html",
-"dir_4fe5cf12322eb0f9892753dc20f1484c.html"
+"md_phyhardware.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['participant_401',['participant',['../classReader_1_1Reader.html#aeb94e9d910703f1fc89936c609ea912b',1,'Reader::Reader']]],
-  ['participant_5f_402',['participant_',['../classBaseSubscriber.html#a2b4bce0987784a39a92003a98c33b007',1,'BaseSubscriber']]],
-  ['port_403',['port',['../namespaceWebpageSubGUI.html#a058736111d71cb757a89fc662dd9f1a3',1,'WebpageSubGUI']]],
-  ['prerange_404',['preRange',['../structVL53L0XSequenceStepEnables.html#aaa119f8ed2e955a4fa16f0ebed0b8d53',1,'VL53L0XSequenceStepEnables']]],
-  ['prerangemclks_405',['preRangeMCLKs',['../structVL53L0XSequenceStepTimeouts.html#a113542c2ed8c23d69c876ef728e5ad31',1,'VL53L0XSequenceStepTimeouts']]],
-  ['prerangemicroseconds_406',['preRangeMicroseconds',['../structVL53L0XSequenceStepTimeouts.html#a07e17bbef3fa8b0898dbd23b3809e609',1,'VL53L0XSequenceStepTimeouts']]],
-  ['prerangevcselperiodpclks_407',['preRangeVCSELPeriodPCLKs',['../structVL53L0XSequenceStepTimeouts.html#a16b5ef9d1afe4ff90b3f553b86d0f07c',1,'VL53L0XSequenceStepTimeouts']]]
+  ['reader_377',['reader',['../classReader_1_1Reader.html#a983eb5add518ffca645660f09fb8671d',1,'Reader.Reader.reader()'],['../namespaceWebpageSubGUI.html#a78c2b7465b954c25a655a5b863d9b197',1,'WebpageSubGUI.reader()']]],
+  ['reader_5f_378',['reader_',['../classBaseSubscriber.html#ac2668be0756cf7585d44f4a73700d307',1,'BaseSubscriber']]],
+  ['reader_5fmotor_379',['reader_motor',['../namespaceWebpageSubGUI.html#aae4c255f4d360aea0ae7bb6d87bcc0d3',1,'WebpageSubGUI']]],
+  ['readtimeout_380',['readTimeout',['../classI2Cdev.html#ae2125796e0948127fc15031650111e82',1,'I2Cdev']]]
 ];

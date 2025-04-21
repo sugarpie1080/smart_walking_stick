@@ -1,20 +1,15 @@
 var searchData=
 [
-  ['i2c_5fdev_5fpath_78',['I2C_DEV_PATH',['../I2Cdev_8hpp.html#a358d4581ba89021997b267dad11465de',1,'I2Cdev.hpp']]],
-  ['i2c_5fslave_5fdevice_5faddress_79',['I2C_SLAVE_DEVICE_ADDRESS',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa2752d772f9e25ebd9d30237b32ab7311',1,'VL53L0X_defines.hpp']]],
-  ['i2cdev_80',['I2Cdev',['../classI2Cdev.html#a0a466e2323d9f719a1ecc9fa11ac5c84',1,'I2Cdev::I2Cdev()'],['../classI2Cdev.html',1,'I2Cdev']]],
-  ['i2cdev_2ecpp_81',['I2Cdev.cpp',['../I2Cdev_8cpp.html',1,'']]],
-  ['i2cdev_2ehpp_82',['I2Cdev.hpp',['../I2Cdev_8hpp.html',1,'']]],
-  ['identification_5fmodel_5fid_83',['IDENTIFICATION_MODEL_ID',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aad1cc283f9cdc5b1ebcc10c45eb59aec0',1,'VL53L0X_defines.hpp']]],
-  ['identification_5frevision_5fid_84',['IDENTIFICATION_REVISION_ID',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa56485105e1cf5d9974a9841530e1f68f',1,'VL53L0X_defines.hpp']]],
-  ['index_85',['index',['../namespaceWebpageSubGUI.html#a86c53955640cc3d9bc5bc9ea16f565e8',1,'WebpageSubGUI']]],
-  ['info_5farch_86',['info_arch',['../CMakeCCompilerId_8c.html#a59647e99d304ed33b15cb284c27ed391',1,'info_arch():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#a59647e99d304ed33b15cb284c27ed391',1,'info_arch():&#160;CMakeCXXCompilerId.cpp']]],
-  ['info_5fcompiler_87',['info_compiler',['../CMakeCCompilerId_8c.html#a4b0efeb7a5d59313986b3a0390f050f6',1,'info_compiler():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#a4b0efeb7a5d59313986b3a0390f050f6',1,'info_compiler():&#160;CMakeCXXCompilerId.cpp']]],
-  ['info_5flanguage_5fextensions_5fdefault_88',['info_language_extensions_default',['../CMakeCCompilerId_8c.html#a0f46a8a39e09d9b803c4766904fd7e99',1,'info_language_extensions_default():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#a0f46a8a39e09d9b803c4766904fd7e99',1,'info_language_extensions_default():&#160;CMakeCXXCompilerId.cpp']]],
-  ['info_5flanguage_5fstandard_5fdefault_89',['info_language_standard_default',['../CMakeCCompilerId_8c.html#a4607cccf070750927b458473ca82c090',1,'info_language_standard_default():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#a4607cccf070750927b458473ca82c090',1,'info_language_standard_default():&#160;CMakeCXXCompilerId.cpp']]],
-  ['info_5fplatform_90',['info_platform',['../CMakeCCompilerId_8c.html#a2321403dee54ee23f0c2fa849c60f7d4',1,'info_platform():&#160;CMakeCCompilerId.c'],['../CMakeCXXCompilerId_8cpp.html#a2321403dee54ee23f0c2fa849c60f7d4',1,'info_platform():&#160;CMakeCXXCompilerId.cpp']]],
-  ['init_91',['init',['../classBaseSubscriber.html#af34f7d5e262e8953d3b4489873056d48',1,'BaseSubscriber']]],
-  ['initialise_92',['initialise',['../classsmart__stick_1_1ToFSensor.html#aedeeb4602dcf11f02f02f7daf6ff0089',1,'smart_stick::ToFSensor']]],
-  ['initialize_93',['initialize',['../classVL53L0X.html#a918db74f7ab8520b8b1564eb0a7b773d',1,'VL53L0X']]],
-  ['isr_5ftimeout_94',['ISR_TIMEOUT',['../ToFSensor_8hpp.html#aaa9b71fc04bd91a5cdf4030dd5fe6551',1,'ToFSensor.hpp']]]
+  ['i2c_5fdev_5fpath_60',['I2C_DEV_PATH',['../I2Cdev_8hpp.html#a358d4581ba89021997b267dad11465de',1,'I2Cdev.hpp']]],
+  ['i2c_5fslave_5fdevice_5faddress_61',['I2C_SLAVE_DEVICE_ADDRESS',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa2752d772f9e25ebd9d30237b32ab7311',1,'VL53L0X_defines.hpp']]],
+  ['i2cdev_62',['I2Cdev',['../classI2Cdev.html',1,'I2Cdev'],['../classI2Cdev.html#a0a466e2323d9f719a1ecc9fa11ac5c84',1,'I2Cdev::I2Cdev()']]],
+  ['i2cdev_2ecpp_63',['I2Cdev.cpp',['../I2Cdev_8cpp.html',1,'']]],
+  ['i2cdev_2ehpp_64',['I2Cdev.hpp',['../I2Cdev_8hpp.html',1,'']]],
+  ['identification_5fmodel_5fid_65',['IDENTIFICATION_MODEL_ID',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aad1cc283f9cdc5b1ebcc10c45eb59aec0',1,'VL53L0X_defines.hpp']]],
+  ['identification_5frevision_5fid_66',['IDENTIFICATION_REVISION_ID',['../VL53L0X__defines_8hpp.html#ad15bcd5ff6ad67bf3d09de6364418a4aa56485105e1cf5d9974a9841530e1f68f',1,'VL53L0X_defines.hpp']]],
+  ['index_67',['index',['../namespaceWebpageSubGUI.html#a86c53955640cc3d9bc5bc9ea16f565e8',1,'WebpageSubGUI']]],
+  ['init_68',['init',['../classBaseSubscriber.html#af34f7d5e262e8953d3b4489873056d48',1,'BaseSubscriber']]],
+  ['initialise_69',['initialise',['../classsmart__stick_1_1ToFSensor.html#aedeeb4602dcf11f02f02f7daf6ff0089',1,'smart_stick::ToFSensor']]],
+  ['initialize_70',['initialize',['../classVL53L0X.html#a918db74f7ab8520b8b1564eb0a7b773d',1,'VL53L0X']]],
+  ['isr_5ftimeout_71',['ISR_TIMEOUT',['../ToFSensor_8hpp.html#aaa9b71fc04bd91a5cdf4030dd5fe6551',1,'ToFSensor.hpp']]]
 ];
