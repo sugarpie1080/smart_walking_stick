@@ -75,7 +75,7 @@ if __name__ == '__main__':
     reader_battery = Reader(
         set_name="Battery",
         topic_name="BatteryCommandsTopic",
-        topic_data_type=Battery.MotorCommandsPubSubType,
+        topic_data_type=Battery.BatteryCommandsPubSubType,
         listener=ReaderListenerBattery
         socketio=socketio
     )
