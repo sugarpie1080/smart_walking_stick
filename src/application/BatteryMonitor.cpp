@@ -42,13 +42,14 @@ void BatteryMonitor::worker() {
 
         // Read bus voltage from INA219
         float voltage = ina219.read_voltage();  // Bus voltage
+        float current = ina219.read_current();
 
         // Calculate battery percentage
         float percentage = ((voltage - 6.0f) / (12.6f - 6.0f)) * 100.0f;
         percentage = std::max(0.0f, std::min(100.0f, percentage));
 
         std::cout << "Battery Voltage: " << voltage << "V, "
-                  << "Percentage: " << percentage << "%" << std::endl;
+                  << "Percentage: " << percentage << "%" << "Current: " << current << std::endl;
 
         // Notify all registered callback interfaces
         for (auto cb : callbackInterfaces) {
