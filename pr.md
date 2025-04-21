@@ -17,5 +17,5 @@ BlueSky: [@wisewalkltd.bsky.social](https://bsky.app/profile/did:plc:tpbgblyr65u
 ## Video (Clickable)
 
 <a href="https://youtube.com/shorts/KGUc61me2IE" target="_blank">
-  <iframe width="100%" height="auto" src="https://www.youtube.com/embed/KGUc61me2IE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <img src="https://img.youtube.com/vi/KGUc61me2IE/0.jpg" width="480" alt="Watch this video on YouTube" />
 </a>
