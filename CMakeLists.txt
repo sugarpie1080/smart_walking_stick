@@ -44,6 +44,9 @@ set(BUILD_SHARED_LIBS ON)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBGPIO REQUIRED libgpiod)
 
+# Debug message to verify LIBGPIO_LIBRARIES
+message(STATUS "LIBGPIO_LIBRARIES: ${LIBGPIO_LIBRARIES}")
+
 set(FASTDDS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/fastdds")
 set(TOPICS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/topics")
 set(DRIVER_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/drivers/")
@@ -60,14 +63,14 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/fastdds)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/application)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/drivers/)
 include_directories(${DRIVER_DIR}/vl53l0x-linux/)
-include_directories(${DRIVER_DIR}/ina219/src)
+include_directories(${DRIVER_DIR}/INA219)
 
 create_msg_library(ToFData)
 create_msg_library(MotorCommands)
 create_msg_library(Battery)
 
 set(APPLICATION_SOURCES
-    ${APPLICATION_DIR}/Battery.cpp
+    ${APPLICATION_DIR}/BatteryMonitor.cpp
     ${APPLICATION_DIR}/MotorMove.cpp
     ${APPLICATION_DIR}/DDSCommunicator.cpp
     ${APPLICATION_DIR}/ToFSensor.cpp
@@ -79,7 +82,7 @@ set(TOF_SOURCES
 )
 
 set(BATTERY_SOURCES
-    ${DRIVER_DIR}/ina219/src/ina219.cpp
+    ${DRIVER_DIR}/INA219/INA219.cpp
 )
 
 set(MAIN_SOURCES
@@ -88,7 +91,6 @@ set(MAIN_SOURCES
     ${TOF_SOURCES}
     ${BATTERY_SOURCES}
 )
-
 
 add_executable(SmartWalkingStick ${MAIN_SOURCES})
 
