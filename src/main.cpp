@@ -26,12 +26,11 @@
      smart_stick::MotorMove mm(&tof);
      smart_stick::BatteryMonitor bat;
      smart_stick::DDSCommunicator dds(&tof, &mm, &bat);
- 
-     tof.initialise();
      bat.initialise();
- 
+     tof.initialise();
+     
+    //  bat.sta?rt();
      tof.start();
-     bat.start();
  
      getchar();
      return 0;

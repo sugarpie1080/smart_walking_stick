@@ -73,6 +73,7 @@ namespace smart_stick
             std::lock_guard<std::mutex> lock(mutex);
             battery_ready = true;
             last_battery = battery_percentage;
+            std::cout << "Hours: " << last_battery << std::endl;
         }
         cv.notify_all();
     }

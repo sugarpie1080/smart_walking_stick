@@ -87,8 +87,8 @@ namespace smart_stick{
             std::condition_variable cv;
             std::mutex mutex;
             bool distance_ready, duty_cycle_ready, battery_ready;
-            float last_distance;
-            int last_duty_cycle, last_battery;
+            float last_distance,last_battery;
+            int last_duty_cycle;
             std::thread worker_thread;
             std::atomic_bool running;
             BasePublisher<ToFData, ToFDataPubSubType> tof_pub;

@@ -37,6 +37,10 @@ private:
     std::mutex mutex;
     std::condition_variable cv;
     std::vector<CallbackInterface*> callbackInterfaces;
+    float voltage;
+    float current;
+    float shunt_voltage;
+    float power;
 };
 
 } // namespace smart_stick

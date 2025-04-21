@@ -13,11 +13,29 @@ BatteryMonitor::~BatteryMonitor() {
 void BatteryMonitor::initialise() {
     // Initialize INA219
     ina219.init();
+    voltage = ina219.read_voltage();  // Bus voltage
+    current = ina219.read_current();
+    shunt_voltage = ina219.read_shunt_voltage();
+    power = ina219.read_power();
+
+    // Calculate battery percentage
+    float percentage = ((voltage - 6.0f) / (12.6f - 6.0f)); // Placeholder for actual calculation
+    percentage = std::max(0.0f, std::min(1.0f, percentage)); // Clamp to 0-100%
+    float time_left  = percentage*10.1;
+    std::cout << "Time left: " << time_left << "Hours, "
+                << "Percentage: " << percentage << "%" << std::endl;
+
+    // Notify all registered callback interfaces
+    for (auto cb : callbackInterfaces) {
+        cb->has_battery(time_left); // Notify battery percentage
+    }
+
+
 }
 
 void BatteryMonitor::start() {
-    running = true;
-    worker_thread = std::thread(&BatteryMonitor::worker, this);
+    // running = true;
+    // worker_thread = std::thread(&BatteryMonitor::worker, this);
 }
 
 void BatteryMonitor::stop() {
@@ -41,19 +59,14 @@ void BatteryMonitor::worker() {
         if (!running) break;
 
         // Read bus voltage from INA219
-        float voltage = ina219.read_voltage();  // Bus voltage
-        float current = ina219.read_current();
-
+       
         // Calculate battery percentage
-        float percentage = ((voltage - 6.0f) / (12.6f - 6.0f)) * 100.0f;
-        percentage = std::max(0.0f, std::min(100.0f, percentage));
-
-        std::cout << "Battery Voltage: " << voltage << "V, "
-                  << "Percentage: " << percentage << "%" << "Current: " << current << std::endl;
-
+        float percentage = ((voltage - 6.0f) / (12.6f - 6.0f)); // Placeholder for actual calculation
+        percentage = std::max(0.0f, std::min(1.0f, percentage)); // Clamp to 0-100%
+        float time_left  = percentage*10.1;
         // Notify all registered callback interfaces
         for (auto cb : callbackInterfaces) {
-            cb->has_battery(percentage); // Notify battery percentage
+            cb->has_battery(time_left); // Notify battery percentage
         }
     }
 }
