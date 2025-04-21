@@ -194,7 +194,7 @@
         });
         
         socket.on('update_data_battery', (data) => {
-            document.getElementById('time-left').innerText = `${data.time_left} minutes`;
+            document.getElementById('time-left').innerText = `${data.battery_percentage} minutes`;
             
             console.log('[DEBUG] ToF Data updated:', data);
         });
