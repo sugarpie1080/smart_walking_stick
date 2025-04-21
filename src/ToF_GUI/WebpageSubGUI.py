@@ -12,9 +12,11 @@ import sys
 sys.path.append("/usr/local/lib/python3/dist-packages/")
 import ToFData
 import MotorCommands
+import Battery
 from Reader import Reader
 from ReaderListenerToF import ReaderListenerToF
 from ReaderListenerMotor import ReaderListenerMotor
+from ReaderListenerBattery import ReaderListenerBattery
 
 """@package docstring
 Documentation for WebpageSubGUI.py.
@@ -67,6 +69,14 @@ if __name__ == '__main__':
         topic_name="MotorCommandsTopic",
         topic_data_type=MotorCommands.MotorCommandsPubSubType,
         listener=ReaderListenerMotor,
+        socketio=socketio
+    )
+
+    reader_battery = Reader(
+        set_name="Battery",
+        topic_name="BatteryCommandsTopic",
+        topic_data_type=Battery.MotorCommandsPubSubType,
+        listener=ReaderListenerBattery
         socketio=socketio
     )
 

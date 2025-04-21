@@ -115,6 +115,10 @@
                 <span id="distance-label">Distance:</span>
                 <span id="distance">0.0 mm</span>
             </div>
+            <div class="data-box">
+                <span id="time-left-label">Time Left:</span>
+                <span id="time-left">Calculating...</span>
+            </div>
             <!-- Battery Status -->
             <div class="data-box">
                 <span>Battery:</span>
@@ -186,6 +190,12 @@
             document.getElementById('seconds').innerText = `${data.sec}`;
             document.getElementById('distance').innerText = `${data.distance} mm`;
 
+            console.log('[DEBUG] ToF Data updated:', data);
+        });
+        
+        socket.on('update_data_battery', (data) => {
+            document.getElementById('time-left').innerText = `${data.time_left} minutes`;
+            
             console.log('[DEBUG] ToF Data updated:', data);
         });
 
