@@ -10,7 +10,31 @@ The chosen haptic feedback motor consumes around 80 mA of current at a voltage o
 
 ## Battery 
 
-To make the device portable, it should be battery-powered. To achieve this, the Waveshare UPS-HAT (B) is used. This module facilitates 2 18650 Li-ion batteries and provides various protection mechanisms including cell balancing, a charge controller, over-current and over-voltage protection, parameter monitoring, etc. The module uses the INA219 power monitoring chip, which can communicate the battery parameters over I2C through Pogo-pins connected to the underside of the Pi's 40-pin IO connector. The battery cells used are EVE INR 18650 3500 mAh cells, chosen for their higher capacity.
+To make the device portable, it should be battery-powered. To achieve this, the Waveshare UPS-HAT (B) is used. This module facilitates 2 18650 Li-ion batteries and provides various protection mechanisms including cell balancing, a charge controller, over-current and over-voltage protection, parameter monitoring, etc. The module uses the INA219 power monitoring chip, which can communicate the battery parameters over I2C through Pogo-pins connected to the underside of the Pi's 40-pin IO connector. The battery cells used are EVE INR 18650 3500 mAh cells, chosen for their higher capacity. 
+
+The measured current consumption of the device on standby is around 450 mA. Including the current consumption of the motor at 100% PWM, this totals to 530 mA. This means that the average power consuption is around 2.5 W. Given the battery capacitance of 3500 mAh, an approximation for the battery life can be made. The total energy stored in the two cells is given by:
+
+$$
+
+E=2V_{nom}It=25.2 \text{ Wh}
+
+$$
+
+The average power consumption at the 5V line can be calculated with:
+
+$$
+
+P_{ave}=V_{ss}I_{ave}=2.5 \text{ W}
+
+$$
+
+The quotient of these values is the time to fully discharge the battery:
+
+$$
+
+t_{dis}=\frac{E}{P_{ave}}=10.1 \text{ hours}
+
+$$
 
 ## Holders 
 
