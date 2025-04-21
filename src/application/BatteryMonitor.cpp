@@ -3,7 +3,6 @@
 
 namespace smart_stick {
 
-// Example: 0.1 ohm shunt, 3.2A expected max, I2C address 0x40
 BatteryMonitor::BatteryMonitor()
     : ina219(0.1f, 3.2f, 0x40), running(false) {}
 
@@ -12,14 +11,8 @@ BatteryMonitor::~BatteryMonitor() {
 }
 
 void BatteryMonitor::initialise() {
-    // Optional: call configure to set up range/gain/etc.
-    ina219.configure(
-        INA219::RANGE_32V,
-        INA219::GAIN_8_320MV,
-        INA219::ADC_128SAMP,
-        INA219::ADC_128SAMP
-    );
-    
+    // Initialize INA219
+    ina219.init();
 }
 
 void BatteryMonitor::start() {
@@ -47,16 +40,19 @@ void BatteryMonitor::worker() {
 
         if (!running) break;
 
-        float voltage = ina219.voltage(); // Bus voltage
+        // Read bus voltage from INA219
+        float voltage = ina219.read_voltage();  // Bus voltage
 
+        // Calculate battery percentage
         float percentage = ((voltage - 6.0f) / (12.6f - 6.0f)) * 100.0f;
         percentage = std::max(0.0f, std::min(100.0f, percentage));
 
         std::cout << "Battery Voltage: " << voltage << "V, "
                   << "Percentage: " << percentage << "%" << std::endl;
 
+        // Notify all registered callback interfaces
         for (auto cb : callbackInterfaces) {
-            cb->has_battery(percentage); // now float
+            cb->has_battery(percentage); // Notify battery percentage
         }
     }
 }
